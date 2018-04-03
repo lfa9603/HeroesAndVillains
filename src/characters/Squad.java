@@ -12,7 +12,6 @@ public abstract class Squad {
 
 	private ArrayList<Character> characters;
 	
-	
 	/**
 	 * 
 	 * @param listCharacters
