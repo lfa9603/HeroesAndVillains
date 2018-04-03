@@ -7,4 +7,4 @@
  * the map and the overall structure of the surrounding.
  *
  */
-package surrounding;
+package city;

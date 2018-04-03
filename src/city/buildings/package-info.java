@@ -5,4 +5,4 @@
  * @author LorenzoFasano
  *
  */
-package surrounding.buildings;
+package city.buildings;

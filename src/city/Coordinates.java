@@ -1,11 +1,12 @@
-package surrounding;
+package city;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ListResourceBundle;
 import java.util.Random;
 
-import surrounding.buildings.Building;
-import surrounding.buildings.Home;
+import city.buildings.Building;
+import city.buildings.Home;
 
 public class Coordinates {
 
@@ -37,20 +38,6 @@ public class Coordinates {
 			copyBuildingsCoordinates.add(setOfCoordinates);
 		}
 		
-		while (copyOfBuildings.size() != 0) {
-			
-			Random random = new Random();
-			Integer randomInteger = random.nextInt(copyOfBuildings.size());
-			
-			Building building = copyOfBuildings.get(randomInteger);
-			ArrayList<Integer> chosenSetCoordinates = copyBuildingsCoordinates.get(randomInteger);
-			
-			building.setBuildingCoordinates(chosenSetCoordinates);
-			
-			copyOfBuildings.remove(building);
-			copyBuildingsCoordinates.remove(chosenSetCoordinates);
-			
-		}
 	}
 	
 
