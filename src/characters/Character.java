@@ -1,20 +1,12 @@
 package characters;
 
-public class Character {
+public interface Character {
 
-	private String characterName;
 	
-	public Character(String name) {
-		characterName = name;
-		}
 
-	public String getCharacterName() {
-		return characterName;
-	}
+	public String getCharacterName();
 
-	public void setCharacterName(String characterName) {
-		this.characterName = characterName;
-	}
+	public void setCharacterName(String characterName);
 	
 	
 	

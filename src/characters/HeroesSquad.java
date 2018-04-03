@@ -8,7 +8,6 @@ public class HeroesSquad extends Squad {
 		super(characters);
 	}
 	
-	@Override
 	public Character getPrimaryCharacter() {
 		// TODO Auto-generated method stub
 		return null;
