@@ -1,10 +1,10 @@
 
-package surrounding;
+package city;
 
 import java.util.ArrayList;
 
-import surrounding.buildings.Building;
-import surrounding.buildings.Home;
+import city.buildings.Building;
+import city.buildings.Home;
 
 public class Main {
 	

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author LorenzoFasano
  *Abstract class needed to simplify the creation of Classes that accept Squad items, 
  *so that they can be used to implement tools for HeroesSquad and VillainsSquad objects 
  */
