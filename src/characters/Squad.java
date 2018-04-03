@@ -18,4 +18,6 @@ public abstract class Squad {
 		this.characters = characters;
 	}
 	
+	public abstract Character getPrimaryCharacter();
+	
 }
