@@ -1,19 +1,29 @@
 package characters;
 
-public class Hero implements Character{
+/**
+ * 
+ * @author LorenzoFasano
+ *
+ */
+public class Hero extends Character{
 	
-	public String getCharacterName() {
-		return characterName;
+	/**
+	 * 
+	 * @param name
+	 * @param specialAbility
+	 */
+	public Hero(String name, String specialAbility) {
+		super(name, specialAbility);
 	}
-
-	public void setCharacterName(String characterName) {
-		this.characterName = characterName;
-	}
-
-	private String characterName;
 	
-	public Hero(String name) {
-		characterName = name;
+	/**
+	 * Method that Character forces this class to implement.
+	 */
+	public String toString() {
+		String string = new String(
+				"Hero named: " + getCharacterName() + 
+				"\nSpecial ability: " + getCharacterAbility());
+		return string;
 	}
 	
 	

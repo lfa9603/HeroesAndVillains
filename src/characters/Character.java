@@ -1,13 +1,60 @@
 package characters;
 
-public interface Character {
-
+/**
+ * 
+ * @author LorenzoFasano
+ *Character abstract class needed to implement classes that take Character elements as objects,
+ *This will make it easier to implement code that accepts both Hero and Villain objects.
+ */
+public abstract class Character {
+	
+	private String characterName;
+	private String characterAbility;
 	
 
-	public String getCharacterName();
+	/**
+	 * 
+	 * @param name
+	 * @param specialAbility
+	 */
+	public Character(String name, String specialAbility) {
+		characterName = name;
+		characterAbility = specialAbility;
+	}
+	
+	/**
+	 * @return characterName
+	 */
+	public String getCharacterName() {
+		return characterName;
+	}
 
-	public void setCharacterName(String characterName);
+	/**
+	 * @param characterName 
+	 * characterName setter
+	 */
+	public void setCharacterName(String characterName) {
+		this.characterName = characterName;
+	}
+
+
+	/**
+	 * @return characterAbility
+	 */
+	public String getCharacterAbility() {
+		return characterAbility;
+	}
+
+	/**
+	 * @param characterAbility 
+	 * characterAbility setter
+	 */
+	public void setCharacterAbility(String characterAbility) {
+		this.characterAbility = characterAbility;
+	}
 	
-	
-	
+	/**
+	 * The class all children classes have to implement
+	 */
+	public abstract String toString();
 }
