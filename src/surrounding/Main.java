@@ -3,6 +3,9 @@ package surrounding;
 
 import java.util.ArrayList;
 
+import surrounding.buildings.Building;
+import surrounding.buildings.Home;
+
 public class Main {
 	
 	public static void main(String[] args) {

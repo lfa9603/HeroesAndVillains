@@ -1,4 +1,4 @@
-package surrounding;
+package surrounding.buildings;
 
 import java.util.ArrayList;
 

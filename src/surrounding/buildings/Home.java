@@ -1,4 +1,4 @@
-package surrounding;
+package surrounding.buildings;
 
 public class Home extends Building{
 

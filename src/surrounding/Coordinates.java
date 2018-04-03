@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import surrounding.buildings.Building;
+import surrounding.buildings.Home;
+
 public class Coordinates {
 
 	public static final ArrayList<Integer> HOME_COORDINATES = new ArrayList<Integer>(Arrays.asList(0, 0));
