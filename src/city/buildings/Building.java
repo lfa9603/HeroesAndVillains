@@ -1,6 +1,6 @@
 package city.buildings;
 
-import java.util.ArrayList;
+import java.awt.Point;
 
 import characters.HeroesSquad;
 
@@ -8,7 +8,7 @@ public abstract class Building {
 
 	
 	private String buildingName;
-	private ArrayList<Integer> buildingCoordinates;
+	private Point buildingCoordinates;
 	
 	
 	public Building(String name) {
@@ -23,11 +23,11 @@ public abstract class Building {
 		this.buildingName = buildingName;
 	}
 
-	public ArrayList<Integer> getBuildingCoordinates() {
+	public Point getBuildingCoordinates() {
 		return buildingCoordinates;
 	}
 
-	public void setBuildingCoordinates(ArrayList<Integer> buildingCoordinates) {
+	public void setBuildingCoordinates(Point buildingCoordinates) {
 		this.buildingCoordinates = buildingCoordinates;
 	}
 	
