@@ -8,14 +8,11 @@ import city.buildings.collectables.HeroesMap;
 
 public class Home extends Building{
 
-	private boolean atHome = true;
-	
-	public Home(String name) {
-		super(name);
-	}
-
-	
-	
+	public Home(String name, TypeBuildings buildType) {
+		super(name, buildType);
+		// TODO Auto-generated constructor stub
+	}	
+		
 	public void interact(HeroesSquad heroesSquad) {
 		
 //		System.out.println("Welcome in your ");
@@ -60,15 +57,6 @@ public class Home extends Building{
 //	}
 
 
-	public boolean isAtHome() {
-		return atHome;
-	}
-
-
-
-	public void setAtHome(boolean atHome) {
-		this.atHome = atHome;
-	}
 
 
 }

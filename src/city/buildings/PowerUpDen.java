@@ -3,10 +3,10 @@ package city.buildings;
 import characters.HeroesSquad;
 
 public class PowerUpDen extends Building {
+	
 
-	public PowerUpDen(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public PowerUpDen(String name, TypeBuildings buildType) {
+		super(name, buildType);
 	}
 
 	@Override
