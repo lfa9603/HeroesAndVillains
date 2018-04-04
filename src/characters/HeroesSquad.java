@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author LorenzoFasano
+ * @author LorenzoFasano and JayHamilton
  *Collection of Character objects stored in an ArrayList 
  */
 public class HeroesSquad {
@@ -20,7 +20,7 @@ public class HeroesSquad {
 
 
 	/**
-	 * @param heroSquad the heroSquad to set
+	 * @param Checks if hero is in the Squad and adds it, else it return the
 	 */
 	public void setHeroSquad(ArrayList<Hero> heroSquad) {
 		HeroSquad = heroSquad;
