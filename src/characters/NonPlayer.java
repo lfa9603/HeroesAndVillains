@@ -7,7 +7,7 @@ package characters;
  */
 
 
-public class NonPlayer extends Character {
+public class NonPlayer extends Character{
 	
 	/**
 	 * 
