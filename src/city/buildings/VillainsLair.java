@@ -1,5 +1,7 @@
 package city.buildings;
 
+import characters.HeroesSquad;
+
 public class VillainsLair extends Building {
 
 	public VillainsLair(String name) {
@@ -7,7 +9,8 @@ public class VillainsLair extends Building {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void interact() {
+	@Override
+	public void interact(HeroesSquad heroesSquad) {
 		// TODO Auto-generated method stub
 		
 	}

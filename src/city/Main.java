@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 import city.buildings.Building;
 import city.buildings.Home;
+import city.buildings.Hospital;
+import city.buildings.PowerUpDen;
+import city.buildings.Shop;
+import city.buildings.VillainsLair;
 
 public class Main {
 	
@@ -14,10 +18,10 @@ public class Main {
 		Coordinates.setHomeCoordinates(home);
 		System.out.println(home.getBuildingCoordinates());
 		
-		Home hospital = new Home("Hospital");
-		Home pub = new Home("Pub");
-		Home villainCave = new Home("VillainCave");
-		Home shop = new Home("Shop");
+		Hospital hospital = new Hospital("Hospital");
+		PowerUpDen pub = new PowerUpDen("Pub");
+		VillainsLair villainCave = new VillainsLair("VillainCave");
+		Shop shop = new Shop("Shop");
 		ArrayList<Building> listBuildings = new ArrayList<Building>();
 		listBuildings.add(pub);
 		listBuildings.add(shop);
