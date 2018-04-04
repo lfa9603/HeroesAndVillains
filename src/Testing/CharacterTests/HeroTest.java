@@ -30,27 +30,39 @@ class HeroTest {
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		Hero lorenzo = new Hero("Lorenzo", "fire");
+		String toString = lorenzo.toString();
+		assertEquals("Hero named: Lorenzo\nHealth: 100\nSpecial ability: fire", toString);
 	}
 
 	@Test
 	void testGetCharacterName() {
-		fail("Not yet implemented");
+		Hero lorenzo = new Hero("Lorenzo", "fire");
+		String toString = lorenzo.getCharacterName();
+		assertEquals("Lorenzo", toString);
 	}
 
 	@Test
 	void testSetCharacterName() {
-		fail("Not yet implemented");
+		Hero lorenzo = new Hero("Lorenzo", "fire");
+		lorenzo.setCharacterName("Lorenzo_edited");
+		String toString = lorenzo.getCharacterName();
+		assertEquals("Lorenzo_edited", toString);
 	}
 
 	@Test
 	void testGetCharacterAbility() {
-		fail("Not yet implemented");
+		Hero lorenzo = new Hero("Lorenzo", "fire");
+		String toString = lorenzo.getCharacterAbility();
+		assertEquals("fire", toString);
 	}
 
 	@Test
 	void testSetCharacterAbility() {
-		fail("Not yet implemented");
+		Hero lorenzo = new Hero("Lorenzo", "fire");
+		lorenzo.setCharacterAbility("fire_edited");
+		String toString = lorenzo.getCharacterAbility();
+		assertEquals("fire_edited", toString);
 	}
 
 	@Test
@@ -62,7 +74,10 @@ class HeroTest {
 
 	@Test
 	void testSetHealth() {
-		fail("Not yet implemented");
+		Hero lorenzo = new Hero("Lorenzo", "fire");
+		lorenzo.setHealth(80);
+		int lorenzoHealth = lorenzo.getHealth();
+		assertEquals(80, lorenzoHealth);
 	}
 
 }
