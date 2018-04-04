@@ -10,6 +10,7 @@ public abstract class Character {
 	
 	private String characterName;
 	private String characterAbility;
+	private int health = 100;
 	
 
 	/**
@@ -53,6 +54,20 @@ public abstract class Character {
 		this.characterAbility = characterAbility;
 	}
 	
+	/**
+	 * @return the health
+	 */
+	public int getHealth() {
+		return health;
+	}
+
+	/**
+	 * @param health the health to set
+	 */
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
 	/**
 	 * The class all children classes have to implement
 	 */

@@ -2,7 +2,7 @@ package characters;
 
 /**
  * 
- * @author LorenzoFasano
+ * @author LorenzoFasano and JayHamilton
  *
  */
 public class Hero extends Character{
@@ -21,7 +21,8 @@ public class Hero extends Character{
 	 */
 	public String toString() {
 		String string = new String(
-				"Hero named: " + getCharacterName() + 
+				"Hero named: " + getCharacterName() +
+				"\nHealth: " + getHealth() +
 				"\nSpecial ability: " + getCharacterAbility());
 		return string;
 	}

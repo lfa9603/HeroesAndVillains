@@ -7,7 +7,7 @@ public class Villain extends Character{
 	
 	
 	/**
-	 * 
+	 * @author LorenzoFasano and JayHamilton
 	 * @param name
 	 * @param specialAbility
 	 * @param taunt
@@ -31,6 +31,7 @@ public class Villain extends Character{
 	public String toString() {
 		String string = new String(
 				"Villain named: " + getCharacterName() + 
+				"\nHealth: " + getHealth() +
 				"\nSpecial ability: " + getCharacterAbility() +
 				"\nHis taunt is: " + getVillainTaunt());
 		return string;
