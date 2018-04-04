@@ -32,14 +32,4 @@ public class HeroesSquad {
 			 throw new ValueException("Heros cannot have the Same name");
 		 }
 	}
-
-
-	/**
-	 * IMPLEMENT
-	 */
-	public Character getPrimaryCharacter() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
