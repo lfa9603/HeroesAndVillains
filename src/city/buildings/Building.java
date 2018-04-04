@@ -9,11 +9,15 @@ public abstract class Building {
 	
 	private String buildingName;
 	private Point buildingCoordinates;
+	private TypeBuildings buildingType;
 	
 	
-	public Building(String name) {
+	public Building(String name, TypeBuildings buildType) {
 		buildingName = name;
+		buildingType = buildType;
 	}
+
+
 
 	public String getBuildingName() {
 		return buildingName;
@@ -23,6 +27,8 @@ public abstract class Building {
 		this.buildingName = buildingName;
 	}
 
+	
+	
 	public Point getBuildingCoordinates() {
 		return buildingCoordinates;
 	}
@@ -31,6 +37,18 @@ public abstract class Building {
 		this.buildingCoordinates = buildingCoordinates;
 	}
 	
-	public abstract void interact(HeroesSquad heroesSquad);
 	
+	public TypeBuildings getBuildingType() {
+		return buildingType;
+	}
+
+
+//	public void setBuildingType(TypeBuildings buildingType) {
+//		this.buildingType = buildingType;
+//	}
+
+	
+	
+	public abstract void interact(HeroesSquad heroesSquad);
+
 }

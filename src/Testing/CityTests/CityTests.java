@@ -1,4 +1,4 @@
-package Testing;
+package Testing.CityTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import city.Coordinates;
+import city.CoordinatesTool;
 import city.buildings.Building;
 import city.buildings.Hospital;
 import city.buildings.PowerUpDen;
@@ -22,7 +22,7 @@ class CityTests {
 	 */
 	@Test
 	void testingHOME_COORDINATES() {
-		Point home = Coordinates.HOME_COORDINATES;
+		Point home = CoordinatesTool.HOME_COORDINATES;
 		Point origin = new Point(0, 0);
 		assertEquals(origin, home);
 	}
@@ -32,7 +32,7 @@ class CityTests {
 	 */
 	@Test
 	void testingBUILDING_COORDINATES() {
-		ArrayList<Point> toTest = Coordinates.BUILDINGS_COORDINATES;
+		ArrayList<Point> toTest = CoordinatesTool.BUILDINGS_COORDINATES;
 		ArrayList<Point> buildingCoordinates = new ArrayList<Point>();
 		buildingCoordinates.add(new Point(4, 0));
 		buildingCoordinates.add(new Point(0, 4));
@@ -62,27 +62,26 @@ class CityTests {
 		listBuildings.add(villainCave);
 		listBuildings.add(hospital);
 		
-		Coordinates.setBuildingsCoordinates(listBuildings);
-		
-		boolean allDifferentAndNotNull = true;
+		CoordinatesTool.setBuildingsCoordinates(listBuildings);
 		for (Building buildingOne : listBuildings) {
 			for (Building buildingTwo : listBuildings) {
 				Point coordinatesOne = buildingOne.getBuildingCoordinates();
 				Point coordinatesTwo = buildingTwo.getBuildingCoordinates();
+				
+				assertNotNull(coordinatesOne);
+				assertNotNull(coordinatesTwo);
+				
 				if (coordinatesOne.equals(coordinatesTwo) && !buildingOne.equals(buildingTwo)) {
-					allDifferentAndNotNull = false;
-				}
-				if (coordinatesOne.equals(null) || coordinatesTwo.equals(null))  {
-					allDifferentAndNotNull = false;
+					
+					assertNotEquals(coordinatesOne, coordinatesTwo);
+					
 				}
 			}
 		}
 		
-		boolean expected = true;
 		for (Building building : listBuildings) {
 			System.out.println(building.getBuildingName() + "    " + building.getBuildingCoordinates());
 		}
-		assertEquals(expected, allDifferentAndNotNull);
 	}
 
 }

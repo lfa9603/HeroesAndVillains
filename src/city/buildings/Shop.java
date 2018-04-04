@@ -4,16 +4,16 @@ import characters.HeroesSquad;
 
 public class Shop extends Building{
 
-	public Shop(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
-	}
+	public Shop(String name, TypeBuildings buildType) {
+		super(name, buildType);
+	}	
+	
 
-	@Override
 	public void interact(HeroesSquad heroesSquad) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 	
 

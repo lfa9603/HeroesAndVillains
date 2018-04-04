@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class Coordinates {
+public class CoordinatesTool {
 
 	public static final Point HOME_COORDINATES = new Point(0, 0);
 	
 	public static final ArrayList<Point> BUILDINGS_COORDINATES = buildingsCoordinatesCreation();;
 	
-	public static void setHomeCoordinates(Home home) {
+	public static void setHomeCoordinates(Building home) {
 		home.setBuildingCoordinates(HOME_COORDINATES);
 		buildingsCoordinatesCreation();
 	}

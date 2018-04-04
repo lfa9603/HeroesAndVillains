@@ -4,9 +4,8 @@ import characters.HeroesSquad;
 
 public class VillainsLair extends Building {
 
-	public VillainsLair(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public VillainsLair(String name, TypeBuildings buildType) {
+		super(name, buildType);
 	}
 
 	@Override
@@ -14,7 +13,4 @@ public class VillainsLair extends Building {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
-
 }
