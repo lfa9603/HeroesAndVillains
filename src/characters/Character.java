@@ -11,6 +11,7 @@ public abstract class Character {
 	private String characterName;
 	private String characterAbility;
 	private int health = 100;
+	private boolean alive = true;
 	
 
 	/**
@@ -66,6 +67,20 @@ public abstract class Character {
 	 */
 	public void setHealth(int health) {
 		this.health = health;
+	}
+
+	/**
+	 * @return the alive
+	 */
+	public boolean isAlive() {
+		return alive;
+	}
+
+	/**
+	 * @param alive the alive to set
+	 */
+	public void setisAlive(boolean alive) {
+		this.alive = alive;
 	}
 
 	/**
