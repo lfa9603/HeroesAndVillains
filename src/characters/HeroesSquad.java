@@ -7,17 +7,26 @@ import java.util.ArrayList;
  * @author LorenzoFasano
  *Collection of Character objects stored in an ArrayList 
  */
-public class HeroesSquad extends Squad {
+public class HeroesSquad {
+	private ArrayList<Hero> HeroSquad = new ArrayList<Hero>();
 
 	
 	/**
-	 * 
-	 * @param characters
+	 * @return the heroSquad
 	 */
-	public HeroesSquad(ArrayList<Character> characters) {
-		super(characters);
+	public ArrayList<Hero> getHeroSquad() {
+		return HeroSquad;
 	}
-	
+
+
+	/**
+	 * @param heroSquad the heroSquad to set
+	 */
+	public void setHeroSquad(ArrayList<Hero> heroSquad) {
+		HeroSquad = heroSquad;
+	}
+
+
 	/**
 	 * IMPLEMENT
 	 */
