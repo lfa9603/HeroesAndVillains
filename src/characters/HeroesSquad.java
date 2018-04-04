@@ -32,4 +32,18 @@ public class HeroesSquad {
 			 throw new ValueException("Heros cannot have the Same name");
 		 }
 	}
+	
+	public boolean squadContains(Hero hero) {
+		boolean result = heroSquad.contains(hero);
+		return result;
+	}
+	
+	public String toString() {
+		String squad = new String("Heros in squad: \n");
+		for (Hero hero: heroSquad) {
+			squad += hero.getCharacterName() + "\n";
+		}
+		return squad;
+		
+	}
 }
