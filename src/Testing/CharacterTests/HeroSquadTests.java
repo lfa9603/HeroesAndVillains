@@ -36,11 +36,10 @@ class HeroSquadTests {
 		Hero hero3 = new Hero("hero3", "specialAbility_3");
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero1);
-		//testsquad.addHero(hero1);
+		testsquad.addHero(hero1);
 		testsquad.addHero(hero2);
 		testsquad.addHero(hero3);
 		assertTrue(testsquad.squadContains(hero1));
-		// assertFalse(testsquad.squadContains(hero1));
 		assertTrue(testsquad.squadContains(hero2));
 		assertTrue(testsquad.squadContains(hero3));
 	}
@@ -51,6 +50,7 @@ class HeroSquadTests {
 		Hero hero2 = new Hero("hero2", "specialAbility_2");
 		Hero hero3 = new Hero("hero3", "specialAbility_3");
 		HeroesSquad testsquad = new HeroesSquad();
+		testsquad.addHero(hero1);
 		testsquad.addHero(hero1);
 		testsquad.addHero(hero2);
 		testsquad.addHero(hero3);

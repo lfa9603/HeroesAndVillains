@@ -2,8 +2,6 @@ package characters;
 
 import java.util.ArrayList;
 
-import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
-
 /**
  * 
  * @author LorenzoFasano and JayHamilton
@@ -11,6 +9,7 @@ import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
  */
 public class HeroesSquad {
 	private ArrayList<Hero> heroSquad = new ArrayList<Hero>();
+	private String teamName;
 
 	
 	/**
@@ -29,7 +28,7 @@ public class HeroesSquad {
 			 heroSquad.add(hero);
 		 }
 		 else {
-			 throw new ValueException("Heros cannot have the Same name");
+			 System.out.println("Heros cannot have the same name");
 		 }
 	}
 	
@@ -38,12 +37,31 @@ public class HeroesSquad {
 		return result;
 	}
 	
+	
+	/**
+	 * @return the teamName
+	 */
+	public String getTeamName() {
+		return teamName;
+	}
+
+
+	/**
+	 * @param teamName the teamName to set
+	 */
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+	
 	public String toString() {
-		String squad = new String("Heros in squad: \n");
+		String squad = new String("Heros in " + teamName + ": \n");
 		for (Hero hero: heroSquad) {
 			squad += hero.getCharacterName() + "\n";
 		}
 		return squad;
 		
 	}
+
+
+
 }
