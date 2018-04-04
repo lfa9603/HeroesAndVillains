@@ -5,7 +5,7 @@ package characters;
  * @author LorenzoFasano and JayHamilton
  *
  */
-public class Hero extends Character{
+public class Hero extends Character {
 	
 	/**
 	 * 
