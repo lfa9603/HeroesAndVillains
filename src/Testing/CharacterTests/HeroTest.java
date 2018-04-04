@@ -84,5 +84,14 @@ class HeroTest {
 		int lorenzoHealth = lorenzo.getHealth();
 		assertEquals(80, lorenzoHealth);
 	}
+	
+	@Test
+	void testIsAlive() {
+		Hero lorenzo = new Hero("Lorenzo", "fire");
+		boolean lorenzoAlive = lorenzo.isAlive();
+		assertTrue(lorenzoAlive);
+		lorenzo.setisAlive(false);
+		assertFalse(lorenzo.isAlive());
+	}
 
 }
