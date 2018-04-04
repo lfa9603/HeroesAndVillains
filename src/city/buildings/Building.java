@@ -2,10 +2,14 @@ package city.buildings;
 
 import java.util.ArrayList;
 
+import characters.HeroesSquad;
+
 public abstract class Building {
 
+	
 	private String buildingName;
 	private ArrayList<Integer> buildingCoordinates;
+	
 	
 	public Building(String name) {
 		buildingName = name;
@@ -27,6 +31,6 @@ public abstract class Building {
 		this.buildingCoordinates = buildingCoordinates;
 	}
 	
-	public abstract void interact();
+	public abstract void interact(HeroesSquad heroesSquad);
 	
 }
