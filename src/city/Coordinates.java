@@ -11,18 +11,20 @@ public class Coordinates {
 
 	public static final Point HOME_COORDINATES = new Point(0, 0);
 	
-	private static final ArrayList<Point> BUILDINGS_COORDINATES = new ArrayList<Point>();
+	public static final ArrayList<Point> BUILDINGS_COORDINATES = buildingsCoordinatesCreation();;
 	
 	public static void setHomeCoordinates(Home home) {
 		home.setBuildingCoordinates(HOME_COORDINATES);
 		buildingsCoordinatesCreation();
 	}
 	
-	private static void buildingsCoordinatesCreation() {
-		BUILDINGS_COORDINATES.add(new Point(4, 0));
-		BUILDINGS_COORDINATES.add(new Point(0, 4));
-		BUILDINGS_COORDINATES.add(new Point(-4, 0));
-		BUILDINGS_COORDINATES.add(new Point(0, -4));
+	private static ArrayList<Point> buildingsCoordinatesCreation() {
+		ArrayList<Point> buildingCoordinates = new ArrayList<Point>();
+		buildingCoordinates.add(new Point(4, 0));
+		buildingCoordinates.add(new Point(0, 4));
+		buildingCoordinates.add(new Point(-4, 0));
+		buildingCoordinates.add(new Point(0, -4));
+		return buildingCoordinates;
 	}
 	
 	public static void setBuildingsCoordinates(ArrayList<Building> buildings) {
