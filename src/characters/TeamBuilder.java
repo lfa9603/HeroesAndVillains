@@ -9,17 +9,19 @@ public class TeamBuilder {
 		
 		while (run == true) {
 		Scanner input = new Scanner(System.in);
-		
 		System.out.print("Do you want to create a New Team? Y/N");
 		String createTeam = input.next();
 		
 		if (createTeam.equals("Y") || createTeam.equals("y")) {
-			System.out.print("Team Name?: ");
-			String teamName = input.next();
+			Scanner newinput = new Scanner(System.in);
+			System.out.println("Team name: ");
+			String teamName = newinput.nextLine();
+
 			HeroesSquad newTeam = new HeroesSquad();
 			newTeam.setTeamName(teamName);
 			System.out.println(newTeam.toString());
 			input.close();
+			newinput.close();
 			run = false;
 		}
 						
