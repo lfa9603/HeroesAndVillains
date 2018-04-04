@@ -12,7 +12,6 @@ public class HeroesSquad {
 
 	private boolean haveMap;
 	private HeroesMap map;
-	private ArrayList<Hero> heroes;
 
 
 	public HeroesSquad(ArrayList<Hero> listHeroes) {
@@ -20,17 +19,9 @@ public class HeroesSquad {
 		haveMap = false;
 	}
 	
-	
-	public Character getPrimaryCharacter(int index) {
-		return heroes.get(index);
-	}
 
 	public boolean isHaveMap() {
 		return haveMap;
-	}
-
-	public ArrayList<Hero> getHeroes() {
-		return heroes;
 	}
 
 
