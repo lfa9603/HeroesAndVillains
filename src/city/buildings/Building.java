@@ -47,7 +47,12 @@ public abstract class Building {
 //		this.buildingType = buildingType;
 //	}
 
-	
+	public String toString() {
+		String string = new String();
+		string += "This is the " + buildingName;
+		string += "\nIts  coordinates are: " + buildingCoordinates + "\n";
+		return string;
+	}
 	
 	public abstract void interact(HeroesSquad heroesSquad);
 

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import city.City;
 import city.CoordinatesTool;
+import city.WorldBuilder;
 import city.buildings.Building;
 import city.buildings.Hospital;
 import city.buildings.PowerUpDen;
@@ -102,45 +103,76 @@ class CityTests {
 		assertEquals(5, buildingsList.size());
 		
 		//Requirement 2
-		boolean allDifferent = true;
 		for (Building buildingOne : buildingsList) {
+			assertNotNull(buildingOne);
 			for (Building buildingTwo : buildingsList) {
+				assertNotNull(buildingTwo);
 				if (! buildingOne.equals(buildingTwo)) {
 					
 					if ((buildingOne.getBuildingCoordinates()).equals(buildingTwo.getBuildingCoordinates())
 							|| (buildingOne.getBuildingName()).equals(buildingTwo.getBuildingName())) {
-						allDifferent = false;
+						assertNotEquals(buildingOne, buildingTwo);
 					}
 				}
 			}
 		}
-		assertEquals(true, allDifferent);
 		
 		//Requirement 3
 		Building home = city.returnBuildingAtSpecificCoordinates(new Point(0, 0));
 		assertEquals(home.getBuildingName(), "Home Base");
 		assertNotNull(home.getBuildingName(), home.getBuildingName());
 		assertNotNull(home.getBuildingCoordinates(), home.getBuildingCoordinates().toString());
+		System.out.println(home.toString());
 		
 		Building building = city.returnBuildingAtSpecificCoordinates(new Point(4, 0));
 		assertNotNull(building.getBuildingName(), building.getBuildingName());
 		assertNotNull(building.getBuildingCoordinates(), building.getBuildingCoordinates().toString());
-		
+		System.out.println(building.toString());
 
 		Building buildingTwo = city.returnBuildingAtSpecificCoordinates(new Point(0, 4));
 		assertNotNull(buildingTwo.getBuildingName(), buildingTwo.getBuildingName());
 		assertNotNull(buildingTwo.getBuildingCoordinates(), buildingTwo.getBuildingCoordinates().toString());
-		
+		System.out.println(buildingTwo.toString());
 
 		Building buildingThree = city.returnBuildingAtSpecificCoordinates(new Point(-4, 0));
 		assertNotNull(buildingThree.getBuildingName(), buildingThree.getBuildingName());
 		assertNotNull(buildingThree.getBuildingCoordinates(), buildingThree.getBuildingCoordinates().toString());
+		System.out.println(buildingThree.toString());
 		
 		Building buildingFour = city.returnBuildingAtSpecificCoordinates(new Point(0, -4));
 		assertNotNull(buildingFour.getBuildingName(), buildingFour.getBuildingName());
 		assertNotNull(buildingFour.getBuildingCoordinates(), buildingFour.getBuildingCoordinates().toString());
+		System.out.println(buildingFour.toString());
 		
+	}
+	
+	/**
+	 * Testing WorldBuilder.java, this should:
+	 * 	1 - Return a ArrayList<City> object of given size
+	 * 	2 - All the City objects stored need to be different
+	 */
+	@Test
+	void testingWorldBuilder() {
+		System.out.println("NOW TESTING WorldBuilder CLASS, USER INPUT NEEDED FOLLOW INSTRUCTIONS");
 		
+		//Requirement 1
+		System.out.println("TYPE 5 FOR NEXT TEST TO WORK AS EXPECTED");
+		WorldBuilder world = new WorldBuilder();
+		ArrayList<City> listCities = world.getWorld();
+		//For the next test to pass type the value 5
+		assertEquals(5, listCities.size());
+		
+		//Requirement 2
+		for (City cityOne : listCities) {
+			assertNotNull(cityOne);
+			for (City cityTwo : listCities) {
+				assertNotNull(cityTwo);
+				//Using != as hasCode() returns an int (primitive data type) 
+				if (cityOne.hashCode() != cityTwo.hashCode()) {
+					assertNotEquals(cityOne, cityTwo);
+				}
+			}
+		}
 	}
 	
 
