@@ -1,63 +1,84 @@
 package city;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 import city.buildings.Building;
+import city.buildings.Home;
+import city.buildings.Hospital;
+import city.buildings.PowerUpDen;
+import city.buildings.Shop;
 import city.buildings.TypeBuildings;
+import city.buildings.VillainsLair;
 
 public class City {
 
-	private ArrayList<Building> listBuildingsWithHomebase;
-	private Building homeBase;
+	private Home homeBase = new Home("Home Base", TypeBuildings.Home);
+	private Hospital hospital = new Hospital("Hospital", TypeBuildings.Hospital);
+	private Shop shop = new Shop("Shop", TypeBuildings.Shop);
+	private VillainsLair villansLair = new VillainsLair("Villain Lair", TypeBuildings.VillainsLair);
+	private PowerUpDen powerUpDen = new PowerUpDen("Power Up Den", TypeBuildings.PowerUpDen);
+	
 	private ArrayList<Building> cityBuildings;
 	
-	public City(ArrayList<Building> buildings) {
-		
-		cityBuildings = buildings;
-		
-		homeBase = findHomeBase();
-		cityBuildings = new ArrayList<Building>();
-		addBuildingsToCityBuildings();
-		
+	
+	public City() {
+		setUpBuildingsCoordinates();
+		cityBuildings = setUpCityBuildings();
+	}
+
+	private void setUpBuildingsCoordinates() {
 		CoordinatesTool.setHomeCoordinates(homeBase);
-		CoordinatesTool.setBuildingsCoordinates(cityBuildings);
-	}
-	
-	private Building findHomeBase() {
-		for (Building building : listBuildingsWithHomebase) {
-			if (building.getBuildingType().equals(TypeBuildings.Home)) {
-				return building;
-			}
-		}
 		
-		System.out.println("You did not pass a home for the heroes!");
-		return null;
-	}
-	
-	private void addBuildingsToCityBuildings() {
-		for (Building building : cityBuildings) {
-			if (!(building.getBuildingType().equals(TypeBuildings.Home))) {
-				listBuildingsWithHomebase.add(building);
-			}
-		}
+		ArrayList<Building> cityBuildingsWithoutHome = new ArrayList<Building>();
+		cityBuildingsWithoutHome.add(shop);
+		cityBuildingsWithoutHome.add(villansLair);
+		cityBuildingsWithoutHome.add(powerUpDen);
+		cityBuildingsWithoutHome.add(hospital);
 		
+		CoordinatesTool.setBuildingsCoordinates(cityBuildingsWithoutHome);
 	}
 	
-	public Building getHomeBase() {
-		return homeBase;
+	private ArrayList<Building> setUpCityBuildings() {
+		
+		cityBuildings = new ArrayList<Building>();
+		
+		cityBuildings.add(homeBase);
+		cityBuildings.add(shop);
+		cityBuildings.add(villansLair);
+		cityBuildings.add(powerUpDen);
+		cityBuildings.add(hospital);
+		
+		return cityBuildings;
 	}
-
-	public void setHomeBase(Building homeBase) {
-		this.homeBase = homeBase;
-	}
-
+	
+	
+	/**
+	 * @return the cityBuildings
+	 */
 	public ArrayList<Building> getCityBuildings() {
 		return cityBuildings;
 	}
-
-	public void setCityBuildings(ArrayList<Building> cityBuildings) {
-		this.cityBuildings = cityBuildings;
+	
+	
+	public Building returnBuildingAtSpecificCoordinates(Point setCoordinates) {
+		
+		Building building = null;
+		for (Building aBuilding : cityBuildings) {
+			if (aBuilding.getBuildingCoordinates().equals(setCoordinates)) {
+				building = aBuilding;
+			}
+		}
+		return building;
+		
 	}
+
+//	/**
+//	 * @param cityBuildings the cityBuildings to set
+//	 */
+//	public void setCityBuildings(ArrayList<Building> cityBuildings) {
+//		this.cityBuildings = cityBuildings;
+//	}
 
 	
 	
