@@ -1,4 +1,7 @@
-package collectables;
+package collectables.heroesMap;
+
+import collectables.Collectable;
+import collectables.Money;
 
 public class HeroesMap implements Collectable {
 
@@ -8,7 +11,8 @@ public class HeroesMap implements Collectable {
 	public Money getCost() {
 		return cost;
 	}
-
 	
+	public void apply
+
 
 }

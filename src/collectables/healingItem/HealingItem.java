@@ -1,6 +1,8 @@
-package collectables;
+package collectables.healingItem;
 
 import characters.Hero;
+import collectables.Collectable;
+import collectables.Money;
 
 public class HealingItem implements Collectable {
 
@@ -51,10 +53,13 @@ public class HealingItem implements Collectable {
 		return cost;
 	}
 	
+	
+	//TODO: find best way to retrieve the max health of a hero.
+	
 	public static void startHealing(Hero hero, int recoverableHP) {
 		new Thread(new Runnable() {
 			public void run() {
-				while (hero.getHealth() <= hero.getMaxHealthValue() && recoverableHP > 0) {
+				while (hero.getHealth() <= hero.getMaxHealth() && recoverableHP > 0) {
 					hero.setHealth(hero.getHealth() + 1);
 					recoverableHP--;
 					Thread.sleep(3600);
