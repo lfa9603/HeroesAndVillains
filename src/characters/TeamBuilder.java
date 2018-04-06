@@ -146,7 +146,7 @@ public class TeamBuilder {
 		Hero hero = new Hero(characterName, type, abilty);  
 		newTeam.addHero(hero);
 		
-		System.out.println("Current Team:" + newTeam.toString());
+		System.out.println("Current Team: " + newTeam.toString());
 		
 //		userinput_2.close();
 		
