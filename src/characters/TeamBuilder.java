@@ -1,6 +1,7 @@
 package characters;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TeamBuilder {
@@ -23,6 +24,14 @@ public class TeamBuilder {
 			{"type6", "ability6"}
 	};
 	
+	public HeroesSquad getNewTeam() {
+		return newTeam;
+	}
+
+	public void setNewTeam(HeroesSquad newTeam) {
+		this.newTeam = newTeam;
+	}
+
 	public TeamBuilder() {
 		createTeam();
 		addTeamMembers();
@@ -120,22 +129,55 @@ public class TeamBuilder {
 			System.out.println(characterTypes + "\n");
 			System.out.println("Please enter 1-6 to select a character (Press \'Q\' when done selecting):");
 			Scanner userinput_1 = new Scanner(System.in);
-			Integer selectedCharacter = userinput_1.nextInt();
 			
-			switch(selectedCharacter) {
-			case 1: createHero(characterTypesArray[0][0], characterTypesArray[0][1]); break;
-			case 2: createHero(characterTypesArray[1][0], characterTypesArray[1][1]); break;
-			case 3: createHero(characterTypesArray[2][0], characterTypesArray[2][1]); break;
-			case 4: createHero(characterTypesArray[3][0], characterTypesArray[3][1]); break;
-			case 5: createHero(characterTypesArray[4][0], characterTypesArray[4][1]); break;
-			case 6: createHero(characterTypesArray[5][0], characterTypesArray[5][1]); break;
-			
+			try {
+				Integer selectedCharacter = userinput_1.nextInt();
+				if (selectedCharacter >= 1 && selectedCharacter <= 6) {
+					switch(selectedCharacter) {
+					case 1: createHero(characterTypesArray[0][0], characterTypesArray[0][1]); break;
+					case 2: createHero(characterTypesArray[1][0], characterTypesArray[1][1]); break;
+					case 3: createHero(characterTypesArray[2][0], characterTypesArray[2][1]); break;
+					case 4: createHero(characterTypesArray[3][0], characterTypesArray[3][1]); break;
+					case 5: createHero(characterTypesArray[4][0], characterTypesArray[4][1]); break;
+					case 6: createHero(characterTypesArray[5][0], characterTypesArray[5][1]); break;
+					}
+				}
+					
+				else {
+						System.out.println("Invalid integer, please type a value betwen (and including) 1 and 6 \n");
+					}
+				
+			} catch (InputMismatchException error) {
+				System.out.println("Invalid input, have you typed a valid integer?");
+				System.out.println("Please Try again \n");
 			}
 			
-//			userinput_1.close();
+			finally {
+				userinput_1.reset();
+			}	
 			
+			if (newTeam.getLength() == 3) {
+				Scanner userinput_3 = new Scanner(System.in);
+				System.out.println("Are you happy with your team? Y/N");
+				String confirmation = userinput_3.next();
+				
+				if (confirmation.equals("N") || confirmation.equals("n")) {
+					System.out.println("Team has been reset.");
+					newTeam.squadReset();
+				}
+				else {
+					if (confirmation.equals("Y") || confirmation.equals("y")) {
+						run = false;
+						System.out.println("Congradulations Your team is ready!");
+						userinput_1.close();
+						userinput_3.close();
+					}
+					else {
+						System.out.println("invalid input, please answer Y/N or y/n");
+					}
+				}
+			}
 		}
-		
 	}
 	
 	private void createHero(String type, String abilty) {
@@ -153,8 +195,8 @@ public class TeamBuilder {
 	}
 	
 	
-	public static void main(String[] args) {
-		TeamBuilder team = new TeamBuilder();
-		System.out.println(team);
-	}
+//	public static void main(String[] args) {
+//		TeamBuilder team = new TeamBuilder();
+//		System.out.println(team.getNewTeam());
+//	}
 }

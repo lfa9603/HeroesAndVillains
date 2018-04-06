@@ -41,8 +41,8 @@ public class Hero extends Character {
 		this.isGameChooser = isGameChooser;
 	}
 	
-	public boolean equals(Hero this, Hero other) {
-		if (getCharacterName().equals(other.getCharacterName())) {
+	public boolean equals(Hero other) {
+		if (this.getCharacterName().equals(other.getCharacterName())) {
 			return true;
 		}
 		
