@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import characters.Character;
 import characters.HeroesSquad;
-import city.buildings.collectables.HeroesMap;
+import collectables.HeroesMap;
 
 public class Home extends Building{
 

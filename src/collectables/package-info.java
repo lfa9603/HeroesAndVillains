@@ -5,4 +5,4 @@
  * @author Lorenzo
  *
  */
-package city.buildings.collectables;
+package collectables;
