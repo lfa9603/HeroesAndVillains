@@ -8,9 +8,16 @@ import java.util.ArrayList;
  *Collection of Character objects stored in an ArrayList 
  */
 public class HeroesSquad {
+	
 	private ArrayList<Hero> heroSquad = new ArrayList<Hero>();
 	private String teamName;
+	private boolean haveMap;
 
+	
+
+	public HeroesSquad() {
+		haveMap = false;
+	}
 	
 	/**
 	 * @return the heroSquad
@@ -51,6 +58,20 @@ public class HeroesSquad {
 	 */
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
+	}
+	
+	/**
+	 * @return the haveMap
+	 */
+	public boolean isHaveMap() {
+		return haveMap;
+	}
+
+	/**
+	 * @param haveMap the haveMap to set
+	 */
+	public void setHaveMap(boolean haveMap) {
+		this.haveMap = haveMap;
 	}
 	
 	public String toString() {

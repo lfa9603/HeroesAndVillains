@@ -12,7 +12,6 @@ public class HeroesMap implements Collectable {
 		return cost;
 	}
 	
-	public void apply
-
+	
 
 }

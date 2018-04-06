@@ -6,7 +6,8 @@ package characters;
  *
  */
 public class Hero extends Character {
-	private boolean isGameChooser = false;
+	private boolean hasArmor;
+	private boolean isGameChooser;
 	
 	/**
 	 * 
@@ -15,13 +16,22 @@ public class Hero extends Character {
 	 */
 	public Hero(String name, String type, String specialAbility) {
 		super(name, type, specialAbility);
+		hasArmor = false;
+		isGameChooser = false;
 	}
-	
+
 	/**
-	 * @return the isGameChooser
+	 * @return the hasArmor
 	 */
-	public boolean getisGameChooser() {
-		return isGameChooser;
+	public boolean isHasArmor() {
+		return hasArmor;
+	}
+
+	/**
+	 * @param hasArmor the hasArmor to set
+	 */
+	public void setHasArmor(boolean hasArmor) {
+		this.hasArmor = hasArmor;
 	}
 
 	/**
@@ -31,6 +41,13 @@ public class Hero extends Character {
 		this.isGameChooser = isGameChooser;
 	}
 
+	/**
+	 * @return the isGameChooser
+	 */
+	public boolean getIsGameChooser() {
+		return isGameChooser;
+	}
+	
 	/**
 	 * Method that Character forces this class to implement.
 	 */

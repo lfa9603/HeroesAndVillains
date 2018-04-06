@@ -35,21 +35,21 @@ class HeroTest {
 
 	@Test
 	void testToString() {
-		Hero lorenzo = new Hero("Lorenzo", "fire");
+		Hero lorenzo = new Hero("Lorenzo", "SuperCool", "fire");
 		String toString = lorenzo.toString();
 		assertEquals("Hero named: Lorenzo\nHealth: 100\nSpecial ability: fire", toString);
 	}
 
 	@Test
 	void testGetCharacterName() {
-		Hero lorenzo = new Hero("Lorenzo", "fire");
+		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
 		String toString = lorenzo.getCharacterName();
 		assertEquals("Lorenzo", toString);
 	}
 
 	@Test
 	void testSetCharacterName() {
-		Hero lorenzo = new Hero("Lorenzo", "fire");
+		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
 		lorenzo.setCharacterName("Lorenzo_edited");
 		String toString = lorenzo.getCharacterName();
 		assertEquals("Lorenzo_edited", toString);
@@ -57,14 +57,14 @@ class HeroTest {
 
 	@Test
 	void testGetCharacterAbility() {
-		Hero lorenzo = new Hero("Lorenzo", "fire");
+		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
 		String toString = lorenzo.getCharacterAbility();
 		assertEquals("fire", toString);
 	}
 
 	@Test
 	void testSetCharacterAbility() {
-		Hero lorenzo = new Hero("Lorenzo", "fire");
+		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
 		lorenzo.setCharacterAbility("fire_edited");
 		String toString = lorenzo.getCharacterAbility();
 		assertEquals("fire_edited", toString);
@@ -72,14 +72,14 @@ class HeroTest {
 
 	@Test
 	void testGetHealth() {
-		Hero lorenzo = new Hero("Lorenzo", "fire");
+		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
 		int lorenzoHealth = lorenzo.getHealth();
 		assertEquals(100, lorenzoHealth);
 	}
 
 	@Test
 	void testSetHealth() {
-		Hero lorenzo = new Hero("Lorenzo", "fire");
+		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
 		lorenzo.setHealth(80);
 		int lorenzoHealth = lorenzo.getHealth();
 		assertEquals(80, lorenzoHealth);
@@ -87,7 +87,7 @@ class HeroTest {
 	
 	@Test
 	void testIsAlive() {
-		Hero lorenzo = new Hero("Lorenzo", "fire");
+		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
 		boolean lorenzoAlive = lorenzo.isAlive();
 		assertTrue(lorenzoAlive);
 		lorenzo.setisAlive(false);

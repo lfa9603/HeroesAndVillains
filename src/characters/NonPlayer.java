@@ -7,7 +7,7 @@ package characters;
  */
 
 
-public class NonPlayer extends Character{
+public class NonPlayer extends Character {
 	
 	/**
 	 * 
@@ -15,8 +15,8 @@ public class NonPlayer extends Character{
 	 * @param specialAbility
 	 */
 
-	public NonPlayer(String name, String specialAbility) {
-		super(name, specialAbility);
+	public NonPlayer(String name, String type, String specialAbility) {
+		super(name, type, specialAbility);
 	}
 	
 	/**

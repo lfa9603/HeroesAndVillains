@@ -12,8 +12,8 @@ public class Villain extends Character{
 	 * @param specialAbility
 	 * @param taunt
 	 */
-	public Villain(String name, String specialAbility, String taunt) {
-		super(name, specialAbility);
+	public Villain(String name, String type, String specialAbility, String taunt) {
+		super(name, type, specialAbility);
 		villainTaunt = taunt;
 	}
 

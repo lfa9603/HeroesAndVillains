@@ -59,10 +59,15 @@ public class HealingItem implements Collectable {
 	public static void startHealing(Hero hero, int recoverableHP) {
 		new Thread(new Runnable() {
 			public void run() {
-				while (hero.getHealth() <= hero.getMaxHealth() && recoverableHP > 0) {
+				Integer recoverable = new Integer(recoverableHP);
+				while (hero.getHealth() <= hero.getMaxHealth() && recoverable > 0) {
 					hero.setHealth(hero.getHealth() + 1);
-					recoverableHP--;
-					Thread.sleep(3600);
+					recoverable--;
+					try {
+						Thread.sleep(3600);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}).start();

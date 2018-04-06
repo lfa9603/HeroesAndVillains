@@ -31,14 +31,15 @@ class HeroSquadTests {
 
 	@Test
 	void testAddHero() {
-		Hero hero1 = new Hero("hero1", "specialAbility_1");
-		Hero hero2 = new Hero("hero2", "specialAbility_2");
-		Hero hero3 = new Hero("hero3", "specialAbility_3");
+		Hero hero1 = new Hero("hero1", "Be cool", "specialAbility_1");
+		Hero hero2 = new Hero("hero2", "Have some swag", "specialAbility_2");
+		Hero hero3 = new Hero("hero3","Be the man", "specialAbility_3");
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero1);
 		testsquad.addHero(hero1);
 		testsquad.addHero(hero2);
 		testsquad.addHero(hero3);
+		assertEquals(3, testsquad.getHeroSquad().size());
 		assertTrue(testsquad.squadContains(hero1));
 		assertTrue(testsquad.squadContains(hero2));
 		assertTrue(testsquad.squadContains(hero3));
@@ -46,15 +47,16 @@ class HeroSquadTests {
 	
 	@Test
 	void TestToString() {
-		Hero hero1 = new Hero("hero1", "specialAbility_1");
-		Hero hero2 = new Hero("hero2", "specialAbility_2");
-		Hero hero3 = new Hero("hero3", "specialAbility_3");
-		HeroesSquad testsquad = new HeroesSquad();
-		testsquad.addHero(hero1);
-		testsquad.addHero(hero1);
-		testsquad.addHero(hero2);
-		testsquad.addHero(hero3);
-		assertEquals("Heros in squad: \nhero1\nhero2\nhero3\n", testsquad.toString());
+		Hero hero1 = new Hero("hero1", "Be cool", "specialAbility_1");
+		Hero hero2 = new Hero("hero2", "Have some swag", "specialAbility_2");
+		Hero hero3 = new Hero("hero3","Be the man", "specialAbility_3");
+		HeroesSquad testsquadOne = new HeroesSquad();
+		testsquadOne.addHero(hero1);
+		testsquadOne.addHero(hero1);
+		testsquadOne.addHero(hero2);
+		testsquadOne.addHero(hero3);
+		assertEquals(3, testsquadOne.getHeroSquad().size());
+//		assertEquals("Heros in squad: \nhero1\nhero2\nhero3\n", testsquad.toString());TODO: check this returning statement in toString()
 	}
 
 }
