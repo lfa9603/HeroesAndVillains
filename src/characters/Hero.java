@@ -6,6 +6,7 @@ package characters;
  *
  */
 public class Hero extends Character {
+	private boolean isGameChooser = false;
 	
 	/**
 	 * 
@@ -16,6 +17,20 @@ public class Hero extends Character {
 		super(name, type, specialAbility);
 	}
 	
+	/**
+	 * @return the isGameChooser
+	 */
+	public boolean getisGameChooser() {
+		return isGameChooser;
+	}
+
+	/**
+	 * @param isGameChooser the isGameChooser to set
+	 */
+	public void setIsGameChooser(boolean isGameChooser) {
+		this.isGameChooser = isGameChooser;
+	}
+
 	/**
 	 * Method that Character forces this class to implement.
 	 */

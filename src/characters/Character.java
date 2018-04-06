@@ -11,6 +11,7 @@ public abstract class Character {
 	private String characterName;
 	private String characterType;
 	private String characterAbility;
+	private int maxHealth = 100;
 	private int health = 100;
 	private boolean alive = true;
 	
@@ -71,6 +72,20 @@ public abstract class Character {
 		this.characterAbility = characterAbility;
 	}
 	
+	/**
+	 * @return the maxHealth
+	 */
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+
+	/**
+	 * @param maxHealth the maxHealth to set
+	 */
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
+	}
+
 	/**
 	 * @return the health
 	 */

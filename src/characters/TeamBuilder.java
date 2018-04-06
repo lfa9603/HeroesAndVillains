@@ -1,5 +1,6 @@
 package characters;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TeamBuilder {
@@ -60,7 +61,7 @@ public class TeamBuilder {
 						Scanner secondNewinput = new Scanner(System.in);
 						System.out.println("Your Teams name is: " + teamName);
 						System.out.println("Are you happy with this? Y/N");
-						String confirmation = newinput.nextLine();
+						String confirmation = secondNewinput.nextLine();
 						
 						// Confirms the user is happy with there Team name.
 						
@@ -69,9 +70,9 @@ public class TeamBuilder {
 							newTeam = new HeroesSquad();
 							newTeam.setTeamName(teamName);
 							finalteamName = newTeam.getTeamName();
-							input.close();
-							newinput.close();
-							secondNewinput.close();
+//							input.close();
+//							newinput.close();
+//							secondNewinput.close();
 							run = false;
 							System.out.println("Congrads your Team: " + finalteamName + " has been created. \n");
 						}
@@ -117,7 +118,7 @@ public class TeamBuilder {
 		while (run == true) {
 			System.out.println("Avaliable Heros (A Max of 3 x Heros allowed):");
 			System.out.println(characterTypes + "\n");
-			System.out.println("Please enter 1-6 to select a character (Press \\'Q\\' when done selecting):");
+			System.out.println("Please enter 1-6 to select a character (Press \'Q\' when done selecting):");
 			Scanner userinput_1 = new Scanner(System.in);
 			Integer selectedCharacter = userinput_1.nextInt();
 			
@@ -131,7 +132,7 @@ public class TeamBuilder {
 			
 			}
 			
-			userinput_1.close();
+//			userinput_1.close();
 			
 		}
 		
@@ -142,11 +143,12 @@ public class TeamBuilder {
 		System.out.println("What will your Hero's name be?");
 		String characterName = userinput_2.nextLine();
 		
-		
 		Hero hero = new Hero(characterName, type, abilty);  
 		newTeam.addHero(hero);
 		
-		userinput_2.close();
+		System.out.println("Current Team:" + newTeam.toString());
+		
+//		userinput_2.close();
 		
 	}
 	
