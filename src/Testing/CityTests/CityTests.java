@@ -157,7 +157,6 @@ class CityTests {
 		for (City city: listCities) {
 			ArrayList<Building> listCityBuildings = city.getCityBuildings();
 			assertEquals(5, listCityBuildings.size());
-			
 			checkBuildingsInACity(city);
 		}
 	}
@@ -181,7 +180,7 @@ class CityTests {
 		System.out.println(building.toString());
 
 		Building buildingTwo = city.returnBuildingAtSpecificCoordinates(new Point(0, 4));
-		assertNull(buildingTwo.getBuildingName(), buildingTwo.getBuildingName());
+		assertNotNull(buildingTwo.getBuildingName(), buildingTwo.getBuildingName());
 		assertNotNull(buildingTwo.getBuildingCoordinates(), buildingTwo.getBuildingCoordinates().toString());
 		System.out.println(buildingTwo.toString());
 
