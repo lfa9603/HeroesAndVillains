@@ -1,4 +1,4 @@
-package collectables;
+package collectables.healingItem;
 
 public enum HealingItemType {
 	GoodAntidote, BetterAntidote, BestAntidote
