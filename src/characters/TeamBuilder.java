@@ -3,50 +3,156 @@ package characters;
 import java.util.Scanner;
 
 public class TeamBuilder {
-	private static boolean run = true;
+	private HeroesSquad newTeam;
+	private String finalteamName;
 	
-	public static void createTeam() {
+	private static String characterTypes = "1. type1 : ability1 \n"
+			+ "2. type2 : ability2 \n"
+			+ "3. type3 : ability3 \n"
+			+ "4. type4 : ability4 \n"
+			+ "5. type5 : ability5 \n"
+			+ "6. type6 : ability6 ";
+	
+	private String characterTypesArray[][] = {
+			{"type1", "ability1"},
+			{"type2", "ability2"},
+			{"type3", "ability3"},
+			{"type4", "ability4"},
+			{"type5", "ability5"},
+			{"type6", "ability6"}
+	};
+	
+	public TeamBuilder() {
+		createTeam();
+		addTeamMembers();
+	}
+	
+	private void createTeam() {
+		boolean run = true;
+		
+		/* Asks if the user wants to create a new team, takes Y/N or y/n as a input. 
+		 * TODO the User can quit at any time with an input Q or q.
+		 */
 		
 		while (run == true) {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Do you want to create a New Team? Y/N");
-		String createTeam = input.next();
-		
-		if (createTeam.equals("Y") || createTeam.equals("y")) {
-			Scanner newinput = new Scanner(System.in);
-			System.out.println("Team name: ");
-			String teamName = newinput.nextLine();
-
-			HeroesSquad newTeam = new HeroesSquad();
-			newTeam.setTeamName(teamName);
-			System.out.println(newTeam.toString());
-			input.close();
-			newinput.close();
-			run = false;
-		}
+			Scanner input = new Scanner(System.in);
+			System.out.print("Do you want to create a New Team? Y/N \n");
+			String createTeam = input.next();
+			
+			if (createTeam.equals("Y") || createTeam.equals("y")) {
+				
+				
+				/* If input is accepted then it asks the user what the name of the team will be, 
+				* character limit is 2-10 characters.
+				*/
+				
+				while (run == true) {
+					
+					Scanner newinput = new Scanner(System.in);
+					System.out.println("Team name: ");
+					String teamName = newinput.nextLine();
+					
+				
+					if ((teamName.length() >= 2) && (teamName.length() <= 10)) {
 						
-		else {
-			if (createTeam.equals("N") || createTeam.equals("n")) {
-				run = false;
-				System.out.println("Thanks for Playing!");
-				input.close();
+						
+						
+						Scanner secondNewinput = new Scanner(System.in);
+						System.out.println("Your Teams name is: " + teamName);
+						System.out.println("Are you happy with this? Y/N");
+						String confirmation = newinput.nextLine();
+						
+						// Confirms the user is happy with there Team name.
+						
+						if (confirmation.equals("Y") || confirmation.equals("y")) {
+							
+							newTeam = new HeroesSquad();
+							newTeam.setTeamName(teamName);
+							finalteamName = newTeam.getTeamName();
+							input.close();
+							newinput.close();
+							secondNewinput.close();
+							run = false;
+							System.out.println("Congrads your Team: " + finalteamName + " has been created. \n");
+						}
+						
+						else {
+							
+							if (confirmation.equals("N") || confirmation.equals("n")) {
+								System.out.println("...Please re-enter");
+							}
+							
+							else {
+								System.out.println("invalid input, please answer Y/N or y/n");
+							}
+						}
+					}
+						
+					else {
+						System.out.println("Team Name must be between 2 and 10 characters long");
+					}
+				}
+	
+				
 			}
-			
+							
 			else {
-				System.out.println("invalid input, please answer Y/N or y/n");
+				if (createTeam.equals("N") || createTeam.equals("n")) {
+					run = false;
+					System.out.println("Thanks for Playing!");
+					input.close();
+				}
+				
+				else {
+					System.out.println("invalid input, please answer Y/N or y/n");
+				}
+			
+		}
+
+		}
+	}
+	
+	private void addTeamMembers() {
+		boolean run = true;
+		while (run == true) {
+			System.out.println("Avaliable Heros (A Max of 3 x Heros allowed):");
+			System.out.println(characterTypes + "\n");
+			System.out.println("Please enter 1-6 to select a character (Press \\'Q\\' when done selecting):");
+			Scanner userinput_1 = new Scanner(System.in);
+			Integer selectedCharacter = userinput_1.nextInt();
+			
+			switch(selectedCharacter) {
+			case 1: createHero(characterTypesArray[0][0], characterTypesArray[0][1]); break;
+			case 2: createHero(characterTypesArray[1][0], characterTypesArray[1][1]); break;
+			case 3: createHero(characterTypesArray[2][0], characterTypesArray[2][1]); break;
+			case 4: createHero(characterTypesArray[3][0], characterTypesArray[3][1]); break;
+			case 5: createHero(characterTypesArray[4][0], characterTypesArray[4][1]); break;
+			case 6: createHero(characterTypesArray[5][0], characterTypesArray[5][1]); break;
+			
 			}
+			
+			userinput_1.close();
 			
 		}
 		
-		//System.out.println(createTeam + " " + teamName);
+	}
+	
+	private void createHero(String type, String abilty) {
+		Scanner userinput_2 = new Scanner(System.in);
+		System.out.println("What will your Hero's name be?");
+		String characterName = userinput_2.nextLine();
 		
 		
+		Hero hero = new Hero(characterName, type, abilty);  
+		newTeam.addHero(hero);
 		
-		}
+		userinput_2.close();
+		
 	}
 	
 	
 	public static void main(String[] args) {
-		createTeam();
+		TeamBuilder team = new TeamBuilder();
+		System.out.println(team);
 	}
 }

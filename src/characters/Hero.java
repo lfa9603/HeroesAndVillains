@@ -12,8 +12,8 @@ public class Hero extends Character {
 	 * @param name
 	 * @param specialAbility
 	 */
-	public Hero(String name, String specialAbility) {
-		super(name, specialAbility);
+	public Hero(String name, String type, String specialAbility) {
+		super(name, type, specialAbility);
 	}
 	
 	/**
