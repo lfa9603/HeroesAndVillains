@@ -97,7 +97,12 @@ public abstract class Character {
 	 * @param health the health to set
 	 */
 	public void setHealth(int health) {
-		this.health = health;
+		if (health <= maxHealth) {
+			this.health = health;
+		}
+		else {
+			System.out.println("Max HP value reached");
+		}
 	}
 
 	/**

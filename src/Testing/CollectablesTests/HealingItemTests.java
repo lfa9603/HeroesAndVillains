@@ -22,6 +22,7 @@ class HealingItemTests {
 	 *  2 - The method should restore all the HP required which can be 25, 50, or 75.
 	 *  3 - The method should run off the main thread, which means that I need to be able to complete main tasks while
 	 *      the HP get restored.
+	 *  4 - A Hero HP cannot be higher than the maximum value (100 if it does not have the IncreaseMaxLife powerUp) 125 with powerUp.
 	 */
 	@Test
 	void testStartHealing() {
@@ -35,7 +36,6 @@ class HealingItemTests {
 		try {
 			Thread.sleep(16000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
@@ -46,19 +46,17 @@ class HealingItemTests {
 		try {
 			Thread.sleep(16000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		int healthAfter32000msFromHealingPotion = hero.getHealth();
 		assertEquals(29, healthAfter32000msFromHealingPotion);
 		
-//		Requiremt 2
+//		Requirement 2
 //		Commented out as it takes way too long to finish
 //		try {
 //			Thread.sleep(25 * 16000);
 //		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 		
@@ -81,8 +79,21 @@ class HealingItemTests {
 		    assertNotNull(elapsedTime);
 		    assertTrue(heroTwo.getHealth() >= 20);
 		}
-		assertNotEquals(20, heroTwo.getHealth());		
-	}
-	
+		assertNotEquals(20, heroTwo.getHealth());	
+		
+		//Requirement 4
+		Hero heroThree = new Hero("Lorenzo1", "Cool Dude", "Ciao");
+		hero.setHealth(99);
+		HealingItem.startHealing(heroThree, (new HealingItem(HealingItemType.BestAntidote).getRecoverableHP()));
+		
+		try {
+			Thread.sleep(5 * 16000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(100, heroThree.getHealth());
+		
+	}	
 
 }
