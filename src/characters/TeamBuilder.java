@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TeamBuilder {
-	private HeroesSquad newTeam;
+	private HeroesSquad Team;
 	private String finalteamName;
 	
 	private static String characterTypes = "1. type1 : ability1 \n"
@@ -23,12 +23,8 @@ public class TeamBuilder {
 			{"type6", "ability6"}
 	};
 	
-	public HeroesSquad getNewTeam() {
-		return newTeam;
-	}
-
-	public void setNewTeam(HeroesSquad newTeam) {
-		this.newTeam = newTeam;
+	public HeroesSquad getTeam() {
+		return Team;
 	}
 
 	public TeamBuilder() {
@@ -75,9 +71,9 @@ public class TeamBuilder {
 						
 						if (confirmation.equals("Y") || confirmation.equals("y")) {
 							
-							newTeam = new HeroesSquad();
-							newTeam.setTeamName(teamName);
-							finalteamName = newTeam.getTeamName();
+							Team = new HeroesSquad();
+							Team.setTeamName(teamName);
+							finalteamName = Team.getTeamName();
 //							input.close();
 //							newinput.close();
 //							secondNewinput.close();
@@ -155,14 +151,14 @@ public class TeamBuilder {
 				userinput_1.reset();
 			}	
 			
-			if (newTeam.getLength() == 3) {
+			if (Team.getLength() == 3) {
 				Scanner userinput_3 = new Scanner(System.in);
 				System.out.println("Are you happy with your team? Y/N");
 				String confirmation = userinput_3.next();
 				
 				if (confirmation.equals("N") || confirmation.equals("n")) {
 					System.out.println("Team has been reset.");
-					newTeam.squadReset();
+					Team.squadReset();
 				}
 				else {
 					if (confirmation.equals("Y") || confirmation.equals("y")) {
@@ -185,17 +181,22 @@ public class TeamBuilder {
 		String characterName = userinput_2.nextLine();
 		
 		Hero hero = new Hero(characterName, type, abilty);  
-		newTeam.addHero(hero);
+		Team.addHero(hero);
 		
-		System.out.println("Current Team: " + newTeam.toString());
+		System.out.println("Current Team: " + Team.toString());
 		
 //		userinput_2.close();
 		
 	}
 	
-	
-//	public static void main(String[] args) {
-//		TeamBuilder team = new TeamBuilder();
-//		System.out.println(team.getNewTeam());
+//	public String toString() {
+//		return team.to;
+//		
 //	}
+	
+	
+	public static void main(String[] args) {
+		TeamBuilder team = new TeamBuilder();
+		System.out.println(team.getTeam());
+	}
 }
