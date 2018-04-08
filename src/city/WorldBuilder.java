@@ -54,4 +54,10 @@ public class WorldBuilder {
 	public ArrayList<City> getWorld() {
 		return world;
 	}
+	
+	
+	// main function for testing purposes
+	public static void main(String[] args) {
+		
+	}
 }
