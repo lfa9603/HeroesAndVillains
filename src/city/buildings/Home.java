@@ -3,6 +3,7 @@ package city.buildings;
 import java.util.Scanner;
 
 import characters.Character;
+import characters.Hero;
 import characters.HeroesSquad;
 import city.City;
 import collectables.heroesMap.HeroesMap;
@@ -22,19 +23,27 @@ public class Home extends Building{
 			Scanner input = new Scanner(System.in);
 			System.out.println("Type:\n"
 					+ " 0 to see the map\n"
-					+ " 1 to check the heroes status");
+					+ " 1 to check the heroes status\n"
+					+ " 2 to exit\n");
 			Integer valueTyped = input.nextInt();
-			input.close();
 			
-			if (valueTyped.equals(0)) {
-				showMap(heroesSquad);
-			} else {
+			switch(valueTyped) {
+			case 0:
+				showMap(heroesSquad);//TODO modify this method
+				break;
+			case 1:
 				showHeroesStatus(heroesSquad);
+				break;
+			case 2:
+				input.close();
+				atHome = false;
+				System.out.println("Come back soon");
+				break;
 			}
 		}
 	}
 	
-	
+	//THIS ONE NEEDS TO MODIFY
 	public String showMap(HeroesSquad heroesSquad) {
 		String showMapMessage = new String();
 		if (heroesSquad.isHaveMap()) {
@@ -59,6 +68,16 @@ public class Home extends Building{
 	}
 
 
+	
+	public static void main(String[] args) {
+		HeroesSquad heros = new HeroesSquad();
+		heros.addHero(new Hero("Lorenzo", "c", "C"));
+		heros.setCurrentCity(new City());
+		heros.setHaveMap(true);
+		Home home = new Home("Home", TypeBuildings.Home);
+		home.interact(heros);
+	
+	}
 
 
 }
