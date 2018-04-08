@@ -78,6 +78,31 @@ public class HealingItem implements Collectable {
 		}).start();
 	}
 
-	
+	/**
+	 * @return the collectableID
+	 */
+	public CollectableID getCollectableID() {
+		return collectableID;
+	}
+
+	/**
+	 * @param collectableID the collectableID to set
+	 */
+	public void setCollectableID(CollectableID collectableID) {
+		this.collectableID = collectableID;
+	}
+
+	/**
+	 * @param cost the cost to set
+	 */
+	public void setCost(Money cost) {
+		this.cost = cost;
+	}
+
+	public String toString() {
+		return "Healing item of type: " + collectableID + ".\n"
+				+ "Using this item the hero will recover " + recoverableHP + " HP.\n"
+				+ "The cost of this item is " + cost + " coins.";
+	}
 	
 }

@@ -2,7 +2,6 @@ package collectables.heroesMap;
 
 import characters.HeroesSquad;
 import city.City;
-import collectables.Collectable;
 import collectables.Money;
 
 public class HeroesMap  {

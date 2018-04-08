@@ -6,4 +6,5 @@ public interface Collectable {
 		
 	public Money getCost();
 	public void apply(Hero hero);
+	public CollectableID getCollectableID();
 }

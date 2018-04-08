@@ -94,6 +94,9 @@ class HealingItemTests {
 		}
 		
 		assertEquals(100, heroThree.getHealth());
+		assertEquals(25, healingPotion.getRecoverableHP());
+		assertEquals(50, healingPotionTwo.getRecoverableHP());
+		assertEquals(75, potionThree.getRecoverableHP());
 		
 	}	
 
