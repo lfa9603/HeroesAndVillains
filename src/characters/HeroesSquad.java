@@ -2,6 +2,9 @@ package characters;
 
 import java.util.ArrayList;
 
+import city.City;
+import collectables.heroesMap.HeroesMap;
+
 /**
  * 
  * @author LorenzoFasano and JayHamilton
@@ -11,9 +14,11 @@ public class HeroesSquad {
 	
 	private static ArrayList<Hero> heroSquad = new ArrayList<Hero>();
 	private String teamName;
-	private boolean haveMap;
-
 	
+	private City currentCity;
+	private boolean haveMap;
+	private HeroesMap heroesMap;
+
 
 	public HeroesSquad() {
 		haveMap = false;
@@ -79,6 +84,34 @@ public class HeroesSquad {
 		this.haveMap = haveMap;
 	}
 	
+	/**
+	 * @return the heroesMap
+	 */
+	public HeroesMap getHeroesMap() {
+		return heroesMap;
+	}
+
+	/**
+	 * @param heroesMap the heroesMap to set
+	 */
+	public void setHeroesMap(HeroesMap heroesMap) {
+		this.heroesMap = heroesMap;
+	}
+	
+	/**
+	 * @return the currentCity
+	 */
+	public City getCurrentCity() {
+		return currentCity;
+	}
+
+	/**
+	 * @param currentCity the currentCity to set
+	 */
+	public void setCurrentCity(City currentCity) {
+		this.currentCity = currentCity;
+	}
+	
 	public int getLength() {
 		return heroSquad.size();
 	}
@@ -96,22 +129,4 @@ public class HeroesSquad {
 		
 	}
 	
-	public static void main(String[] args) {
-		Hero hero1 = new Hero("hero1", "Be cool", "specialAbility_1");
-		Hero hero4 = new Hero("hero1", "Be cooler", "specialAbility_4");
-		Hero hero2 = new Hero("hero2", "Have some swag", "specialAbility_2");
-		Hero hero3 = new Hero("hero3","Be the man", "specialAbility_3");
-		HeroesSquad testsquad = new HeroesSquad();
-		testsquad.addHero(hero1);
-		testsquad.addHero(hero4);
-		testsquad.addHero(hero2);
-		testsquad.addHero(hero3);
-		
-		System.out.println(testsquad);
-		testsquad.squadReset();
-		System.out.println(testsquad);
-	}
-
-
-
 }

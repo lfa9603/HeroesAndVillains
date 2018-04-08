@@ -94,6 +94,16 @@ public class City {
 		return building;
 		
 	}
+	
+	public String toString() {
+		String mapOfCity = new String();
+		for (Building building : cityBuildings) {
+			mapOfCity += building.toString();
+		}
+		return mapOfCity;
+	}
+	
+	
 //TODO: discuss whether or not we need the setter for cityBuildings
 //	/**
 //	 * @param cityBuildings the cityBuildings to set
