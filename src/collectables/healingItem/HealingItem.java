@@ -2,16 +2,17 @@ package collectables.healingItem;
 
 import characters.Hero;
 import collectables.Collectable;
+import collectables.CollectableID;
 import collectables.Money;
 
 public class HealingItem implements Collectable {
 
 	private Money cost;
 	private int recoverableHP;
-	private HealingItemType healingItemType;
+	private CollectableID collectableID;
 	
-	public HealingItem(HealingItemType type) {
-		healingItemType = type;
+	public HealingItem(CollectableID type) {
+		collectableID = type;
 		setCost();
 		setRecoverableHP();
 	}
@@ -21,30 +22,34 @@ public class HealingItem implements Collectable {
 	}
 
 	private void setRecoverableHP() {
-		switch (healingItemType) {
-			case GoodAntidote:
+		switch (collectableID) {
+			case GoodHealingItem:
 				recoverableHP = 25;
 				break;
-			case BetterAntidote:
+			case BetterHealingItem:
 				recoverableHP = 50;
 				break;
-			case BestAntidote:
+			case BestHealingItem:
 				recoverableHP = 75;
 				break; 
+			default: 
+				break;
 		}
 			
 	}
 
 	private void setCost() {
-		switch (healingItemType) {
-			case GoodAntidote:
+		switch (collectableID) {
+			case GoodHealingItem:
 				cost = new Money(25);
 				break;
-			case BetterAntidote:
+			case BetterHealingItem:
 				cost = new Money(50);
 				break;
-			case BestAntidote:
+			case BestHealingItem:
 				cost = new Money(75);
+				break;
+			default: 
 				break;
 		}
 	}
@@ -56,10 +61,10 @@ public class HealingItem implements Collectable {
 	
 	//TODO: find best way to retrieve the max health of a hero.
 	
-	public static void startHealing(Hero hero, int recoverableHP) {
+	public void apply(Hero hero) {
 		new Thread(new Runnable() {
 			public void run() {
-				Integer recoverable = new Integer(recoverableHP);
+				Integer recoverable = recoverableHP;
 				while (hero.getHealth() <= hero.getMaxHealth() && recoverable > 0) {
 					hero.setHealth(hero.getHealth() + 1);
 					recoverable--;
@@ -72,6 +77,7 @@ public class HealingItem implements Collectable {
 			}
 		}).start();
 	}
+
 	
 	
 }

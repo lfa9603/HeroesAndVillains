@@ -8,7 +8,7 @@ import characters.HeroesSquad;
 import city.City;
 import collectables.heroesMap.HeroesMap;
 
-public class Home extends Building{
+public class Home extends Building {
 
 		
 	public Home(String name, TypeBuildings buildType) {

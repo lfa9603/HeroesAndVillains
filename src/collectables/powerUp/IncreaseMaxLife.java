@@ -1,16 +1,17 @@
 package collectables.powerUp;
 
 import characters.Hero;
+import collectables.CollectableID;
 
 public class IncreaseMaxLife extends PowerUp {
 
-	public IncreaseMaxLife(PowerUpType powerUptype) {
-		super(powerUptype);
-		// TODO Auto-generated constructor stub
+	
+	public IncreaseMaxLife(CollectableID collectID) {
+		super(collectID);
 	}
 
 	@Override
-	public void applyPowerUp(Hero hero) {
+	public void apply(Hero hero) {
 		hero.setMaxHealth(125);
 	}
 

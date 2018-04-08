@@ -1,8 +1,12 @@
 package characters;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import city.City;
+import collectables.Collectable;
+import collectables.healingItem.HealingItem;
+import collectables.healingItem.HealingItemType;
 import collectables.heroesMap.HeroesMap;
 
 /**
@@ -16,13 +20,19 @@ public class HeroesSquad {
 	private String teamName;
 	
 	private City currentCity;
+	
 	private boolean haveMap;
 	private HeroesMap heroesMap;
 
+	private HashMap<Collectable, Integer> backPack;
+	
 
 	public HeroesSquad() {
 		haveMap = false;
+		backPack = new HashMap<Collectable, Integer>();
 	}
+	
+	
 	
 	/**
 	 * @return the heroSquad
@@ -53,6 +63,26 @@ public class HeroesSquad {
 		}
 		return result;
 	}
+	
+	
+	public int getLength() {
+		return heroSquad.size();
+	}
+	
+	public void squadReset() {
+		heroSquad.removeAll(heroSquad);
+	}
+	
+	public void addItemToBackPack(Collectable item) {
+		item.getClass();
+	}
+	
+	
+	//
+	//
+	//FROM HERE ON ONLY GETTERS AND SETTERS AND toString() METHODS
+	//
+	//
 	
 	
 	/**
@@ -112,13 +142,7 @@ public class HeroesSquad {
 		this.currentCity = currentCity;
 	}
 	
-	public int getLength() {
-		return heroSquad.size();
-	}
 	
-	public void squadReset() {
-		heroSquad.removeAll(heroSquad);
-	}
 	
 	public String toString() {
 		String squad = new String("Heros in " + teamName + ": \n");
@@ -129,4 +153,9 @@ public class HeroesSquad {
 		
 	}
 	
+	
+	public static void main(String[] args) {
+		HashMap<Collectable, Integer> items = new HashMap<Collectable, Integer>();
+
+	}
 }

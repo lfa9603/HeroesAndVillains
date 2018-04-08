@@ -1,15 +1,20 @@
 package collectables.powerUp;
 
 import characters.Hero;
+import collectables.CollectableID;
 
 public class GameChooser extends PowerUp{
 
-	public GameChooser(PowerUpType powerUptype) {
-		super(powerUptype);
+	
+
+	public GameChooser(CollectableID collectID) {
+		super(collectID);
+		// TODO Auto-generated constructor stub
 	}
 
-	public void applyPowerUp(Hero hero) {
+	public void apply(Hero hero) {
 		hero.setIsGameChooser(true);
 	}
+
 
 }

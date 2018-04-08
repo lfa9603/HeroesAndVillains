@@ -5,7 +5,7 @@ import city.City;
 import collectables.Collectable;
 import collectables.Money;
 
-public class HeroesMap implements Collectable {
+public class HeroesMap  {
 
 	private City currentCity;
 	private Money cost;
@@ -37,9 +37,11 @@ public class HeroesMap implements Collectable {
 		this.cost = cost;
 	}
 	
-	@Override
 	public Money getCost() {
 		return cost;
+	}
+	public String toString() {
+		return currentCity.toString();
 	}
 	
 	public void apply(HeroesSquad heroSquad) {

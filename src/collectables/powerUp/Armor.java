@@ -1,17 +1,20 @@
 package collectables.powerUp;
 
 import characters.Hero;
+import collectables.CollectableID;
 
 public class Armor extends PowerUp {
 
-	public Armor(PowerUpType powerUptype) {
-		super(powerUptype);
+	public Armor(CollectableID collectID) {
+		super(collectID);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void applyPowerUp(Hero hero) {
+	public void apply(Hero hero) {
 		hero.setHasArmor(true);
 	}
+
 
 	
 }
