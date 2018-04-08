@@ -55,9 +55,4 @@ public class WorldBuilder {
 		return world;
 	}
 	
-	
-	// main function for testing purposes
-	public static void main(String[] args) {
-		
-	}
 }
