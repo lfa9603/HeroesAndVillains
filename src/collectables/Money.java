@@ -21,4 +21,15 @@ public class Money {
 		string += amount;
 		return string;
 	}
+	
+	public boolean minus(Money costItem) {
+		Integer afterTransactionAmount = amount - costItem.getAmount();
+		if (afterTransactionAmount >= 0) {
+			amount = amount - costItem.getAmount();
+			return true;
+		} else {
+			System.out.println("Sorry transaction cannot happen");
+			return false;
+		}
+	}
 }

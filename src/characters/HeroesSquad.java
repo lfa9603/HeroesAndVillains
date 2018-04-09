@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import city.City;
 
 import collectables.Inventory;
+import collectables.Money;
 import collectables.heroesMap.HeroesMap;
 
 /**
@@ -23,11 +24,12 @@ public class HeroesSquad {
 	private HeroesMap heroesMap;
 
 	private Inventory backPack;
-	
+	private Money wallet;
 
 	public HeroesSquad() {
 		haveMap = false;
 		backPack = new Inventory();
+		wallet = new Money(30);
 	}
 	
 
@@ -136,7 +138,21 @@ public class HeroesSquad {
 		return backPack;
 	}
 
+    /**
+	 * @return the wallet
+	 */
+	public Money getWallet() {
+		return wallet;
+	}
 
+
+
+	/**
+	 * @param wallet the wallet to set
+	 */
+	public void setWallet(Money wallet) {
+		this.wallet = wallet;
+	}
 
 	/**
 	 * @param backPack the backPack to set
@@ -144,6 +160,8 @@ public class HeroesSquad {
 	public void setBackPack(Inventory backPack) {
 		this.backPack = backPack;
 	}
+	
+	
 	
 	public String toString() {
 		String squad = new String("Heros in " + teamName + ": \n");
@@ -153,4 +171,8 @@ public class HeroesSquad {
 		return squad;
 		
 	}
+
+
+
+	
 }

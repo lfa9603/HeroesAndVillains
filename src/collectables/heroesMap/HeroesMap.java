@@ -15,6 +15,7 @@ public class HeroesMap implements Collectable {
 	
 	public HeroesMap(CollectableID collectId) {
 		collectableID = collectId;
+		cost = new Money(20);
 	}
 	
 	/**

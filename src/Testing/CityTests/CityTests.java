@@ -15,6 +15,7 @@ import city.buildings.Hospital;
 import city.buildings.PowerUpDen;
 import city.buildings.TypeBuildings;
 import city.buildings.VillainsLair;
+import city.buildings.shop.Merchandise;
 import city.buildings.shop.Shop;
 
 class CityTests {
@@ -59,7 +60,7 @@ class CityTests {
 		Hospital hospital = new Hospital("Hospital", TypeBuildings.Hospital);
 		PowerUpDen pub = new PowerUpDen("PowerUpDen", TypeBuildings.PowerUpDen);
 		VillainsLair villainCave = new VillainsLair("VillainCave", TypeBuildings.VillainsLair);
-		Shop shop = new Shop("Shop", TypeBuildings.Shop);
+		Shop shop = new Shop("Shop", TypeBuildings.Shop, new Merchandise());
 		
 		ArrayList<Building> listBuildings = new ArrayList<Building>();
 		

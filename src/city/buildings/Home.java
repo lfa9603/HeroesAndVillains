@@ -1,5 +1,6 @@
 package city.buildings;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import characters.Character;
@@ -19,27 +20,33 @@ public class Home extends Building {
 	public void interact(HeroesSquad heroesSquad) {
 		
 		boolean atHome = true;
-		System.out.println("Welcome in your ");
+		System.out.println("Welcome in your Home Base!");
 		while (atHome) {
 			Scanner input = new Scanner(System.in);
 			System.out.println("Type:\n"
 					+ " 0 to see the map\n"
 					+ " 1 to check the heroes status\n"
 					+ " 2 to exit\n");
-			Integer valueTyped = input.nextInt();
+			try {
+				Integer valueTyped = input.nextInt();
 			
-			switch(valueTyped) {
-			case 0:
-				showMap(heroesSquad);//TODO modify this method
-				break;
-			case 1:
-				showHeroesStatus(heroesSquad);
-				break;
-			case 2:
-				input.close();
-				atHome = false;
-				System.out.println("Come back soon");
-				break;
+				switch(valueTyped) {
+				case 0:
+					showMap(heroesSquad);//TODO modify this method
+					break;
+				case 1:
+					showHeroesStatus(heroesSquad);
+					break;
+				case 2:
+					input.close();
+					atHome = false;
+					System.out.println("Come back soon");
+					break;
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("Please press a key corresponding to one of the three options");
+			} finally {
+				input.reset();
 			}
 		}
 	}

@@ -55,7 +55,7 @@ public class Merchandise {
 		
 	}
 	
-	//TODO: Working perfectly
+	//TODO: Working perfectly, we have to find right balance for the amount of objects present in a shop. 
 	private void addRandomAmountOfEachCollectableToInventory(Inventory inventory, ArrayList<Collectable> collectables) {
 		
 		for (Collectable item : collectables) {
