@@ -11,7 +11,11 @@ public class Hospital extends Building {
 
 	@Override
 	public void interact(HeroesSquad heroesSquad) {
-		// TODO Auto-generated method stub
+
+		boolean atHospital = true;
+		while (atHospital) {
+			
+		}
 		
 	}
 
