@@ -56,6 +56,10 @@ public class HeroesSquad {
 		return result;
 	}
 	
+	public Hero getHero(int choice) {
+		return heroSquad.get(choice);
+	}
+	
 	
 	public int getLength() {
 		return heroSquad.size();
@@ -172,6 +176,5 @@ public class HeroesSquad {
 		return squad;
 		
 	}
-
 	
 }

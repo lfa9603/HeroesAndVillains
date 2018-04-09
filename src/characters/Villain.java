@@ -25,6 +25,10 @@ public class Villain extends Character{
 		this.villainTaunt = villainTaunt;
 	}
 	
+	public String sayTaunt() {
+		return getCharacterName() + " taunts the Hero, He says " + getVillainTaunt();
+	}
+	
 	/**
 	 * The class Villain has to implement as it extends Character
 	 */
