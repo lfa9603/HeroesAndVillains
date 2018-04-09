@@ -40,7 +40,7 @@ public class Shop extends Building{
 			
 			System.out.println("Current Available items:");
 			System.out.println(merchandise.getInventory());
-			
+			System.out.println("HEROES WALLET:    " + heroesSquad.getWallet());
 			System.out.println("Type:\n"
 					+ " 0 buy a map\n"
 					+ " 1 to buy a Healing Potion\n"
@@ -80,36 +80,45 @@ public class Shop extends Building{
 
 
 	private void buyMap(HeroesSquad heros, Scanner confirm) {
-		System.out.println("Nearly Done! Press Y to confirm your HeroesMap purchase "
-				+ "or N to go back to general menu");
-		try {
-			String confirmed = confirm.next().toLowerCase();
-			if (confirmed.equals("y")) {
-				HeroesMap map = new HeroesMap(CollectableID.HeroesMap);
-
-				if (!heros.isHaveMap()) {
-					if (heros.getWallet().minus(map.getCost())) {
-						map.apply(heros);
-						System.out.println("Congrats now you have a map of the city!!");
-					} else {
-						System.out.println("Not enough money for the purchase");
+		
+		boolean notSure = true;
+		
+		while (notSure) {
+			System.out.println("Nearly Done! Press Y to confirm your HeroesMap purchase "
+					+ "or N to go back to general menu");
+			try {
+				String confirmed = confirm.next().toLowerCase();
+				if (confirmed.equals("y")) {
+					HeroesMap map = new HeroesMap(CollectableID.HeroesMap);
+	
+					if (!heros.isHaveMap()) {
+						if (heros.getWallet().minus(map.getCost())) {
+							map.apply(heros);
+							System.out.println("Congrats now you have a map of the city!!");
+						} else {
+							System.out.println("Not enough money for the purchase");
+						}
+						notSure = false;
 					}
+					
+					else {
+						System.out.println("Your team already has a map for this level!"
+								+ " Don't waste your money!");
+					}
+					
 				}
-				
-				else {
-					System.out.println("Your team already has a map for this level!"
-							+ " Don't waste your money!");
+				if (confirmed.equals("n")) {
+					notSure = false;
 				}
-				
+				 
+				if (!confirmed.equals("n") && !confirmed.equals("y")) {
+					throw (new InputMismatchException());
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("Please press a key corresponding to one of the two options");
+			} finally {
+				confirm.reset();
 			}
-			 
-			if (!confirmed.equals("n") && !confirmed.equals("y")) {
-				throw (new InputMismatchException());
-			}
-		} catch (InputMismatchException e) {
-			System.out.println("Please press a key corresponding to one of the two options");
-		} finally {
-			confirm.reset();
 		}
 	}
 	
@@ -192,7 +201,7 @@ public class Shop extends Building{
 			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
 				heroSquad.getBackPack().addItemToInventory(collectable); 
 				merchandise.getInventory().removeItemFromInventory(collectable);
-				System.out.println("Great! You bougght a " + collectable.getCollectableID());
+				System.out.println("Great! You bought a " + collectable.getCollectableID());
 			} else {
 				System.out.println("Sorry not enough money to purchase this item");
 				System.out.println("You currently have " + heroSquad.getWallet());
