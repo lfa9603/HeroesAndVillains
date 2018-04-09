@@ -7,9 +7,10 @@ import city.buildings.Building;
 import city.buildings.Home;
 import city.buildings.Hospital;
 import city.buildings.PowerUpDen;
-import city.buildings.Shop;
 import city.buildings.TypeBuildings;
 import city.buildings.VillainsLair;
+import city.buildings.shop.Merchandise;
+import city.buildings.shop.Shop;
 
 public class City {
 
@@ -18,7 +19,7 @@ public class City {
 	 */
 	private Home homeBase = new Home("Home Base", TypeBuildings.Home);
 	private Hospital hospital = new Hospital("Hospital", TypeBuildings.Hospital);
-	private Shop shop = new Shop("Shop", TypeBuildings.Shop);
+	private Shop shop = new Shop("Shop", TypeBuildings.Shop, new Merchandise());
 	private VillainsLair villansLair = new VillainsLair("Villain Lair", TypeBuildings.VillainsLair);
 	private PowerUpDen powerUpDen = new PowerUpDen("Power Up Den", TypeBuildings.PowerUpDen);
 	

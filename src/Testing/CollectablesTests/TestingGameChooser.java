@@ -5,16 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import characters.Hero;
+import collectables.CollectableID;
 import collectables.powerUp.GameChooser;
-import collectables.powerUp.PowerUpType;
 
 class TestingGameChooser {
 
 	@Test
 	void testingApplyPowerUp() {
 		Hero hero = new Hero("Lorenzo", "Cool as", "Ciao");
-		GameChooser gameChooser = new GameChooser(PowerUpType.GameChooser);
-		gameChooser.applyPowerUp(hero);
+		GameChooser gameChooser = new GameChooser(CollectableID.GameChooser);
+		gameChooser.apply(hero);
 		assertTrue(hero.getIsGameChooser());
 		
 		//extra, not part of GameChooser class

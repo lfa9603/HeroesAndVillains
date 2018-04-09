@@ -7,8 +7,8 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import characters.Hero;
+import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
-import collectables.healingItem.HealingItemType;
 
 class HealingItemTests {
 
@@ -28,8 +28,8 @@ class HealingItemTests {
 	void testStartHealing() {
 		Hero hero = new Hero("Lorenzo", "Cool Dude", "Ciao");
 		hero.setHealth(20);
-		HealingItem healingPotion = new HealingItem(HealingItemType.GoodAntidote);
-		HealingItem.startHealing(hero, healingPotion.getRecoverableHP());
+		HealingItem healingPotion = new HealingItem(CollectableID.GoodHealingItem);
+		healingPotion.apply(hero);
 		
 		
 		//Requirement 1
@@ -67,8 +67,8 @@ class HealingItemTests {
 		//Requirement 3
 		Hero heroTwo = new Hero("Lorenzo", "Cool Dude", "Ciao");
 		hero.setHealth(20);
-		HealingItem healingPotionTwo = new HealingItem(HealingItemType.BetterAntidote);
-		HealingItem.startHealing(heroTwo, healingPotionTwo.getRecoverableHP());
+		HealingItem healingPotionTwo = new HealingItem(CollectableID.BetterHealingItem);
+		healingPotionTwo.apply(hero);
 
 		long startTime = System.currentTimeMillis();
 		long elapsedTime = 0L;
@@ -84,7 +84,8 @@ class HealingItemTests {
 		//Requirement 4
 		Hero heroThree = new Hero("Lorenzo1", "Cool Dude", "Ciao");
 		hero.setHealth(99);
-		HealingItem.startHealing(heroThree, (new HealingItem(HealingItemType.BestAntidote).getRecoverableHP()));
+		HealingItem potionThree = (new HealingItem(CollectableID.BestHealingItem));
+		potionThree.apply(heroThree);
 		
 		try {
 			Thread.sleep(5 * 16000);
@@ -93,6 +94,9 @@ class HealingItemTests {
 		}
 		
 		assertEquals(100, heroThree.getHealth());
+		assertEquals(25, healingPotion.getRecoverableHP());
+		assertEquals(50, healingPotionTwo.getRecoverableHP());
+		assertEquals(75, potionThree.getRecoverableHP());
 		
 	}	
 

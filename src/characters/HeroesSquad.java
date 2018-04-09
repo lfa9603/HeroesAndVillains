@@ -3,6 +3,8 @@ package characters;
 import java.util.ArrayList;
 
 import city.City;
+
+import collectables.Inventory;
 import collectables.heroesMap.HeroesMap;
 
 /**
@@ -16,20 +18,18 @@ public class HeroesSquad {
 	private String teamName;
 	
 	private City currentCity;
+	
 	private boolean haveMap;
 	private HeroesMap heroesMap;
 
+	private Inventory backPack;
+	
 
 	public HeroesSquad() {
 		haveMap = false;
+		backPack = new Inventory();
 	}
 	
-	/**
-	 * @return the heroSquad
-	 */
-	public ArrayList<Hero> getHeroSquad() {
-		return heroSquad;
-	}
 
 
 	/**
@@ -54,6 +54,22 @@ public class HeroesSquad {
 		return result;
 	}
 	
+	
+	public int getLength() {
+		return heroSquad.size();
+	}
+	
+	public void squadReset() {
+		heroSquad.removeAll(heroSquad);
+	}
+	
+
+	/**
+	 * @return the heroSquad
+	 */
+	public ArrayList<Hero> getHeroSquad() {
+		return heroSquad;
+	}
 	
 	/**
 	 * @return the teamName
@@ -112,12 +128,21 @@ public class HeroesSquad {
 		this.currentCity = currentCity;
 	}
 	
-	public int getLength() {
-		return heroSquad.size();
+
+	/**
+	 * @return the backPack
+	 */
+	public Inventory getBackPack() {
+		return backPack;
 	}
-	
-	public void squadReset() {
-		heroSquad.removeAll(heroSquad);
+
+
+
+	/**
+	 * @param backPack the backPack to set
+	 */
+	public void setBackPack(Inventory backPack) {
+		this.backPack = backPack;
 	}
 	
 	public String toString() {
@@ -128,5 +153,4 @@ public class HeroesSquad {
 		return squad;
 		
 	}
-	
 }

@@ -7,25 +7,23 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import characters.Hero;
+import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
-import collectables.healingItem.HealingItemType;
 import collectables.powerUp.IncreaseMaxLife;
-import collectables.powerUp.PowerUpType;
 
 class TestingIncreaseMaxLife {
 
 	@Test
 	void testApplyPowerUp() {
 		Hero hero = new Hero("Lorenzo", "Ciao", "Ciao");
-		IncreaseMaxLife increaseMaxLife = new IncreaseMaxLife(PowerUpType.IncreaseMaxLife);
-		increaseMaxLife.applyPowerUp(hero);
+		IncreaseMaxLife increaseMaxLife = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
+		increaseMaxLife.apply(hero);
 		
 		assertEquals(125, hero.getMaxHealth());
 		assertEquals(100, hero.getHealth());
 		
-		HealingItem healingItem = new HealingItem(HealingItemType.GoodAntidote);
-		int recoverableHP = healingItem.getRecoverableHP();
-		HealingItem.startHealing(hero, recoverableHP);
+		HealingItem healingItem = new HealingItem(CollectableID.GoodHealingItem);
+		healingItem.apply(hero);
 		
 		long startTime = System.currentTimeMillis();
 		long elapsedTime = 0L;

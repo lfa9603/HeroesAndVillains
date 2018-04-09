@@ -16,4 +16,9 @@ public class Money {
 		this.amount = amount;
 	}
 	
+	public String toString() {
+		String string = new String();
+		string += amount;
+		return string;
+	}
 }

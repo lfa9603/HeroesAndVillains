@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import characters.Hero;
+import collectables.CollectableID;
 import collectables.powerUp.Armor;
-import collectables.powerUp.PowerUpType;
 
 class ArmorTests {
 
@@ -14,8 +14,8 @@ class ArmorTests {
 	void testingApplyPowerUp() {
 		
 		Hero hero = new Hero("Jay", "Being Cool", "Ciao");
-		Armor armor = new Armor(PowerUpType.Armor);
-		armor.applyPowerUp(hero);
+		Armor armor = new Armor(CollectableID.Armor);
+		armor.apply(hero);
 		
 		assertTrue(hero.isHasArmor());
 		

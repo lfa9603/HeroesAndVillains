@@ -13,9 +13,9 @@ import city.WorldBuilder;
 import city.buildings.Building;
 import city.buildings.Hospital;
 import city.buildings.PowerUpDen;
-import city.buildings.Shop;
 import city.buildings.TypeBuildings;
 import city.buildings.VillainsLair;
+import city.buildings.shop.Shop;
 
 class CityTests {
 
