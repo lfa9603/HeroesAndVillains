@@ -17,6 +17,7 @@ public class HeroesSquad {
 	
 	private static ArrayList<Hero> heroSquad = new ArrayList<Hero>();
 	private String teamName;
+	private boolean allDead; 
 	
 	private City currentCity;
 	
@@ -59,7 +60,6 @@ public class HeroesSquad {
 	public Hero getHero(int choice) {
 		return heroSquad.get(choice);
 	}
-	
 	
 	public int getLength() {
 		return heroSquad.size();
@@ -165,13 +165,41 @@ public class HeroesSquad {
 		this.backPack = backPack;
 	}
 	
-	
-	
+	public String heroStatus(Hero hero) {
+		if (hero.isAlive() == true) {
+			return "Alive";
+		}
+		else {
+			return "dead";
+		}
+		
+	}
+		
+	/**
+	 * @return the allDead
+	 */
+	public boolean isAllDead() {
+		return allDead;
+	}
+
+
+
+	/**
+	 * @param allDead the allDead to set
+	 */
+	public void setAllDead(boolean allDead) {
+		this.allDead = allDead;
+	}
+
+
+
 	public String toString() {
-		String squad = new String("Heros in " + teamName + ": \n");
+		String squad = new String("Heros in " + teamName + ": \n"
+				+ "Index : Name : Health : Type : Abilty : Status \n"
+				+ "\n");
 		for (Hero hero: heroSquad) {
-			squad += (heroSquad.indexOf(hero)+1) + ") " + hero.getCharacterName() + " : " + hero.getCharacterType() + " : " 
-			+ hero.getCharacterAbility() + "\n";
+			squad += (heroSquad.indexOf(hero)+1) + ") " + hero.getCharacterName() + " : " + hero.getHealth() + "HP : " + hero.getCharacterType() + " : " 
+			+ hero.getCharacterAbility() + " : " + heroStatus(hero) + "\n";
 		}
 		return squad;
 		

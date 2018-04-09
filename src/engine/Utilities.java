@@ -21,7 +21,7 @@ public class Utilities {
 				if (userchoice >= lowerLimit && userchoice <= upperLimit) {
 					validInput = true;
 					choice = userchoice;
-					input.close();
+//					input.close();
 					return choice;
 				}
 				
