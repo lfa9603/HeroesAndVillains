@@ -166,13 +166,12 @@ public class HeroesSquad {
 	public String toString() {
 		String squad = new String("Heros in " + teamName + ": \n");
 		for (Hero hero: heroSquad) {
-			squad += hero.getCharacterName() + " : " + hero.getCharacterAbility() + "\n";
+			squad += (heroSquad.indexOf(hero)+1) + ") " + hero.getCharacterName() + " : " + hero.getCharacterType() + " : " 
+			+ hero.getCharacterAbility() + "\n";
 		}
 		return squad;
 		
 	}
-
-
 
 	
 }
