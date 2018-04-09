@@ -6,6 +6,7 @@ import characters.Character;
 import characters.Hero;
 import characters.HeroesSquad;
 import city.City;
+import collectables.CollectableID;
 import collectables.heroesMap.HeroesMap;
 
 public class Home extends Building {
@@ -47,8 +48,8 @@ public class Home extends Building {
 	public String showMap(HeroesSquad heroesSquad) {
 		String showMapMessage = new String();
 		if (heroesSquad.isHaveMap()) {
-			HeroesMap map = new HeroesMap(heroesSquad.getCurrentCity());
-			System.out.println(map.toString());
+			HeroesMap map = new HeroesMap(CollectableID.HeroesMap);
+			System.out.println(heroesSquad.getCurrentCity());
 			showMapMessage += map.toString();
 		} else {
 			System.out.println("No map available at this stage");

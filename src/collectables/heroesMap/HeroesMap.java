@@ -1,33 +1,30 @@
 package collectables.heroesMap;
 
+import characters.Hero;
 import characters.HeroesSquad;
-import city.City;
+import collectables.Collectable;
+import collectables.CollectableID;
 import collectables.Money;
 
-public class HeroesMap  {
+public class HeroesMap implements Collectable {
 
-	private City currentCity;
 	private Money cost;
+	private CollectableID collectableID;
 
 	
 	
-	public HeroesMap(City city) {
-		currentCity = city;
+	public HeroesMap(CollectableID collectId) {
+		collectableID = collectId;
 	}
 	
 	/**
 	 * @return the currentCity
 	 */
-	public City getCurrentCity() {
-		return currentCity;
-	}
 
 	/**
 	 * @param currentCity the currentCity to set
 	 */
-	public void setCurrentCity(City currentCity) {
-		this.currentCity = currentCity;
-	}
+
 
 	/**
 	 * @param cost the cost to set
@@ -39,14 +36,24 @@ public class HeroesMap  {
 	public Money getCost() {
 		return cost;
 	}
-	public String toString() {
-		return currentCity.toString();
-	}
-	
 	public void apply(HeroesSquad heroSquad) {
 		heroSquad.setHaveMap(true);
 	}
+
+	public void apply(Hero hero) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public CollectableID getCollectableID() {
+		// TODO Auto-generated method stub
+		return collectableID;
+	}
 	
+	public String toString() {
+		return "This is a map of the current city you are in, "
+				+ "you can buy it at the shop and use it ONLY inside your HomeBase";
+	}
 	
 
 }

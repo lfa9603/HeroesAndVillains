@@ -2,6 +2,6 @@ package collectables;
 
 public enum CollectableID {
 
-	GoodHealingItem, BetterHealingItem, BestHealingItem, Armor, GameChooser, IncreaseMaxLife
+	GoodHealingItem, BetterHealingItem, BestHealingItem, Armor, GameChooser, IncreaseMaxLife, HeroesMap
 	
 }

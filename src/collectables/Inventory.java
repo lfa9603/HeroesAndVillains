@@ -6,7 +6,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import collectables.healingItem.HealingItem;
+import collectables.heroesMap.HeroesMap;
 import collectables.powerUp.Armor;
+import collectables.powerUp.GameChooser;
+import collectables.powerUp.IncreaseMaxLife;
 
 public class Inventory {
 
@@ -53,7 +56,27 @@ public class Inventory {
 		}
 	}
 	
+	/**
+	 * This method removes an item from @inventory, if the element is in @inventory then it eliminates one quantity of it, if after that 
+	 * the quantity of the element is 0 in the inventory, then the @Collectable element is eliminated from @inventory.
+	 * If @Collectable not present in inventory, then it informs the user that he/she is trying to eliminate an object that is not there.
+	 * @param item
+	 */
+    public void removeItemFromInventory(Collectable item) {
+		
+		Collectable collectable = isInInventory(item);
+		
+		if (collectable != null) {
+			inventory.put(collectable, inventory.get(collectable) - 1);
+			if (inventory.get(collectable) == 0) {
+				inventory.remove(collectable);
+			}
+		} else {
+			System.out.println("The item is already NOT in the inventory");
+		}
+	}
 	
+    
 	public String toString() {
 		String string = new String();
 		Iterator<Entry<Collectable, Integer>> iterator = inventory.entrySet().iterator();
@@ -70,12 +93,34 @@ public class Inventory {
 		Inventory inventory = new Inventory();
 		inventory.addItemToInventory(new HealingItem(CollectableID.GoodHealingItem));
 //		System.out.println(inventory);
-		inventory.addItemToInventory(new HealingItem(CollectableID.GoodHealingItem));
+//		System.out.println("-------------------------------------------");
+		inventory.addItemToInventory(new HealingItem(CollectableID.BetterHealingItem));
 //		System.out.println(inventory);
+//		System.out.println("-------------------------------------------");
 		inventory.addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 //		System.out.println(inventory);
+//		System.out.println("-------------------------------------------");
 		inventory.addItemToInventory(new Armor(CollectableID.Armor));
+		inventory.addItemToInventory(new GameChooser(CollectableID.GameChooser));
+		inventory.addItemToInventory(new IncreaseMaxLife(CollectableID.IncreaseMaxLife));
+		inventory.addItemToInventory(new HeroesMap(CollectableID.HeroesMap));
+		
 		System.out.println(inventory);
+		
+		
+//		System.out.println(inventory);
+//		System.out.println("-------------------------------------------");
+//		inventory.removeItemFromInventory(new HealingItem(CollectableID.GoodHealingItem));
+//		System.out.println(inventory);
+//		System.out.println("-------------------------------------------");
+//		inventory.removeItemFromInventory(new HealingItem(CollectableID.GoodHealingItem));
+//		System.out.println(inventory);
+//		System.out.println("-------------------------------------------");
+//		inventory.removeItemFromInventory(new HealingItem(CollectableID.GoodHealingItem));
+//		System.out.println(inventory);
+//		System.out.println("-------------------------------------------");
+		
+		
 	}
 	
 	

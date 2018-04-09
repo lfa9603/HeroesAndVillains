@@ -1,15 +1,10 @@
 package characters;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import city.City;
-import collectables.Collectable;
-import collectables.CollectableID;
-import collectables.healingItem.HealingItem;
+
+import collectables.Inventory;
 import collectables.heroesMap.HeroesMap;
 
 /**
@@ -27,22 +22,14 @@ public class HeroesSquad {
 	private boolean haveMap;
 	private HeroesMap heroesMap;
 
-	private HashMap<Collectable, Integer> backPack;
+	private Inventory backPack;
 	
 
 	public HeroesSquad() {
 		haveMap = false;
-		backPack = new HashMap<Collectable, Integer>();
+		backPack = new Inventory();
 	}
 	
-	
-	
-	/**
-	 * @return the heroSquad
-	 */
-	public ArrayList<Hero> getHeroSquad() {
-		return heroSquad;
-	}
 
 
 	/**
@@ -76,53 +63,13 @@ public class HeroesSquad {
 		heroSquad.removeAll(heroSquad);
 	}
 	
-	
-	
-	//WORKING ON BACKPACK, MIGHT MOVE THIS SECTION TO CREATE A NEW CLASS
-	
-//	public boolean addItemToBackPack(Collectable item) {
-//		boolean alreadyInBackPack = checkBackPack(item);
-//		return alreadyInBackPack;
-//	}
-//	
-//	private boolean checkBackPack(Collectable item) {
-//		Iterator<Entry<Collectable, Integer>> iterator = backPack.entrySet().iterator();
-//		while (iterator.hasNext()) {
-//			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
-////			System.out.println(collectable.getKey() + " = " + collectable.getValue());
-//			if ((collectable.getKey().getCollectableID()).equals(item.getCollectableID())) {
-//				backPack.put(collectable.getKey(), backPack.get(collectable.getKey()) + 1);
-//				return true;
-//			}
-//		}
-//		backPack.put((Collectable) item, 1);
-//		return false;
-//	}
-	
-//	public static void main(String[] args) {
-//		
-//		HeroesSquad heros = new HeroesSquad();
-//		HashMap<Collectable, Integer> bag = heros.getBackPack();
-//		System.out.println(heros.addItemToBackPack(new HealingItem(CollectableID.GoodHealingItem)));
-//		System.out.println(heros.addItemToBackPack(new HealingItem(CollectableID.GoodHealingItem)));
-//		System.out.println(heros.addItemToBackPack(new HealingItem(CollectableID.Armor)));
-//		System.out.println(heros.addItemToBackPack(new HealingItem(CollectableID.IncreaseMaxLife)));
-//		
-//		Iterator<Entry<Collectable, Integer>> iterator = bag.entrySet().iterator();
-//		while (iterator.hasNext()) {
-//			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
-//			System.out.println(collectable.getKey() + " = " + collectable.getValue());
-//			}
-//	}
-//	
-	
-	
-	//
-	//
-	//FROM HERE ON ONLY GETTERS AND SETTERS AND toString() METHODS
-	//
-	//
-	
+
+	/**
+	 * @return the heroSquad
+	 */
+	public ArrayList<Hero> getHeroSquad() {
+		return heroSquad;
+	}
 	
 	/**
 	 * @return the teamName
@@ -180,19 +127,21 @@ public class HeroesSquad {
 	public void setCurrentCity(City currentCity) {
 		this.currentCity = currentCity;
 	}
+	
 
 	/**
 	 * @return the backPack
 	 */
-	public HashMap<Collectable, Integer> getBackPack() {
+	public Inventory getBackPack() {
 		return backPack;
 	}
-	
+
+
 
 	/**
 	 * @param backPack the backPack to set
 	 */
-	public void setBackPack(HashMap<Collectable, Integer> backPack) {
+	public void setBackPack(Inventory backPack) {
 		this.backPack = backPack;
 	}
 	
