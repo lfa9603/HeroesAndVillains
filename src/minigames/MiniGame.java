@@ -27,7 +27,7 @@ public class MiniGame {
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
 			selectHero();
 			runBattle(selectedGame, hero, villain);
-			selectedMiniGame = selectNewGame(2);
+			selectedMiniGame = selectNewGame(3);
 		}
 		
 		if (villain.isBeaten() == true) {
@@ -134,7 +134,22 @@ public class MiniGame {
 	}
 
 	private void diceWars(Hero hero, Villain villain) {
-		// TODO Auto-generated method stub
+		System.out.println("You are playing Dice Wars! \n"
+				+ "TODO Add rules \n"
+				+ "whoever rolls the highest number on the dice wins. The villain will win on a draw");
+		int rollDice = Utilities.getChoice("Press 1 to roll the dice", 1, 1);
+		if (rollDice == 1) {
+			int roll = Utilities.getRandInt(6);
+			System.out.println("You roll a " + roll);
+			int villainRoll = villain.getVillainsChoice(6);
+			System.out.println(villain.getCharacterName() + " rolls a " + villainRoll);
+			if (roll > villainRoll) {
+				heroWins();
+			}
+			else {
+				herolosses();
+			}
+		}
 		
 	}
 
@@ -171,7 +186,7 @@ public class MiniGame {
 	}
 	
 	public void herolosses() {
-		System.out.println("You lost! " + villain.getVillainDamage() + "HP");
+		System.out.println("You lost " + villain.getVillainDamage() + "HP");
 		squad.heroTakesDamage(hero, villain.getVillainDamage());
 	}
 	
@@ -186,15 +201,15 @@ public class MiniGame {
 		testsquad.addHero(hero1);
 		testsquad.addHero(hero2);
 		testsquad.addHero(hero3);
-		hero1.setisAlive(false);
-		hero2.setisAlive(false);
+//		hero1.setisAlive(false);
+//		hero2.setisAlive(false);
 //		hero3.setisAlive(false);
 		testsquad.checkTeamStatus();
 		
 		Villain testVillain = new Villain("Lorenzo", "Italian", "PastaFart", "Ciao bella dona ;p", 50);
 //		testVillain.setBeaten(true);
 		
-		MiniGame game = new MiniGame(testVillain, testsquad, 2);
+		MiniGame game = new MiniGame(testVillain, testsquad, 3);
 		
 	}
 	

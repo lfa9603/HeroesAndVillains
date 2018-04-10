@@ -179,9 +179,10 @@ public class HeroesSquad {
 		int currentHealth = hero.getHealth() - villainDamge;
 		if (currentHealth > 0) {
 			hero.setHealth(currentHealth);
-			System.out.println(hero.getCharacterName() + "'s Health is " + hero.getHealth());
+			System.out.println(hero.getCharacterName() + "'s Health is " + hero.getHealth() + "HP");
 		}
 		else {
+			hero.setHealth(0);
 			hero.setisAlive(false);
 			System.out.println(hero.getCharacterName() + " has Died!!");
 			checkTeamStatus();
