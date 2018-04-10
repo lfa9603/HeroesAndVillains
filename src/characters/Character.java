@@ -117,6 +117,7 @@ public abstract class Character {
 	 */
 	public void setisAlive(boolean alive) {
 		this.alive = alive;
+		
 	}
 
 	/**

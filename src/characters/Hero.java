@@ -52,19 +52,6 @@ public class Hero extends Character {
 			
 	}
 	
-	public void takeDamage(int villainDamge) {
-		int currentHealth = getHealth() - villainDamge;
-		if (currentHealth > 0) {
-			setHealth(currentHealth);
-			System.out.println(getCharacterName() + "'s Health is " + getHealth());
-		}
-		else {
-			setisAlive(false);
-			System.out.println(getCharacterName() + " has Died!!");
-		}
-	
-	}
-
 	/**
 	 * @return the isGameChooser
 	 */

@@ -24,10 +24,27 @@ public class MiniGame {
 		villain = givenVillain;
 		squad = theSquad;
 		selectedGame = selectedMiniGame;
-		selectHero();
-		runBattle(selectedGame, hero, villain);
+		while (squad.isAllDead() == false && villain.isBeaten() == false) {
+			selectHero();
+			runBattle(selectedGame, hero, villain);
+			selectedMiniGame = selectNewGame(1);
+		}
+		
+		if (villain.isBeaten() == true) {
+			System.out.println("CONGRADULATIONS!!! you Won!!");
+		}
+		
+		else {
+			System.out.println("Game over! \nThank you for playing!");
+		}
+		
 	}
 	
+	private int selectNewGame(int upperLimit) {
+		selectedGame = Utilities.getRandInt(upperLimit);
+		return selectedGame;		
+	}
+
 	private void runBattle(int selectedGame, Hero hero, Villain villain) {
 		switch (selectedGame) {
 		case 1: rockPaperScissors(hero, villain); break;
@@ -43,12 +60,12 @@ public class MiniGame {
 				+ "2) Paper \n"
 				+ "3) Scissors \n";
 		
-		String rock = "Rock";
-		String paper = "Paper";
-		String scissors = "Scissors";
+		String rock = " Rock";
+		String paper = " Paper";
+		String scissors = " Scissors";
 		
-		String youChoose = "you choose";
-		String villianChoose = villain.getCharacterName() + " choose";
+		String youChoose = "you chose ";
+		String villianChoose = villain.getCharacterName() + " chose";
 		
 		
 		System.out.println("You are playing Rock, Paper, Sissors!");
@@ -122,11 +139,14 @@ public class MiniGame {
 	
 	public void heroWins() {
 		System.out.println("You win! the villain has been defeated!");
+		villain.setTimesBeaten();
+		System.out.println("You have beaten the Villain " + villain.getTimesBeaten() + " times, "
+				+ "you must beat hime three times to defeat him and move on to the next level");
 	}
 	
 	public void herolosses() {
 		System.out.println("You lost! " + villain.getVillainDamage() + "HP");
-		hero.takeDamage(villain.getVillainDamage());
+		squad.heroTakesDamage(hero, villain.getVillainDamage());
 	}
 	
 	
@@ -141,8 +161,13 @@ public class MiniGame {
 		testsquad.addHero(hero2);
 		testsquad.addHero(hero3);
 		hero1.setisAlive(false);
+		hero2.setisAlive(false);
+//		hero3.setisAlive(false);
+		testsquad.checkTeamStatus();
 		
 		Villain testVillain = new Villain("Lorenzo", "Italian", "PastaFart", "Ciao bella dona ;p", 50);
+//		testVillain.setBeaten(true);
+		
 		MiniGame game = new MiniGame(testVillain, testsquad, 1);
 		
 	}

@@ -1,6 +1,7 @@
 package engine;
 
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Utilities {
@@ -38,6 +39,12 @@ public class Utilities {
 		}
 		
 		return choice;
+	}
+
+	public static int getRandInt(int upperLimit) {
+		Random random = new Random();
+		int choice = random.nextInt(upperLimit);
+		return (choice+1);
 	}
 	
 //	public static void main(String[] args) {

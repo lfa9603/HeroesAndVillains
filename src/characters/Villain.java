@@ -1,9 +1,11 @@
 package characters;
 
-import java.util.Random;
+import engine.Utilities;
 
 public class Villain extends Character{
 
+	private boolean isBeaten = false;
+	private int timesBeaten;
 	private String villainTaunt;
 	private int villainDamage;
 	
@@ -33,9 +35,7 @@ public class Villain extends Character{
 	}
 	
 	public int getVillainsChoice(int upperLimit) {
-		Random random = new Random();
-		int choice = random.nextInt(upperLimit);
-		return (choice+1);
+		return Utilities.getRandInt(upperLimit);
 	}
 	
 	/**
@@ -62,6 +62,37 @@ public class Villain extends Character{
 	 */
 	public void setVillainDamage(int villainDamage) {
 		this.villainDamage = villainDamage;
+	}
+
+	/**
+	 * @return the timesBeaten
+	 */
+	public int getTimesBeaten() {
+		return timesBeaten;
+	}
+
+	/**
+	 * @param timesBeaten the timesBeaten to set
+	 */
+	public void setTimesBeaten() {
+		this.timesBeaten += 1;
+		if (getTimesBeaten() == 3) {
+			setBeaten(true);
+		}
+	}
+
+	/**
+	 * @return the isBeaten
+	 */
+	public boolean isBeaten() {
+		return isBeaten;
+	}
+
+	/**
+	 * @param isBeaten the isBeaten to set
+	 */
+	public void setBeaten(boolean isBeaten) {
+		this.isBeaten = isBeaten;
 	}
 
 

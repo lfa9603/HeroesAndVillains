@@ -174,12 +174,41 @@ public class HeroesSquad {
 		}
 		
 	}
+	
+	public void heroTakesDamage(Hero hero, int villainDamge) {
+		int currentHealth = hero.getHealth() - villainDamge;
+		if (currentHealth > 0) {
+			hero.setHealth(currentHealth);
+			System.out.println(hero.getCharacterName() + "'s Health is " + hero.getHealth());
+		}
+		else {
+			hero.setisAlive(false);
+			System.out.println(hero.getCharacterName() + " has Died!!");
+			checkTeamStatus();
+		}
+	
+	}
+	
 		
 	/**
 	 * @return the allDead
 	 */
 	public boolean isAllDead() {
 		return allDead;
+	}
+	
+	public void checkTeamStatus() {
+		int  teamSize = heroSquad.size();
+		int deadTeamMembers = 0;
+		
+		for (Hero hero: heroSquad) {
+			if (hero.isAlive() == false) {
+				deadTeamMembers += 1;
+				if (deadTeamMembers == teamSize) {
+					setAllDead(true);
+				}
+			}
+		}
 	}
 
 
