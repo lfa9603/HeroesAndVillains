@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 import characters.Hero;
 import characters.HeroesSquad;
+
 import collectables.Collectable;
 import collectables.CollectableID;
-import collectables.Inventory;
 import collectables.InventoryTools;
 import collectables.healingItem.HealingItem;
+
+import engine.Utilities;
 
 public class Hospital extends Building {
 
@@ -23,13 +25,15 @@ public class Hospital extends Building {
 
 		boolean atHospital = true;
 		while (atHospital) {
+			
 			ArrayList<Collectable> healingItems = InventoryTools.healingItems(heroesSquad);
+			
+			System.out.println("You are inside the hospital, here is you available Healing potions:\n");
 			System.out.println(InventoryTools.showTypeItemsInInventory(heroesSquad, healingItems));
 //			Returns the number of heroes that are healing and how long it will be before potion has finished healing hero
 //			System.out.println(HospitalTools.getHeroesAndHealingTime());TODO: hard stuff, gotta find a smart way to do it
 			Scanner input = new Scanner(System.in);
 			if (InventoryTools.getTotTypeItems(heroesSquad, healingItems) > 0) {
-				
 				
 				System.out.println("Press: "
 						+ "\n0 to use a good healing item"
@@ -41,6 +45,8 @@ public class Hospital extends Building {
 				try {
 					Integer intInput = input.nextInt();
 					HealingItem healingItem = null; 
+					
+					
 					switch (intInput) {
 					 	case 0:
 					 		healingItem = new HealingItem(CollectableID.GoodHealingItem);
@@ -52,35 +58,51 @@ public class Hospital extends Building {
 					 		healingItem = new HealingItem(CollectableID.BestHealingItem);
 					 		break;
 					 	case 3:
+					 		System.out.println("\n\nSee ya later alligator!!!\n\n");
 					 		input.close();
 					 		atHospital = false;
+					 		continue;
 					 	default:
-					 		throw new InputMismatchException();
-//					 Hero heroToRecover = selectHero();TODO:ask jay if he has something I can use;
-//					 healingItem.apply(hero);
-						 	
-						 	
-					 		
-					 		
-						
+						extracted();
 					}
 					
+					if (heroesSquad.getBackPack().isInInventory(healingItem) != null) {
+						System.out.println(heroesSquad);
+						int choice = Utilities.getChoice("Choose hero by typing its index value!\n"
+								+ "You will apply the selected healing item to this memeber of your team\n"
+								+ "Type 0 to exit", 0, heroesSquad.getLength());
+						if (choice == 0) {
+							continue;
+						} else {
+							Hero hero = heroesSquad.getHero(choice - 1);	 	
+							healingItem.apply(hero);
+							heroesSquad.getBackPack().removeItemFromInventory(healingItem);
+						}
+					} else {
+						System.out.println("MATE! I TOLD YA NOT TO BE CHEECKY! YOU AIN'T GOT NONE OF THAT!");
+					}
+					 		
+				
 				} catch (InputMismatchException e) {
-					System.out.println("Please type a valid integer");
+					System.out.println("Please type a valid integer\n\n");
 				} finally {
 					input.reset();
 				}
 				
 			} else {
-				notEnoughMoney(input);
+				noHealingItems(input);
 				input.close();
 				atHospital = false;
 			}	
 		}
 	}
+
+	private void extracted() {
+		throw new InputMismatchException();
+	}
 	
 	
-	private void notEnoughMoney(Scanner input) {
+	private void noHealingItems(Scanner input) {
 		boolean deciding = true;
 		while (deciding) {
 			System.out.println("Looks like you have no Healing items in the backpack! "
@@ -105,11 +127,10 @@ public class Hospital extends Building {
 	public static void main(String[] args) {
 		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
 		HeroesSquad heroes = new HeroesSquad();
-	
-		
+		heroes.addHero(new Hero("Lorenzo", "C", "C"));
+
+		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 		hospital.interact(heroes);
-		
-		
 	}
 
 }

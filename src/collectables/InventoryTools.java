@@ -49,7 +49,7 @@ public class InventoryTools {
 	
 	
 	public static String showTypeItemsInInventory(HeroesSquad heroesSquad, ArrayList<Collectable> collectables) {
-		String string = new String("You are inside the hospital, here is you available Healing potions:\n");
+		String string = new String();
 		for (Collectable collectable : collectables) {
 			string += "------>  " + collectable.getCollectableID() + "  <------\n";
 			string += "DESCRIPTION: " + collectable + "\n";
@@ -66,7 +66,6 @@ public class InventoryTools {
 			total += getQuantityItem(item, heroes);
 		}
 		return total;
-
 	}
 	
 	

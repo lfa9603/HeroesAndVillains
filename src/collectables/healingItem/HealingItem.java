@@ -65,7 +65,7 @@ public class HealingItem implements Collectable {
 		new Thread(new Runnable() {
 			public void run() {
 				Integer recoverable = recoverableHP;
-				while (hero.getHealth() <= hero.getMaxHealth() && recoverable > 0) {
+				while (hero.getHealth() < hero.getMaxHealth() && recoverable > 0) {
 					hero.setHealth(hero.getHealth() + 1);
 					recoverable--;
 					try {
