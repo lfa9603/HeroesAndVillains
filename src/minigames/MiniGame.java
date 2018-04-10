@@ -27,7 +27,7 @@ public class MiniGame {
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
 			selectHero();
 			runBattle(selectedGame, hero, villain);
-			selectedMiniGame = selectNewGame(1);
+			selectedMiniGame = selectNewGame(2);
 		}
 		
 		if (villain.isBeaten() == true) {
@@ -103,7 +103,33 @@ public class MiniGame {
 	}
 
 	private void guessTheNumber(Hero hero, Villain villain) {
-		// TODO Auto-generated method stub
+		int heroTrys = 0;
+		System.out.println("Your Playing guess the number! \n"
+				+ "The rules are: TODO add rules \n"
+				+ "The Villain has chosen a number. \n");
+		int villainChoice = villain.getVillainsChoice(10);
+		
+		while (heroTrys < 2) {
+			int choice = Utilities.getChoice("Choose a number between 1-10 you have two chances to get it right", 1, 10);
+			if (choice == villainChoice) {
+				heroWins();
+				break;
+			}
+			
+			else {
+				if (choice > villainChoice) {
+					System.out.println("Villain says: Lower");
+					heroTrys += 1;
+				}
+				else {
+					System.out.println("Villain says: Higher");
+					heroTrys += 1;
+				}
+			}
+		}
+		if (heroTrys >= 2) {
+			herolosses();
+		}
 		
 	}
 
@@ -168,7 +194,7 @@ public class MiniGame {
 		Villain testVillain = new Villain("Lorenzo", "Italian", "PastaFart", "Ciao bella dona ;p", 50);
 //		testVillain.setBeaten(true);
 		
-		MiniGame game = new MiniGame(testVillain, testsquad, 1);
+		MiniGame game = new MiniGame(testVillain, testsquad, 2);
 		
 	}
 	
