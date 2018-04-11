@@ -9,7 +9,7 @@ package characters;
 public abstract class Character {
 	
 	private String characterName;
-	private String characterType;
+	private Types characterType;
 	private String characterAbility;
 	private int maxHealth = 100;
 	private int health = 100;
@@ -21,7 +21,7 @@ public abstract class Character {
 	 * @param name
 	 * @param specialAbility
 	 */
-	public Character(String name, String type, String specialAbility) {
+	public Character(String name, Types type, String specialAbility) {
 		characterName = name;
 		characterType = type;
 		characterAbility = specialAbility;
@@ -46,14 +46,14 @@ public abstract class Character {
 	/**
 	 * @return the characterType
 	 */
-	public String getCharacterType() {
+	public Types getCharacterType() {
 		return characterType;
 	}
 
 	/**
 	 * @param characterType the characterType to set
 	 */
-	public void setCharacterType(String characterType) {
+	public void setCharacterType(Types characterType) {
 		this.characterType = characterType;
 	}
 

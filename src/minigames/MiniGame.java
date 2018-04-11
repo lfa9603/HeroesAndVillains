@@ -4,6 +4,7 @@ import java.util.Random;
 
 import characters.Hero;
 import characters.HeroesSquad;
+import characters.Types;
 import characters.Villain;
 import engine.Utilities;
 
@@ -194,9 +195,9 @@ public class MiniGame {
 //  For testing
 	public static void main(String[] args) {
 //		TeamBuilder team = new TeamBuilder();
-		Hero hero1 = new Hero("hero1", "Be cool", "specialAbility_1");
-		Hero hero2 = new Hero("hero2", "Have some swag", "specialAbility_2");
-		Hero hero3 = new Hero("hero3","Be the man", "specialAbility_3");
+		Hero hero1 = new Hero("hero1", Types.type1, "specialAbility_1");
+		Hero hero2 = new Hero("hero2", Types.type1, "specialAbility_2");
+		Hero hero3 = new Hero("hero3",Types.type1, "specialAbility_3");
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero1);
 		testsquad.addHero(hero2);
@@ -206,7 +207,7 @@ public class MiniGame {
 //		hero3.setisAlive(false);
 		testsquad.checkTeamStatus();
 		
-		Villain testVillain = new Villain("Lorenzo", "Italian", "PastaFart", "Ciao bella dona ;p", 50);
+		Villain testVillain = new Villain("Lorenzo", Types.level_1, "PastaFart", "Ciao bella dona ;p", 50);
 //		testVillain.setBeaten(true);
 		
 		MiniGame game = new MiniGame(testVillain, testsquad, 3);

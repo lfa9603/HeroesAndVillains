@@ -175,7 +175,7 @@ public class TeamBuilder {
 		}
 	}
 	
-	private void createHero(String type, String abilty) {
+	private void createHero(Types type, String abilty) {
 		Scanner userinput_2 = new Scanner(System.in);
 		System.out.println("What will your Hero's name be?");
 		String characterName = userinput_2.nextLine();

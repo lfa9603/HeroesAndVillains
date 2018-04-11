@@ -15,7 +15,7 @@ public class NonPlayer extends Character {
 	 * @param specialAbility
 	 */
 
-	public NonPlayer(String name, String type, String specialAbility) {
+	public NonPlayer(String name, Types type, String specialAbility) {
 		super(name, type, specialAbility);
 	}
 	

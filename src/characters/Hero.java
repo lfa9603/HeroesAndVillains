@@ -14,7 +14,7 @@ public class Hero extends Character {
 	 * @param name
 	 * @param specialAbility
 	 */
-	public Hero(String name, String type, String specialAbility) {
+	public Hero(String name, Types type, String specialAbility) {
 		super(name, type, specialAbility);
 		hasArmor = false;
 		isGameChooser = false;
