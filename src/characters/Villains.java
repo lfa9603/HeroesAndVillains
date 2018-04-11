@@ -54,11 +54,11 @@ public class Villains {
 		
 	}
 	
-	public static void main(String[] args) {
-		int worldSize = 6;
-		Villains villains  = new Villains(worldSize);
-		System.out.println(villains);
-		
-	}
+//	public static void main(String[] args) {
+//		int worldSize = 6;
+//		Villains villains  = new Villains(worldSize);
+//		System.out.println(villains);
+//		
+//	}
 
 }

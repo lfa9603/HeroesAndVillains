@@ -7,21 +7,14 @@ public class TeamBuilder {
 	private HeroesSquad Team;
 	private String finalteamName;
 	
-	private static String characterTypes = "1. type1 : ability1 \n"
-			+ "2. type2 : ability2 \n"
-			+ "3. type3 : ability3 \n"
-			+ "4. type4 : ability4 \n"
-			+ "5. type5 : ability5 \n"
-			+ "6. type6 : ability6 ";
+	private static String characterTypes = "1. Talkitive : Makes  \n"
+			+ "2. Smart : ability2 \n"
+			+ "3. Practical : ability3 \n"
+			+ "4. Strong : ability4 \n"
+			+ "5. Sly : ability5 \n"
+			+ "6. Dog : Is a good boy (Makes everyone smile)";
 	
-	private String characterTypesArray[][] = {
-			{"type1", "ability1"},
-			{"type2", "ability2"},
-			{"type3", "ability3"},
-			{"type4", "ability4"},
-			{"type5", "ability5"},
-			{"type6", "ability6"}
-	};
+	private String characterTypesArray[] = {"ability1", "ability2", "ability3", "ability4", "ability5", "ability6"};
 	
 	public HeroesSquad getTeam() {
 		return Team;
@@ -129,8 +122,8 @@ public class TeamBuilder {
 				Integer selectedCharacter = userinput_1.nextInt();
 				if (selectedCharacter >= 1 && selectedCharacter <= 6) {
 					switch(selectedCharacter) {
-					case 1: createHero(characterTypesArray[0][0], characterTypesArray[0][1]); break;
-					case 2: createHero(characterTypesArray[1][0], characterTypesArray[1][1]); break;
+					case 1: createHero(characterTypesArray[0][0], characterTypesArray[0]); break;
+					case 2: createHero(characterTypesArray[1][0], characterTypesArray[1]); break;
 					case 3: createHero(characterTypesArray[2][0], characterTypesArray[2][1]); break;
 					case 4: createHero(characterTypesArray[3][0], characterTypesArray[3][1]); break;
 					case 5: createHero(characterTypesArray[4][0], characterTypesArray[4][1]); break;
