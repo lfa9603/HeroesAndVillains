@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import characters.HeroesSquad;
-import characters.Villain;
 import characters.Villains;
 import city.City;
 import city.WorldBuilder;

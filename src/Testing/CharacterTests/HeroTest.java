@@ -58,7 +58,7 @@ class HeroTest {
 
 	@Test
 	void testGetCharacterAbility() {
-		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
+		Hero lorenzo = new Hero("Lorenzo",Types.level_1, "fire");
 		String toString = lorenzo.getCharacterAbility();
 		assertEquals("fire", toString);
 	}

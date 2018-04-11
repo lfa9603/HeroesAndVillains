@@ -3,7 +3,7 @@ package characters;
 import java.util.ArrayList;
 
 public class Villains {
-	private static ArrayList<Villain> villains = new ArrayList<Villain>();
+	private ArrayList<Villain> villains = new ArrayList<Villain>();
 	private Villain schoolBully1 = new Villain("Tony the Primary School bully", Types.level_1, Abilities.stealLunch, "Haha, you ugly", 10); //Primary School
 	private Villain schoolPricipal2 = new Villain("Gertrude the HighSchool Principal", Types.level_2, Abilities.expel, "You have failed! See you next year", 15); //High School
 	private Villain inLaws3 = new Villain("Richard your Partners Father", Types.level_3, Abilities.judge, "Your not good enough for my child! get out of my lair!!", 25); //Dating School
@@ -29,18 +29,18 @@ public class Villains {
 	/**
 	 * @return the villains
 	 */
-	public static ArrayList<Villain> getVillains() {
+	public ArrayList<Villain> getVillains() {
 		return villains;
 	}
 
 	/**
 	 * @param villains the villains to set
 	 */
-	public static void addVillain(Villain villain) {
+	public void addVillain(Villain villain) {
 		villains.add(villain);
 	}
 	
-	public static void removeVillain(int index) {
+	public void removeVillain(int index) {
 		villains.remove(index);
 	}
 	
