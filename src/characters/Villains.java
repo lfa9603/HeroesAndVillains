@@ -53,6 +53,10 @@ public class Villains {
 		return villainsList;
 		
 	}
+
+	public Villain getCurrentVillain(int currentIndex) {
+		return villains.get(currentIndex);
+	}
 	
 //	public static void main(String[] args) {
 //		int worldSize = 6;

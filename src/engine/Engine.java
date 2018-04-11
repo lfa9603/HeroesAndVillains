@@ -4,19 +4,25 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import characters.HeroesSquad;
+import characters.TeamBuilder;
 import characters.Villains;
 import city.City;
 import city.WorldBuilder;
 
 public class Engine {
 
-	private Villains villains;	
-	private HeroesSquad squad;
+	protected static Villains villains;	
+	protected TeamBuilder builtTeam;
+	protected HeroesSquad squad;
 	
-	private ArrayList<City> world;
+	protected ArrayList<City> world;
 	City currentCity; 
 	
-	private int currentIndex;
+	protected int currentIndex;
+	
+	public int getCurrentIndex() {
+		return currentIndex;
+	}
 	
 	public Engine() {
 		
@@ -24,8 +30,9 @@ public class Engine {
 		WorldBuilder worldBuilder = new WorldBuilder();
 		world = worldBuilder.getWorld();
 		
-//		squad = new TeamBuilder();//TODO:uncomment when fixed
-		villains = new Villains(world.size());
+		builtTeam = new TeamBuilder();
+		squad = builtTeam.getTeam(); //Gets the squad object from team builder
+		villains = new Villains(world.size()); 
 		choosePartsUsingIndex(currentIndex);
 		
 	}
