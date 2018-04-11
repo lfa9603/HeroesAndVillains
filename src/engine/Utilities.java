@@ -4,7 +4,11 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Utilities {
+import characters.HeroesSquad;
+import characters.Villain;
+import characters.Villains;
+
+public class Utilities extends Engine {
 	
 	public static int getChoice(String message, int setlowerLimit, int setupperLimt) {
 		boolean validInput = false;
@@ -45,6 +49,12 @@ public class Utilities {
 		Random random = new Random();
 		int choice = random.nextInt(upperLimit);
 		return (choice+1);
+	}
+	
+	public void runMinigame() {
+		int currentIndex = this.getCurrentIndex();
+		Villain currentVillain = villains.getCurrentVillain();
+		
 	}
 	
 	
