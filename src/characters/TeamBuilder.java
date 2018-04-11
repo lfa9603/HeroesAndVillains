@@ -122,12 +122,12 @@ public class TeamBuilder {
 				Integer selectedCharacter = userinput_1.nextInt();
 				if (selectedCharacter >= 1 && selectedCharacter <= 6) {
 					switch(selectedCharacter) {
-					case 1: createHero(characterTypesArray[0][0], characterTypesArray[0]); break;
-					case 2: createHero(characterTypesArray[1][0], characterTypesArray[1]); break;
-					case 3: createHero(characterTypesArray[2][0], characterTypesArray[2][1]); break;
-					case 4: createHero(characterTypesArray[3][0], characterTypesArray[3][1]); break;
-					case 5: createHero(characterTypesArray[4][0], characterTypesArray[4][1]); break;
-					case 6: createHero(characterTypesArray[5][0], characterTypesArray[5][1]); break;
+					case 1: createHero(Types.talkkitive, Abilities.charm); break;
+					case 2: createHero(Types.smart, Abilities.mystery); break;
+					case 3: createHero(Types.practical, Abilities.betterOdds); break;
+					case 4: createHero(Types.strong, Abilities.lessDamage); break;
+					case 5: createHero(Types.sly, Abilities.windDraws); break;
+					case 6: createHero(Types.dog, Abilities.goodBoy); break;
 					}
 				}
 					
@@ -168,7 +168,7 @@ public class TeamBuilder {
 		}
 	}
 	
-	private void createHero(Types type, String abilty) {
+	private void createHero(Types type, Abilities abilty) {
 		Scanner userinput_2 = new Scanner(System.in);
 		System.out.println("What will your Hero's name be?");
 		String characterName = userinput_2.nextLine();
