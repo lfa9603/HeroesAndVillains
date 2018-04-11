@@ -18,10 +18,14 @@ public class Engine {
 	protected ArrayList<City> world;
 	City currentCity; 
 	
-	protected int currentIndex;
+	protected static int currentIndex;
 	
-	public int getCurrentIndex() {
+	public static int getCurrentIndex() {
 		return currentIndex;
+	}
+	
+	public static Villains getVillains() {
+		return villains;
 	}
 	
 	public Engine() {

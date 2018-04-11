@@ -4,11 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-import characters.HeroesSquad;
 import characters.Villain;
-import characters.Villains;
+import minigames.MiniGame;
 
-public class Utilities extends Engine {
+public class Utilities {
 	
 	public static int getChoice(String message, int setlowerLimit, int setupperLimt) {
 		boolean validInput = false;
@@ -50,13 +49,5 @@ public class Utilities extends Engine {
 		int choice = random.nextInt(upperLimit);
 		return (choice+1);
 	}
-	
-	public void runMinigame() {
-		int currentIndex = this.getCurrentIndex();
-		Villain currentVillain = villains.getCurrentVillain();
-		
-	}
-	
-	
 
 }
