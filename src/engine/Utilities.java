@@ -46,10 +46,5 @@ public class Utilities {
 		int choice = random.nextInt(upperLimit);
 		return (choice+1);
 	}
-	
-//	public static void main(String[] args) {
-//		int givenchoice = getChoice("Choose a number between 1-10: ", 10, 1);
-//		System.out.println(givenchoice);
-//	}
 
 }

@@ -1,9 +1,10 @@
 package characters;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 import city.City;
-
+import collectables.CollectableID;
 import collectables.Inventory;
 import collectables.Money;
 import collectables.heroesMap.HeroesMap;
@@ -26,6 +27,9 @@ public class HeroesSquad {
 
 	private Inventory backPack;
 	private Money wallet;
+	
+	private Point currentPosition;
+	
 
 	public HeroesSquad() {
 		haveMap = false;
@@ -104,6 +108,11 @@ public class HeroesSquad {
 	 */
 	public void setHaveMap(boolean haveMap) {
 		this.haveMap = haveMap;
+		if (haveMap) {
+			HeroesMap map = new HeroesMap(CollectableID.HeroesMap);
+			map.setCity(currentCity);
+			heroesMap = map;
+		}
 	}
 	
 	/**
@@ -165,6 +174,24 @@ public class HeroesSquad {
 		this.backPack = backPack;
 	}
 	
+	/**
+	 * @return the currentPosition
+	 */
+	public Point getCurrentPosition() {
+		return currentPosition;
+	}
+
+
+
+	/**
+	 * @param currentPosition the currentPosition to set
+	 */
+	public void setCurrentPosition(Point currentPosition) {
+		this.currentPosition = currentPosition;
+	}
+	
+	
+	
 	public String heroStatus(Hero hero) {
 		if (hero.isAlive() == true) {
 			return "Alive";
@@ -213,6 +240,7 @@ public class HeroesSquad {
 	}
 
 
+	
 
 	/**
 	 * @param allDead the allDead to set
