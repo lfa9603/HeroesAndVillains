@@ -56,7 +56,9 @@ public class SquadMover {
 				Building building = city.returnBuildingAtSpecificCoordinates(squad.getCurrentPosition());
 				
 				ifEncounteringABuilding(building, squad, askToEnter);
-				//Here or after interact I should probably check if I need to terminate the main while loop in SquadMover
+				if (Engine.getCurrentVillain().isBeaten()) {
+					inCity = false;
+				}
 				
 			} catch (InputMismatchException e) {
 				System.out.println("Please press w, a, s or d");

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import characters.HeroesSquad;
 import characters.TeamBuilder;
+import characters.Villain;
 import characters.Villains;
 import city.City;
 import city.WorldBuilder;
@@ -28,6 +29,10 @@ public class Engine {
 		return villains;
 	}
 	
+	public static Villain getCurrentVillain() {
+		return villains.getCurrentVillain(currentIndex);
+	}
+	
 	public Engine() {
 		
 		currentIndex = 0;
@@ -48,8 +53,8 @@ public class Engine {
 	public void start() {
 //		HeroesSquad squad = new TeamBuilder();
 		
-		WorldBuilder worldBuilder = new WorldBuilder();
-		ArrayList<City> world = worldBuilder.getWorld();
+//		WorldBuilder worldBuilder = new WorldBuilder();
+//		ArrayList<City> world = worldBuilder.getWorld();
 		villains = new Villains(world.size());
 		
 		boolean playingGame = true;
@@ -68,8 +73,6 @@ public class Engine {
 				
 				playingGame = false;
 			}
-			
-			
 		}
 		
 	}
@@ -87,6 +90,11 @@ public class Engine {
 		squad.setCurrentPosition(new Point(0, 0));
 		squad.setCurrentCity(currentCity);
 		
+	}
+	
+	public static void main(String[] args) {
+		Engine engine = new Engine();
+		engine.start();
 	}
 	
 }

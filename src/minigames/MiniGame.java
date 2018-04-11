@@ -34,6 +34,7 @@ public class MiniGame {
 		
 		if (villain.isBeaten() == true) {
 			System.out.println("CONGRADULATIONS!!! you Won!!");
+			
 		}
 		
 		else {
