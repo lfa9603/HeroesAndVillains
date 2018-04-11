@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Villains {
 	private static ArrayList<Villain> villains = new ArrayList<Villain>();
-	private Villain schoolBully1 = new Villain("Tony the Primary School bully", Types.level_1, "Steal Lunch", "Haha, you ugly", 10); //Primary School
-	private Villain schoolPricipal2 = new Villain("Gertrude the HighSchool Principal", Types.level_2, "Expel", "You have failed! See you next year", 15); //High School
-	private Villain inLaws3 = new Villain("Richard your Partners Father", Types.level_3, "Judge", "Your not good enough for my child! get out of my lair!!", 25); //Dating School
-	private Villain Partner4 = new Villain("Alex your Partner ", Types.level_4, "Bad day", "You dont appreciate me enough!", 25); //married
-	private Villain docter5 = new Villain("Page your docter ", Types.level_5, "Diagnose Cancer", "I'm so sorry...", 25); //midLife
-	private Villain Boss6 = new Villain("Sam your Manager", Types.Boss, "Arrogance", "Hahah I'm ALWAYs right!", 25); //Work life
+	private Villain schoolBully1 = new Villain("Tony the Primary School bully", Types.level_1, Abilities.stealLunch, "Haha, you ugly", 10); //Primary School
+	private Villain schoolPricipal2 = new Villain("Gertrude the HighSchool Principal", Types.level_2, Abilities.expel, "You have failed! See you next year", 15); //High School
+	private Villain inLaws3 = new Villain("Richard your Partners Father", Types.level_3, Abilities.judge, "Your not good enough for my child! get out of my lair!!", 25); //Dating School
+	private Villain Partner4 = new Villain("Alex your Partner ", Types.level_4, Abilities.badDay, "You dont appreciate me enough!", 25); //married
+	private Villain docter5 = new Villain("Page your docter ", Types.level_5, Abilities.cancer, "I'm so sorry...", 25); //midLife
+	private Villain Boss6 = new Villain("Sam your Manager", Types.Boss, Abilities.arrogance, "Hahah I'm ALWAYs right!", 25); //Work life
 
 	
 
