@@ -98,7 +98,7 @@ public class TeamBuilder {
 				if (createTeam.equals("N") || createTeam.equals("n")) {
 					run = false;
 					System.out.println("Thanks for Playing!");
-					input.close();
+//					input.close();
 				}
 				
 				else {
@@ -157,8 +157,8 @@ public class TeamBuilder {
 					if (confirmation.equals("Y") || confirmation.equals("y")) {
 						run = false;
 						System.out.println("Congradulations Your team is ready!");
-						userinput_1.close();
-						userinput_3.close();
+//						userinput_1.close();
+//						userinput_3.close();
 					}
 					else {
 						System.out.println("invalid input, please answer Y/N or y/n");

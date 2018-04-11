@@ -23,7 +23,7 @@ public class WorldBuilder {
 				integerTyped = input.nextInt();
 				if (integerTyped >= 3 && integerTyped <= 6) {
 					stillAsking = false;
-					input.close();
+//					input.close();
 				} else {
 					System.out.println("Invalid integer, please type a value betwen (and including) 3 and 6");
 				}
