@@ -7,14 +7,14 @@ public class TeamBuilder {
 	private HeroesSquad Team;
 	private String finalteamName;
 	
-	private static String characterTypes = "1. Talkitive : Makes  \n"
-			+ "2. Smart : ability2 \n"
-			+ "3. Practical : ability3 \n"
-			+ "4. Strong : ability4 \n"
-			+ "5. Sly : ability5 \n"
-			+ "6. Dog : Is a good boy (Makes everyone smile)";
+	private static String characterTypes = "1. Talkitive : Has the ability to Charm people (Gets 25% better prices at shops) \n"
+			+ "2. Smart : Mystery Ability, which could help or hinder your team (Minigame dependant) \n"
+			+ "3. Practical : Gets better odds at rock, paper Scissors \n"
+			+ "4. Strong : Takes 25% less damage \n"
+			+ "5. Sly : Wins all match draws unless the Villain has this abilty \n"
+			+ "6. Dog : Is a good boy (Grants all team member extra 25HP Max Health)";
 	
-	private String characterTypesArray[] = {"ability1", "ability2", "ability3", "ability4", "ability5", "ability6"};
+//	private String characterTypesArray[] = {"ability1", "ability2", "ability3", "ability4", "ability5", "ability6"};
 	
 	public HeroesSquad getTeam() {
 		return Team;
@@ -122,12 +122,12 @@ public class TeamBuilder {
 				Integer selectedCharacter = userinput_1.nextInt();
 				if (selectedCharacter >= 1 && selectedCharacter <= 6) {
 					switch(selectedCharacter) {
-					case 1: createHero(characterTypesArray[0][0], characterTypesArray[0]); break;
-					case 2: createHero(characterTypesArray[1][0], characterTypesArray[1]); break;
-					case 3: createHero(characterTypesArray[2][0], characterTypesArray[2][1]); break;
-					case 4: createHero(characterTypesArray[3][0], characterTypesArray[3][1]); break;
-					case 5: createHero(characterTypesArray[4][0], characterTypesArray[4][1]); break;
-					case 6: createHero(characterTypesArray[5][0], characterTypesArray[5][1]); break;
+					case 1: createHero(Types.talkkitive, Abilities.charm); break;
+					case 2: createHero(Types.smart, Abilities.mystery); break;
+					case 3: createHero(Types.practical, Abilities.betterOdds); break;
+					case 4: createHero(Types.strong, Abilities.lessDamage); break;
+					case 5: createHero(Types.sly, Abilities.windDraws); break;
+					case 6: createHero(Types.dog, Abilities.goodBoy); break;
 					}
 				}
 					
@@ -168,7 +168,7 @@ public class TeamBuilder {
 		}
 	}
 	
-	private void createHero(Types type, String abilty) {
+	private void createHero(Types type, Abilities abilty) {
 		Scanner userinput_2 = new Scanner(System.in);
 		System.out.println("What will your Hero's name be?");
 		String characterName = userinput_2.nextLine();

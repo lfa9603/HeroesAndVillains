@@ -10,7 +10,7 @@ public abstract class Character {
 	
 	private String characterName;
 	private Types characterType;
-	private String characterAbility;
+	private Abilities characterAbility;
 	private int maxHealth = 100;
 	private int health = 100;
 	private boolean alive = true;
@@ -21,7 +21,7 @@ public abstract class Character {
 	 * @param name
 	 * @param specialAbility
 	 */
-	public Character(String name, Types type, String specialAbility) {
+	public Character(String name, Types type, Abilities specialAbility) {
 		characterName = name;
 		characterType = type;
 		characterAbility = specialAbility;
@@ -60,7 +60,7 @@ public abstract class Character {
 	/**
 	 * @return characterAbility
 	 */
-	public String getCharacterAbility() {
+	public Abilities getCharacterAbility() {
 		return characterAbility;
 	}
 
@@ -68,7 +68,7 @@ public abstract class Character {
 	 * @param characterAbility 
 	 * characterAbility setter
 	 */
-	public void setCharacterAbility(String characterAbility) {
+	public void setCharacterAbility(Abilities characterAbility) {
 		this.characterAbility = characterAbility;
 	}
 	
