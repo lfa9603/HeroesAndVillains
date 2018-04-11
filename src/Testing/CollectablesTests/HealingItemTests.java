@@ -7,6 +7,7 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import characters.Hero;
+import characters.Types;
 import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
 
@@ -26,7 +27,7 @@ class HealingItemTests {
 	 */
 	@Test
 	void testStartHealing() {
-		Hero hero = new Hero("Lorenzo", "Cool Dude", "Ciao");
+		Hero hero = new Hero("Lorenzo", Types.level_1, "Ciao");
 		hero.setHealth(20);
 		HealingItem healingPotion = new HealingItem(CollectableID.GoodHealingItem);
 		healingPotion.apply(hero);
@@ -65,7 +66,7 @@ class HealingItemTests {
 		
 		
 		//Requirement 3
-		Hero heroTwo = new Hero("Lorenzo", "Cool Dude", "Ciao");
+		Hero heroTwo = new Hero("Lorenzo", Types.level_1, "Ciao");
 		hero.setHealth(20);
 		HealingItem healingPotionTwo = new HealingItem(CollectableID.BetterHealingItem);
 		healingPotionTwo.apply(hero);
@@ -82,7 +83,7 @@ class HealingItemTests {
 		assertNotEquals(20, heroTwo.getHealth());	
 		
 		//Requirement 4
-		Hero heroThree = new Hero("Lorenzo1", "Cool Dude", "Ciao");
+		Hero heroThree = new Hero("Lorenzo1", Types.level_1, "Ciao");
 		hero.setHealth(99);
 		HealingItem potionThree = (new HealingItem(CollectableID.BestHealingItem));
 		potionThree.apply(heroThree);

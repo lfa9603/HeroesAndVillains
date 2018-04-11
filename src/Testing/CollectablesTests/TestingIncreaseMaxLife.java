@@ -7,6 +7,7 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import characters.Hero;
+import characters.Types;
 import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
 import collectables.powerUp.IncreaseMaxLife;
@@ -15,7 +16,7 @@ class TestingIncreaseMaxLife {
 
 	@Test
 	void testApplyPowerUp() {
-		Hero hero = new Hero("Lorenzo", "Ciao", "Ciao");
+		Hero hero = new Hero("Lorenzo", Types.level_1, "Ciao");
 		IncreaseMaxLife increaseMaxLife = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
 		increaseMaxLife.apply(hero);
 		

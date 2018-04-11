@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import characters.Hero;
 import characters.HeroesSquad;
-
+import characters.Types;
 import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.InventoryTools;
@@ -127,7 +127,7 @@ public class Hospital extends Building {
 	public static void main(String[] args) {
 		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
 		HeroesSquad heroes = new HeroesSquad();
-		heroes.addHero(new Hero("Lorenzo", "C", "C"));
+		heroes.addHero(new Hero("Lorenzo", Types.level_1, "C"));
 
 		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 		hospital.interact(heroes);

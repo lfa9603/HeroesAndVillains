@@ -14,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import characters.Hero;
+import characters.Types;
 
 class HeroTest {
 
@@ -35,21 +36,21 @@ class HeroTest {
 
 	@Test
 	void testToString() {
-		Hero lorenzo = new Hero("Lorenzo", "SuperCool", "fire");
+		Hero lorenzo = new Hero("Lorenzo", Types.level_1, "fire");
 		String toString = lorenzo.toString();
 		assertEquals("Hero named: Lorenzo\nHealth: 100\nSpecial ability: fire", toString);
 	}
 
 	@Test
 	void testGetCharacterName() {
-		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
+		Hero lorenzo = new Hero("Lorenzo",Types.level_1, "fire");
 		String toString = lorenzo.getCharacterName();
 		assertEquals("Lorenzo", toString);
 	}
 
 	@Test
 	void testSetCharacterName() {
-		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
+		Hero lorenzo = new Hero("Lorenzo",Types.level_1, "fire");
 		lorenzo.setCharacterName("Lorenzo_edited");
 		String toString = lorenzo.getCharacterName();
 		assertEquals("Lorenzo_edited", toString);
@@ -64,7 +65,7 @@ class HeroTest {
 
 	@Test
 	void testSetCharacterAbility() {
-		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
+		Hero lorenzo = new Hero("Lorenzo",Types.level_1, "fire");
 		lorenzo.setCharacterAbility("fire_edited");
 		String toString = lorenzo.getCharacterAbility();
 		assertEquals("fire_edited", toString);
@@ -72,14 +73,14 @@ class HeroTest {
 
 	@Test
 	void testGetHealth() {
-		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
+		Hero lorenzo = new Hero("Lorenzo",Types.level_1, "fire");
 		int lorenzoHealth = lorenzo.getHealth();
 		assertEquals(100, lorenzoHealth);
 	}
 
 	@Test
 	void testSetHealth() {
-		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
+		Hero lorenzo = new Hero("Lorenzo",Types.level_1, "fire");
 		lorenzo.setHealth(80);
 		int lorenzoHealth = lorenzo.getHealth();
 		assertEquals(80, lorenzoHealth);
@@ -87,7 +88,7 @@ class HeroTest {
 	
 	@Test
 	void testIsAlive() {
-		Hero lorenzo = new Hero("Lorenzo","Super Cool", "fire");
+		Hero lorenzo = new Hero("Lorenzo",Types.level_1, "fire");
 		boolean lorenzoAlive = lorenzo.isAlive();
 		assertTrue(lorenzoAlive);
 		lorenzo.setisAlive(false);

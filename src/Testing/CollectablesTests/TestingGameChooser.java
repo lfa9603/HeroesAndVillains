@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import characters.Hero;
+import characters.Types;
 import collectables.CollectableID;
 import collectables.powerUp.GameChooser;
 
@@ -12,7 +13,7 @@ class TestingGameChooser {
 
 	@Test
 	void testingApplyPowerUp() {
-		Hero hero = new Hero("Lorenzo", "Cool as", "Ciao");
+		Hero hero = new Hero("Lorenzo", Types.level_1, "Ciao");
 		GameChooser gameChooser = new GameChooser(CollectableID.GameChooser);
 		gameChooser.apply(hero);
 		assertTrue(hero.getIsGameChooser());

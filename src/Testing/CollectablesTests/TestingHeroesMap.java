@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import characters.Hero;
 import characters.HeroesSquad;
-
+import characters.Types;
 import collectables.CollectableID;
 import collectables.heroesMap.HeroesMap;
 
@@ -18,7 +18,7 @@ class TestingHeroesMap {
 		HeroesMap heroesMap = new HeroesMap(CollectableID.HeroesMap);
 		
 		HeroesSquad heroesSquad = new HeroesSquad();
-		heroesSquad.addHero(new Hero("Lorenzo", "c", "c"));
+		heroesSquad.addHero(new Hero("Lorenzo", Types.level_1, "c"));
 		
 		heroesMap.apply(heroesSquad);
 		

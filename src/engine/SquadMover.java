@@ -14,6 +14,8 @@ public class SquadMover {
 
 	private City city;
 	private HeroesSquad squad;
+	private boolean inCity = true;
+
 	
 	public SquadMover(City currentCity, HeroesSquad heroesSquad) {
 		squad = heroesSquad;
@@ -23,7 +25,7 @@ public class SquadMover {
 	public void startMoving() {
 		squad.setCurrentPosition(new Point(0, 0));
 		
-		boolean inCity = true;
+//		boolean inCity = true;
 		Scanner moveInput = new Scanner(System.in);
 		Scanner askToEnter = new Scanner(System.in);
 
@@ -54,6 +56,7 @@ public class SquadMover {
 				Building building = city.returnBuildingAtSpecificCoordinates(squad.getCurrentPosition());
 				
 				ifEncounteringABuilding(building, squad, askToEnter);
+				//Here or after interact I should probably check if I need to terminate the main while loop in SquadMover
 				
 			} catch (InputMismatchException e) {
 				System.out.println("Please press w, a, s or d");

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import characters.Hero;
 import characters.HeroesSquad;
+import characters.Types;
 
 class HeroSquadTests {
 
@@ -31,9 +32,9 @@ class HeroSquadTests {
 
 	@Test
 	void testAddHero() {
-		Hero hero1 = new Hero("hero1", "Be cool", "specialAbility_1");
-		Hero hero2 = new Hero("hero2", "Have some swag", "specialAbility_2");
-		Hero hero3 = new Hero("hero3","Be the man", "specialAbility_3");
+		Hero hero1 = new Hero("hero1", Types.level_1, "specialAbility_1");
+		Hero hero2 = new Hero("hero2", Types.level_1, "specialAbility_2");
+		Hero hero3 = new Hero("hero3",Types.level_1, "specialAbility_3");
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero1);
 		testsquad.addHero(hero1);
@@ -47,9 +48,9 @@ class HeroSquadTests {
 	
 	@Test
 	void TestToString() {
-		Hero hero1 = new Hero("hero1", "Be cool", "specialAbility_1");
-		Hero hero2 = new Hero("hero2", "Have some swag", "specialAbility_2");
-		Hero hero3 = new Hero("hero3","Be the man", "specialAbility_3");
+		Hero hero1 = new Hero("hero1", Types.level_1, "specialAbility_1");
+		Hero hero2 = new Hero("hero2", Types.level_1, "specialAbility_2");
+		Hero hero3 = new Hero("hero3",Types.level_1, "specialAbility_3");
 		HeroesSquad testsquadOne = new HeroesSquad();
 		testsquadOne.addHero(hero1);
 		testsquadOne.addHero(hero1);
