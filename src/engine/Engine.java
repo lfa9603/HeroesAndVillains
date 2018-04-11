@@ -55,7 +55,12 @@ public class Engine {
 		
 //		WorldBuilder worldBuilder = new WorldBuilder();
 //		ArrayList<City> world = worldBuilder.getWorld();
+		
+		
 		villains = new Villains(world.size());
+		// for random tests
+		getCurrentVillain().setBeaten(true);
+		
 		
 		boolean playingGame = true;
 		
@@ -94,7 +99,11 @@ public class Engine {
 	
 	public static void main(String[] args) {
 		Engine engine = new Engine();
+		// for random tests
 		engine.start();
+		
+		
+		
 	}
 	
 }

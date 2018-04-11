@@ -28,6 +28,11 @@ public class SquadMover {
 //		boolean inCity = true;
 		Scanner moveInput = new Scanner(System.in);
 		Scanner askToEnter = new Scanner(System.in);
+		
+		VisualUtilities.getIcon(Icons.bar);
+		System.out.println("Welcome to level: " + Engine.getCurrentIndex());
+		System.out.println("Press w, a, s or d then enter to move your Team.");
+		VisualUtilities.getIcon(Icons.bar);
 
 		while (inCity) {
 			try {
@@ -58,6 +63,9 @@ public class SquadMover {
 				ifEncounteringABuilding(building, squad, askToEnter);
 				if (Engine.getCurrentVillain().isBeaten()) {
 					inCity = false;
+					VisualUtilities.getIcon(Icons.bar);
+					System.out.println("Moving to the Next Level");
+					VisualUtilities.getIcon(Icons.bar);
 				}
 				
 			} catch (InputMismatchException e) {
