@@ -1,7 +1,8 @@
 package engine;
 
 public class VisualUtilities {
-	private static String thumbsUp = "\n";
+	private static String thumbsUp = "\n"
+			+ "";
 	
 	private static String youWin = "\n"
 			+ "_________                                     __        .__          __  .__                                                                 ._._._.\r\n" + 
