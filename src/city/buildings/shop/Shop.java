@@ -64,8 +64,8 @@ public class Shop extends Building{
 					break;
 				
 				case 3:
-					input.close();
-					confirmation.close();
+//					input.close();
+//					confirmation.close();
 					inShop = false;
 					System.out.println("Come back soon!");
 					break;
@@ -234,13 +234,13 @@ public class Shop extends Building{
 	}
 
 	
-	public static void main(String[] args) {
-		HeroesSquad heroesSquad = new HeroesSquad();
-		heroesSquad.addHero(new Hero("Lorenzo", "C","c"));
-		heroesSquad.setWallet(new Money(1000000));
-		Shop shop = new Shop("Shop", TypeBuildings.Shop, new Merchandise());
-		shop.interact(heroesSquad);
-	}
+//	public static void main(String[] args) {
+//		HeroesSquad heroesSquad = new HeroesSquad();
+//		heroesSquad.addHero(new Hero("Lorenzo", "C","c"));
+//		heroesSquad.setWallet(new Money(1000000));
+//		Shop shop = new Shop("Shop", TypeBuildings.Shop, new Merchandise());
+//		shop.interact(heroesSquad);
+//	}
 
 	
 	

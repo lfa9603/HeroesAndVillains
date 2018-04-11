@@ -60,7 +60,7 @@ public class PowerUpDen extends Building {
 					 		break;
 					 	case 3:
 					 		System.out.println("\n\nSee ya later alligator!!!\n\n");
-					 		input.close();
+//					 		input.close();
 					 		inPowerUpDen = false;
 					 		continue;
 					 	default:
@@ -91,7 +91,7 @@ public class PowerUpDen extends Building {
 				}
 			} else {
 				noPowerUps(input);
-				input.close();
+//				input.close();
 				inPowerUpDen = false;
 			}
 		}
@@ -111,7 +111,7 @@ public class PowerUpDen extends Building {
 				Integer exiting = input.nextInt();
 				if (exiting.equals(0)) {
 					deciding = false;
-					input.close();
+//					input.close();
 					System.out.println("Come back later, maybe after a visit to the shop!!");
 				} 
 			} catch (InputMismatchException e) {

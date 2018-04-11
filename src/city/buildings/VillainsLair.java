@@ -10,7 +10,5 @@ public class VillainsLair extends Building {
 
 	@Override
 	public void interact(HeroesSquad heroesSquad) {
-		// TODO Auto-generated method stub
-		
 	}
 }

@@ -38,7 +38,7 @@ public class Home extends Building {
 					showHeroesStatus(heroesSquad);
 					break;
 				case 2:
-					input.close();
+//					input.close();
 					atHome = false;
 					System.out.println("Come back soon");
 					break;
@@ -77,15 +77,15 @@ public class Home extends Building {
 
 
 	
-	public static void main(String[] args) {
-		HeroesSquad heros = new HeroesSquad();
-		heros.addHero(new Hero("Lorenzo", "c", "C"));
-		heros.setCurrentCity(new City());
-		heros.setHaveMap(true);
-		Home home = new Home("Home", TypeBuildings.Home);
-		home.interact(heros);
-	
-	}
+//	public static void main(String[] args) {
+//		HeroesSquad heros = new HeroesSquad();
+//		heros.addHero(new Hero("Lorenzo", "c", "C"));
+//		heros.setCurrentCity(new City());
+//		heros.setHaveMap(true);
+//		Home home = new Home("Home", TypeBuildings.Home);
+//		home.interact(heros);
+//	
+//	}
 
 
 }
