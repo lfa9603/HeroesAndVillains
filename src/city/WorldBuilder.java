@@ -55,4 +55,8 @@ public class WorldBuilder {
 		return world;
 	}
 	
+	public int getSize() {
+		return world.size();
+	}
+	
 }
