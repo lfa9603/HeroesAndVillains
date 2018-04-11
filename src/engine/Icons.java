@@ -1,6 +1,6 @@
 package engine;
 
 public enum Icons {
-	bar;
+	bar, thumbsUp, youWin;
 
 }

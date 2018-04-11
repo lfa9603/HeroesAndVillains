@@ -74,6 +74,9 @@ public class Engine {
 		
 				for (int i = 0; i < 100; i++) {
 					System.out.println("MMMMMMMAAAAAAAAAAAAATEEEEEEEEEEEEEEEEE! YOU WON THE GAME!");
+					System.out.println("\n");
+					VisualUtilities.getIcon(Icons.youWin);
+					
 				}
 				
 				playingGame = false;
@@ -98,6 +101,7 @@ public class Engine {
 	}
 	
 	public static void main(String[] args) {
+//		VisualUtilities.getIcon(Icons.youWin); Just a test of icons
 		Engine engine = new Engine();
 		// for random tests
 		engine.start();
