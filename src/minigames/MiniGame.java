@@ -7,7 +7,9 @@ import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
 import characters.Villain;
+import engine.Icons;
 import engine.Utilities;
+import sun.print.resources.serviceui;
 
 public class MiniGame {
 	private Hero hero;
@@ -27,7 +29,10 @@ public class MiniGame {
 		squad = theSquad;
 		selectedGame = selectedMiniGame;
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
+			System.out.println("The Game will be " + getGame(selectedMiniGame));
+			System.out.println(Icons.bar);
 			selectHero();
+			System.out.println(Icons.bar);
 			runBattle(selectedGame, hero, villain);
 			selectedMiniGame = selectNewGame(3);
 		}
@@ -43,6 +48,17 @@ public class MiniGame {
 		
 	}
 	
+	private String getGame(int selectedMiniGame) {
+		String result = "";
+		switch (selectedMiniGame) {
+		case 1: result = "Paper, Scissors, Rock"; break;
+		case 2: result = "Guess the Number out of Ten"; break;
+		case 3: result = "Dice Wars"; break;
+		}
+		
+		return result;
+	}
+
 	private int selectNewGame(int upperLimit) {
 		selectedGame = Utilities.getRandInt(upperLimit);
 		return selectedGame;		
