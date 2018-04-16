@@ -24,7 +24,7 @@ public class CharacterAbiltyEffects {
 
 	private static void noEffect() {
 		VisualUtilities.getIcon(Icons.bar);
-		System.out.println("You Characters abilty has no effect in this minigame.");
+		System.out.println("Your Characters abilty has no effect in this minigame.");
 		VisualUtilities.getIcon(Icons.bar);
 	}
 
