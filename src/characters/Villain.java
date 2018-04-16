@@ -23,7 +23,8 @@ public class Villain extends Character{
 	}
 
 	public String getVillainTaunt() {
-		return villainTaunt;
+		String tauntString = getCharacterName() + "say's" + getVillainTaunt(); 
+		return tauntString;
 	}
 
 	public void setVillainTaunt(String villainTaunt) {
