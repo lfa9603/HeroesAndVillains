@@ -18,8 +18,11 @@ import engine.Utilities;
 
 public class Hospital extends Building {
 
+	private HealingWard healingWard;
+	
 	public Hospital(String name, TypeBuildings buildType) {
 		super(name, buildType);
+		healingWard = new HealingWard();
 	}
 
 	@Override
@@ -27,6 +30,8 @@ public class Hospital extends Building {
 
 		boolean atHospital = true;
 		while (atHospital) {
+			
+			System.out.println(healingWard.toString());
 			
 			ArrayList<Collectable> healingItems = InventoryTools.healingItems(heroesSquad);
 			
@@ -79,6 +84,7 @@ public class Hospital extends Building {
 							Hero hero = heroesSquad.getHero(choice - 1);	 	
 							healingItem.apply(hero);
 							heroesSquad.getBackPack().removeItemFromInventory(healingItem);
+							healingWard.addPatientAndUpdateHealingTime(healingItem, hero);
 						}
 					} else {
 						System.out.println("MATE! I TOLD YA NOT TO BE CHEECKY! YOU AIN'T GOT NONE OF THAT!");

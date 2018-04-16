@@ -6,7 +6,6 @@ import java.util.Map;
 
 import characters.Abilities;
 import characters.Hero;
-import characters.HeroesSquad;
 import characters.Types;
 import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
@@ -60,6 +59,7 @@ public class HealingWard {
 			Iterator<Map.Entry<Hero, Integer>> entries = patientsAndHealingTime.entrySet().iterator();
 			String string = new String();
 			string += "\n" + VisualUtilities.getIcon(Icons.bar) + "\n";
+			string += "HEALING WARD\n";
 			
 			while (entries.hasNext()) {
 			    Map.Entry<Hero, Integer> entry = entries.next();
@@ -81,8 +81,8 @@ public class HealingWard {
 	
 	
 	public static void main(String[] args) {
-		Hero hero1 = new Hero("Ciao", Types.level_2, Abilities.windDraws);
-		Hero hero2 = new Hero("Bye", Types.level_2, Abilities.windDraws);
+		Hero hero1 = new Hero("Ciao", Types.level_2, Abilities.arrogance);
+		Hero hero2 = new Hero("Bye", Types.level_2, Abilities.badDay);
 		hero1.setHealth(20);
 		hero2.setHealth(30);
 		HealingWard hw = new HealingWard();
