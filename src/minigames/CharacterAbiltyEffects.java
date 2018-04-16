@@ -10,24 +10,7 @@ import engine.VisualUtilities;
 public class CharacterAbiltyEffects {
 	
 	public static void getAbiltyEffects(Abilities abilty, Hero hero, Villain villain, int villainsChoice, int selectedGame) {
-		
-//		switch (selectedGame) {
-//		case 1: 
-//			switch (abilty) {
-//			case mystery: mysteryAbilty(villainsChoice); break;
-//			case betterOdds: betterOddsAbilty(villainsChoice); break;
-//			
-//			} ; break;
-//		case 2: 
-//			switch (abilty) {
-//			
-//			} ; break;
-//		
-//		case 3: 
-//			switch (abilty) {
-//			
-//			} ; break;
-		
+				
 		switch (abilty) {
 		case charm: noEffect(); break;
 		case mystery: mysteryAbilty(villain, villainsChoice, selectedGame); break;
@@ -87,7 +70,7 @@ public class CharacterAbiltyEffects {
 			System.out.println("You Hero is Big and Strong, They will protect your team, everyone "
 					+ "will take 25% less damage, from now on.");
 			int oldDamage = villain.getVillainDamage();
-			int newDamge = (int) (oldDamage * 0.75);
+			int newDamge = (int) (oldDamage * 0.70);
 			villain.setVillainDamage(newDamge);
 			villain.setDamageModified(true);
 		}
