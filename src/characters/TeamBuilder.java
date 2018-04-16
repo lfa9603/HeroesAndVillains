@@ -126,7 +126,7 @@ public class TeamBuilder {
 					case 2: createHero(Types.smart, Abilities.mystery); break;
 					case 3: createHero(Types.practical, Abilities.betterOdds); break;
 					case 4: createHero(Types.strong, Abilities.lessDamage); break;
-					case 5: createHero(Types.sly, Abilities.windDraws); break;
+					case 5: createHero(Types.sly, Abilities.winDraws); break;
 					case 6: createHero(Types.dog, Abilities.goodBoy); break;
 					}
 				}

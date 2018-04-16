@@ -15,7 +15,7 @@ public class MiniGame {
 	private Hero hero;
 	private HeroesSquad squad;
 	private Villain villain;
-	private int selectedGame;
+	private int selectedGame; 
 	
 	public int getNewMiniGame() {
 		Random random = new Random();
@@ -31,8 +31,11 @@ public class MiniGame {
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
 			System.out.println("The Game will be " + getGame(selectedMiniGame));
 			System.out.println(Icons.bar);
+			
 			selectHero();
+			
 			System.out.println(Icons.bar);
+			
 			runBattle(selectedGame, hero, villain);
 			selectedMiniGame = selectNewGame(3);
 		}
@@ -166,7 +169,12 @@ public class MiniGame {
 				heroWins();
 			}
 			else {
-				herolosses();
+				if (roll == villainRoll) {
+					battleDraw();
+				}
+				else {
+					herolosses();
+				}
 			}
 		}
 		
@@ -194,7 +202,20 @@ public class MiniGame {
 	}
 	
 	public void battleDraw() {
-		System.out.println("Its a Draw! No Damage dealt.");
+		System.out.println("Its a Draw!");
+		if (villain.getCharacterType() != Types.Boss && hero.getCharacterType() == Types.sly) {
+			System.out.println("Who dares Wins! Your Character is Sly, and you managed to WIN this draw.");
+			heroWins();
+		}
+		else {
+			if (villain.getCharacterType() == Types.Boss) {
+				System.out.println("Your Boss is NEVER wrong, they win this Draw!");
+				herolosses();
+			}
+			else {
+				System.out.println("No damage done");
+			}
+		}
 	}
 	
 	public void heroWins() {
