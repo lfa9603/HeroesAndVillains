@@ -11,10 +11,10 @@ import city.City;
 import city.CoordinatesTool;
 import city.WorldBuilder;
 import city.buildings.Building;
-import city.buildings.Hospital;
 import city.buildings.PowerUpDen;
 import city.buildings.TypeBuildings;
 import city.buildings.VillainsLair;
+import city.buildings.hospital.Hospital;
 import city.buildings.shop.Merchandise;
 import city.buildings.shop.Shop;
 

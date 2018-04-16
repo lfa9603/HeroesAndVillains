@@ -30,7 +30,7 @@ public class SquadMover {
 		Scanner askToEnter = new Scanner(System.in);
 		
 		VisualUtilities.getIcon(Icons.bar);
-		System.out.println("Welcome to level: " + Engine.getCurrentIndex());
+		System.out.println("Welcome to level: " + (Engine.getCurrentIndex() + 1));
 		System.out.println("Press w, a, s or d then enter to move your Team.");
 		VisualUtilities.getIcon(Icons.bar);
 
@@ -41,23 +41,29 @@ public class SquadMover {
 				Point squadPosition = squad.getCurrentPosition();
 				int xValue = squadPosition.x;
 				int yValue = squadPosition.y;
+				Point currentPosition = null;
 				switch (keyPressed) {
 					case ("w"):
-						squad.setCurrentPosition(new Point(xValue, yValue + 1));
+						currentPosition = new Point(xValue, yValue + 1);
 						break;
 					case ("a"):
-						squad.setCurrentPosition(new Point(xValue - 1, yValue));
+						currentPosition = new Point(xValue - 1, yValue);
 						break;
 					case ("s"):
-						squad.setCurrentPosition(new Point(xValue, yValue - 1));
+						currentPosition = new Point(xValue, yValue - 1);
 						break;
 					case ("d"):
-						squad.setCurrentPosition(new Point(xValue + 1, yValue));
+						currentPosition = new Point(xValue + 1, yValue);
 						break;
 					default:
 					extracted();	
 				}
-				System.out.println("The heroes are in potion: " + squad.getCurrentPosition());
+				if (currentPosition != null && outOfMap(currentPosition)) {
+					System.out.println("Ehy Ehy Ehy!! You almost fell out of the map!");
+				} else {
+					squad.setCurrentPosition(currentPosition);
+				}
+				System.out.println("The heroes are in position: " + squad.getCurrentPosition());
 				Building building = city.returnBuildingAtSpecificCoordinates(squad.getCurrentPosition());
 				
 				ifEncounteringABuilding(building, squad, askToEnter);
@@ -79,6 +85,12 @@ public class SquadMover {
 //		askToEnter.close();
 	}
 	
+	private boolean outOfMap(Point point) {
+		if (point.x > 4 || point.x < -4 || point.y > 4 || point.y < -4) {
+			return true;
+		}
+		return false;
+	}
 	
 	
 	private void ifEncounteringABuilding(Building building, HeroesSquad squad, Scanner askToEnter) {
@@ -89,6 +101,7 @@ public class SquadMover {
 				System.out.println("You are now close to the " + building.getBuildingName() 
 				+ ".\nDo you want to enter the building?");
 				if (building.getBuildingType().equals(TypeBuildings.VillainsLair)) {
+					System.out.println("\n" + Engine.getCurrentVillain() + " lives here/n");
 					System.out.println("THIS IS AN EXTREMELY DANGEROUS ZONE! CHOOSE CAREFULLY!");
 				}
 				System.out.println("[Y/N]");
@@ -151,15 +164,15 @@ public class SquadMover {
 	
 	
 	
-	public static void main(String[] args) {
-		HeroesSquad squad = new HeroesSquad();
-		squad.setHaveMap(true);
-		squad.setWallet(new Money(180));
-		City city = new City();
-		squad.setCurrentCity(city);
-		SquadMover mover = new SquadMover(city, squad);
-		mover.startMoving();
-		
-	}
+//	public static void main(String[] args) {
+//		HeroesSquad squad = new HeroesSquad();
+//		squad.setHaveMap(true);
+//		squad.setWallet(new Money(180));
+//		City city = new City();
+//		squad.setCurrentCity(city);
+//		SquadMover mover = new SquadMover(city, squad);
+//		mover.startMoving();
+//		
+//	}
 	
 }

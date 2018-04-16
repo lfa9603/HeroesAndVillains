@@ -1,4 +1,4 @@
-package city.buildings;
+package city.buildings.hospital;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -7,6 +7,8 @@ import java.util.Scanner;
 import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
+import city.buildings.Building;
+import city.buildings.TypeBuildings;
 import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.InventoryTools;

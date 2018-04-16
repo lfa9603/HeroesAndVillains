@@ -59,7 +59,7 @@ public class Engine {
 		
 		villains = new Villains(world.size());
 		// for random tests
-		getCurrentVillain().setBeaten(true);
+//		getCurrentVillain().setBeaten(true);
 		
 		
 		boolean playingGame = true;

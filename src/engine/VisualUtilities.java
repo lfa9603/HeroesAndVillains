@@ -16,14 +16,14 @@ public class VisualUtilities {
 	/**
 	 * @return the bar
 	 */
-	public static void getIcon(Icons icon) {
+	public static String getIcon(Icons icon) {
 		switch (icon) {
-		case bar: System.out.println("=========================================================="); break;
-		case youWin: System.out.println(youWin); break;
+		case bar:  return ("==========================================================");
+		case youWin: return (youWin);
 		case thumbsUp:
-			break;
+			return "";
 		default:
-			break;
+			return "";
 		}
 	}
 
