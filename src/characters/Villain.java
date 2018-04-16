@@ -8,6 +8,7 @@ public class Villain extends Character{
 	private int timesBeaten;
 	private String villainTaunt;
 	private int villainDamage;
+	private boolean damageModified = false;
 	
 	
 	/**
@@ -22,9 +23,8 @@ public class Villain extends Character{
 		setVillainDamage(damage);
 	}
 
-	public String getVillainTaunt() {
-		String tauntString = getCharacterName() + "say's" + getVillainTaunt(); 
-		return tauntString;
+	public String getVillainTaunt() { 
+		return villainTaunt;
 	}
 
 	public void setVillainTaunt(String villainTaunt) {
@@ -32,7 +32,7 @@ public class Villain extends Character{
 	}
 	
 	public String sayTaunt() {
-		return getCharacterName() + " taunts the Hero, He says " + getVillainTaunt();
+		return getCharacterName() + " taunts you, He says " + getVillainTaunt();
 	}
 	
 	public int getVillainsChoice(int upperLimit) {
@@ -63,6 +63,20 @@ public class Villain extends Character{
 	 */
 	public void setVillainDamage(int villainDamage) {
 		this.villainDamage = villainDamage;
+	}
+
+	/**
+	 * @return the damageModified
+	 */
+	public boolean isDamageModified() {
+		return damageModified;
+	}
+
+	/**
+	 * @param damageModified the damageModified to set
+	 */
+	public void setDamageModified(boolean damageModified) {
+		this.damageModified = damageModified;
 	}
 
 	/**

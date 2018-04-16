@@ -5,6 +5,7 @@ import characters.Hero;
 import characters.Villain;
 import engine.Icons;
 import engine.Utilities;
+import engine.VisualUtilities;
 
 public class CharacterAbiltyEffects {
 	
@@ -39,16 +40,27 @@ public class CharacterAbiltyEffects {
 	}
 
 	private static void noEffect() {
-		System.out.println(Icons.bar);
+		VisualUtilities.getIcon(Icons.bar);
 		System.out.println("You Characters abilty has no effect in this minigame.");
-		System.out.println(Icons.bar);
+		VisualUtilities.getIcon(Icons.bar);
 	}
 
 	public static void betterOddsAbilty(int villainsChoice, int selectedGame) {
 		if (selectedGame == 1) {
+			
 			int randInt = Utilities.getRandInt(3);
+			
+			while (randInt == villainsChoice) {
+				randInt = Utilities.getRandInt(3);
+			}
 			if (randInt != villainsChoice) {
-				System.out.println("Your Hero's practical intuition tells you that, the villain has not chosen " + getRPS(villainsChoice));
+				int balencer = Utilities.getRandInt(10);
+				if (balencer <= 1) {
+					System.out.println("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(villainsChoice));
+				}
+				else {
+					System.out.println("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(randInt));
+				}	
 			}
 		}
 		else {
@@ -68,15 +80,22 @@ public class CharacterAbiltyEffects {
 	}
 	
 	private static void lessDamageAbilty(Villain villain) {
-		System.out.println("You Hero is Big and Strong, They will protect your team, everyone "
-				+ "will take 25% less damage, from now on.");
-		int oldDamage = villain.getVillainDamage();
-		int newDamge = (int) (oldDamage * 0.25);
-		villain.setVillainDamage(newDamge);
+		if (villain.isDamageModified()) {
+			noEffect();
+		}
+		else {
+			System.out.println("You Hero is Big and Strong, They will protect your team, everyone "
+					+ "will take 25% less damage, from now on.");
+			int oldDamage = villain.getVillainDamage();
+			int newDamge = (int) (oldDamage * 0.75);
+			villain.setVillainDamage(newDamge);
+			villain.setDamageModified(true);
+		}
+		
 	}
 	
 	private static void winDrawsAbilty() {
-		System.out.println("Your Hero is a Sly Character, the will make sure that if it a draw, they will win.");
+		System.out.println("Your Hero is a Sly Character, they will make sure that if it is a draw, they will win.");
 	}
 	
 	private static void mysteryAbilty(Villain villain, int villainsChoice, int selectedGame) {
@@ -84,28 +103,30 @@ public class CharacterAbiltyEffects {
 			int firstGuess = Utilities.getRandInt(10);
 			int secondGuess = Utilities.getRandInt(10); 
 			
+			VisualUtilities.getIcon(Icons.bar);
 			System.out.println("Your Character is smart, thanks to his understanding of multi-Variable Calculas, he knows: ");
 			if (firstGuess >= villainsChoice) {
-				System.out.println("That villain has chosen a number below " + firstGuess + "\n");
+				System.out.println("That " + villain.getCharacterName() + " has chosen a number below or equal to " + firstGuess);
 			}
 			else {
-				System.out.println("That villain has chosen a number above " + firstGuess + "\n");
+				System.out.println("That " + villain.getCharacterName() + " has chosen a number above " + firstGuess);
 			}
 			
 			System.out.println("and");
 			
 			if (secondGuess >= villainsChoice) {
-				System.out.println("That villain has chosen a number below " + secondGuess + "\n");
+				System.out.println("That " + villain.getCharacterName() + " has chosen a number below or equal to " + secondGuess);
 			}
 			else {
-				System.out.println("That villain has chosen a number above " + secondGuess + "\n");
+				System.out.println("That " + villain.getCharacterName() + " has chosen a number above " + secondGuess);
 			}
+			VisualUtilities.getIcon(Icons.bar);
 		}
 		
 		else {
-			System.out.println("Your Hero is out of his element, " + villain.getCharacterName() + "see's this...");
+			System.out.println("Your Hero is out of his element, " + villain.getCharacterName() + " see's this...");
 			//TODO add use villains abilty to this.
-			System.out.println("the villain uses his abilty");
+			System.out.println(villain.getCharacterName() + " uses his abilty " + villain.getCharacterAbility());
 			villain.getVillainTaunt();
 		}
 	}

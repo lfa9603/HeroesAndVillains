@@ -9,6 +9,7 @@ import characters.Types;
 import characters.Villain;
 import engine.Icons;
 import engine.Utilities;
+import engine.VisualUtilities;
 import sun.print.resources.serviceui;
 
 public class MiniGame {
@@ -29,12 +30,13 @@ public class MiniGame {
 		squad = theSquad;
 		selectedGame = selectedMiniGame;
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
+			VisualUtilities.getIcon(Icons.bar);
 			System.out.println("The Game will be " + getGame(selectedMiniGame));
-			System.out.println(Icons.bar);
+			VisualUtilities.getIcon(Icons.bar);
 			
 			selectHero();
 			
-			System.out.println(Icons.bar);
+			VisualUtilities.getIcon(Icons.bar);
 			
 			runBattle(selectedGame, hero, villain);
 			selectedMiniGame = selectNewGame(3);
@@ -93,8 +95,14 @@ public class MiniGame {
 		System.out.println("You are playing Rock, Paper, Sissors!");
 		System.out.println("The rules are: TODO add rules");
 		System.out.println(choices);
-		int choice = Utilities.getChoice("Choose a number between 1-3 to select Rock, Paper or Scissors respectivly", 1, 3);
+		
+		VisualUtilities.getIcon(Icons.bar);		
 		int villainChoice = villain.getVillainsChoice(3);
+		CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, villainChoice, 1);
+		VisualUtilities.getIcon(Icons.bar);
+		
+		int choice = Utilities.getChoice("Choose a number between 1-3 to select Rock, Paper or Scissors respectivly", 1, 3);
+		
 		switch(choice) {
 		
 		case 1: System.out.println(youChoose + rock); 
@@ -131,6 +139,8 @@ public class MiniGame {
 				+ "The Villain has chosen a number. \n");
 		int villainChoice = villain.getVillainsChoice(10);
 		
+		CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, villainChoice, 2);
+		
 		while (heroTrys < 2) {
 			int choice = Utilities.getChoice("Choose a number between 1-10 you have two chances to get it right", 1, 10);
 			if (choice == villainChoice) {
@@ -158,13 +168,14 @@ public class MiniGame {
 	private void diceWars(Hero hero, Villain villain) {
 		System.out.println("You are playing Dice Wars! \n"
 				+ "TODO Add rules \n"
-				+ "whoever rolls the highest number on the dice wins. The villain will win on a draw");
+				+ "whoever rolls the highest number on the dice wins.");
 		int rollDice = Utilities.getChoice("Press 1 to roll the dice", 1, 1);
 		if (rollDice == 1) {
 			int roll = Utilities.getRandInt(6);
 			System.out.println("You roll a " + roll);
 			int villainRoll = villain.getVillainsChoice(6);
 			System.out.println(villain.getCharacterName() + " rolls a " + villainRoll);
+			CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, villainRoll, 3);
 			if (roll > villainRoll) {
 				heroWins();
 			}
@@ -183,9 +194,11 @@ public class MiniGame {
 	public void selectHero() {
 		
 		String avaliableHeros = squad.toString();
-		System.out.println(avaliableHeros + "\n");
+		System.out.println(avaliableHeros);
 		
+		VisualUtilities.getIcon(Icons.bar);
 		System.out.println("Please select a Hero to fight with:");
+		VisualUtilities.getIcon(Icons.bar);
 		int choice = Utilities.getChoice("Please Choose a number between 1 and 3 to select your hero: ", 1, 3);		
 		Hero possiblechoice = squad.getHero((choice-1));
 		if (possiblechoice.isAlive() == true) {
@@ -204,7 +217,7 @@ public class MiniGame {
 	public void battleDraw() {
 		System.out.println("Its a Draw!");
 		if (villain.getCharacterType() != Types.Boss && hero.getCharacterType() == Types.sly) {
-			System.out.println("Who dares Wins! Your Character is Sly, and you managed to WIN this draw.");
+			System.out.println("Who dares Wins! Your Character is Sly, and you managed to cheat your way through this draw.");
 			heroWins();
 		}
 		else {
@@ -243,7 +256,7 @@ public class MiniGame {
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero2);
 		testsquad.addHero(hero3);
-		testsquad.addHero(hero5);
+		testsquad.addHero(hero4);
 //		hero1.setisAlive(false);
 //		hero2.setisAlive(false);
 //		hero3.setisAlive(false);
@@ -252,7 +265,7 @@ public class MiniGame {
 		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.arrogance, "Ciao bella dona ;p", 10);
 //		testVillain.setBeaten(true);
 		
-		MiniGame game = new MiniGame(testVillain, testsquad, 3);
+		MiniGame game = new MiniGame(testVillain, testsquad, 1);
 		
 	}
 	

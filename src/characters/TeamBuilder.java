@@ -122,7 +122,7 @@ public class TeamBuilder {
 				Integer selectedCharacter = userinput_1.nextInt();
 				if (selectedCharacter >= 1 && selectedCharacter <= 6) {
 					switch(selectedCharacter) {
-					case 1: createHero(Types.talkkitive, Abilities.charm); break;
+					case 1: createHero(Types.talkitive, Abilities.charm); break;
 					case 2: createHero(Types.smart, Abilities.mystery); break;
 					case 3: createHero(Types.practical, Abilities.betterOdds); break;
 					case 4: createHero(Types.strong, Abilities.lessDamage); break;
