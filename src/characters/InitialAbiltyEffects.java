@@ -1,11 +1,13 @@
 package characters;
 
+import java.util.ArrayList;
+
 import engine.Icons;
 import engine.VisualUtilities;
 
-public class intialAbiltyEffects {
+public class InitialAbiltyEffects {
 	
-	public static void getHeroSquadAbilties(HeroesSquad squad) {
+	public static void applyHeroSquadAbilties(ArrayList<Hero> squad) {
 		for (Hero hero: squad) {
 			Abilities abilty = hero.getCharacterAbility();
 			getAbiltiesEffects(abilty, hero);
@@ -33,6 +35,7 @@ public class intialAbiltyEffects {
 	private static void goodBoyAbilty(Abilities abilty, Hero hero) {
 		int newMaxHealth = hero.getMaxHealth() + 25;
 		hero.setMaxHealth(newMaxHealth);
+		System.out.println(hero.getCharacterName() + "'s goodboy abilty has been applied, all teammates have an extra 25HP.");
 		
 	}
 

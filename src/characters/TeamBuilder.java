@@ -67,9 +67,6 @@ public class TeamBuilder {
 							Team = new HeroesSquad();
 							Team.setTeamName(teamName);
 							finalteamName = Team.getTeamName();
-//							input.close();
-//							newinput.close();
-//							secondNewinput.close();
 							run = false;
 							System.out.println("Congrads your Team: " + finalteamName + " has been created. \n");
 						}
@@ -98,7 +95,6 @@ public class TeamBuilder {
 				if (createTeam.equals("N") || createTeam.equals("n")) {
 					run = false;
 					System.out.println("Thanks for Playing!");
-//					input.close();
 				}
 				
 				else {
@@ -157,8 +153,9 @@ public class TeamBuilder {
 					if (confirmation.equals("Y") || confirmation.equals("y")) {
 						run = false;
 						System.out.println("Congradulations Your team is ready!");
-//						userinput_1.close();
-//						userinput_3.close();
+						System.out.println("The initial abilties will be applied if you have them in your squad.");
+						InitialAbiltyEffects.applyHeroSquadAbilties(Team.getHeroSquad());
+						
 					}
 					else {
 						System.out.println("invalid input, please answer Y/N or y/n");
@@ -178,14 +175,8 @@ public class TeamBuilder {
 		
 		System.out.println("Current Team: " + Team.toString());
 		
-//		userinput_2.close();
-		
 	}
 	
-//	public String toString() {
-//		return team.to;
-//		
-//	}
 	
 	
 	public static void main(String[] args) {
