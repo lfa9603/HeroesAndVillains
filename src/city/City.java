@@ -24,18 +24,19 @@ public class City {
 	private PowerUpDen powerUpDen = new PowerUpDen("Power Up Den", TypeBuildings.PowerUpDen);
 	
 	/**
-	 * The ArrayList that stores all the 5 buildings of each City
+	 * The ArrayList that will store all the 5 buildings of each City
 	 */
 	private ArrayList<Building> cityBuildings;
 	
 	 
 	/**
 	 * The constructor for City.java:
-	 * 	- setUpBuildingsCoordinates() : assigns the Point (0, 0) to the Home object and
-	 * 	  then it assigns a distinct random coordinate from the coordinates pool to the remaining objects.
-	 *	  Uses CoordinatesTool to achieve this.
-	 *	- cityBuilidngs is instantiated using setUpCityBuildings() which adds all 5 properties to cityBuildings,
-	 *	  cityBuildings has always size 5 and all the Building objects stored in it have different TypeBuildings type.		 
+	 * 	setUpBuildingsCoordinates() : assigns the Point (0, 0) to the Home object and
+	 * 	then it assigns a distinct random coordinate from the coordinates pool to the remaining objects.
+	 *	Uses CoordinatesTool to achieve this.
+	 *
+	 *	cityBuilidngs is instantiated using setUpCityBuildings() which adds all 5 properties to cityBuildings,
+	 *	cityBuildings has always size 5 and all the Building objects stored in it have different TypeBuildings type.		 
 	 */
 	public City() {
 		setUpBuildingsCoordinates();
@@ -60,6 +61,8 @@ public class City {
 	
 	/**
 	 * Helper function for constructor City()
+	 * It adds one instance for each TypeBuilidngs type to @param listBuildngs.
+	 * @return @param cityBuilidngs now modified to an ArrayList of Building objects of length 5.
 	 */
 	private ArrayList<Building> setUpCityBuildings() {
 		
@@ -77,13 +80,23 @@ public class City {
 	
 	/**
 	 * getter for cityBuildings
-	 * @return the cityBuildings
+	 * @return cityBuildings
 	 */
 	public ArrayList<Building> getCityBuildings() {
 		return cityBuildings;
 	}
 	
 	
+	/**
+	 * 
+	 * This is achieved by checking the @param listBuilidngs Building objects and checking if 
+	 * any of the building builidngCoordinates matches with @param setCoordinates. 
+	 * 
+	 * @param setCoordinates a awt.Point object.
+	 * @return the building object present at the given setOfCoordinates
+
+	 * 
+	 */
 	public Building returnBuildingAtSpecificCoordinates(Point setCoordinates) {
 		
 		Building building = null;
@@ -96,6 +109,10 @@ public class City {
 		
 	}
 	
+	/**
+	 * Overridden toString() method.
+	 * @return mapOfCity a String object that prints each Building object String() showing each individual building name and set of coordinates. 
+	 */
 	public String toString() {
 		String mapOfCity = new String();
 		for (Building building : cityBuildings) {

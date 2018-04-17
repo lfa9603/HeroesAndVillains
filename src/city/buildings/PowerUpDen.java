@@ -15,14 +15,36 @@ import collectables.powerUp.IncreaseMaxLife;
 import collectables.powerUp.PowerUp;
 import engine.Utilities;
 
+/**
+ * 
+ * @author LorenzoFasano
+ *PowerUpDen class extends Building, its TypeBuildings type is PowerUpDen and its builidngCoordinates 
+ *are always a random value among (4, 0),(-4, 0)(0, 4) or (0, -4) (this last step happens in WorldBuilder class).
+ *The method interact is implemented such that it allows the user to use the PowerUp items bought in the Shop.
+ *If the team does not own a selected item, it will tell the player that the item is not available to be used.
+ */
 public class PowerUpDen extends Building {
 	
 
+	/**
+	 * 
+	 * @param name
+	 * @param buildType
+	 */
 	public PowerUpDen(String name, TypeBuildings buildType) {
 		super(name, buildType);
 	}
 
-	@Override
+	
+	/**
+	 * Method to implement. It gives the user to see the quantity of each power up the team has in their backpack, 
+	 * if no item of a type is owned by the team the quantity displayed is 0.
+	 * Once a power up is selected, also the hero to apply the power-up on will be selected. If the team owns at 
+	 * least one item of the selected type, the hero wallet will be checked, if the team does not have enough money the transaction will fail, 
+	 * if the team has enough money the item will be applied to the selected hero and 1 quantity of the selected power-up will be removed by the team's backpack.
+	 * 
+	 * The helper method @noPowerUps(...) is used for maintenance and readability purposes.
+	 */
 	public void interact(HeroesSquad heroesSquad) {
 		
 		boolean inPowerUpDen = true;
@@ -97,11 +119,20 @@ public class PowerUpDen extends Building {
 		}
 		
 	}
-	
+	/**
+	 * Method required by Eclipse to follow good coding practice.
+	 *TODO: find out why this must be done.
+	 */
 	private void extracted() {
 		throw new InputMismatchException();
 	}
 
+	/**
+	 * 
+	 * @param input
+	 * Helper for interact() method, it deals with the case the team has no power-up in their backpack.
+	 * If called it suggest the team to visit the Shop.
+	 */
 	private void noPowerUps(Scanner input) {
 		boolean deciding = true;
 		while (deciding) {
@@ -113,7 +144,9 @@ public class PowerUpDen extends Building {
 					deciding = false;
 //					input.close();
 					System.out.println("Come back later, maybe after a visit to the shop!!");
-				} 
+				} else {
+					throw new InputMismatchException();
+				}
 			} catch (InputMismatchException e) {
 					System.out.println("Please press 0, to exit.");
 			} finally {
