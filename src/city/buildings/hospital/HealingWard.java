@@ -14,16 +14,38 @@ import engine.VisualUtilities;
 /**
  * 
  *@author Lorenzo
- * 
+ * HealingWard is treated as a sector of the Hospital, this class helps show the status of each Hero object after applying a HealingItem. 
+ * This is achieved starting a timer that keeps track of the Hero health and of the remaining time before the HealingItem effect has completed on the Hero.
+ * In order to keep the process smooth, the use of a very basic multi-threading programming implementation was chosen.  
  */
 public class HealingWard {
 
+	/**
+	 * 
+	 * This property contains the Hero objects that are under HealingItem cure (key) 
+	 * and an integer that corresponds to the HP the Hero will recover during time (value),
+	 * from this value is easily possible to compute the time remaining to the Hero to complete the healing process. 
+	 * 
+	 */
 	private HashMap<Hero, Integer> patientsAndHealingTime;
+	
 	
 	public HealingWard() {
 		patientsAndHealingTime = new HashMap<Hero, Integer>();
 	}
 	
+	/**
+	 * 
+	 * @param healingItem (HealingItem object)
+	 * @param hero (Hero object)
+	 * 
+	 * This method checks the current Hero currentHealth with respect to its maxHealth if the HealingItem HPRecoverable 
+	 * is lower or equal to the difference between maxHealth and currentHealth then the hero will recover all the HealingItem recoverable HP, 
+	 * otherwise it recovers just enough to gain maxHealth.
+	 *  
+	 * Once the Hero is added to @param patientsAndHealingTime the helper method @startCountDownAndTimeUpdate(...) 
+	 * is started on a different thread to keep regularly updating the Integer value related to each Hero key to reflect the missing time to full HealingItem effect.
+	 */
 	public void addPatientAndUpdateHealingTime(HealingItem healingItem, Hero hero) {
 		Integer heroMissingHP = hero.getMaxHealth() - hero.getHealth();
 		if (heroMissingHP < healingItem.getRecoverableHP()) {
@@ -34,13 +56,22 @@ public class HealingWard {
 		}
 		new Thread( new Runnable() {
 			public void run() {
-				startCountDownAndTimeUpdate(healingItem, hero);
+				startCountDownAndTimeUpdate(hero);
 			}
 		}).start();
 	}
 	
 	
-	private void startCountDownAndTimeUpdate(HealingItem healingItem, Hero hero) {
+	/**
+	 * 
+	 * @param hero (Hero object)
+	 * 
+	 * This method is used to keep updating the value of the passed @param hero in the HashMap object patientsAndHealingTime.
+	 * This is done regularly with a period of 3600 ms. Once the Integer value corresponding to the Hero object key is equal to 0,
+	 * the entry is automatically removed from patientsAndHealingTime.
+	 * 
+	 */
+	private void startCountDownAndTimeUpdate(Hero hero) {
 		Integer currentRecoveryTime = patientsAndHealingTime.get(hero);
 
 		while (hero.getHealth() < hero.getMaxHealth() && currentRecoveryTime > 0) {
@@ -58,6 +89,10 @@ public class HealingWard {
 		patientsAndHealingTime.remove(hero);
 	}
 	
+	/**
+	 * Overridden toString() method.
+	 * @return The Hero objects names in patientsAndHealingTime and the corresponding Integer value converted to seconds.
+	 */
 	public String toString() {
 		if (!patientsAndHealingTime.isEmpty()) {
 			Iterator<Map.Entry<Hero, Integer>> entries = patientsAndHealingTime.entrySet().iterator();
