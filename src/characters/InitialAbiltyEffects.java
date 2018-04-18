@@ -2,6 +2,7 @@ package characters;
 
 import java.util.ArrayList;
 
+import engine.Engine;
 import engine.Icons;
 import engine.VisualUtilities;
 
@@ -17,7 +18,7 @@ public class InitialAbiltyEffects {
 	
 	public static void getAbiltiesEffects(Abilities abilty, Hero hero) {
 		switch (abilty) {
-		case charm: charmAbilty(abilty, hero); break;
+		case charm: charmAbilty(hero); break;
 		case mystery: noEffect(hero.getCharacterName()); break;
 		case betterOdds: noEffect(hero.getCharacterName()); break;
 		case lessDamage: noEffect(hero.getCharacterName()); break;
@@ -27,9 +28,9 @@ public class InitialAbiltyEffects {
 		}
 	}
 
-	private static void charmAbilty(Abilities abilty, Hero hero) {
-		// TODO Auto-generated method stub
-		
+	private static void charmAbilty(Hero hero) {
+		Engine.setHasTalkitive(true);
+		System.out.println(hero.getCharacterName() + "'s abilty has been applied, shop prices will be 30% cheaper.");
 	}
 	
 	private static void goodBoyAbilty(Abilities abilty, Hero hero) {

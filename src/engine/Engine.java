@@ -15,6 +15,7 @@ public class Engine {
 	protected static Villains villains;	
 	protected TeamBuilder builtTeam;
 	protected HeroesSquad squad;
+	private static boolean hasTalkitive = false;
 	
 	protected ArrayList<City> world;
 	City currentCity; 
@@ -100,6 +101,20 @@ public class Engine {
 		
 	}
 	
+	/**
+	 * @return the hasTalkitive
+	 */
+	public boolean getHasTalkitive() {
+		return hasTalkitive;
+	}
+
+	/**
+	 * @param hasTalkitive the hasTalkitive to set
+	 */
+	public static void setHasTalkitive(boolean hasaTalkitive) {
+		hasTalkitive = hasaTalkitive;
+	}
+
 	public static void main(String[] args) {
 //		VisualUtilities.getIcon(Icons.youWin); Just a test of icons
 		Engine engine = new Engine();
