@@ -16,14 +16,14 @@ public class InitialAbiltyEffects {
 		
 	}
 	
-	public static void getAbiltiesEffects(Abilities abilty, Hero hero) {
+	public static void getAbiltiesEffects(Abilities abilty, ArrayList<Hero> squad, Hero hero) {
 		switch (abilty) {
 		case charm: charmAbilty(hero); break;
 		case mystery: noEffect(hero.getCharacterName()); break;
 		case betterOdds: noEffect(hero.getCharacterName()); break;
 		case lessDamage: noEffect(hero.getCharacterName()); break;
 		case winDraws: noEffect(hero.getCharacterName()); break;
-		case goodBoy: goodBoyAbilty(abilty, hero); break;
+		case goodBoy: goodBoyAbilty(abilty, squad, hero); break;
 		default: noEffect(hero.getCharacterName()); break;
 		}
 	}
@@ -33,13 +33,16 @@ public class InitialAbiltyEffects {
 		System.out.println(hero.getCharacterName() + "'s abilty has been applied, shop prices will be 30% cheaper.");
 	}
 	
-	private static void goodBoyAbilty(Abilities abilty, Hero hero) {
-		int newMaxHealth = hero.getMaxHealth() + 25;
+	private static void goodBoyAbilty(Abilities abilty, ArrayList<Hero> squad, Hero dog) {
+
 		for (Hero hero: squad) {
+			int newMaxHealth = hero.getMaxHealth() + 25;
+			int newHealth = hero.getHealth() + 25;
 			hero.setMaxHealth(newMaxHealth);
+			hero.setHealth(newHealth);
 		}
 		
-		System.out.println(hero.getCharacterName() + "'s goodboy abilty has been applied, all teammates have an extra 25HP.");
+		System.out.println(dog.getCharacterName() + "'s goodboy abilty has been applied, all teammates have an extra 25HP.");
 		
 	}
 
