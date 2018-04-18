@@ -91,23 +91,23 @@ public class Inventory {
 	}
 		
 	
-	public static void main(String[] args) {
-		Inventory inventory = new Inventory();
-		inventory.addItemToInventory(new HealingItem(CollectableID.GoodHealingItem));
+//	public static void main(String[] args) {
+//		Inventory inventory = new Inventory();
+//		inventory.addItemToInventory(new HealingItem(CollectableID.GoodHealingItem));
+////		System.out.println(inventory);
+////		System.out.println("-------------------------------------------");
+//		inventory.addItemToInventory(new HealingItem(CollectableID.BetterHealingItem));
+////		System.out.println(inventory);
+////		System.out.println("-------------------------------------------");
+//		inventory.addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
+////		System.out.println(inventory);
+////		System.out.println("-------------------------------------------");
+//		inventory.addItemToInventory(new Armor(CollectableID.Armor));
+//		inventory.addItemToInventory(new GameChooser(CollectableID.GameChooser));
+//		inventory.addItemToInventory(new IncreaseMaxLife(CollectableID.IncreaseMaxLife));
+//		inventory.addItemToInventory(new HeroesMap(CollectableID.HeroesMap));
+//		
 //		System.out.println(inventory);
-//		System.out.println("-------------------------------------------");
-		inventory.addItemToInventory(new HealingItem(CollectableID.BetterHealingItem));
-//		System.out.println(inventory);
-//		System.out.println("-------------------------------------------");
-		inventory.addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
-//		System.out.println(inventory);
-//		System.out.println("-------------------------------------------");
-		inventory.addItemToInventory(new Armor(CollectableID.Armor));
-		inventory.addItemToInventory(new GameChooser(CollectableID.GameChooser));
-		inventory.addItemToInventory(new IncreaseMaxLife(CollectableID.IncreaseMaxLife));
-		inventory.addItemToInventory(new HeroesMap(CollectableID.HeroesMap));
-		
-		System.out.println(inventory);
 		
 		
 //		System.out.println(inventory);
@@ -121,10 +121,10 @@ public class Inventory {
 //		inventory.removeItemFromInventory(new HealingItem(CollectableID.GoodHealingItem));
 //		System.out.println(inventory);
 //		System.out.println("-------------------------------------------");
-		
-		
-	}
-	
+//		
+//		
+//	}
+//	
 	
 	
 	///GETTERS AND SETTERS METHODS

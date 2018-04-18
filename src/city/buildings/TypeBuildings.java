@@ -8,5 +8,9 @@ package city.buildings;
  *Useful also for testing purposes. 
  */
 public enum TypeBuildings {
-	Home, Hospital, PowerUpDen, VillainsLair, Shop
+	Home,         /** The type passed to Home objects */
+	Hospital,     /** The type passed to Hospital objects */
+	PowerUpDen,   /** The type passed to PowerUpDen objects */
+	VillainsLair, /** The type passed to VillainsLair objects */
+	Shop          /** The type passed to Shop objects */
 }

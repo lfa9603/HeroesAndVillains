@@ -37,4 +37,12 @@ public class Money {
 	public void addMoney(int Amount) {
 		amount = amount + Amount;
 	}
+	
+	public int takePercentage(int percentage) {
+		if (0 >= percentage && percentage <= 100) {
+			return (amount * percentage) / 100; 
+		} else {
+			return amount;
+		}
+	}
 }

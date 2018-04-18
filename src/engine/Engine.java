@@ -37,11 +37,13 @@ public class Engine {
 	public Engine() {
 		
 		currentIndex = 0;
-		WorldBuilder worldBuilder = new WorldBuilder();
-		world = worldBuilder.getWorld();
 		
 		builtTeam = new TeamBuilder();
 		squad = builtTeam.getTeam(); //Gets the squad object from team builder
+		
+		WorldBuilder worldBuilder = new WorldBuilder();
+		world = worldBuilder.getWorld();
+		
 		villains = new Villains(world.size()); 
 		choosePartsUsingIndex(currentIndex);
 		
@@ -49,6 +51,7 @@ public class Engine {
 	
 	private void choosePartsUsingIndex(int index) {
 		currentCity = world.get(currentIndex);
+		squad.setCurrentCity(currentCity);
 	}
 	
 	public void start() {
