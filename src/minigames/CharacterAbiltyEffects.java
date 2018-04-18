@@ -2,14 +2,16 @@ package minigames;
 
 import characters.Abilities;
 import characters.Hero;
+import characters.HeroesSquad;
 import characters.Villain;
+import collectables.Money;
 import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
 
 public class CharacterAbiltyEffects {
 	
-	public static void getAbiltyEffects(Abilities abilty, Hero hero, Villain villain, int villainsChoice, int selectedGame) {
+	public static void getAbiltyEffects(Abilities abilty, Hero hero, Villain villain, HeroesSquad squad, int villainsChoice, int selectedGame) {
 				
 		switch (abilty) {
 		case charm: noEffect(); break;
@@ -17,9 +19,23 @@ public class CharacterAbiltyEffects {
 		case betterOdds: betterOddsAbilty(villainsChoice, selectedGame); break;
 		case lessDamage: lessDamageAbilty(villain); break;
 		case winDraws: winDrawsAbilty(); break;
-		case goodBoy: noEffect(); break;
+		case stealLunchMoney: stealLunchMoney(squad, villain); break;
+		case detention: noEffect(); break;
+		case judge: noEffect(); break;
+		case badDay: noEffect(); break;
+		case cancer: noEffect(); break;
+		case arrogance: noEffect(); break;
 		default: noEffect(); break;
 		}
+	}
+
+	private static void stealLunchMoney(HeroesSquad squad, Villain villain) {
+		Money wallet = squad.getWallet();
+		Money cost = new Money(5);
+		wallet.minus(cost);
+		System.out.println("The school bully stole your lunch money!");
+		villain.getVillainTaunt();
+		
 	}
 
 	private static void noEffect() {

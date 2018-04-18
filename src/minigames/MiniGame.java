@@ -97,7 +97,7 @@ public class MiniGame {
 		
 		VisualUtilities.getIcon(Icons.bar);		
 		int villainChoice = villain.getVillainsChoice(3);
-		CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, villainChoice, 1);
+		CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, squad, villainChoice, 1);
 		VisualUtilities.getIcon(Icons.bar);
 		
 		int choice = Utilities.getChoice("Choose a number between 1-3 to select Rock, Paper or Scissors respectivly", 1, 3);
@@ -138,7 +138,7 @@ public class MiniGame {
 				+ "The Villain has chosen a number. \n");
 		int villainChoice = villain.getVillainsChoice(10);
 		
-		CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, villainChoice, 2);
+		CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, squad, villainChoice, 2);
 		
 		while (heroTrys < 2) {
 			int choice = Utilities.getChoice("Choose a number between 1-10 you have two chances to get it right", 1, 10);
@@ -174,7 +174,7 @@ public class MiniGame {
 			System.out.println("You roll a " + roll);
 			int villainRoll = villain.getVillainsChoice(6);
 			System.out.println(villain.getCharacterName() + " rolls a " + villainRoll);
-			CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, villainRoll, 3);
+			CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, squad, villainRoll, 3);
 			if (roll > villainRoll) {
 				heroWins();
 			}
