@@ -104,7 +104,7 @@ public class Engine {
 	/**
 	 * @return the hasTalkitive
 	 */
-	public boolean getHasTalkitive() {
+	public static boolean getHasTalkitive() {
 		return hasTalkitive;
 	}
 
