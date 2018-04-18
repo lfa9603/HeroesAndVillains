@@ -7,7 +7,6 @@ public class Armor extends PowerUp {
 
 	public Armor(CollectableID collectID) {
 		super(collectID);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

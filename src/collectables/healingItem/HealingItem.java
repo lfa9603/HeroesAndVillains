@@ -5,16 +5,14 @@ import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.Money;
 
-public class HealingItem implements Collectable {
+public class HealingItem extends Collectable {
 
-	private Money cost;
 	private int recoverableHP;
-	private CollectableID collectableID;
 	
 	public HealingItem(CollectableID type) {
-		collectableID = type;
-		setCost();
+		super(type);
 		setRecoverableHP();
+		setHealingItemCost();
 	}
 	
 	public int getRecoverableHP() {
@@ -22,7 +20,7 @@ public class HealingItem implements Collectable {
 	}
 
 	private void setRecoverableHP() {
-		switch (collectableID) {
+		switch (getCollectableID()) {
 			case GoodHealingItem:
 				recoverableHP = 25;
 				break;
@@ -38,24 +36,20 @@ public class HealingItem implements Collectable {
 			
 	}
 
-	private void setCost() {
-		switch (collectableID) {
+	private void setHealingItemCost() {
+		switch (getCollectableID()) {
 			case GoodHealingItem:
-				cost = new Money(25);
+				setCost(new Money(25));
 				break;
 			case BetterHealingItem:
-				cost = new Money(50);
+				setCost(new Money(50));
 				break;
 			case BestHealingItem:
-				cost = new Money(75);
+				setCost(new Money(75));
 				break;
 			default: 
 				break;
 		}
-	}
-
-	public Money getCost() {
-		return cost;
 	}
 	
 	
@@ -78,31 +72,11 @@ public class HealingItem implements Collectable {
 		}).start();
 	}
 
-	/**
-	 * @return the collectableID
-	 */
-	public CollectableID getCollectableID() {
-		return collectableID;
-	}
-
-	/**
-	 * @param collectableID the collectableID to set
-	 */
-	public void setCollectableID(CollectableID collectableID) {
-		this.collectableID = collectableID;
-	}
-
-	/**
-	 * @param cost the cost to set
-	 */
-	public void setCost(Money cost) {
-		this.cost = cost;
-	}
 
 	public String toString() {
-		return "Healing item of type: " + collectableID + ".\n"
-				+ "Using this item the hero will recover " + recoverableHP + " HP.\n"
-				+ "The cost of this item is " + cost + " coins.";
+		return "Healing item of type: " + getCollectableID() + ".\n"
+				+ "Using this item the hero will recover " + getRecoverableHP() + " HP.\n"
+				+ "The cost of this item is " + getCost() + " coins.";
 	}
 	
 }

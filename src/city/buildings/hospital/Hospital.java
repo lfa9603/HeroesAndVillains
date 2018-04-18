@@ -6,9 +6,10 @@ import java.util.Scanner;
 
 import characters.Hero;
 import characters.HeroesSquad;
-import characters.Types;
+
 import city.buildings.Building;
 import city.buildings.TypeBuildings;
+
 import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.InventoryTools;

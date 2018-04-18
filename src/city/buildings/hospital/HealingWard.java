@@ -4,14 +4,18 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import characters.Abilities;
 import characters.Hero;
-import characters.Types;
-import collectables.CollectableID;
+
 import collectables.healingItem.HealingItem;
 import engine.Icons;
+
 import engine.VisualUtilities;
 
+/**
+ * 
+ *@author Lorenzo
+ * 
+ */
 public class HealingWard {
 
 	private HashMap<Hero, Integer> patientsAndHealingTime;

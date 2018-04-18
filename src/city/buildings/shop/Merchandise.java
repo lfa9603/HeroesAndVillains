@@ -18,6 +18,7 @@ public class Merchandise {
 	
 	public Merchandise() {
 		addRandomElementsToMerchandise();
+		
 	}
 	
 	public void addRandomElementsToMerchandise() {
@@ -70,7 +71,6 @@ public class Merchandise {
 		inventory.addItemToInventory(new HeroesMap(CollectableID.HeroesMap));
 		System.out.println("Completed addRandomAmountOfEachCollectableToInventory");
 		
-		
 	}
 
 	/**
@@ -87,9 +87,9 @@ public class Merchandise {
 		this.inventory = inventory;
 	}
 	
-	public static void main(String[] args) {
-		Merchandise merchandise = new Merchandise();
-		System.out.println(merchandise.getInventory());
-	}
+//	public static void main(String[] args) {
+//		Merchandise merchandise = new Merchandise();
+//		System.out.println(merchandise.getInventory());
+//	}
 
 }

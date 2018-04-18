@@ -7,49 +7,22 @@ import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.Money;
 
-public class HeroesMap implements Collectable {
+public class HeroesMap extends Collectable {
 
-	private Money cost;
-	private CollectableID collectableID;
 	private City city;
 
 
-	public HeroesMap(CollectableID collectId) {
-		collectableID = collectId;
-		cost = new Money(20);
+	public HeroesMap(CollectableID collectableID) {
+		super(collectableID);
+		setCost(new Money(20));
 	}
 	
-	/**
-	 * @return the currentCity
-	 */
 
-	/**
-	 * @param currentCity the currentCity to set
-	 */
-
-
-	/**
-	 * @param cost the cost to set
-	 */
-	public void setCost(Money cost) {
-		this.cost = cost;
-	}
-	
-	public Money getCost() {
-		return cost;
-	}
 	public void apply(HeroesSquad heroSquad) {
 		heroSquad.setHaveMap(true);
 	}
 
-	public void apply(Hero hero) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public CollectableID getCollectableID() {
-		// TODO Auto-generated method stub
-		return collectableID;
+	public void apply(Hero hero) {		
 	}
 	
 	/**

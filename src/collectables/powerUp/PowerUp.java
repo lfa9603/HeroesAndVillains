@@ -5,55 +5,36 @@ import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.Money;
 
-public abstract class PowerUp implements Collectable {
+public abstract class PowerUp extends Collectable {
 
-	private Money cost;
-	private CollectableID collectableID;
 	
 	
 	
-	public PowerUp(CollectableID collectID) {
-		collectableID = collectID;
+	public PowerUp(CollectableID collectableID) {
+		super(collectableID);
 		setCost();
 	}
 	
 
-	public void setCost() {
-		switch (collectableID) {
+	private void setCost() {
+		switch (getCollectableID()) {
 			case Armor:
-				cost = new Money(30);
+				setCost(new Money(30));
 			case GameChooser:
-				cost = new Money(60);
+				setCost(new Money(60));
 			case IncreaseMaxLife:
-				cost = new Money(90);
+				setCost(new Money(90));
 			default:
 				break;
 		}
 	}
 
-	public Money getCost() {
-		return cost;
-	}
-
-	/**
-	 * @return the collectableID
-	 */
-	public CollectableID getCollectableID() {
-		return collectableID;
-	}
-
-	/**
-	 * @param collectableID the collectableID to set
-	 */
-	public void setCollectableID(CollectableID collectableID) {
-		this.collectableID = collectableID;
-	}
 	
 	public String toString() {
-		String string = new String("Power-up of type: " + collectableID 
-				+ ".\nThe cost of this item is " + cost
+		String string = new String("Power-up of type: " + getCollectableID() 
+				+ ".\nThe cost of this item is " + getCost()
 				+ " coins.\nUsing this item will ");
-		switch (collectableID) {
+		switch (getCollectableID()) {
 			case Armor:
 				string += "add a protective shield to the hero's equipment, this allows "
 						+ "him/her to take one hit without loosing HP.";

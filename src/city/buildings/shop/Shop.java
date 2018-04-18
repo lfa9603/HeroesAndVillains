@@ -39,7 +39,7 @@ public class Shop extends Building{
 			Scanner confirmation = new Scanner(System.in);
 			
 			System.out.println("Current Available items:");
-			System.out.println(merchandise.getInventory());
+			System.out.println(merchandise.getInventory().toString());
 			System.out.println("HEROES WALLET:    " + heroesSquad.getWallet());
 			System.out.println("Type:\n"
 					+ " 0 buy a map\n"
