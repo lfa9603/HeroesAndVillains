@@ -2,11 +2,14 @@ package minigames;
 
 import java.util.Random;
 
+import javax.sound.midi.Soundbank;
+
 import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
 import characters.Villain;
+import collectables.Money;
 import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
@@ -32,6 +35,8 @@ public class MiniGame {
 			VisualUtilities.getIcon(Icons.bar);
 			System.out.println("The Game will be " + getGame(selectedMiniGame));
 			VisualUtilities.getIcon(Icons.bar);
+			villainEffects(givenVillain, theSquad);
+			VisualUtilities.getIcon(Icons.bar);
 			
 			selectHero();
 			
@@ -52,6 +57,18 @@ public class MiniGame {
 		
 	}
 	
+	private void villainEffects(Villain villain, HeroesSquad squad) {
+		int randInt = Utilities.getRandInt(100);
+		if (randInt > 30) {
+			System.out.println(villain.getCharacterName() + "Chose not to use there abilty.");
+		}
+		else {
+			CharacterAbiltyEffects.getVillainAbiltyEffects(villain.getCharacterAbility(), villain, squad);
+		}
+		
+		
+	}
+
 	private String getGame(int selectedMiniGame) {
 		String result = "";
 		switch (selectedMiniGame) {
@@ -260,6 +277,8 @@ public class MiniGame {
 //		hero2.setisAlive(false);
 //		hero3.setisAlive(false);
 		testsquad.checkTeamStatus();
+		Money wallet = testsquad.getWallet();
+		//allet
 		
 		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.arrogance, "Ciao bella dona ;p", 10);
 //		testVillain.setBeaten(true);

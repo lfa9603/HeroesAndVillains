@@ -28,6 +28,18 @@ public class CharacterAbiltyEffects {
 		default: noEffect(); break;
 		}
 	}
+	
+	public static void getVillainAbiltyEffects(Abilities abilty, Villain villain, HeroesSquad squad) {
+		switch (abilty) {
+			case stealLunchMoney: stealLunchMoney(squad, villain); break;
+			case detention: noEffect(); break;
+			case judge: noEffect(); break;
+			case badDay: noEffect(); break;
+			case cancer: noEffect(); break;
+			case arrogance: noEffect(); break;
+			default: noEffect(); break;
+			}
+	}
 
 	private static void stealLunchMoney(HeroesSquad squad, Villain villain) {
 		Money wallet = squad.getWallet();

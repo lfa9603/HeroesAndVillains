@@ -31,5 +31,10 @@ public class Money {
 			System.out.println("Sorry transaction cannot happen");
 			return false;
 		}
+		
+	}
+	
+	public void addMoney(int Amount) {
+		amount = amount + Amount;
 	}
 }
