@@ -16,6 +16,7 @@ import collectables.healingItem.HealingItem;
 
 import engine.Utilities;
 
+
 public class Hospital extends Building {
 
 	private HealingWard healingWard;

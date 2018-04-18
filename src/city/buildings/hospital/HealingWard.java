@@ -80,29 +80,29 @@ public class HealingWard {
 	}
 	
 	
-	public static void main(String[] args) {
-		Hero hero1 = new Hero("Ciao", Types.level_2, Abilities.arrogance);
-		Hero hero2 = new Hero("Bye", Types.level_2, Abilities.badDay);
-		hero1.setHealth(20);
-		hero2.setHealth(30);
-		HealingWard hw = new HealingWard();
-		HealingItem healingItem = new HealingItem(CollectableID.BestHealingItem);
-		healingItem.apply(hero1);
-		healingItem.apply(hero2);
-		hw.addPatientAndUpdateHealingTime(healingItem, hero1);
-		hw.addPatientAndUpdateHealingTime(healingItem, hero2);
-		int i = 1;
-		while (i > 0) {
-			System.out.println(hw.toString());
-			try {
-				Thread.sleep(9000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			i++;
-		}
-	}
+//	public static void main(String[] args) {
+//		Hero hero1 = new Hero("Ciao", Types.level_2, Abilities.arrogance);
+//		Hero hero2 = new Hero("Bye", Types.level_2, Abilities.badDay);
+//		hero1.setHealth(20);
+//		hero2.setHealth(30);
+//		HealingWard hw = new HealingWard();
+//		HealingItem healingItem = new HealingItem(CollectableID.BestHealingItem);
+//		healingItem.apply(hero1);
+//		healingItem.apply(hero2);
+//		hw.addPatientAndUpdateHealingTime(healingItem, hero1);
+//		hw.addPatientAndUpdateHealingTime(healingItem, hero2);
+//		int i = 1;
+//		while (i > 0) {
+//			System.out.println(hw.toString());
+//			try {
+//				Thread.sleep(9000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			i++;
+//		}
+//	}
 	
 	//TODO latch this class to hospital, 
 //	add a private property called healingWard to Hospital and in the constructor 
