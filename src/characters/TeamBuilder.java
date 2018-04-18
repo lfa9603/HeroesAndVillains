@@ -108,6 +108,7 @@ public class TeamBuilder {
 	
 	private void addTeamMembers() {
 		boolean run = true;
+		boolean runInner = true;
 		while (run == true) {
 			System.out.println("Avaliable Heros (A Max of 3 x Heros allowed):");
 			System.out.println(characterTypes + "\n");
@@ -138,32 +139,54 @@ public class TeamBuilder {
 			
 			finally {
 				userinput_1.reset();
-			}	
+			}
 			
-			if (Team.getLength() == 3) {
-				Scanner userinput_3 = new Scanner(System.in);
-				System.out.println("Are you happy with your team? Y/N");
-				String confirmation = userinput_3.next();
-				
-				if (confirmation.equals("N") || confirmation.equals("n")) {
-					System.out.println("Team has been reset.");
-					Team.squadReset();
-				}
-				else {
-					if (confirmation.equals("Y") || confirmation.equals("y")) {
-						run = false;
-						System.out.println("Congradulations Your team is ready!");
-						System.out.println("The initial abilties will be applied if you have them in your squad.");
-						InitialAbiltyEffects.applyHeroSquadAbilties(Team.getHeroSquad());
+			while (runInner == true) {
+				if (Team.getLength() >= 1) {
+					Scanner userinput_3 = new Scanner(System.in);
+					System.out.println("Are you happy with your team? Y/N or (R to reset your team)");
+					String confirmation = userinput_3.next();
+					
+					if (confirmation.equals("R") || confirmation.equals("r")) {
+						System.out.println("Team has been reset.");
+						Team.squadReset();
+						runInner = false;
 						
 					}
 					else {
-						System.out.println("invalid input, please answer Y/N or y/n");
+						if (confirmation.equals("Y") || confirmation.equals("y")) {
+							run = false;
+							runInner = false;
+							System.out.println("Congradulations Your team is ready!");
+							System.out.println("The initial abilties will be applied if you have them in your squad.");
+							InitialAbiltyEffects.applyHeroSquadAbilties(Team.getHeroSquad());
+							
+						}
+						else {
+							if (Team.getLength() == 3) {
+								if (confirmation.equals("N") || confirmation.equals("n")) {
+									System.out.println("You cannot have more than 3 x heros is a team.");
+							}
+							}
+								
+							else {
+								if (confirmation.equals("N") || confirmation.equals("n")) {
+									System.out.println("Please pick another hero.");
+									runInner = false;
+								}
+								else {
+									System.out.println("invalid input, please answer Y/N/R or y/n/r");
+								}
+							}
+				
+							
+						}
 					}
 				}
 			}
+			runInner = true;
 		}
-	}
+		}
 	
 	private void createHero(Types type, Abilities abilty) {
 		Scanner userinput_2 = new Scanner(System.in);
