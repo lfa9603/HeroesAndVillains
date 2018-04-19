@@ -14,7 +14,10 @@ public class MiniGame {
 	private Hero hero;
 	private HeroesSquad squad;
 	private Villain villain;
-	private int selectedGame; 
+	private static int selectedGame; 
+	private static boolean abilitiesAvaliable = true;
+
+
 
 	public MiniGame(Villain givenVillain, HeroesSquad theSquad, int selectedMiniGame) {
 		villain = givenVillain;
@@ -41,6 +44,12 @@ public class MiniGame {
 		
 		if (villain.isBeaten() == true) {
 			System.out.println("CONGRADULATIONS!!! you Won!!");
+			setAbilitiesAvaliable(true);
+			for (Hero hero: squad.getHeroSquad()) {
+				if (hero.isinDetention) {
+					hero.setIsinDetention(false);
+				}
+			}
 			
 		}
 		
@@ -52,7 +61,21 @@ public class MiniGame {
 	
 	private void villainEffects(Villain villain, HeroesSquad squad) {
 		int randInt = Utilities.getRandInt(100);
-		if (randInt > 99) {
+		Types level = villain.getCharacterType();
+		int difficulty = 5;
+		
+		//Sets how often the villains ability will be activated, this will help adjust the games difficulty.
+		switch (level) {
+		case level_1: difficulty = 30; break;
+		case level_2: difficulty = 10; break;
+		case level_3: difficulty = 30; break;
+		case level_4: difficulty = 40; break;
+		case level_5: difficulty = 50; break;
+		case Boss: difficulty = 100; break;
+		default: difficulty = 10; break;
+		}
+		
+		if (randInt > difficulty) {
 			System.out.println(villain.getCharacterName() + "Chose not to use there abilty.");
 		}
 		else {
@@ -255,8 +278,29 @@ public class MiniGame {
 		squad.heroTakesDamage(hero, villain.getVillainDamage());
 	}
 	
+	public int getSelectedGame() {
+		return selectedGame;
+	}
+
+	public static void setSelectedGame(int thisGame) {
+		selectedGame = thisGame;
+	}
 	
-//  For testing
+/**
+	 * @return the abilitiesAvaliable
+	 */
+	public static boolean isAbilitiesAvaliable() {
+		return abilitiesAvaliable;
+	}
+
+	/**
+	 * @param abilitiesAvaliable the abilitiesAvaliable to set
+	 */
+	public static void setAbilitiesAvaliable(boolean abilitiesAvaliable) {
+		MiniGame.abilitiesAvaliable = abilitiesAvaliable;
+	}
+
+	//  For testing
 	public static void main(String[] args) {
 //		TeamBuilder team = new TeamBuilder();
 		Hero hero1 = new Hero("hero1", Types.talkitive, Abilities.charm);
@@ -268,15 +312,15 @@ public class MiniGame {
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero2);
 		testsquad.addHero(hero3);
-		testsquad.addHero(hero4);
-		hero2.setisAlive(false);
-		hero3.setisAlive(false);
+		testsquad.addHero(hero5);
+//		hero2.setisAlive(false);
+//		hero3.setisAlive(false);
 //		hero3.setisAlive(false);
 		testsquad.checkTeamStatus();
 		Money wallet = testsquad.getWallet();
 		
 		
-		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.detention, "Ciao bella dona ;p", 10);
+		Villain testVillain = new Villain("Lorenzo", Types.Boss, Abilities.cancer, "Ciao bella dona ;p", 10);
 //		testVillain.setBeaten(true);
 		testVillain.setTimesBeaten();
 		testVillain.setTimesBeaten();

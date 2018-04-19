@@ -13,15 +13,22 @@ public class CharacterAbiltyEffects {
 	
 	public static void getHeroAbiltyEffects(Hero hero, Villain villain, HeroesSquad squad, int villainsChoice, int selectedGame) {
 		Abilities abilty = hero.getCharacterAbility();
-		
-		switch (abilty) {
-		case charm: noEffect(); break;
-		case mystery: mysteryAbilty(villain, villainsChoice, selectedGame, squad); break;
-		case betterOdds: betterOddsAbilty(villainsChoice, selectedGame); break;
-		case lessDamage: lessDamageAbilty(villain); break;
-		case winDraws: winDrawsAbilty(); break;
-		default: noEffect(); break;
+		boolean abilitiesAvaliable = MiniGame.isAbilitiesAvaliable();
+		if (abilitiesAvaliable) {
+			switch (abilty) {
+			case charm: noEffect(); break;
+			case mystery: mysteryAbilty(villain, villainsChoice, selectedGame, squad); break;
+			case betterOdds: betterOddsAbilty(villainsChoice, selectedGame); break;
+			case lessDamage: lessDamageAbilty(villain); break;
+			case winDraws: winDrawsAbilty(); break;
+			default: noEffect(); break;
+			}
 		}
+		
+		else {
+			System.out.println("No abilities this game.");
+		}
+		
 	}
 	
 	public static void getVillainAbiltyEffects(Villain villain, HeroesSquad squad) {
@@ -29,12 +36,54 @@ public class CharacterAbiltyEffects {
 		switch (abilty) {
 			case stealLunchMoney: stealLunchMoney(squad, villain); break;
 			case detention: detention(squad, villain); break;
-			case judge: noEffect(); break;
-			case badDay: noEffect(); break;
-			case cancer: noEffect(); break;
-			case arrogance: noEffect(); break;
-			//default: noEffect(); break;
+			case judge: judge(villain); break;
+			case badDay: badDay(villain); break;
+			case cancer: cancer(squad, villain); break;
+			case arrogance: arrogance(); break;
+			default: noEffect(); break;
 			}
+	}
+
+	private static void cancer(HeroesSquad squad, Villain villain) {
+		boolean run = true;
+		while (run == true) {
+			int randInt = Utilities.getRandInt(squad.getLength());
+			Hero hero = squad.getHero(randInt);
+			if (hero.isAlive()) {
+				squad.heroTakesDamage(hero, villain.getVillainDamage());
+				Money wallet = squad.getWallet();
+				//Money cost = new Money(50);
+				wallet.minus(cost);
+				
+				run = false;
+				
+				System.out.println(villain.toString());
+				System.out.println(hero.getCharacterName() + "has been diagnosed with cancer.\n"
+						+ "Cancer is expensive and life threatning.\n"
+						+ "You are charged 50 coins and "
+						+ hero.getCharacterName() + " loses 50HP");
+				
+			}
+		}
+		
+	}
+
+	private static void badDay(Villain villain) {
+		System.out.println(villain.getCharacterName() + " your Partner is having a bad day, therefore YOUR having a bad day...");
+		System.out.println("You will not be able to use your abilties for the rest of this battle.");
+		System.out.println(villain.toString());
+		MiniGame.setAbilitiesAvaliable(false);
+	}
+
+	private static void judge(Villain villain) {
+		System.out.println(villain.toString());
+		System.out.println("You deserve to lose, then my child will see the loser that your really are...");
+		System.out.println(villain.getCharacterName() + " changes the game to Guess the number.");
+		MiniGame.setSelectedGame(2);
+	}
+
+	private static void arrogance() {
+		System.out.println("Your boss is never wrong, he will win all draws.");
 	}
 
 	private static void detention(HeroesSquad squad, Villain villain) {
@@ -49,9 +98,6 @@ public class CharacterAbiltyEffects {
 				System.out.println(villain.toString());
 			}
 		}
-
-		
-		
 	}
 
 	private static void stealLunchMoney(HeroesSquad squad, Villain villain) {
