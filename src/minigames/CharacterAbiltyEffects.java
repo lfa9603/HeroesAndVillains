@@ -48,10 +48,10 @@ public class CharacterAbiltyEffects {
 		boolean run = true;
 		while (run == true) {
 			int randInt = Utilities.getRandInt(squad.getLength());
-			Hero hero = squad.getHero(randInt);
+			Hero hero = squad.getHero(randInt-1);
 			if (hero.isAlive()) {
 
-				squad.heroTakesDamage(hero, villain.getVillainDamage());
+				
 				Money wallet = squad.getWallet();				
 				String cost = wallet.toString();
 				wallet.minus(wallet);				
@@ -61,6 +61,7 @@ public class CharacterAbiltyEffects {
 						+ "Cancer is expensive and life threatning.\n"
 						+ "You are charged " + cost + " coins and "
 						+ hero.getCharacterName() + " loses 50HP");
+				squad.heroTakesDamage(hero, 50);
 			}
 		}
 		
@@ -88,7 +89,7 @@ public class CharacterAbiltyEffects {
 		boolean run = true;
 		while (run == true) {
 			int randInt = Utilities.getRandInt(squad.getLength());
-			Hero hero = squad.getHero(randInt);
+			Hero hero = squad.getHero(randInt-1);
 			if (hero.isAlive()) {
 				hero.setIsinDetention(true);
 				run = false;

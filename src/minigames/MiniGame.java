@@ -76,7 +76,7 @@ public class MiniGame {
 		}
 		
 		if (randInt > difficulty) {
-			System.out.println(villain.getCharacterName() + "Chose not to use there abilty.");
+			System.out.println(villain.getCharacterName() + " Chose not to use there abilty.");
 		}
 		else {
 			CharacterAbiltyEffects.getVillainAbiltyEffects(villain, squad);
@@ -227,11 +227,12 @@ public class MiniGame {
 		
 		String avaliableHeros = squad.toString();
 		System.out.println(avaliableHeros);
+		int squadSize = squad.getLength();
 		
 		VisualUtilities.getIcon(Icons.bar);
 		System.out.println("Please select a Hero to fight with:");
 		VisualUtilities.getIcon(Icons.bar);
-		int choice = Utilities.getChoice("Please Choose a number between 1 and 3 to select your hero: ", 1, 3);		
+		int choice = Utilities.getChoice("Please Choose a number between 1 and " + squadSize + " to select your hero: ", 1, squadSize);		
 		Hero possiblechoice = squad.getHero((choice-1));
 		if (possiblechoice.isinDetention) {
 			System.out.println(hero.getCharacterName() + "is in detention, he can't fight");
@@ -311,8 +312,8 @@ public class MiniGame {
 		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero2);
-		testsquad.addHero(hero3);
-		testsquad.addHero(hero5);
+//		testsquad.addHero(hero3);
+//		testsquad.addHero(hero5);
 //		hero2.setisAlive(false);
 //		hero3.setisAlive(false);
 //		hero3.setisAlive(false);
@@ -322,8 +323,8 @@ public class MiniGame {
 		
 		Villain testVillain = new Villain("Lorenzo", Types.Boss, Abilities.cancer, "Ciao bella dona ;p", 10);
 //		testVillain.setBeaten(true);
-		testVillain.setTimesBeaten();
-		testVillain.setTimesBeaten();
+//		testVillain.setTimesBeaten();
+//		testVillain.setTimesBeaten();
 		
 		MiniGame game = new MiniGame(testVillain, testsquad, 1);
 		System.out.println(wallet);
