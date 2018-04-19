@@ -4,18 +4,38 @@ import characters.Hero;
 import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.Money;
-
+/**
+ * 
+ * @author LorenzoFasano
+ * PowerUpis an abstract class which extends Collectable.java abstract class but instead of implementing the required apply(Hero hero) 
+ * method it delegates this responsibility to the classes that will extend PowerUp.
+ * 
+ * This class also sets the cost property in Collectable depending on the collectableID passed 
+ * to it which can be for PowerUp objects: Armor, GameChooser or IncreaseMaxLife.
+ */
 public abstract class PowerUp extends Collectable {
 
 	
 	
-	
+	/**
+	 * 
+	 * @param collectableID (type CollectableID)
+	 * Constructor for PowerUp, it depends on Collectable.java constructor.
+	 * It also automatically set the cost property to the right amount depending on the 
+	 * collectableID property.
+	 *  
+	 */
 	public PowerUp(CollectableID collectableID) {
 		super(collectableID);
 		setCost();
 	}
 	
 
+	/**
+	 * This is a helper function for the constructor method.
+	 * It sets the cost property (present in Collectable.java) to the right Money object depending on collectableID property.
+	 * 
+	 */
 	private void setCost() {
 		switch (getCollectableID()) {
 			case Armor:
@@ -29,7 +49,11 @@ public abstract class PowerUp extends Collectable {
 		}
 	}
 
-	
+	/**
+	 * Overridden toString() method.
+	 * @return a String object showing the name of the PowerUp object and the benefits gained by using the powerUp.
+	 * 
+	 */
 	public String toString() {
 		String string = new String("Power-up of type: " + getCollectableID() 
 				+ ".\nThe cost of this item is " + getCost()
@@ -52,6 +76,10 @@ public abstract class PowerUp extends Collectable {
 		return string;
 	}
 	
+	/**
+	 * The method to implement as PowerUp extends Collectable.
+	 * This responsibility is passed down to those classes that will extend PowerUp.
+	 */
 	public abstract void apply(Hero hero);
 
 }

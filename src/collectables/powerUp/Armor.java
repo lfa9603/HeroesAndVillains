@@ -6,7 +6,7 @@ import collectables.CollectableID;
 /**
  * 
  * @author Lorenzo
- * This class 
+ * This class extends PowerUp and implements the required method apply(Hero hero).
  *
  */
 public class Armor extends PowerUp {
@@ -17,7 +17,8 @@ public class Armor extends PowerUp {
 	}
 
 	/**
-	 * Method to implement as Armor implements PowerUp.
+	 * Method to implement, as Armor implements PowerUp.java.
+	 * 
 	 * It allows the Hero to use its Armor during battle with the villain, 
 	 * setting the hasArmor Hero property to true
 	 * 
