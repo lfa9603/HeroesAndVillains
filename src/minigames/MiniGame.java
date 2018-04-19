@@ -2,8 +2,6 @@ package minigames;
 
 import java.util.Random;
 
-import javax.sound.midi.Soundbank;
-
 import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
@@ -32,11 +30,11 @@ public class MiniGame {
 		squad = theSquad;
 		selectedGame = selectedMiniGame;
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
-			VisualUtilities.getIcon(Icons.bar);
+			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			System.out.println("The Game will be " + getGame(selectedMiniGame));
-			VisualUtilities.getIcon(Icons.bar);
+			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			villainEffects(givenVillain, theSquad);
-			VisualUtilities.getIcon(Icons.bar);
+			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			
 			selectHero();
 			
@@ -63,7 +61,7 @@ public class MiniGame {
 			System.out.println(villain.getCharacterName() + "Chose not to use there abilty.");
 		}
 		else {
-			CharacterAbiltyEffects.getVillainAbiltyEffects(villain.getCharacterAbility(), villain, squad);
+			CharacterAbiltyEffects.getVillainAbiltyEffects(villain, squad);
 		}
 		
 		
@@ -114,7 +112,7 @@ public class MiniGame {
 		
 		VisualUtilities.getIcon(Icons.bar);		
 		int villainChoice = villain.getVillainsChoice(3);
-		CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, squad, villainChoice, 1);
+		CharacterAbiltyEffects.getHeroAbiltyEffects( hero, villain, squad, villainChoice, 1);
 		VisualUtilities.getIcon(Icons.bar);
 		
 		int choice = Utilities.getChoice("Choose a number between 1-3 to select Rock, Paper or Scissors respectivly", 1, 3);
@@ -155,7 +153,7 @@ public class MiniGame {
 				+ "The Villain has chosen a number. \n");
 		int villainChoice = villain.getVillainsChoice(10);
 		
-		CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, squad, villainChoice, 2);
+		CharacterAbiltyEffects.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 2);
 		
 		while (heroTrys < 2) {
 			int choice = Utilities.getChoice("Choose a number between 1-10 you have two chances to get it right", 1, 10);
@@ -191,7 +189,7 @@ public class MiniGame {
 			System.out.println("You roll a " + roll);
 			int villainRoll = villain.getVillainsChoice(6);
 			System.out.println(villain.getCharacterName() + " rolls a " + villainRoll);
-			CharacterAbiltyEffects.getAbiltyEffects(hero.getCharacterAbility(), hero, villain, squad, villainRoll, 3);
+			CharacterAbiltyEffects.getHeroAbiltyEffects(hero, villain, squad, villainRoll, 3);
 			if (roll > villainRoll) {
 				heroWins();
 			}
@@ -278,12 +276,15 @@ public class MiniGame {
 //		hero3.setisAlive(false);
 		testsquad.checkTeamStatus();
 		Money wallet = testsquad.getWallet();
-		//allet
 		
-		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.arrogance, "Ciao bella dona ;p", 10);
+		
+		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.stealLunchMoney, "Ciao bella dona ;p", 10);
 //		testVillain.setBeaten(true);
+		testVillain.setTimesBeaten();
+		testVillain.setTimesBeaten();
 		
 		MiniGame game = new MiniGame(testVillain, testsquad, 1);
+		System.out.println(wallet);
 		
 	}
 	

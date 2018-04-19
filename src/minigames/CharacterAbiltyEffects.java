@@ -11,25 +11,21 @@ import engine.VisualUtilities;
 
 public class CharacterAbiltyEffects {
 	
-	public static void getAbiltyEffects(Abilities abilty, Hero hero, Villain villain, HeroesSquad squad, int villainsChoice, int selectedGame) {
-				
+	public static void getHeroAbiltyEffects(Hero hero, Villain villain, HeroesSquad squad, int villainsChoice, int selectedGame) {
+		Abilities abilty = hero.getCharacterAbility();
+		
 		switch (abilty) {
 		case charm: noEffect(); break;
-		case mystery: mysteryAbilty(villain, villainsChoice, selectedGame); break;
+		case mystery: mysteryAbilty(villain, villainsChoice, selectedGame, squad); break;
 		case betterOdds: betterOddsAbilty(villainsChoice, selectedGame); break;
 		case lessDamage: lessDamageAbilty(villain); break;
 		case winDraws: winDrawsAbilty(); break;
-		case stealLunchMoney: stealLunchMoney(squad, villain); break;
-		case detention: noEffect(); break;
-		case judge: noEffect(); break;
-		case badDay: noEffect(); break;
-		case cancer: noEffect(); break;
-		case arrogance: noEffect(); break;
 		default: noEffect(); break;
 		}
 	}
 	
-	public static void getVillainAbiltyEffects(Abilities abilty, Villain villain, HeroesSquad squad) {
+	public static void getVillainAbiltyEffects(Villain villain, HeroesSquad squad) {
+		Abilities abilty = villain.getCharacterAbility();
 		switch (abilty) {
 			case stealLunchMoney: stealLunchMoney(squad, villain); break;
 			case detention: noEffect(); break;
@@ -37,7 +33,7 @@ public class CharacterAbiltyEffects {
 			case badDay: noEffect(); break;
 			case cancer: noEffect(); break;
 			case arrogance: noEffect(); break;
-			default: noEffect(); break;
+			//default: noEffect(); break;
 			}
 	}
 
@@ -109,7 +105,7 @@ public class CharacterAbiltyEffects {
 		System.out.println("Your Hero is a Sly Character, they will make sure that if it is a draw, they will win.");
 	}
 	
-	private static void mysteryAbilty(Villain villain, int villainsChoice, int selectedGame) {
+	private static void mysteryAbilty(Villain villain, int villainsChoice, int selectedGame, HeroesSquad squad) {
 		if (selectedGame == 2) {
 			int firstGuess = Utilities.getRandInt(10);
 			int secondGuess = Utilities.getRandInt(10); 
@@ -136,9 +132,9 @@ public class CharacterAbiltyEffects {
 		
 		else {
 			System.out.println("Your Hero is out of his element, " + villain.getCharacterName() + " see's this...");
-			//TODO add use villains abilty to this.
+			getVillainAbiltyEffects(villain, squad);
 			System.out.println(villain.getCharacterName() + " uses his abilty " + villain.getCharacterAbility());
-			villain.getVillainTaunt();
+			System.out.println(villain.getVillainTaunt());
 		}
 	}
 	
