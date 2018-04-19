@@ -5,12 +5,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import collectables.healingItem.HealingItem;
-import collectables.heroesMap.HeroesMap;
-import collectables.powerUp.Armor;
-import collectables.powerUp.GameChooser;
-import collectables.powerUp.IncreaseMaxLife;
-
 public class Inventory {
 
 	private HashMap<Collectable, Integer> inventory;
