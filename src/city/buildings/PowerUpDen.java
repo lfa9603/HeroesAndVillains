@@ -50,7 +50,7 @@ public class PowerUpDen extends Building {
 		boolean inPowerUpDen = true;
 		while (inPowerUpDen) {
 			
-			ArrayList<Collectable> powerUps = InventoryTools.powerUps(heroesSquad);
+			ArrayList<Collectable> powerUps = InventoryTools.powerUps();
 			
 			System.out.println("You are inside the Power-Up Den, here is you available Healing potions:\n");
 			System.out.println(InventoryTools.showTypeItemsInInventory(heroesSquad, powerUps));

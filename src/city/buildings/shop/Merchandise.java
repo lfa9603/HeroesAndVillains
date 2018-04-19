@@ -12,22 +12,47 @@ import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
 
+/**
+ * 
+ * @author Lorenzo
+ * 
+ * This class contains an Inventory object, this object is automatically filled with a random quantity of objects 
+ * that extend @Collectable at the moment of a Merchandise() object instantiation.
+ * 
+ */
 public class Merchandise {
 
 	private Inventory inventory;
 	
+	/**
+	 * 
+	 * the Merchandise constructor uses @addRandomElementsToMerchandise() helper to instantiate 
+	 * @param inventory and to add to it a random quantity (between 0 and 2 inclusive) of objects 
+	 * that extend @Collectable. 
+	 * 
+	 */
 	public Merchandise() {
 		addRandomElementsToMerchandise();
-		
 	}
 	
+	/**
+	 * 
+	 * Constructor helper method which instantiate @param inventory to a new Inventory object.
+	 * It uses @addRandomAmountOfEachCollectableToInventory(...) and @retrieveAllCollectables() as helpers.
+	 * 
+	 */
 	public void addRandomElementsToMerchandise() {
 		inventory = new Inventory();
 		ArrayList<Collectable> collectables = retrieveAllCollectables();
 		addRandomAmountOfEachCollectableToInventory(inventory, collectables);
 	}
 
-	
+	/**
+	 * 
+	 * @return an ArrayList containing one instance of each class that extends @Collectable 
+	 * (directly as HealingItem or indirectly as objects that extend PowerUp).
+	 * 
+	 */
 	private ArrayList<Collectable> retrieveAllCollectables() {
 		ArrayList<Collectable> collectables = new ArrayList<Collectable>();
 		
@@ -56,7 +81,15 @@ public class Merchandise {
 		
 	}
 	
-	//TODO: Working perfectly, we have to find right balance for the amount of objects present in a shop. 
+
+	/**
+	 * 
+	 * @param inventory an Inventory object which initially has no elements stored in it.
+	 * @param collectables an ArrayList containing one instance of each class that extends @Collectable 
+	 * The method deals with concretely populating the HashMap in the Inventory object adding a 
+	 * random amount (0 to 2 elements) of each element present in @param collectables.
+	 * 
+	 */
 	private void addRandomAmountOfEachCollectableToInventory(Inventory inventory, ArrayList<Collectable> collectables) {
 		
 		for (Collectable item : collectables) {
@@ -74,14 +107,20 @@ public class Merchandise {
 	}
 
 	/**
-	 * @return the inventory
+	 * 
+	 * Getter for inventory property.
+	 * @return inventory
+	 * 
 	 */
 	public Inventory getInventory() {
 		return inventory;
 	}
 
 	/**
-	 * @param inventory the inventory to set
+	 * 
+	 * The setter for inventory property.
+	 * @param inventory
+	 *
 	 */
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;

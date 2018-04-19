@@ -22,10 +22,12 @@ public class Inventory {
 
 	
 	/**
+	 * 
 	 * Takes a @Collectable object and checks if the @inventory already has the same type of item in it. 
-	 * This is achieved by comparing the CollectableID of the 2 objects.
+	 * This is achieved by comparing the CollectableID of the @param item and of each Collectable item in the inventory property.
 	 * @param item
-	 * @return
+	 * @return the Collectable object if the item is in the inventory property or @null if the item is not in it.
+	 * 
 	 */
 	public Collectable isInInventory(Collectable item) {
 		Iterator<Entry<Collectable, Integer>> iterator = inventory.entrySet().iterator();
@@ -40,10 +42,13 @@ public class Inventory {
 	
 	
 	/**
+	 * 
 	 * This method checks if the item we are trying to store is already present in the @inventory and 
 	 * if it is it increases the value of the already present key, if not present it add the @Collectable object 
 	 * to the @inventory and it assigns it a value of 1.
-	 * @param item
+	 * 
+	 * @param item (type Collectable)
+	 * 
 	 */
 	public void addItemToInventory(Collectable item) {
 		
@@ -78,7 +83,11 @@ public class Inventory {
     
     
 	
-    
+    /**
+     * Overridden to string method.
+     * It returns a String object containing each element present in the inventory \\
+     * property and its quantity (each HashMap entry key and value).
+     */
 	public String toString() {
 		String string = new String();
 		Iterator<Entry<Collectable, Integer>> iterator = inventory.entrySet().iterator();

@@ -44,7 +44,9 @@ public class HealingWard {
 	 * otherwise it recovers just enough to gain maxHealth.
 	 *  
 	 * Once the Hero is added to @param patientsAndHealingTime the helper method @startCountDownAndTimeUpdate(...) 
-	 * is started on a different thread to keep regularly updating the Integer value related to each Hero key to reflect the missing time to full HealingItem effect.
+	 * is started on a different thread to keep regularly updating the Integer value related to each Hero key to 
+	 * reflect the missing time to full HealingItem effect.
+	 * 
 	 */
 	public void addPatientAndUpdateHealingTime(HealingItem healingItem, Hero hero) {
 		Integer heroMissingHP = hero.getMaxHealth() - hero.getHealth();

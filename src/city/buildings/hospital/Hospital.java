@@ -35,7 +35,7 @@ public class Hospital extends Building {
 			
 			System.out.println(healingWard.toString());
 			
-			ArrayList<Collectable> healingItems = InventoryTools.healingItems(heroesSquad);
+			ArrayList<Collectable> healingItems = InventoryTools.healingItems();
 			
 			System.out.println("You are inside the hospital, here is you available Healing potions:\n");
 			System.out.println(InventoryTools.showTypeItemsInInventory(heroesSquad, healingItems));
