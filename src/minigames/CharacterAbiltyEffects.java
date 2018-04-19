@@ -50,19 +50,17 @@ public class CharacterAbiltyEffects {
 			int randInt = Utilities.getRandInt(squad.getLength());
 			Hero hero = squad.getHero(randInt);
 			if (hero.isAlive()) {
+
 				squad.heroTakesDamage(hero, villain.getVillainDamage());
-				Money wallet = squad.getWallet();
-				//Money cost = new Money(50);
-				wallet.minus(cost);
-				
+				Money wallet = squad.getWallet();				
+				String cost = wallet.toString();
+				wallet.minus(wallet);				
 				run = false;
-				
 				System.out.println(villain.toString());
-				System.out.println(hero.getCharacterName() + "has been diagnosed with cancer.\n"
+				System.out.println(hero.getCharacterName() + " has been diagnosed with cancer.\n"
 						+ "Cancer is expensive and life threatning.\n"
-						+ "You are charged 50 coins and "
+						+ "You are charged " + cost + " coins and "
 						+ hero.getCharacterName() + " loses 50HP");
-				
 			}
 		}
 		
