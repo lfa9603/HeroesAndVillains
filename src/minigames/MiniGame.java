@@ -1,7 +1,5 @@
 package minigames;
 
-import java.util.Random;
-
 import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
@@ -17,13 +15,6 @@ public class MiniGame {
 	private HeroesSquad squad;
 	private Villain villain;
 	private int selectedGame; 
-	
-	public int getNewMiniGame() {
-		Random random = new Random();
-		Integer randInt = random.nextInt(3);
-		int newGame = randInt + 1;
-		return newGame;
-	}
 
 	public MiniGame(Villain givenVillain, HeroesSquad theSquad, int selectedMiniGame) {
 		villain = givenVillain;
@@ -34,6 +25,10 @@ public class MiniGame {
 			System.out.println("The Game will be " + getGame(selectedMiniGame));
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			villainEffects(givenVillain, theSquad);
+			squad.checkTeamStatus();
+			if (squad.isAllDead()) {
+				break;
+			}
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			
 			selectHero();
@@ -50,14 +45,14 @@ public class MiniGame {
 		}
 		
 		else {
-			System.out.println("Game over! \nThank you for playing!");
+			System.out.println("Oh no, that was tough, but so is life! \nGAMEOVER \nThanks for playing!");
 		}
 		
 	}
 	
 	private void villainEffects(Villain villain, HeroesSquad squad) {
 		int randInt = Utilities.getRandInt(100);
-		if (randInt > 30) {
+		if (randInt > 99) {
 			System.out.println(villain.getCharacterName() + "Chose not to use there abilty.");
 		}
 		else {
@@ -215,17 +210,20 @@ public class MiniGame {
 		VisualUtilities.getIcon(Icons.bar);
 		int choice = Utilities.getChoice("Please Choose a number between 1 and 3 to select your hero: ", 1, 3);		
 		Hero possiblechoice = squad.getHero((choice-1));
-		if (possiblechoice.isAlive() == true) {
-			hero = squad.getHero((choice-1));
-			System.out.println("Your choice was: " + hero.getCharacterName());	
+		if (possiblechoice.isinDetention) {
+			System.out.println(hero.getCharacterName() + "is in detention, he can't fight");
 		}
-		
 		else {
-			System.out.println("Dead Heroes cannot fight! please select a valid hero");
-			selectHero();
+			if (possiblechoice.isAlive() == true) {
+				hero = squad.getHero((choice-1));
+				System.out.println("Your choice was: " + hero.getCharacterName());	
+			}
+			
+			else {
+				System.out.println("Dead Heroes cannot fight! please select a valid hero");
+				selectHero();
+			}
 		}
-		
-		
 	}
 	
 	public void battleDraw() {
@@ -271,14 +269,14 @@ public class MiniGame {
 		testsquad.addHero(hero2);
 		testsquad.addHero(hero3);
 		testsquad.addHero(hero4);
-//		hero1.setisAlive(false);
-//		hero2.setisAlive(false);
+		hero2.setisAlive(false);
+		hero3.setisAlive(false);
 //		hero3.setisAlive(false);
 		testsquad.checkTeamStatus();
 		Money wallet = testsquad.getWallet();
 		
 		
-		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.stealLunchMoney, "Ciao bella dona ;p", 10);
+		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.detention, "Ciao bella dona ;p", 10);
 //		testVillain.setBeaten(true);
 		testVillain.setTimesBeaten();
 		testVillain.setTimesBeaten();

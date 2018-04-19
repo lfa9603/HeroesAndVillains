@@ -194,13 +194,17 @@ public class HeroesSquad {
 	
 	
 	public String heroStatus(Hero hero) {
-		if (hero.isAlive() == true) {
-			return "Alive";
+		if (hero.isinDetention) {
+			return "In Detention";
 		}
 		else {
-			return "dead";
+			if (hero.isAlive() == true) {
+				return "Alive";
+			}
+			else {
+				return "dead";
+			}
 		}
-		
 	}
 	
 	public void heroTakesDamage(Hero hero, int villainDamge) {
@@ -231,7 +235,7 @@ public class HeroesSquad {
 		int deadTeamMembers = 0;
 		
 		for (Hero hero: heroSquad) {
-			if (hero.isAlive() == false) {
+			if (hero.isinDetention || hero.isAlive() == false) {
 				deadTeamMembers += 1;
 				if (deadTeamMembers == teamSize) {
 					setAllDead(true);

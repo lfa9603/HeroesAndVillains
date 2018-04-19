@@ -28,13 +28,30 @@ public class CharacterAbiltyEffects {
 		Abilities abilty = villain.getCharacterAbility();
 		switch (abilty) {
 			case stealLunchMoney: stealLunchMoney(squad, villain); break;
-			case detention: noEffect(); break;
+			case detention: detention(squad, villain); break;
 			case judge: noEffect(); break;
 			case badDay: noEffect(); break;
 			case cancer: noEffect(); break;
 			case arrogance: noEffect(); break;
 			//default: noEffect(); break;
 			}
+	}
+
+	private static void detention(HeroesSquad squad, Villain villain) {
+		boolean run = true;
+		while (run == true) {
+			int randInt = Utilities.getRandInt(squad.getLength());
+			Hero hero = squad.getHero(randInt);
+			if (hero.isAlive()) {
+				hero.setIsinDetention(true);
+				run = false;
+				System.out.println(hero.getCharacterName() + "you peice of s***! your going to DENTENTION!");
+				System.out.println(villain.toString());
+			}
+		}
+
+		
+		
 	}
 
 	private static void stealLunchMoney(HeroesSquad squad, Villain villain) {
