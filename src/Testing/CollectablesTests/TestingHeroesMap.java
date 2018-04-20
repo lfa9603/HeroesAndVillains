@@ -8,7 +8,7 @@ import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
 import collectables.CollectableID;
-import collectables.heroesMap.HeroesMap;
+import collectables.powerUp.HeroesMap;
 
 class TestingHeroesMap {
 

@@ -1,4 +1,4 @@
-package collectables.heroesMap;
+package collectables.powerUp;
 
 import characters.Hero;
 import characters.HeroesSquad;
