@@ -3,6 +3,9 @@ package characters;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import engine.Icons;
+import engine.VisualUtilities;
+
 public class TeamBuilder {
 	private HeroesSquad Team;
 	private String finalteamName;
@@ -110,9 +113,12 @@ public class TeamBuilder {
 		boolean run = true;
 		boolean runInner = true;
 		while (run == true) {
+			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			System.out.println("Avaliable Heros (A Max of 3 x Heros allowed):");
 			System.out.println(characterTypes + "\n");
+			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			System.out.println("Please enter 1-6 to select a character (Press \'Q\' when done selecting):");
+			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			Scanner userinput_1 = new Scanner(System.in);
 			
 			try {
@@ -144,7 +150,12 @@ public class TeamBuilder {
 			while (runInner == true) {
 				if (Team.getLength() >= 1) {
 					Scanner userinput_3 = new Scanner(System.in);
-					System.out.println("Are you happy with your team? Y/N or (R to reset your team)");
+					System.out.println(VisualUtilities.getIcon(Icons.bar));
+					System.out.println("Are you happy with your team?\n"
+							+ "Y : to Proceed to the game.\n"
+							+ "N : to add another Hero.\n"
+							+ "R : to reset your team.");
+					System.out.println(VisualUtilities.getIcon(Icons.bar));
 					String confirmation = userinput_3.next();
 					
 					if (confirmation.equals("R") || confirmation.equals("r")) {
@@ -196,14 +207,16 @@ public class TeamBuilder {
 		Hero hero = new Hero(characterName, type, abilty);  
 		Team.addHero(hero);
 		
+		
+		System.out.println(VisualUtilities.getIcon(Icons.bar));
 		System.out.println("Current Team: " + Team.toString());
 		
 	}
 	
 	
 	
-	public static void main(String[] args) {
-		TeamBuilder team = new TeamBuilder();
-		System.out.println(team.getTeam());
-	}
+//	public static void main(String[] args) {
+//		TeamBuilder team = new TeamBuilder();
+//		System.out.println(team.getTeam());
+//	}
 }

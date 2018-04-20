@@ -43,11 +43,7 @@ public class Villain extends Character{
 	 * The class Villain has to implement as it extends Character
 	 */
 	public String toString() {
-		String string = new String(
-				"Villain named: " + getCharacterName() + 
-				"\nHealth: " + getHealth() +
-				"\nSpecial ability: " + getCharacterAbility() +
-				"\nHis taunt is: " + getVillainTaunt());
+		String string = new String(getCharacterName() + " says " + getVillainTaunt());
 		return string;
 	}
 

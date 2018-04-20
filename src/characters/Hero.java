@@ -8,6 +8,7 @@ package characters;
 public class Hero extends Character {
 	private boolean hasArmor;
 	private boolean isGameChooser;
+	public boolean isinDetention;
 	
 	/**
 	 * 
@@ -59,6 +60,14 @@ public class Hero extends Character {
 		return isGameChooser;
 	}
 	
+	public boolean isIsinDetention() {
+		return isinDetention;
+	}
+
+	public void setIsinDetention(boolean isinDetention) {
+		this.isinDetention = isinDetention;
+	}
+
 	/**
 	 * Method that Character forces this class to implement.
 	 */
