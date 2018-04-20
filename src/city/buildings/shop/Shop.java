@@ -103,6 +103,8 @@ public class Shop extends Building{
 				} 
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the three options");
+				input.next();
+				
 			} finally {
 				input.reset();
 			}
@@ -155,8 +157,11 @@ public class Shop extends Building{
 				if (!confirmed.equals("n") && !confirmed.equals("y")) {
 					throw (new InputMismatchException());
 				}
+				
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the two options");
+				confirm.next();
+				
 			} finally {
 				confirm.reset();
 			}
@@ -205,6 +210,8 @@ public class Shop extends Building{
 				
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the two options");
+				confirm.next();
+				
 			} finally {
 				confirm.reset();
 			}
@@ -252,6 +259,8 @@ public class Shop extends Building{
 				
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the two options");
+				confirm.next();
+				
 			} finally {
 				confirm.reset();
 			}

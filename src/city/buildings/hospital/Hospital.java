@@ -156,14 +156,18 @@ public class Hospital extends Building {
 			System.out.println("Looks like you have no Healing items in the backpack! "
 					+ "\nPress 0 for exiting the game");
 			try {
-				Integer exiting = input.nextInt();
-				if (exiting.equals(0)) {
+				String exiting = input.next();
+				if (exiting.equals("0")) {//TODO:Check all nextInt() readings and possibly convert them to next or nextLine because nextInt is shit
 					deciding = false;
 //					input.close();
 					System.out.println("Come back later, maybe after a visit to the shop!!");
-				} 
+				} else {
+					throw new InputMismatchException();
+				}
 			} catch (InputMismatchException e) {
 					System.out.println("Please press 0, to exit.");
+					input.next();
+					
 			} finally {
 				input.reset();
 			}

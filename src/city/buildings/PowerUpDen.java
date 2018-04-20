@@ -108,6 +108,8 @@ public class PowerUpDen extends Building {
 				
 				} catch (InputMismatchException e) {
 					System.out.println("Please type a valid integer\n\n");
+					input.next();
+					
 				} finally {
 					input.reset();
 				}
@@ -149,6 +151,8 @@ public class PowerUpDen extends Building {
 				}
 			} catch (InputMismatchException e) {
 					System.out.println("Please press 0, to exit.");
+					input.next();
+					
 			} finally {
 				input.reset();
 			}

@@ -63,6 +63,8 @@ public class Home extends Building {
 				}
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the three options");
+				input.next();
+				
 			} finally {
 				input.reset();
 			}

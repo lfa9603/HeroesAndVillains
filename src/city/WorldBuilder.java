@@ -50,6 +50,8 @@ public class WorldBuilder {
 			} catch (InputMismatchException error){
 				System.out.println("Invalid input, have you typed a valid integer?");
 				System.out.println("Try again");
+				input.next();
+				
 			} finally {
 				input.reset();
 			}
