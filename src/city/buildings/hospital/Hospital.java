@@ -17,16 +17,43 @@ import collectables.healingItem.HealingItem;
 
 import engine.Utilities;
 
-
+/**
+ * 
+ * @author LorenzoFasano
+ * This class extends Building and, therefore it has to implement interact(HeroesSquad heroSquad).
+ * This class allows the HeroesSquad object to use the HealingItem objects they accumulated in the backpack property. 
+ * It also allows the HeroesSquad to see the quantities of the HealingItems in the backpack and all the Hero objects that are under 
+ * recover after having applied a HealingItem using a HealingWard object ( @see HealingWard.java at city/buildings/hospital/HealingWard.java ).
+ * 
+ * 
+ */
 public class Hospital extends Building {
 
 	private HealingWard healingWard;
 	
+	/**
+	 * 
+	 * @param name (type String)
+	 * @param buildType (type TypeBuilidngs which is set to Hospital for Hospital objects)
+	 * The Hospital constructor also instantiates a HealingWorld object healingWard.
+	 */
 	public Hospital(String name, TypeBuildings buildType) {
 		super(name, buildType);
 		healingWard = new HealingWard();
 	}
 
+	/**
+	 * 
+	 * Method to implement as Hospital extends Builidng.java.
+	 * This method shows the Hero objects that are recovering after applying a HealingItem to it 
+	 * ( @see HealingWard.java at city/buildings/hospital/HealingWard.java ).
+	 * 
+	 * It also allows the player to select a HealingItem object present in the HeroesSquad object 
+	 * backpack property and apply it to one of the alive Hero objects,
+	 * if the player wants to use an item which the HeroesSquad object does not have, 
+	 * the player will not be allowed to use the selected HealingItem object.
+	 * 
+	 */
 	@Override
 	public void interact(HeroesSquad heroesSquad) {
 
@@ -107,11 +134,22 @@ public class Hospital extends Building {
 		}
 	}
 
+	/**
+	 * Helper method for good coding practice created to throw a new InputMismatchError.
+	 */
 	private void extracted() {
 		throw new InputMismatchException();
 	}
 	
 	
+	/**
+	 * 
+	 * @param input (type Scanner)
+	 * 
+	 * Helper method for interact(HeroesSquad heroesSquad), it is 
+	 * called if the HeroesSquad object has no HealingItem objects in their backpack property.
+	 * 
+	 */
 	private void noHealingItems(Scanner input) {
 		boolean deciding = true;
 		while (deciding) {

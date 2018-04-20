@@ -3,7 +3,6 @@ package city.buildings.shop;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import characters.Hero;
 import characters.HeroesSquad;
 
 import city.buildings.Building;
@@ -11,25 +10,57 @@ import city.buildings.TypeBuildings;
 
 import collectables.Collectable;
 import collectables.CollectableID;
-import collectables.Money;
 import collectables.healingItem.HealingItem;
 import collectables.heroesMap.HeroesMap;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
 
+
+/**
+ * 
+ * @author LorenzoFasano
+ * This class extends Building.java and, therefore it has to implement interact(HeroesSquad heroSquad).
+ * 
+ * This class allows the HeroesSquad object to purchase any Collectable object needed. If the HeroesSquad object does 
+ * not have enough to purchase the item, the Shop will not allow you to purchase it, if your HeroesSquad object already
+ * has a map of the City object it will suggest you not to buy the HeroesMap object again.
+ *
+ * This class uses Merchandise.java as an helper class to store a random amount (between 0 and 2) of each Collectable object present in the game. 
+ * 
+ */
 public class Shop extends Building{
 
 	private Merchandise merchandise;
 	
-	public Shop(String name, TypeBuildings buildType, Merchandise merchand) {
+	/**
+	 * 
+	 * @param name (type String)
+	 * @param buildType (type TypeBuildings)
+	 * 
+	 * The Shop constructor uses Building.java constructor, it also
+	 * instantiate the merchandise property to a new Merchandise object.
+	 * 
+	 */
+	public Shop(String name, TypeBuildings buildType) {
 		super(name, buildType);
-		merchandise = merchand;
+		merchandise = new Merchandise();
 	}	
 	
 	
 	
 
+	/**
+	 * 
+	 * Method to implement as Shop.java extends Building.java.
+	 * 
+	 * In this method the HeroesSquad can buy any Collectable object, given that its quantity in the merchandise property is not 0.
+	 * If the HeroesSquad object cannot afford to buy a Collectable object then it will not be allowed to, 
+	 * and if it wants to buy a HeroesMap and it already has a HeroesMap object for that level it will suggest you not to buy it again.
+	 * 
+	 * Uses buyMap(HeroesSquad heros, Scanner confirm), buyHealingPotion(HeroesSquad heros, Scanner confirm), buyPowerUp(HeroesSquad heros, Scanner confirm)
+	 * and confirmPurchase(HeroesSquad heroSquad, Collectable collectable) as helper methods.
+	 */
 	public void interact(HeroesSquad heroesSquad) {
 		System.out.println("(Seller, guess can be created as an NPC or just in game element) "
 				+ "\nHey mate! What can I get ya");
@@ -52,7 +83,7 @@ public class Shop extends Building{
 				switch(valueTyped) {
 			
 				case 0:
-					buyMap(heroesSquad, confirmation);//TODO modify this method					
+					buyMap(heroesSquad, confirmation);				
 					break;
 				
 				case 1:
@@ -79,6 +110,16 @@ public class Shop extends Building{
 	}	
 
 
+	/**
+	 * 
+	 * @param heros (type HeroesSquad)
+	 * @param confirm (type Scanner)
+	 * 
+	 * It deals with the purchase of a HeroesMap object.
+	 * If @param heros does not already own a map of the level and it has enough money in its wallet property, the purchase will happen.
+	 * If the @param heros does not have enough money to buy it or it already has a map of the current city, the purchase will not happen.
+	 * 
+	 */
 	private void buyMap(HeroesSquad heros, Scanner confirm) {
 		
 		boolean notSure = true;
@@ -123,7 +164,17 @@ public class Shop extends Building{
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @param heros (type HeroesSquad)
+	 * @param confirm (type Scanner)
+	 * 
+	 * It deals with the purchase of HealingItem objects.
+	 * If @param heros does not have enough to purchase the item or the item is not present
+	 * the purchase will not be allowed. 
+	 * Uses confirmPurchase(HeroesSquad heroSquad, Collectable collectable) as helper method.
+	 * 
+	 */
 	private void buyHealingPotion(HeroesSquad heros, Scanner confirm) {
 		boolean inHealingItemSession = true;
 		while (inHealingItemSession) {
@@ -160,6 +211,17 @@ public class Shop extends Building{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param heros (type HeroesSquad)
+	 * @param confirm (type Scanner)
+	 * 
+	 * It deals with the purchase of PowerUp objects.
+	 * If @param heros does not have enough to purchase the item or the item is not present
+	 * the purchase will not be allowed. 
+	 * Uses confirmPurchase(HeroesSquad heroSquad, Collectable collectable) as helper method.
+	 * 
+	 */
 	private void buyPowerUp(HeroesSquad heros, Scanner confirm) {
 		boolean inPowerUpSession = true;
 		while (inPowerUpSession) {
@@ -196,6 +258,18 @@ public class Shop extends Building{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param heroSquad (type HeroesSquad)
+	 * @param collectable (type Collectable)
+	 * 
+	 * Helper method for buyPowerUp(HeroesSquad heros, Scanner confirm) and 
+	 * buyHealingPotion(HeroesSquad heros, Scanner confirm).
+	 * It makes sure the merchandise property has the selected item in it.
+	 * If the item is in the inventory and if the @param heros has enough money, 
+	 * the @param collectable is added to the heros backpack property. 
+	 * 
+	 */
 	private void confirmPurchase(HeroesSquad heroSquad, Collectable collectable) {
 		if (merchandise.getInventory().isInInventory(collectable) != null) {
 			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
@@ -217,17 +291,21 @@ public class Shop extends Building{
 
 
 	/**
-	 * @return the merchandise
+	 * 
+	 * Getter method for merchandise property.
+	 * @return the merchandise (type Merchandise)
+	 * 
 	 */
 	public Merchandise getMerchandise() {
 		return merchandise;
 	}
 
 
-
-
 	/**
-	 * @param merchandise the merchandise to set
+	 * 
+	 * Setter method for merchandise property.
+	 * @param merchandise (type Merchandise)
+	 * 
 	 */
 	public void setMerchandise(Merchandise merchandise) {
 		this.merchandise = merchandise;
