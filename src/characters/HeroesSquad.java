@@ -7,7 +7,7 @@ import city.City;
 import collectables.CollectableID;
 import collectables.Inventory;
 import collectables.Money;
-import collectables.powerUp.HeroesMap;
+import collectables.heroesMap.HeroesMap;
 import engine.Utilities;
 
 /**

@@ -11,9 +11,9 @@ import city.buildings.TypeBuildings;
 import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
+import collectables.heroesMap.HeroesMap;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
-import collectables.powerUp.HeroesMap;
 import collectables.powerUp.IncreaseMaxLife;
 
 

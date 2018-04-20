@@ -6,7 +6,7 @@ import java.util.Scanner;
 import characters.Character;
 import characters.HeroesSquad;
 import collectables.CollectableID;
-import collectables.powerUp.HeroesMap;
+import collectables.heroesMap.HeroesMap;
 
 /**
  * 
