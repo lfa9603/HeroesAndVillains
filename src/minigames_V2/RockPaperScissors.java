@@ -15,7 +15,7 @@ public abstract class RockPaperScissors extends MiniGame {
 		
 	}
 	
-	private void runGame(Hero hero, Villain villain) {
+	private void runGame(Hero hero, Villain villain, HeroesSquad squad) {
 		String choices = "1) Rock \n"
 				+ "2) Paper \n"
 				+ "3) Scissors \n";
