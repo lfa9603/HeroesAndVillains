@@ -71,17 +71,24 @@ public class Money {
 	
 	/**
 	 * 
-	 * @param Amount
+	 * @param moneyToAdd
+	 * Updates the amount property to the current value plus the moneyToAdd.getAmount() int value.
+	 * 
 	 */
-	public void addMoney(int Amount) {
-		amount = amount + Amount;
+	public void addMoney(Money moneyToAdd) {
+		amount = amount + moneyToAdd.getAmount();
 	}
 	
-	public int takePercentage(int percentage) {
-		if (0 >= percentage && percentage <= 100) {
-			return (amount * percentage) / 100; 
-		} else {
-			return amount;
-		}
-	}
+//	/**
+//	 * 
+//	 * @param percentage (type int)
+//	 * @return
+//	 */
+//	public int takePercentage(int percentage) {
+//		if (0 >= percentage && percentage <= 100) {
+//			return (amount * percentage) / 100; 
+//		} else {
+//			return amount;
+//		}
+//	}
 }
