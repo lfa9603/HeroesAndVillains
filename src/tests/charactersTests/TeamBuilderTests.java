@@ -1,4 +1,4 @@
-package Testing.TeamBuilderTests;
+package tests.charactersTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,9 +1,10 @@
-package Testing.CollectablesTests;
+package tests.collectableTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import characters.Abilities;
 import characters.Hero;
 import characters.Types;
 import collectables.CollectableID;
@@ -14,7 +15,7 @@ class ArmorTests {
 	@Test
 	void testingApplyPowerUp() {
 		
-		Hero hero = new Hero("Jay", Types.level_1 , "Ciao");
+		Hero hero = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
 		Armor armor = new Armor(CollectableID.Armor);
 		armor.apply(hero);
 		

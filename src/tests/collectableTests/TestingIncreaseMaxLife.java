@@ -1,11 +1,13 @@
-package Testing.CollectablesTests;
+package tests.collectableTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import characters.Abilities;
 import characters.Hero;
 import characters.Types;
 import collectables.CollectableID;
@@ -14,10 +16,16 @@ import collectables.powerUp.IncreaseMaxLife;
 
 class TestingIncreaseMaxLife {
 
+	private static Hero hero;
+	
+	@BeforeAll
+	static void instantiateANewHeroObjcect() {
+		hero = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+	}
+	
 	@Test
 	void testApplyPowerUp() {
-		Hero hero = new Hero("Lorenzo", Types.level_1, "Ciao");
-		IncreaseMaxLife increaseMaxLife = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
+ 		IncreaseMaxLife increaseMaxLife = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
 		increaseMaxLife.apply(hero);
 		
 		assertEquals(125, hero.getMaxHealth());

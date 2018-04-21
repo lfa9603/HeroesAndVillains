@@ -1,4 +1,4 @@
-package Testing.CollectablesTests;
+package tests.collectableTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
