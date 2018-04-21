@@ -19,6 +19,8 @@ import collectables.heroesMap.HeroesMap;
 
 public class Home extends Building {
 
+	
+	
 	/**
 	 * 	
 	 * @param name

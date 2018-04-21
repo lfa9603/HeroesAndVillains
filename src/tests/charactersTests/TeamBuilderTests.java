@@ -29,6 +29,7 @@ class TeamBuilderTests {
 	void tearDown() throws Exception {
 	}
 
+	//TODO:this test case does not work anymore, gotta fix it
 	@Test
 	void testGetNewTeam() {
 		TeamBuilder testTeam = new TeamBuilder();
