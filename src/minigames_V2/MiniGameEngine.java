@@ -9,6 +9,7 @@ import collectables.Money;
 import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
+import minigames.CharacterAbiltyEffects;
 import minigames.MiniGame;
 
 public class MiniGameEngine {
@@ -17,10 +18,10 @@ public class MiniGameEngine {
 
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
-			int selectedMiniGame = selectNewGame(1);
+			int selectedMiniGame = selectNewGame(3);
 			System.out.println("The Game will be " + getGame(selectedMiniGame));
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
-			MiniGameUtilities.getVillainAbiltyEffects(villain, squad);
+			villainEffects(villain, squad);
 			squad.checkTeamStatus();
 			if (squad.isAllDead()) {
 				break;
@@ -59,6 +60,32 @@ public class MiniGameEngine {
 		else {
 			System.out.println("Oh no, that was tough, but so is life! \nGAMEOVER \nThanks for playing!");
 		}
+		
+	}
+	
+	private void villainEffects(Villain villain, HeroesSquad squad) {
+		int randInt = Utilities.getRandInt(100);
+		Types level = villain.getCharacterType();
+		int difficulty = 5;
+		
+		//Sets how often the villains ability will be activated, this will help adjust the games difficulty.
+		switch (level) {
+		case level_1: difficulty = 30; break;
+		case level_2: difficulty = 10; break;
+		case level_3: difficulty = 30; break;
+		case level_4: difficulty = 40; break;
+		case level_5: difficulty = 50; break;
+		case Boss: difficulty = 100; break;
+		default: difficulty = 10; break;
+		}
+		
+		if (randInt > difficulty) {
+			System.out.println(villain.getCharacterName() + " Chose not to use there abilty.");
+		}
+		else {
+			CharacterAbiltyEffects.getVillainAbiltyEffects(villain, squad);
+		}
+		
 		
 	}
 	
