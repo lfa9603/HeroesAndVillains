@@ -11,7 +11,7 @@ import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
 
-public class HeroSquadTests {
+class HeroSquadTests {
 
 	private static HeroesSquad heroes;
 	private static Hero hero1 = new Hero("hero1", Types.dog, Abilities.betterOdds);
@@ -19,13 +19,12 @@ public class HeroSquadTests {
 	private static Hero hero3 = new Hero("hero3", Types.dog, Abilities.betterOdds);
 	
 	@BeforeAll
-	public static void addHeroesElementsToHeroesSquadElement() {
+	private static void addHeroesElementsToHeroesSquadElement() {
 		heroes = new HeroesSquad();
 		heroes.addHero(hero1);
 		heroes.addHero(hero1);
 		heroes.addHero(hero2);
 		heroes.addHero(hero3);
-		System.out.println("BEFORE ALL");
 	}
 
 	@Test

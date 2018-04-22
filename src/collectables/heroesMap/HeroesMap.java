@@ -88,5 +88,9 @@ public class HeroesMap extends Collectable {
 				+ "\nIt costs " + getCost();
 	}
 	
+	
+	public String builidngsCoordinatesToString() {
+		return city.toString();
+	}
 
 }
