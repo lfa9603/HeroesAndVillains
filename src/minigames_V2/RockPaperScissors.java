@@ -9,13 +9,17 @@ import engine.VisualUtilities;
 import minigames.CharacterAbiltyEffects;
 
 public abstract class RockPaperScissors extends MiniGame {
+	private Villain villain;
+	private HeroesSquad squad;
 
 	public RockPaperScissors(Games game, Villain givenVillain, HeroesSquad theSquad, boolean gotAbilities) {
 		super(game, givenVillain, theSquad, gotAbilities);
+		villain = givenVillain;
+		squad = theSquad;
 		
 	}
 	
-	private void runGame(Hero hero, Villain villain, HeroesSquad squad) {
+	public void runGame(Hero hero) {
 		String choices = "1) Rock \n"
 				+ "2) Paper \n"
 				+ "3) Scissors \n";

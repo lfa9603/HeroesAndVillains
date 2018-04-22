@@ -2,6 +2,7 @@ package minigames_V2;
 
 import characters.Hero;
 import characters.HeroesSquad;
+import characters.Types;
 import characters.Villain;
 
 public abstract class MiniGame {
@@ -20,6 +21,35 @@ public abstract class MiniGame {
 		}
 	
 	public abstract void runGame(Games game);
+	
+	public void battleDraw() {
+		System.out.println("Its a Draw!");
+		if (villain.getCharacterType() != Types.Boss && hero.getCharacterType() == Types.sly) {
+			System.out.println("Who dares Wins! Your Character is Sly, and you managed to cheat your way through this draw.");
+			heroWins();
+		}
+		else {
+			if (villain.getCharacterType() == Types.Boss) {
+				System.out.println("Your Boss is NEVER wrong, they win this Draw!");
+				herolosses();
+			}
+			else {
+				System.out.println("No damage done");
+			}
+		}
+	}
+	
+	public void heroWins() {
+		System.out.println("You win! the villain has been defeated!");
+		villain.setTimesBeaten();
+		System.out.println("You have beaten the Villain " + villain.getTimesBeaten() + " times, "
+				+ "you must beat hime three times to defeat him and move on to the next level");
+	}
+	
+	public void herolosses() {
+		System.out.println("You lost " + villain.getVillainDamage() + "HP");
+		squad.heroTakesDamage(hero, villain.getVillainDamage());
+	}
 
 	/**
 	 * @return the gameName
