@@ -34,7 +34,7 @@ class PowerUpDenTests {
 	
 	
 	@BeforeAll
-	private static void beforeAll() {
+	static void beforeAll() {
 
 		powerUpDen = new PowerUpDen("PowerUpDen", TypeBuildings.PowerUpDen);
 		
@@ -67,6 +67,7 @@ class PowerUpDenTests {
 	 */
 	@Test
 	void testingCorrectFunctioningOfInteract() {
+		
 		
 		//TODO: having troubles with this test, works individually, fails when testing all.
 		System.out.println("Type:\n"

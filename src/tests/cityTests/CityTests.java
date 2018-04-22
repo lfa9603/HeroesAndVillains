@@ -19,7 +19,7 @@ public class CityTests {
 	private static City city;
 	
 	@BeforeAll
-	public static void beforeAll() {
+	static void beforeAll() {
 		city = new City();
 	}
 	

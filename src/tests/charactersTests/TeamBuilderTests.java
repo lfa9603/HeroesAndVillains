@@ -35,26 +35,26 @@ class TeamBuilderTests {
 		
 		//TODO:needs to be updated
 		
-//		TeamBuilder testTeam = new TeamBuilder();
-//		/* Enter the following inputs:
-//		 * Y
-//		 * testTeam
-//		 * Y
-//		 * 4
-//		 * Character 1
-//		 * 2
-//		 * Character 2
-//		 * 2
-//		 * Character 3
-//		 * Y
-//		 */
-//		String expected = "Heros in testTeam: \n" + 
-//				"Character 1 : ability4\n" + 
-//				"Character 2 : ability2\n" + 
-//				"Character 3 : ability2\n";
-//		HeroesSquad team = testTeam.getTeam();
-//		String teamString = team.toString();
-//		assertEquals(expected,  teamString);
+		TeamBuilder testTeam = new TeamBuilder();
+		/* Enter the following inputs:
+		 * Y
+		 * testTeam
+		 * Y
+		 * 4
+		 * Character 1
+		 * 2
+		 * Character 2
+		 * 2
+		 * Character 3
+		 * Y
+		 */
+		String expected = "Heros in testTeam: \n" + 
+				"Character 1 : ability4\n" + 
+				"Character 2 : ability2\n" + 
+				"Character 3 : ability2\n";
+		HeroesSquad team = testTeam.getTeam();
+		String teamString = team.toString();
+		assertEquals(expected,  teamString);
 		
 	}
 
