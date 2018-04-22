@@ -17,7 +17,7 @@ import characters.Abilities;
 import characters.Hero;
 import characters.Types;
 
-public class HeroTest {
+class HeroTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {

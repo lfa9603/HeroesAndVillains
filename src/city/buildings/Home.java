@@ -19,6 +19,8 @@ import collectables.heroesMap.HeroesMap;
 
 public class Home extends Building {
 
+	
+	
 	/**
 	 * 	
 	 * @param name
@@ -79,12 +81,11 @@ public class Home extends Building {
 	 * @return the coordinates of the 5 buildings in each city or a message telling the player the heroes squad does not own a map.
 	 * Helper method for @interact().
 	 */
-	private String showMap(HeroesSquad heroesSquad) {
+	public String showMap(HeroesSquad heroesSquad) {
 		String showMapMessage = new String();
 		if (heroesSquad.isHaveMap()) {
-			HeroesMap map = new HeroesMap(CollectableID.HeroesMap);
 			System.out.println(heroesSquad.getCurrentCity());
-			showMapMessage += map.toString();
+			showMapMessage += heroesSquad.getCurrentCity();
 		} else {
 			System.out.println("No map available at this stage");
 			showMapMessage += "No map available at this stage";
@@ -99,7 +100,7 @@ public class Home extends Building {
 	 * Iterates through the heroes squad and 
 	 * @return a string containing each character status and abilities.
 	 */
-	private String showHeroesStatus(HeroesSquad heroSquad) {
+	public String showHeroesStatus(HeroesSquad heroSquad) {
 		String heroesDescription = new String();
 		for (Character character : heroSquad.getHeroSquad()) {
 			heroesDescription += character.toString() + "\n";
