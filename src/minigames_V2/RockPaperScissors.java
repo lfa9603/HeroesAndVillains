@@ -8,7 +8,7 @@ import engine.Utilities;
 import engine.VisualUtilities;
 import minigames.CharacterAbiltyEffects;
 
-public abstract class RockPaperScissors extends MiniGame {
+public class RockPaperScissors extends MiniGame {
 	private Villain villain;
 	private HeroesSquad squad;
 

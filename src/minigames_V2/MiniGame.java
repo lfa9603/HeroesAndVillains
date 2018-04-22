@@ -20,7 +20,7 @@ public abstract class MiniGame {
 
 		}
 	
-	public abstract void runGame(Games game);
+	public abstract void runGame(Hero hero);
 	
 	public void battleDraw() {
 		System.out.println("Its a Draw!");

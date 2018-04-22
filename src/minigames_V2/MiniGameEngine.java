@@ -1,18 +1,23 @@
 package minigames_V2;
 
+import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
+import characters.Types;
 import characters.Villain;
+import collectables.Money;
 import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
+import minigames.MiniGame;
 
 public class MiniGameEngine {
 
-	public void runMiniGameEngine(Villain villain, HeroesSquad squad, int selectedMiniGame) {
+	public void runMiniGameEngine(Villain villain, HeroesSquad squad) {
 
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
+			int selectedMiniGame = selectNewGame(1);
 			System.out.println("The Game will be " + getGame(selectedMiniGame));
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			MiniGameUtilities.getVillainAbiltyEffects(villain, squad);
@@ -29,13 +34,15 @@ public class MiniGameEngine {
 //			runBattle(selectedMiniGame, hero, villain);
 			
 			switch (selectedMiniGame) {
-			case 1: RockPaperScissors RPS = RockPaperScissors(Games.RPS, villain, squad, false); 
+			case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
 			RPS.runGame(hero); break;
-			case 2: result = "Guess the Number out of Ten"; break;
-			case 3: result = "Dice Wars"; break;
+			case 2: RockPaperScissors RPS2 = new RockPaperScissors(Games.RPS, villain, squad, false); 
+			RPS2.runGame(hero); break;
+			case 3: RockPaperScissors RPS3 = new RockPaperScissors(Games.RPS, villain, squad, false); 
+			RPS3.runGame(hero); break;
 			}
 			
-			selectedMiniGame = selectNewGame(3);
+			
 		}
 		
 		if (villain.isBeaten() == true) {
@@ -100,6 +107,37 @@ public class MiniGameEngine {
 		return selectedGame;		
 	}
 	
+	//  For testing
+	public static void main(String[] args) {
+//		TeamBuilder team = new TeamBuilder();
+		Hero hero1 = new Hero("hero1", Types.talkitive, Abilities.charm);
+		Hero hero2 = new Hero("hero2", Types.smart, Abilities.mystery);
+		Hero hero3 = new Hero("hero3", Types.practical, Abilities.betterOdds);
+		Hero hero4 = new Hero("hero4", Types.strong, Abilities.lessDamage);
+		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
+		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
+		HeroesSquad testsquad = new HeroesSquad();
+		testsquad.addHero(hero2);
+//		testsquad.addHero(hero3);
+//		testsquad.addHero(hero5);
+//		hero2.setisAlive(false);
+//		hero3.setisAlive(false);
+//		hero3.setisAlive(false);
+		testsquad.checkTeamStatus();
+		Money wallet = testsquad.getWallet();
+		
+		
+		Villain testVillain = new Villain("Lorenzo", Types.Boss, Abilities.cancer, "Ciao bella dona ;p", 10);
+//		testVillain.setBeaten(true);
+//		testVillain.setTimesBeaten();
+//		testVillain.setTimesBeaten();
+		
+		MiniGameEngine game = new MiniGameEngine();	
+		game.runMiniGameEngine(testVillain, testsquad);
+		
+		System.out.println(wallet);
+		
+	}
 	
 
 }
