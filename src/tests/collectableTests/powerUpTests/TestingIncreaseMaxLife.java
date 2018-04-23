@@ -1,10 +1,10 @@
-package tests.collectableTests;
+package tests.collectableTests.powerUpTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import characters.Abilities;
@@ -16,10 +16,10 @@ import collectables.powerUp.IncreaseMaxLife;
 
 class TestingIncreaseMaxLife {
 
-	private static Hero hero;
+	private Hero hero;
 	
-	@BeforeAll
-	static void instantiateANewHeroObjcect() {
+	@BeforeEach
+	void instantiateANewHeroObjcect() {
 		hero = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
 	}
 	
@@ -31,6 +31,7 @@ class TestingIncreaseMaxLife {
 		assertEquals(125, hero.getMaxHealth());
 		assertEquals(100, hero.getHealth());
 		
+//		Checking the Hero object can actually reach 125HP of Health
 		HealingItem healingItem = new HealingItem(CollectableID.GoodHealingItem);
 		healingItem.apply(hero);
 		

@@ -1,4 +1,4 @@
-package tests.collectableTests;
+package tests.collectableTests.healingItemTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,7 +13,7 @@ import characters.Types;
 import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
 
-class HealingItemTests {
+class TestingHealingItem {
 
 	
 	private static Hero hero;

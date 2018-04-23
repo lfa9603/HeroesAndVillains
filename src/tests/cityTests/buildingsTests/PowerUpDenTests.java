@@ -2,7 +2,7 @@ package tests.cityTests.buildingsTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import characters.Abilities;
@@ -19,22 +19,22 @@ import collectables.powerUp.IncreaseMaxLife;
 
 class PowerUpDenTests {
 
-	private static PowerUpDen powerUpDen;
+	private PowerUpDen powerUpDen;
 	
-	private static Hero lorenzo1;
-	private static Hero jay1;
+	private Hero lorenzo1;
+	private Hero jay1;
 	
-	private static HeroesSquad squad1;
+	private HeroesSquad squad1;
 	
-	private static Inventory backpack;
+	private Inventory backpack;
 	
-	private static Armor armor;
-	private static IncreaseMaxLife increaseMaxHealth;
-	private static GameChooser gameChooser;
+	private Armor armor;
+	private IncreaseMaxLife increaseMaxHealth;
+	private GameChooser gameChooser;
 	
 	
-	@BeforeAll
-	static void beforeAll() {
+	@BeforeEach
+	void beforeEach() {
 
 		powerUpDen = new PowerUpDen("PowerUpDen", TypeBuildings.PowerUpDen);
 		

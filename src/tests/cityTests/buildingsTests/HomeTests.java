@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.awt.Point;
 
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import characters.Abilities;
@@ -18,15 +18,15 @@ import collectables.Money;
 
 class HomeTests {
 
-	private static Home home;
-	private static Hero lorenzo;
-	private static Hero jay;
-	private static HeroesSquad squad;
-	private static City city;
+	private Home home;
+	private Hero lorenzo;
+	private Hero jay;
+	private HeroesSquad squad;
+	private City city;
 	
 	
-	@BeforeAll
-	static void beforeAll() {
+	@BeforeEach
+	void beforeAll() {
 		city = new City();
 		home = (Home) city.returnBuildingAtSpecificCoordinates(new Point(0, 0));
 		

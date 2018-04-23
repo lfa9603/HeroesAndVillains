@@ -1,8 +1,8 @@
-package tests.collectableTests;
+package tests.collectableTests.powerUpTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import characters.Abilities;
@@ -13,10 +13,10 @@ import collectables.powerUp.GameChooser;
 
 class TestingGameChooser {
 
-	private static Hero hero;
+	private Hero hero;
 	
-	@BeforeAll
-	static void instantiateANewHeroObjcect() {
+	@BeforeEach
+	void instantiateANewHeroObjcect() {
 		hero = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
 	}
 	

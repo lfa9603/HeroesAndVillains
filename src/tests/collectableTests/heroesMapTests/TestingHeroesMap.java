@@ -1,8 +1,8 @@
-package tests.collectableTests;
+package tests.collectableTests.heroesMapTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import characters.Abilities;
@@ -14,24 +14,33 @@ import collectables.heroesMap.HeroesMap;
 
 class TestingHeroesMap {
 
-	private static HeroesSquad squad;
-	private static Hero hero;
+	private HeroesSquad squad;
+	private Hero hero;
+	private HeroesMap heroesMap;
 	
-	@BeforeAll
-	static void instantiateANewHeroObjcect() {
+	@BeforeEach
+	void instantiateANewHeroObjcect() {
 		hero = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
 		squad = new HeroesSquad();
 		squad.addHero(hero);
+		
+		heroesMap = new HeroesMap(CollectableID.HeroesMap);
 	}
+	
 	
 	@Test
 	void testApply() {
 		
-		HeroesMap heroesMap = new HeroesMap(CollectableID.HeroesMap);
 		
 		heroesMap.apply(squad);
 		
 		assertTrue(squad.isHaveMap());
+	}
+	
+	@Test
+	void testingApplyMethodForExtendingCollectable() {
+		heroesMap.apply(hero);
+		assertEquals(squad.isHaveMap(), false);
 	}
 
 }

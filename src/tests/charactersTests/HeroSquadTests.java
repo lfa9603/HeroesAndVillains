@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import characters.Abilities;
@@ -14,13 +15,13 @@ import junit.framework.TestSuite;
 
 class HeroSquadTests {
 
-	private static HeroesSquad heroes;
-	private static Hero hero1;
-	private static Hero hero2; 
-	private static Hero hero3;
+	private HeroesSquad heroes;
+	private Hero hero1;
+	private Hero hero2; 
+	private Hero hero3;
 	
-	@BeforeAll
-	static void addHeroesElementsToHeroesSquadElement() {
+	@BeforeEach
+	void addHeroesElementsToHeroesSquadElement() {
 		hero1 = new Hero("hero1", Types.dog, Abilities.betterOdds);
 		hero2 = new Hero("hero2", Types.dog, Abilities.betterOdds);
 		hero3 = new Hero("hero3", Types.dog, Abilities.betterOdds);

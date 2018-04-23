@@ -2,8 +2,13 @@ package tests.collectableTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashMap;
+
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.Inventory;
 import collectables.healingItem.HealingItem;
@@ -11,7 +16,12 @@ import collectables.powerUp.Armor;
 
 class testInventory {
 
-	private  Inventory inventory = new Inventory();
+	private Inventory inventory;
+	
+	@BeforeEach
+	void beforeEach() {
+		inventory = new Inventory();
+	}
 	
 	
 	@Test
@@ -59,6 +69,28 @@ class testInventory {
 	}
 	
 	
+	@Test
+	void testToString() {
+		inventory.setInventory(new HashMap<Collectable, Integer>());
+		assertEquals(inventory.getInventory().size(), 0);
+		
+		assertEquals(inventory.toString().length(), 0);
+		
+		HealingItem goodHealingItem = new HealingItem(CollectableID.GoodHealingItem);
+		
+		inventory.addItemToInventory(goodHealingItem);
+		String expectingFromToString = goodHealingItem.toString() + "\nAMOUNT AVAILABLE:   " + inventory.getInventory().get(goodHealingItem) + "\n\n";
+		
+		assertEquals(inventory.toString(), expectingFromToString);
+		
+	}
 
+	@Test
+	void testInventorySetterAndGetter() {
+		
+		inventory.setInventory(new HashMap<Collectable, Integer>());
+		assertEquals(inventory.getInventory().size(), 0);
+			
+	}
 	
 }
