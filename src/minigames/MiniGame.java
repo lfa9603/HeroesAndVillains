@@ -321,7 +321,7 @@ public class MiniGame {
 		Money wallet = testsquad.getWallet();
 		
 		
-		Villain testVillain = new Villain("Lorenzo", Types.Boss, Abilities.cancer, "Ciao bella dona ;p", 10);
+		Villain testVillain = new Villain("Lorenzo", Types.Boss, Abilities.cancer, "Ciao bella donna ;p", 10);
 //		testVillain.setBeaten(true);
 //		testVillain.setTimesBeaten();
 //		testVillain.setTimesBeaten();

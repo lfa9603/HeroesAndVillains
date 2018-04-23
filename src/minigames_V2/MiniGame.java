@@ -22,16 +22,16 @@ public abstract class MiniGame {
 	
 	public abstract void runGame(Hero hero);
 	
-	public void battleDraw() {
+	public void battleDraw(Hero hero) {
 		System.out.println("Its a Draw!");
 		if (villain.getCharacterType() != Types.Boss && hero.getCharacterType() == Types.sly) {
 			System.out.println("Who dares Wins! Your Character is Sly, and you managed to cheat your way through this draw.");
-			heroWins();
+			heroWins(hero);
 		}
 		else {
 			if (villain.getCharacterType() == Types.Boss) {
 				System.out.println("Your Boss is NEVER wrong, they win this Draw!");
-				herolosses();
+				herolosses(hero);
 			}
 			else {
 				System.out.println("No damage done");
@@ -39,14 +39,14 @@ public abstract class MiniGame {
 		}
 	}
 	
-	public void heroWins() {
+	public void heroWins(Hero hero) {
 		System.out.println("You win! the villain has been defeated!");
 		villain.setTimesBeaten();
 		System.out.println("You have beaten the Villain " + villain.getTimesBeaten() + " times, "
 				+ "you must beat hime three times to defeat him and move on to the next level");
 	}
 	
-	public void herolosses() {
+	public void herolosses(Hero hero) {
 		System.out.println("You lost " + villain.getVillainDamage() + "HP");
 		squad.heroTakesDamage(hero, villain.getVillainDamage());
 	}

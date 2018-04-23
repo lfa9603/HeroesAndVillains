@@ -6,6 +6,7 @@ import characters.Villain;
 import engine.Engine;
 import engine.Utilities;
 import minigames.MiniGame;
+import minigames_V2.MiniGameEngine;
 /**
  * 
  * @author LorenzoFasano
@@ -25,8 +26,9 @@ public class VillainsLair extends Building {
 	@Override
 	public void interact(HeroesSquad heroesSquad) {
 		Villain villain = Engine.getCurrentVillain();
-		int startingGame = Utilities.getRandInt(3);
 				
-		new MiniGame(villain, heroesSquad, startingGame);
+//		new MiniGame(villain, heroesSquad);
+		MiniGameEngine engine = new MiniGameEngine();
+		engine.runMiniGameEngine(villain, heroesSquad);
 	}
 }

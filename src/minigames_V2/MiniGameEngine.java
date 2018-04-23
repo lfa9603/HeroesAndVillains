@@ -32,18 +32,14 @@ public class MiniGameEngine {
 			
 			VisualUtilities.getIcon(Icons.bar);
 			
-//			runBattle(selectedMiniGame, hero, villain);
-			
 			switch (selectedMiniGame) {
 			case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
 			RPS.runGame(hero); break;
-			case 2: RockPaperScissors RPS2 = new RockPaperScissors(Games.RPS, villain, squad, false); 
-			RPS2.runGame(hero); break;
-			case 3: RockPaperScissors RPS3 = new RockPaperScissors(Games.RPS, villain, squad, false); 
-			RPS3.runGame(hero); break;
+			case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
+			GTN.runGame(hero); break;
+			case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
+			DW.runGame(hero); break;
 			}
-			
-			
 		}
 		
 		if (villain.isBeaten() == true) {
@@ -145,8 +141,8 @@ public class MiniGameEngine {
 		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero2);
-//		testsquad.addHero(hero3);
-//		testsquad.addHero(hero5);
+		testsquad.addHero(hero3);
+		testsquad.addHero(hero5);
 //		hero2.setisAlive(false);
 //		hero3.setisAlive(false);
 //		hero3.setisAlive(false);
@@ -154,7 +150,7 @@ public class MiniGameEngine {
 		Money wallet = testsquad.getWallet();
 		
 		
-		Villain testVillain = new Villain("Lorenzo", Types.Boss, Abilities.cancer, "Ciao bella dona ;p", 10);
+		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.stealLunchMoney, "Ciao bella dona ;p", 10);
 //		testVillain.setBeaten(true);
 //		testVillain.setTimesBeaten();
 //		testVillain.setTimesBeaten();

@@ -29,7 +29,7 @@ public class RockPaperScissors extends MiniGame {
 		String scissors = " Scissors";
 		
 		String youChoose = "you chose ";
-		String villianChoose = villain.getCharacterName() + " chose";
+		String villianChoose = villain.getCharacterName() + " chose ";
 		
 		
 		System.out.println("You are playing Rock, Paper, Sissors!");
@@ -45,25 +45,25 @@ public class RockPaperScissors extends MiniGame {
 		
 		switch(choice) {
 		
-		case 1: System.out.println(youChoose + rock); 
+		case 1: System.out.println(youChoose + gameResourses.Rock); 
 			switch(villainChoice) {
-			case 1: System.out.println(villianChoose + rock); battleDraw(); break;
-			case 2: System.out.println(villianChoose + paper); herolosses(); break;
-			case 3: System.out.println(villianChoose + scissors); heroWins(); break;
+			case 1: System.out.println(villianChoose + gameResourses.Rock); battleDraw(hero); break;
+			case 2: System.out.println(villianChoose + gameResourses.Rock); herolosses(hero); break;
+			case 3: System.out.println(villianChoose + gameResourses.Rock); heroWins(hero); break;
 			}; break;
 			
 		case 2: System.out.println(youChoose + paper); 
 			switch(villainChoice) {
-			case 1: System.out.println(villianChoose + rock); heroWins(); break;
-			case 2: System.out.println(villianChoose + paper); battleDraw(); break;
-			case 3: System.out.println(villianChoose + scissors); herolosses(); break;
+			case 1: System.out.println(villianChoose + gameResourses.Rock); heroWins(hero); break;
+			case 2: System.out.println(villianChoose + gameResourses.Paper); battleDraw(hero); break;
+			case 3: System.out.println(villianChoose + gameResourses.Scissors); herolosses(hero); break;
 			}; break;
 			
 		case 3: System.out.println(youChoose + scissors); 
 			switch(villainChoice) {
-			case 1: System.out.println(villianChoose + rock); herolosses(); break;
-			case 2: System.out.println(villianChoose + paper); heroWins(); break;
-			case 3: System.out.println(villianChoose + scissors); battleDraw(); break;
+			case 1: System.out.println(villianChoose + gameResourses.Rock); herolosses(hero); break;
+			case 2: System.out.println(villianChoose + gameResourses.Paper); heroWins(hero); break;
+			case 3: System.out.println(villianChoose + gameResourses.Scissors); battleDraw(hero); break;
 			};break;
 			
 		}
