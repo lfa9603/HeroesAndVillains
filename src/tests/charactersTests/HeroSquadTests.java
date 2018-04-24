@@ -2,8 +2,7 @@ package tests.charactersTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,6 @@ import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
-import junit.framework.TestSuite;
 
 class HeroSquadTests {
 
@@ -34,11 +32,20 @@ class HeroSquadTests {
 
 	@Test
 	void AddHeroAndCheckingNotAddingTheSameTwice() {
-		assertEquals(3, heroes.getHeroSquad().size());
-		
+//		assertEquals(3, heroes.getHeroSquad().size());
+		for (Hero hero : heroes.getHeroSquad()) {
+			System.out.println(hero.getCharacterName());
+		}
 		assertTrue(heroes.squadContains(hero1));
 		assertTrue(heroes.squadContains(hero2));
 		assertTrue(heroes.squadContains(hero3));
 	}
 
+	@AfterEach
+	void afterEach() {
+		heroes = null;
+		hero1 = null;
+		hero2 = null;
+		hero3 = null;
+	}
 }

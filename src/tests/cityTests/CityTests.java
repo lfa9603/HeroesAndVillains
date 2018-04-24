@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,10 +17,10 @@ public class CityTests {
 	
 	//TODO: Create a public test helper that checks on the coordinates of a building if they are in a pool of values (ArrayList<Point>), if made this helper public I can use it to also test City objects.
 
-	private static City city;
+	private City city;
 	
 	@BeforeEach
-	static void beforeEach() {
+	void beforeEach() {
 		city = new City();
 	}
 	
@@ -121,6 +121,11 @@ public class CityTests {
 		}
 		
 		assertEquals(city.toString(), str);
+	}
+	
+	@AfterEach
+	void afterEach() {
+		city = null;
 	}
 
 }

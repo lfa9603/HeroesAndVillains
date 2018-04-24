@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.Point;
 
-
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +26,7 @@ class HomeTests {
 	
 	
 	@BeforeEach
-	void beforeAll() {
+	void beforeEach() {
 		city = new City();
 		home = (Home) city.returnBuildingAtSpecificCoordinates(new Point(0, 0));
 		
@@ -70,5 +70,13 @@ class HomeTests {
 		assertEquals(home.showMap(squad), "No map available at this stage");
 	}
 	
+	@AfterEach
+	void afterEach() {
+		home = null;
+		lorenzo = null;
+		jay = null;
+		squad = null;
+		city = null;
+	}
 
 }

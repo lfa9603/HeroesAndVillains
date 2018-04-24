@@ -2,6 +2,7 @@ package tests.collectableTests.heroesMapTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,4 +44,11 @@ class TestingHeroesMap {
 		assertEquals(squad.isHaveMap(), false);
 	}
 
+	@AfterEach
+	void afterEach() {
+		hero = null;
+		squad = null;
+		
+		heroesMap = null;
+	}
 }

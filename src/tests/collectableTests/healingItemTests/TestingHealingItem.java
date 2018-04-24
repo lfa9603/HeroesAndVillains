@@ -4,7 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import characters.Abilities;
@@ -16,10 +17,10 @@ import collectables.healingItem.HealingItem;
 class TestingHealingItem {
 
 	
-	private static Hero hero;
+	private Hero hero;
 	
-	@BeforeAll
-	static void instantiateANewHeroObjcect() {
+	@BeforeEach
+	void instantiateANewHeroObjcect() {
 		hero = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
 	}
 	
@@ -107,4 +108,8 @@ class TestingHealingItem {
 		
 	}	
 
+	@AfterEach
+	void afterEach() {
+		hero = null;
+	}
 }

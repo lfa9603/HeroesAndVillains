@@ -2,6 +2,7 @@ package tests.collectableTests.powerUpTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,4 +32,9 @@ class TestingGameChooser {
 		assertFalse(hero.getIsGameChooser());
 	}
 
+	
+	@AfterEach
+	void afterEach() {
+		hero = null;
+	}
 }

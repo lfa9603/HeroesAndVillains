@@ -8,7 +8,6 @@ import collectables.CollectableID;
 import collectables.Inventory;
 import collectables.Money;
 import collectables.heroesMap.HeroesMap;
-import engine.Utilities;
 
 /**
  * 
@@ -17,7 +16,8 @@ import engine.Utilities;
  */
 public class HeroesSquad {
 	
-	private static ArrayList<Hero> heroSquad = new ArrayList<Hero>();
+//	private static ArrayList<Hero> heroSquad = new ArrayList<Hero>();
+	private static ArrayList<Hero> heroSquad;
 	private String teamName;
 	private boolean allDead; 
 	
@@ -36,6 +36,8 @@ public class HeroesSquad {
 		haveMap = false;
 		backPack = new Inventory();
 		wallet = new Money(30);
+		
+		heroSquad = new ArrayList<Hero>();
 	}
 	
 

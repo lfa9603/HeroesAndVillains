@@ -2,6 +2,7 @@ package tests.cityTests.buildingsTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -42,8 +43,8 @@ class PowerUpDenTests {
 		armor = new Armor(CollectableID.Armor);
 		gameChooser = new GameChooser(CollectableID.GameChooser);
 		
-		lorenzo1 = new Hero("Lorenzo", Types.smart, Abilities.betterOdds);
-		jay1 = new Hero("Jay", Types.talkitive, Abilities.betterOdds);
+		lorenzo1 = new Hero("Lorenzo1", Types.smart, Abilities.betterOdds);
+		jay1 = new Hero("Jay1", Types.talkitive, Abilities.betterOdds);
 		
 		squad1 = new HeroesSquad();
 		squad1.addHero(lorenzo1);
@@ -106,10 +107,8 @@ class PowerUpDenTests {
 		
 		System.out.println("Type:\n"
 				+ "- Random char"
-				+ "- Random number higher than 3"
 				+ "- 0 to select Armor powerUp"
 				+ "- Random char"
-				+ "- Random number higher than 3"
 				+ "- 0 to exit the Hero chooser"
 				+ "- 2 to try to use IncreaseMaxLife which you don't have"
 				+ "- Random char or num"
@@ -133,4 +132,20 @@ class PowerUpDenTests {
 		
 	}
 
+	
+	@AfterEach
+	void afterEach() {
+		powerUpDen = null;
+		
+		lorenzo1 = null;
+		jay1 = null;
+		
+		squad1 = null;
+		
+		backpack = null;
+		
+		armor = null;
+		increaseMaxHealth = null;
+		gameChooser = null;
+	}
 }

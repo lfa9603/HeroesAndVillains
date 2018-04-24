@@ -2,6 +2,7 @@ package tests.collectableTests.powerUpTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,5 +28,11 @@ class ArmorTests {
 		
 		armor.apply(hero);
 //		assertTrue(hero.isHasArmor());TODO:RE-TEST RIGHT VALUE
+	}
+	
+	@AfterEach
+	void afterEach() {
+		hero = null;
+		armor = null;
 	}
 }
