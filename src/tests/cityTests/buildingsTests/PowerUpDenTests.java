@@ -76,7 +76,7 @@ class PowerUpDenTests {
 		
 		powerUpDen.interact(squad1);
 		
-		assertTrue(lorenzo1.isHasArmor());
+		assertEquals(lorenzo1.getArmor(), 30);
 		assertFalse(backpack.getInventory().containsKey(armor));
 		
 		System.out.println("Type:\n"

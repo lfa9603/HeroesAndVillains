@@ -6,6 +6,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import city.City;
@@ -18,8 +19,8 @@ public class CityTests {
 
 	private static City city;
 	
-	@BeforeAll
-	static void beforeAll() {
+	@BeforeEach
+	static void beforeEach() {
 		city = new City();
 	}
 	
