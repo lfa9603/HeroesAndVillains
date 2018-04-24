@@ -6,7 +6,7 @@ package characters;
  *
  */
 public class Hero extends Character {
-	private boolean hasArmor;
+	private int armor;
 	private boolean isGameChooser;
 	public boolean isinDetention;
 	
@@ -17,22 +17,23 @@ public class Hero extends Character {
 	 */
 	public Hero(String name, Types type, Abilities specialAbility) {
 		super(name, type, specialAbility);
-		hasArmor = false;
+		armor = 0;
 		isGameChooser = false;
 	}
 
 	/**
 	 * @return the hasArmor
 	 */
-	public boolean isHasArmor() {
-		return hasArmor;
+	public int getArmor() {
+		return armor;
 	}
 
 	/**
 	 * @param hasArmor the hasArmor to set
 	 */
-	public void setHasArmor(boolean hasArmor) {
-		this.hasArmor = hasArmor;
+	public void setArmor(int addArmor) {
+		int oldArmor = armor;
+		armor = addArmor + oldArmor;
 	}
 
 	/**

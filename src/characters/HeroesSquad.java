@@ -209,17 +209,24 @@ public class HeroesSquad {
 	
 	public void heroTakesDamage(Hero hero, int villainDamge) {
 		int currentHealth = hero.getHealth() - villainDamge;
-		if (currentHealth > 0) {
-			hero.setHealth(currentHealth);
-			System.out.println(hero.getCharacterName() + "'s Health is " + hero.getHealth() + "HP");
+		int currentArmor = hero.getArmor() - villainDamge;
+		if (currentArmor >= 0) {
+			hero.setArmor(currentArmor);
+			System.out.println(hero.getCharacterName() + "'s Armor is at " + hero.getArmor() + "AP");
 		}
+		
 		else {
-			hero.setHealth(0);
-			hero.setisAlive(false);
-			System.out.println(hero.getCharacterName() + " has Died!!");
-			checkTeamStatus();
+			if (currentHealth > 0) {
+				hero.setHealth(currentHealth);
+				System.out.println(hero.getCharacterName() + "'s Health is " + hero.getHealth() + "HP");
+			}
+			else {
+				hero.setHealth(0);
+				hero.setisAlive(false);
+				System.out.println(hero.getCharacterName() + " has Died!!");
+				checkTeamStatus();
+			}
 		}
-	
 	}
 	
 		

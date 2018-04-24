@@ -25,7 +25,7 @@ public class Armor extends PowerUp {
 	 */
 	@Override
 	public void apply(Hero hero) {
-		hero.setHasArmor(true);
+		hero.setArmor(30);
 	}
 
 
