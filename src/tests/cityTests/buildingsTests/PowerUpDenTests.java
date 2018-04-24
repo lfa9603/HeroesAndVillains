@@ -74,21 +74,23 @@ class PowerUpDenTests {
 				+ "- 0 to select Armor power-up\n" 
 				+ "- 1 to select the first Hero\n");
 		
+		System.out.println("Type:\n"
+				+ "- 2 to select IncreaseMaxLife power-up\n" 
+				+ "- 1 to select the first Hero\n");
+		
+		System.out.println("Type:\n"
+				+ "- 1 to select GameChooser power-up\n"
+				+ "- 1 to select the first Hero\n");
 		powerUpDen.interact(squad1);
 		
 		assertEquals(lorenzo1.getArmor(), 30);
 		assertFalse(backpack.getInventory().containsKey(armor));
 		
-		System.out.println("Type:\n"
-				+ "- 1 to select GameChooser power-up\n"
-				+ "- 1 to select the first Hero\n");
+		
 		
 		assertTrue(lorenzo1.getIsGameChooser());
 		assertFalse(backpack.getInventory().containsKey(gameChooser));
 		
-		System.out.println("Type:\n"
-				+ "- 2 to select IncreaseMaxLife power-up\n" 
-				+ "- 1 to select the first Hero\n");
 		
 		assertEquals(lorenzo1.getMaxHealth(), 125);
 		assertEquals(lorenzo1.getHealth(), 100);
