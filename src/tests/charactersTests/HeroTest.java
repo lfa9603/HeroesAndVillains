@@ -67,6 +67,10 @@ class HeroTest {
 		lorenzo.setHealth(80);
 		int lorenzoHealth = lorenzo.getHealth();
 		assertEquals(80, lorenzoHealth);
+		lorenzo.setHealth(150);
+		int actual = lorenzo.getHealth();
+		assertEquals(80, actual);
+		
 	}
 	
 	@Test
@@ -78,10 +82,65 @@ class HeroTest {
 		assertFalse(lorenzo.isAlive());
 	}
 	
-	@test
+	@Test
 	void testSetCharacterType() {
-		// TODO Auto-generated method stub
-
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		Types actual = lorenzo.getCharacterType();
+		assertEquals(Types.dog, actual);
 	}
+	
+	@Test
+	void testsetCharacterType() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setCharacterType(Types.smart);
+		Types actual = lorenzo.getCharacterType();
+		assertEquals(Types.smart, actual);
+	}
+	
+	@Test
+	void testsetMaxHealth() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setMaxHealth(150);
+		int actual = lorenzo.getMaxHealth();
+		assertEquals(150, actual);
+	}
+	
+	@Test
+	void testsetHasArmor() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setArmor(30);
+		int actual = lorenzo.getArmor();
+		assertEquals(30, actual);
+	}
+	
+	@Test
+	void testsetIsGameChooser() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setIsGameChooser(true);
+		boolean actual = lorenzo.getIsGameChooser();
+		assertTrue(actual);
+	}
+	
+	@Test
+	void testsetIsInDetention() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setIsinDetention(true);
+		boolean actual = lorenzo.isInDetention();
+		assertTrue(actual);
+	}
+	
+	@Test
+	void testEquals() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		Hero lorenzo2 = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		Hero lorenzo3 = new Hero("Lorenzo3", Types.dog, Abilities.arrogance);
+		boolean actual = lorenzo.equals(lorenzo2);
+		assertTrue(actual);
+		boolean actualfalse = lorenzo.equals(lorenzo3);
+		assertFalse(actualfalse);
+	}
+	
+	
+	
 
 }
