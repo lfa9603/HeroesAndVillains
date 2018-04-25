@@ -61,24 +61,18 @@ class VillainsTests {
 		
 	}
 
-	@Test
-	void testAddVillain() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testRemoveVillain() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetCurrentVillain() {
-		fail("Not yet implemented");
+		String actual = villains.toString();
+		String expected = "Villains: \n"
+				+ "Tony the Primary School bully\n"
+				+ "Gertrude the HighSchool Principal\n"
+				+ "Richard your Partners Father\n"
+				+ "Alex your Partner\n"
+				+ "Page your docter\n"
+				+ "Sam your Manager\n";
+		assertEquals(expected, actual);
 	}
 
 }
