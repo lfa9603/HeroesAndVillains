@@ -67,6 +67,10 @@ class HeroTest {
 		lorenzo.setHealth(80);
 		int lorenzoHealth = lorenzo.getHealth();
 		assertEquals(80, lorenzoHealth);
+		lorenzo.setHealth(150);
+		int actual = lorenzo.getHealth();
+		assertEquals(80, actual);
+		
 	}
 	
 	@Test
@@ -78,10 +82,21 @@ class HeroTest {
 		assertFalse(lorenzo.isAlive());
 	}
 	
-	@test
+	@Test
 	void testSetCharacterType() {
-		// TODO Auto-generated method stub
-
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		Types actual = lorenzo.getCharacterType();
+		assertEquals(Types.dog, actual);
 	}
+	
+	@Test
+	void testsetCharacterType() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setCharacterType(Types.smart);
+		Types actual = lorenzo.getCharacterType();
+		assertEquals(Types.smart, actual);
+	}
+	
+	
 
 }
