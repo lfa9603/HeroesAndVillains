@@ -25,6 +25,7 @@ class VillainsTests {
 	@AfterEach
 	void tearDown() throws Exception {
 		villains = null;
+		villainsList = null;
 	}
 
 	@Test
