@@ -125,6 +125,7 @@ public class TeamBuilder {
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 //			Scanner userinput_1 = new Scanner(System.in);
 			
+			//TODO: PROBLEM AROUND HERE (WHEN I HAVE TO SELECT THE HERO ABILITY) IF I TYPE A WRONG NUMBER IT DOES NOT WORK.(EG. 8 OR jhdfkj)
 			try {
 				Integer selectedCharacter = nextInt();
 				if (selectedCharacter >= 1 && selectedCharacter <= 6) {
@@ -228,3 +229,5 @@ public class TeamBuilder {
 		System.out.println(team.getTeam());
 	}
 }
+
+
