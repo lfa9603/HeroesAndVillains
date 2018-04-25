@@ -2,7 +2,7 @@ package city.buildings;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 import characters.Hero;
 import characters.HeroesSquad;
@@ -14,6 +14,9 @@ import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
 import collectables.powerUp.PowerUp;
 import engine.Utilities;
+
+import static engine.HelperScanner.*;
+
 
 /**
  * 
@@ -48,7 +51,7 @@ public class PowerUpDen extends Building {
 	public void interact(HeroesSquad heroesSquad) {
 		
 		boolean inPowerUpDen = true;
-		Scanner input = new Scanner(System.in);
+//		Scanner input = new Scanner(System.in);
 		while (inPowerUpDen) {
 			
 			ArrayList<Collectable> powerUps = InventoryTools.powerUps();
@@ -67,7 +70,7 @@ public class PowerUpDen extends Building {
 						+ "\n\nCAUTION! YOU CANNOT USE AN ITEM IF YOU DO NOT OWN IT "
 						+ "DON'T TRY TO BE CHEECKY ;) ");
 				try {
-					Integer intInput = input.nextInt();
+					Integer intInput = nextInt();
 					PowerUp powerUp = null; 
 					
 					
@@ -83,7 +86,6 @@ public class PowerUpDen extends Building {
 					 		break;
 					 	case 3:
 					 		System.out.println("\n\nSee ya later alligator!!!\n\n");
-//					 		input.close();
 					 		inPowerUpDen = false;
 					 		continue;
 					 	default:
@@ -109,13 +111,13 @@ public class PowerUpDen extends Building {
 				
 				} catch (InputMismatchException e) {
 					System.out.println("Please type a valid integer\n\n");
-					input.next();
+					next();
 					
 				} finally {
-					input.reset();
+					reset();
 				}
 			} else {
-				noPowerUps(input);
+				noPowerUps();
 //				input.close();
 				inPowerUpDen = false;
 			}
@@ -136,26 +138,27 @@ public class PowerUpDen extends Building {
 	 * Helper for interact() method, it deals with the case the team has no power-up in their backpack.
 	 * If called it suggest the team to visit the Shop.
 	 */
-	private void noPowerUps(Scanner input) {
+	private void noPowerUps() {
 		boolean deciding = true;
 		while (deciding) {
 			System.out.println("Looks like you have no Power-Ups in the backpack! "
 					+ "\nPress 0 for exiting the game");
 			try {
-				Integer exiting = input.nextInt();
+				Integer exiting = nextInt();
 				if (exiting.equals(0)) {
 					deciding = false;
 //					input.close();
 					System.out.println("Come back later, maybe after a visit to the shop!!");
+//					next();
 				} else {
 					throw new InputMismatchException();
 				}
 			} catch (InputMismatchException e) {
 					System.out.println("Please press 0, to exit.");
-					input.next();
+					next();
 					
 			} finally {
-				input.reset();
+//				reset();
 			}
 		}
 	}

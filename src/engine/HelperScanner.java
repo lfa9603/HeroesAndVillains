@@ -23,8 +23,8 @@ public class HelperScanner {
 		if (scanner == null)
 			create();
 		
-		int value = scanner.nextInt();
-		return value;
+//		int value = scanner.nextInt();
+		return scanner.nextInt();
 	}
 	
 	public static String next() {

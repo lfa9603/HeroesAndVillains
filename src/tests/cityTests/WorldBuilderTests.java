@@ -2,15 +2,43 @@ package tests.cityTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import city.City;
 import city.WorldBuilder;
 import city.buildings.Building;
+import engine.HelperScanner;
 
 class WorldBuilderTests {
+	
+	
+	private ByteArrayOutputStream outputStream;
+	private ByteArrayInputStream inputStream;
+	
+	@BeforeEach
+	void beforeEach() {
+		outputStream = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outputStream));
+	}
+	
+	private void setInputStream(String input) {
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
+	}
+	
+	
+	@AfterEach
+	void afterEach() {
+		System.setOut(System.out);
+		System.setIn(System.in);
+	}
 	
 	
 	/**
@@ -21,6 +49,11 @@ class WorldBuilderTests {
 	 */
 	@Test
 	void testingWorldBuilder() {
+		
+		setInputStream("abd\n5\n");
+		HelperScanner.create();
+
+		
 		System.out.println("NOW TESTING WorldBuilder CLASS, USER INPUT NEEDED FOLLOW INSTRUCTIONS");
 		
 		//Requirement 1

@@ -6,7 +6,6 @@ import java.awt.Point;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Scanner;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +18,7 @@ import characters.Types;
 import city.City;
 import city.buildings.Home;
 import collectables.Money;
+import engine.HelperScanner;
 
 class HomeTests {
 
@@ -61,8 +61,10 @@ class HomeTests {
 	//TODO: find a good way to test this method.
 	@Test
 	void testingInteract() {
-		
+
 		setInputStream("0\n1\nab\n2\n" );
+		HelperScanner.create();
+
 		
 		///
 //		System.out.println("FOR NEXT TEST TYPE ANY LETTER, A NON ZERO OR 1 NUMBER AND FINALLY 0 AND 1, IF DOES NOT GO INTO INFINITE LOOP, GREAT STUFF");
