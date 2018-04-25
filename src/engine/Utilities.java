@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
+import characters.HeroesSquad;
 import characters.Villain;
 import minigames.MiniGame;
 
@@ -37,11 +38,42 @@ public class Utilities {
 				System.out.println("Invalid input, have you typed a valid integer?");
 				System.out.println("Please Try again \n");
 			} finally {
-				input.reset();
+				input.reset(); 
 			}
 		}
 		
 		return choice;
+	}
+	
+	@SuppressWarnings({ "resource" })
+	public static YesNo getStringChoice(String userQuestion) {
+		boolean validInput = false;
+		
+		while (validInput == false) {
+			Scanner input = new Scanner(System.in);
+			System.out.print(userQuestion + " Y/N \n");
+			String userInput = input.next();
+			
+			if (userInput.equals("Y") || userInput.equals("y")) {
+				validInput = true;
+				return YesNo.yes;
+			}
+			
+			else {
+				
+				if (userInput.equals("N") || userInput.equals("n")) {
+					validInput = true;
+					return YesNo.no;
+				}
+				
+				else {
+					System.out.println("invalid input, please answer Y/N or y/n");
+				}
+			}
+		}
+
+		return null;
+		
 	}
 
 	public static int getRandInt(int upperLimit) {

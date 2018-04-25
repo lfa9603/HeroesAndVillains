@@ -77,5 +77,11 @@ class HeroTest {
 		lorenzo.setisAlive(false);
 		assertFalse(lorenzo.isAlive());
 	}
+	
+	@test
+	void testSetCharacterType() {
+		// TODO Auto-generated method stub
+
+	}
 
 }
