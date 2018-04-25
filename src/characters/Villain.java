@@ -32,7 +32,7 @@ public class Villain extends Character{
 	}
 	
 	public String sayTaunt() {
-		return getCharacterName() + " taunts you, He says " + getVillainTaunt();
+		return getCharacterName() + " taunts you, they say " + getVillainTaunt();
 	}
 	
 	public int getVillainsChoice(int upperLimit) {
