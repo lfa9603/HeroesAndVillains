@@ -6,7 +6,6 @@ import characters.Villain;
 import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
-import minigames.CharacterAbiltyEffects;
 
 public class RockPaperScissors extends MiniGame {
 	private Villain villain;
@@ -38,7 +37,7 @@ public class RockPaperScissors extends MiniGame {
 		
 		VisualUtilities.getIcon(Icons.bar);		
 		int villainChoice = villain.getVillainsChoice(3);
-		CharacterAbiltyEffects.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 1);
+		MiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 1);
 		VisualUtilities.getIcon(Icons.bar);
 		
 		int choice = Utilities.getChoice("Choose a number between 1-3 to select Rock, Paper or Scissors respectivly", 1, 3);
