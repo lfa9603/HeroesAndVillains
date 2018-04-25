@@ -4,7 +4,6 @@ import characters.Hero;
 import characters.HeroesSquad;
 import characters.Villain;
 import engine.Utilities;
-import minigames.CharacterAbiltyEffects;
 
 public class DiceWars extends MiniGame{
 	
@@ -31,7 +30,7 @@ public class DiceWars extends MiniGame{
 			System.out.println("You roll a " + roll);
 			int villainRoll = villain.getVillainsChoice(6);
 			System.out.println(villain.getCharacterName() + " rolls a " + villainRoll);
-			CharacterAbiltyEffects.getHeroAbiltyEffects(hero, villain, squad, villainRoll, 3);
+			MiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainRoll, 3);
 			if (roll > villainRoll) {
 				heroWins(hero);
 			}
