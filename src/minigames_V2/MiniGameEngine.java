@@ -18,6 +18,7 @@ public class MiniGameEngine {
 
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
+			
 			int selectedMiniGame = selectNewGame(3);
 			System.out.println("The Game will be " + getGame(selectedMiniGame));
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
@@ -30,7 +31,13 @@ public class MiniGameEngine {
 			
 			Hero hero = selectHero(squad);
 			
-			VisualUtilities.getIcon(Icons.bar);
+			System.out.println(VisualUtilities.getIcon(Icons.bar));
+			
+			if (hero.getIsGameChooser()) {
+				selectedMiniGame = MiniGameUtilities.gameChooserPowerUp(selectedMiniGame, hero);
+			}
+			
+			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			
 			switch (selectedMiniGame) {
 			case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
@@ -148,6 +155,7 @@ public class MiniGameEngine {
 //		hero3.setisAlive(false);
 		testsquad.checkTeamStatus();
 		hero2.setArmor(30);
+		hero2.setIsGameChooser(true);
 		Money wallet = testsquad.getWallet();
 		
 		

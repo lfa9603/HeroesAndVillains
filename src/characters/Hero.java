@@ -31,9 +31,8 @@ public class Hero extends Character {
 	/**
 	 * @param hasArmor the hasArmor to set
 	 */
-	public void setArmor(int addArmor) {
-		int oldArmor = armor;
-		armor = addArmor + oldArmor;
+	public void setArmor(int Armor) {
+		armor = Armor;
 	}
 
 	/**

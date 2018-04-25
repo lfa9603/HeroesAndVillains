@@ -8,6 +8,7 @@ import collectables.Money;
 import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
+import engine.YesNo;
 import minigames.MiniGame;
 
 public class MiniGameUtilities {
@@ -199,6 +200,19 @@ public class MiniGameUtilities {
 			System.out.println(villain.getCharacterName() + " uses his abilty " + villain.getCharacterAbility());
 			System.out.println(villain.getVillainTaunt());
 		}
+	}
+
+	public static int gameChooserPowerUp(int selectedMiniGame, Hero hero) {
+		YesNo userInput = Utilities.getStringChoice("Do you want to use your GameChooser power up?");
+		String string = "1 to select Paper Scissors Rock. \n"
+				+ "2 to select Guess the number \n"
+				+ "3 to select dice wars.";
+		
+		if (userInput == YesNo.yes) {
+			selectedMiniGame = Utilities.getChoice(string, 1, 3);
+		}
+		
+		return selectedMiniGame;
 	}
 
 }
