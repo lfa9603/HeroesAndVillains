@@ -1,14 +1,17 @@
 package characters;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 import engine.Icons;
 import engine.VisualUtilities;
 
+import static engine.HelperScanner.*;
+
+
 public class TeamBuilder {
 	private HeroesSquad Team;
 	private String finalteamName;
+	
 	
 	private static String characterTypes = "1. Talkitive : Has the ability to Charm people (Gets 25% better prices at shops) \n"
 			+ "2. Smart : Mystery Ability, which could help or hinder your team (Minigame dependant) \n"
@@ -35,10 +38,11 @@ public class TeamBuilder {
 		 * TODO the User can quit at any time with an input Q or q.
 		 */
 		
+//		Scanner input = HelperScanner.getScanner();
+		
 		while (run == true) {
-			Scanner input = new Scanner(System.in);
 			System.out.print("Do you want to create a New Team? Y/N \n");
-			String createTeam = input.next();
+			String createTeam = next();
 			
 			if (createTeam.equals("Y") || createTeam.equals("y")) {
 				
@@ -49,19 +53,19 @@ public class TeamBuilder {
 				
 				while (run == true) {
 					
-					Scanner newinput = new Scanner(System.in);
+//					Scanner newinput = new Scanner(System.in);
 					System.out.println("Team name: ");
-					String teamName = newinput.nextLine();
+					String teamName = next();
 					
 				
 					if ((teamName.length() >= 2) && (teamName.length() <= 10)) {
 						
 						
 						
-						Scanner secondNewinput = new Scanner(System.in);
+//						Scanner secondNewinput = new Scanner(System.in);
 						System.out.println("Your Teams name is: " + teamName);
 						System.out.println("Are you happy with this? Y/N");
-						String confirmation = secondNewinput.nextLine();
+						String confirmation = next();
 						
 						// Confirms the user is happy with there Team name.
 						
@@ -119,10 +123,10 @@ public class TeamBuilder {
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			System.out.println("Please enter 1-6 to select a character (Press \'Q\' when done selecting):");
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
-			Scanner userinput_1 = new Scanner(System.in);
+//			Scanner userinput_1 = new Scanner(System.in);
 			
 			try {
-				Integer selectedCharacter = userinput_1.nextInt();
+				Integer selectedCharacter = nextInt();
 				if (selectedCharacter >= 1 && selectedCharacter <= 6) {
 					switch(selectedCharacter) {
 					case 1: createHero(Types.talkitive, Abilities.charm); break;
@@ -131,32 +135,36 @@ public class TeamBuilder {
 					case 4: createHero(Types.strong, Abilities.lessDamage); break;
 					case 5: createHero(Types.sly, Abilities.winDraws); break;
 					case 6: createHero(Types.dog, Abilities.goodBoy); break;
+					default: 
+						throw new InputMismatchException();
 					}
 				}
 					
 				else {
 						System.out.println("Invalid integer, please type a value betwen (and including) 1 and 6 \n");
+						next();
 					}
 				
 			} catch (InputMismatchException error) {
 				System.out.println("Invalid input, have you typed a valid integer?");
 				System.out.println("Please Try again \n");
+				next();
 			}
 			
 			finally {
-				userinput_1.reset();
+				reset();
 			}
 			
 			while (runInner == true) {
 				if (Team.getLength() >= 1) {
-					Scanner userinput_3 = new Scanner(System.in);
+//					Scanner userinput_3 = new Scanner(System.in);
 					System.out.println(VisualUtilities.getIcon(Icons.bar));
 					System.out.println("Are you happy with your team?\n"
 							+ "Y : to Proceed to the game.\n"
 							+ "N : to add another Hero.\n"
 							+ "R : to reset your team.");
 					System.out.println(VisualUtilities.getIcon(Icons.bar));
-					String confirmation = userinput_3.next();
+					String confirmation = next();
 					
 					if (confirmation.equals("R") || confirmation.equals("r")) {
 						System.out.println("Team has been reset.");
@@ -200,9 +208,9 @@ public class TeamBuilder {
 		}
 	
 	private void createHero(Types type, Abilities abilty) {
-		Scanner userinput_2 = new Scanner(System.in);
+//		Scanner userinput_2 = HelperScanner.getScanner();
 		System.out.println("What will your Hero's name be?");
-		String characterName = userinput_2.nextLine();
+		String characterName = next();
 		
 		Hero hero = new Hero(characterName, type, abilty);  
 		Team.addHero(hero);
@@ -215,8 +223,8 @@ public class TeamBuilder {
 	
 	
 	
-//	public static void main(String[] args) {
-//		TeamBuilder team = new TeamBuilder();
-//		System.out.println(team.getTeam());
-//	}
+	public static void main(String[] args) {
+		TeamBuilder team = new TeamBuilder();
+		System.out.println(team.getTeam());
+	}
 }

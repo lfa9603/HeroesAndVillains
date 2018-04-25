@@ -48,6 +48,7 @@ public class PowerUpDen extends Building {
 	public void interact(HeroesSquad heroesSquad) {
 		
 		boolean inPowerUpDen = true;
+		Scanner input = new Scanner(System.in);
 		while (inPowerUpDen) {
 			
 			ArrayList<Collectable> powerUps = InventoryTools.powerUps();
@@ -55,7 +56,7 @@ public class PowerUpDen extends Building {
 			System.out.println("You are inside the Power-Up Den, here is you available Healing potions:\n");
 			System.out.println(InventoryTools.showTypeItemsInInventory(heroesSquad, powerUps));
 			
-			Scanner input = new Scanner(System.in);
+//			Scanner input = new Scanner(System.in);
 			
 			if (InventoryTools.getTotTypeItems(heroesSquad, powerUps) > 0) {
 				System.out.println("Press: "

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import engine.HelperScanner;
+
 /**
  * 
  * @author LorenzoFasano
@@ -37,8 +39,10 @@ public class WorldBuilder {
 		boolean stillAsking = true;
 		Integer integerTyped = null;
 		System.out.println("How many cities would you like to explore? (Please type a number between 3 and 6)");
+		
+		Scanner input = HelperScanner.getScanner();
+		
 		while (stillAsking) {
-			Scanner input = new Scanner(System.in);
 			try {
 				integerTyped = input.nextInt();
 				if (integerTyped >= 3 && integerTyped <= 6) {
