@@ -9,7 +9,6 @@ import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
 import engine.YesNo;
-import minigames.MiniGame;
 
 public class MiniGameUtilities {
 	
@@ -80,7 +79,7 @@ public class MiniGameUtilities {
 		System.out.println(villain.toString());
 		System.out.println("You deserve to lose, then my child will see the loser that your really are...");
 		System.out.println(villain.getCharacterName() + " changes the game to Guess the number.");
-		MiniGame.setSelectedGame(2);
+		MiniGameEngine.setSelectedGame(2);
 	}
 
 	private static void arrogance() {

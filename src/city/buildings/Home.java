@@ -1,12 +1,29 @@
 package city.buildings;
 
+import java.awt.Point;
+//import java.awt.Point;
+//import java.io.ByteArrayOutputStream;
+//import java.io.PrintStream;
 import java.util.InputMismatchException;
-import java.util.Scanner;
+//import java.util.Scanner;
 
+import characters.Abilities;
+//import characters.Abilities;
 import characters.Character;
+import characters.Hero;
+//import characters.Hero;
 import characters.HeroesSquad;
-import collectables.CollectableID;
-import collectables.heroesMap.HeroesMap;
+import characters.Types;
+//import characters.Types;
+//import city.City;
+//import collectables.CollectableID;
+//import collectables.Money;
+//import collectables.heroesMap.HeroesMap;
+import city.City;
+import collectables.Money;
+
+import static engine.HelperScanner.*;
+
 
 /**
  * 
@@ -42,14 +59,13 @@ public class Home extends Building {
 		boolean atHome = true;
 		System.out.println("Welcome in your Home Base!");
 		while (atHome) {
-			Scanner input = new Scanner(System.in);
+			
 			System.out.println("Type:\n"
 					+ " 0 to see the map\n"
 					+ " 1 to check the heroes status\n"
 					+ " 2 to exit\n");
 			try {
-				Integer valueTyped = input.nextInt();
-			
+				Integer valueTyped = nextInt();
 				switch(valueTyped) {
 				case 0:
 					showMap(heroesSquad);//TODO modify this method
@@ -65,10 +81,10 @@ public class Home extends Building {
 				}
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the three options");
-				input.next();
+				next();
 				
 			} finally {
-				input.reset();
+				reset();
 			}
 		}
 	}
@@ -112,11 +128,27 @@ public class Home extends Building {
 
 	
 //	public static void main(String[] args) {
+//		
+//		
+//		City city = new City();
+//		Home home = (Home) city.returnBuildingAtSpecificCoordinates(new Point(0, 0));
+//		
+//		Hero lorenzo = new Hero("Lorenzo", Types.smart, Abilities.betterOdds);
+//		Hero jay = new Hero("Jay", Types.talkitive, Abilities.betterOdds);
+//		
+//		HeroesSquad squad = new HeroesSquad();
+//		squad.addHero(lorenzo);
+//		squad.addHero(jay);
+//		
+//		squad.setWallet(new Money(1000));
+//		
+//		squad.setCurrentCity(city);
+//		squad.setHaveMap(true);
 //		HeroesSquad heros = new HeroesSquad();
-//		heros.addHero(new Hero("Lorenzo", "c", "C"));
+//		heros.addHero(new Hero("Lorenzo",Types.dog, Abilities.arrogance));
 //		heros.setCurrentCity(new City());
 //		heros.setHaveMap(true);
-//		Home home = new Home("Home", TypeBuildings.Home);
+//		
 //		home.interact(heros);
 //	
 //	}

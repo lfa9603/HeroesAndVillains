@@ -2,6 +2,10 @@ package tests.cityTests.buildingsTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +21,7 @@ import collectables.Inventory;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
+import engine.HelperScanner;
 
 class PowerUpDenTests {
 
@@ -33,10 +38,17 @@ class PowerUpDenTests {
 	private IncreaseMaxLife increaseMaxHealth;
 	private GameChooser gameChooser;
 	
+	private ByteArrayOutputStream outputStream;
+	private ByteArrayInputStream inputStream;
 	
 	@BeforeEach
 	void beforeEach() {
 
+//		System.out.println(inputStream);
+		
+		outputStream = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outputStream));
+		
 		powerUpDen = new PowerUpDen("PowerUpDen", TypeBuildings.PowerUpDen);
 		
 		increaseMaxHealth = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
@@ -58,6 +70,12 @@ class PowerUpDenTests {
 		
 	}
 	
+	
+	private void setInputStream(String input) {
+		inputStream = new ByteArrayInputStream(input.getBytes());
+		System.setIn(inputStream);
+	}
+	
 	/**
 	 * 
 	 * In this test the correct functioning of interact method are tested and therefore all the apply() 
@@ -69,6 +87,9 @@ class PowerUpDenTests {
 	@Test
 	void testingCorrectFunctioningOfInteract() {
 		
+		setInputStream("0\n1\n1\n1\n2\n1\n0\n");
+
+		HelperScanner.create();
 		
 		//TODO: having troubles with this test, works individually, fails when testing all.
 		System.out.println("Type:\n"
@@ -99,37 +120,36 @@ class PowerUpDenTests {
 		assertFalse(backpack.getInventory().containsKey(gameChooser));
 		
 	}
-	
+//	
 	//This test has no asserts, the fact that it does 
 			//not crash or runs in infinite loop is enough for this part.
 	@Test
 	void testingBadInputPassedToInteract() {
+		setInputStream("gdsf\n"
+				+ "0\n"
+				+ "dsg\n"
+				+ "0\n"
+				+ "2\n"
+				+ "hfdj\n"
+				+ "0\n"
+				+ "1\n"
+				+ "jsdk\n"
+				+ "0\n"
+				+ "3\n");
 		
-		System.out.println("Type:\n"
-				+ "- Random char"
-				+ "- 0 to select Armor powerUp"
-				+ "- Random char"
-				+ "- 0 to exit the Hero chooser"
-				+ "- 2 to try to use IncreaseMaxLife which you don't have"
-				+ "- Random char or num"
-				+ "- 0 to select Armor power-up"
-				+ "- 1 to select first Hero"
-				+ "- Random char"
-				+ "- 0 to exit");
+		HelperScanner.create();
 		
 		backpack.addItemToInventory(gameChooser);
 		backpack.addItemToInventory(armor);
 		powerUpDen.interact(squad1);
 		
 	}
-	
+
 	@Test
 	void normallyExitingInteractWithItemsInInventory() {
-		
-		System.out.println("Press 3 to exit");
-		backpack.addItemToInventory(armor);
+		setInputStream("3\n");
+		HelperScanner.create();
 		powerUpDen.interact(squad1);
-		
 	}
 
 	
@@ -139,7 +159,6 @@ class PowerUpDenTests {
 		
 		lorenzo1 = null;
 		jay1 = null;
-		
 		squad1 = null;
 		
 		backpack = null;
@@ -147,5 +166,8 @@ class PowerUpDenTests {
 		armor = null;
 		increaseMaxHealth = null;
 		gameChooser = null;
+		
+		System.setOut(System.out);
+		System.setIn(System.in);
 	}
 }

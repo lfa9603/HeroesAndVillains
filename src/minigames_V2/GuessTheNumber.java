@@ -4,7 +4,6 @@ import characters.Hero;
 import characters.HeroesSquad;
 import characters.Villain;
 import engine.Utilities;
-import minigames.CharacterAbiltyEffects;
 
 public class GuessTheNumber extends MiniGame{
 	
@@ -26,7 +25,7 @@ public class GuessTheNumber extends MiniGame{
 				+ "The Villain has chosen a number. \n");
 		int villainChoice = villain.getVillainsChoice(10);
 		
-		CharacterAbiltyEffects.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 2);
+		MiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 2);
 		
 		while (heroTrys < 2) {
 			int choice = Utilities.getChoice("Choose a number between 1-10 you have two chances to get it right", 1, 10);

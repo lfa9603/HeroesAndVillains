@@ -42,6 +42,14 @@ public class Hero extends Character {
 		this.isGameChooser = isGameChooser;
 	}
 	
+	
+	/**
+	 * @return the isGameChooser
+	 */
+	public boolean getIsGameChooser() {
+		return isGameChooser;
+	}
+	
 	public boolean equals(Hero other) {
 		if (this.getCharacterName().equals(other.getCharacterName())) {
 			return true;
@@ -53,14 +61,7 @@ public class Hero extends Character {
 			
 	}
 	
-	/**
-	 * @return the isGameChooser
-	 */
-	public boolean getIsGameChooser() {
-		return isGameChooser;
-	}
-	
-	public boolean isIsinDetention() {
+	public boolean isInDetention() {
 		return isinDetention;
 	}
 

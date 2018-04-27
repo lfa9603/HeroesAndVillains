@@ -97,6 +97,50 @@ class HeroTest {
 		assertEquals(Types.smart, actual);
 	}
 	
+	@Test
+	void testsetMaxHealth() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setMaxHealth(150);
+		int actual = lorenzo.getMaxHealth();
+		assertEquals(150, actual);
+	}
+	
+	@Test
+	void testsetHasArmor() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setArmor(30);
+		int actual = lorenzo.getArmor();
+		assertEquals(30, actual);
+	}
+	
+	@Test
+	void testsetIsGameChooser() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setIsGameChooser(true);
+		boolean actual = lorenzo.getIsGameChooser();
+		assertTrue(actual);
+	}
+	
+	@Test
+	void testsetIsInDetention() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		lorenzo.setIsinDetention(true);
+		boolean actual = lorenzo.isInDetention();
+		assertTrue(actual);
+	}
+	
+	@Test
+	void testEquals() {
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		Hero lorenzo2 = new Hero("Lorenzo", Types.dog, Abilities.arrogance);
+		Hero lorenzo3 = new Hero("Lorenzo3", Types.dog, Abilities.arrogance);
+		boolean actual = lorenzo.equals(lorenzo2);
+		assertTrue(actual);
+		boolean actualfalse = lorenzo.equals(lorenzo3);
+		assertFalse(actualfalse);
+	}
+	
+	
 	
 
 }

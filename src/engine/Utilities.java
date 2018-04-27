@@ -2,11 +2,10 @@ package engine;
 
 import java.util.InputMismatchException;
 import java.util.Random;
-import java.util.Scanner;
 
-import characters.HeroesSquad;
-import characters.Villain;
-import minigames.MiniGame;
+
+import static engine.HelperScanner.*;
+
 
 public class Utilities {
 	
@@ -18,27 +17,28 @@ public class Utilities {
 		int choice = -1;
 		
 		while (validInput == false) {
-			Scanner input = new Scanner(System.in);
 			System.out.println(message);
 			
 			try {
-				int userchoice = input.nextInt();
+				int userchoice = nextInt();
 				if (userchoice >= lowerLimit && userchoice <= upperLimit) {
 					validInput = true;
 					choice = userchoice;
-//					input.close();
 					return choice;
 				}
 				
 				else {
 					System.out.println("Please choose an interger between " + lowerLimit + "-" + upperLimit);
+					next();
 				}
 
 			} catch (InputMismatchException error) {
 				System.out.println("Invalid input, have you typed a valid integer?");
 				System.out.println("Please Try again \n");
+				next();
+				
 			} finally {
-				input.reset(); 
+				reset(); 
 			}
 		}
 		
@@ -50,9 +50,8 @@ public class Utilities {
 		boolean validInput = false;
 		
 		while (validInput == false) {
-			Scanner input = new Scanner(System.in);
 			System.out.print(userQuestion + " Y/N \n");
-			String userInput = input.next();
+			String userInput = next();
 			
 			if (userInput.equals("Y") || userInput.equals("y")) {
 				validInput = true;

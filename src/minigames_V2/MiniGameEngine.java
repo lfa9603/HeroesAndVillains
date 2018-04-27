@@ -9,10 +9,9 @@ import collectables.Money;
 import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
-import minigames.CharacterAbiltyEffects;
-import minigames.MiniGame;
 
 public class MiniGameEngine {
+	private static int selectedMiniGame;
 
 	public void runMiniGameEngine(Villain villain, HeroesSquad squad) {
 
@@ -86,7 +85,7 @@ public class MiniGameEngine {
 			System.out.println(villain.getCharacterName() + " Chose not to use there abilty.");
 		}
 		else {
-			CharacterAbiltyEffects.getVillainAbiltyEffects(villain, squad);
+			MiniGameUtilities.getVillainAbiltyEffects(villain, squad);
 		}
 		
 		
@@ -137,6 +136,11 @@ public class MiniGameEngine {
 		return selectedGame;		
 	}
 	
+	public static void setSelectedGame(int newGame) {
+		selectedMiniGame = newGame;
+		
+	}
+	
 	//  For testing
 	public static void main(String[] args) {
 //		TeamBuilder team = new TeamBuilder();
@@ -170,6 +174,8 @@ public class MiniGameEngine {
 		System.out.println(wallet);
 		
 	}
+
+
 	
 
 }
