@@ -63,7 +63,11 @@ class UtilitiesTests {
 
 	@Test
 	void testGetRandInt() {
-		fail("Not yet implemented");
+		
+		int chosenValue = Utilities.getRandInt(4);
+		assertTrue(chosenValue <= 4 && chosenValue >= 0);
+		
+		
 	}
 
 }

@@ -1,6 +1,5 @@
 package engine;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
 public class HelperScanner {
@@ -15,9 +14,9 @@ public class HelperScanner {
 		scanner = new Scanner(System.in);
 	}
 	
-	public static void create(InputStream stream) {
-		scanner = new Scanner(stream);
-	}
+//	public static void create(InputStream stream) {
+//		scanner = new Scanner(stream);
+//	}
 	
 	public static int nextInt() {
 		if (scanner == null)

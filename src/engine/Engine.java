@@ -13,30 +13,21 @@ import city.WorldBuilder;
 public class Engine {
 
 	protected static Villains villains;	
-	protected TeamBuilder builtTeam;
-	protected HeroesSquad squad;
+	
+	
+	private TeamBuilder builtTeam;
+	private  HeroesSquad squad;
 	private static boolean hasTalkitive = false;
 	
-	protected ArrayList<City> world;
-	City currentCity; 
+	private  ArrayList<City> world;
+	private static int currentIndex = 0;
+	private City currentCity; 
 	
-	protected static int currentIndex;
 	
-	public static int getCurrentIndex() {
-		return currentIndex;
-	}
-	
-	public static Villains getVillains() {
-		return villains;
-	}
-	
-	public static Villain getCurrentVillain() {
-		return villains.getCurrentVillain(currentIndex);
-	}
 	
 	public Engine() {
 		
-		currentIndex = 0;
+//		currentIndex = 0;
 		
 		builtTeam = new TeamBuilder();
 		squad = builtTeam.getTeam(); //Gets the squad object from team builder
@@ -61,7 +52,7 @@ public class Engine {
 //		ArrayList<City> world = worldBuilder.getWorld();
 		
 		
-		villains = new Villains(world.size());
+//		villains = new Villains(world.size());
 		// for random tests
 //		getCurrentVillain().setBeaten(true);
 		
@@ -102,6 +93,18 @@ public class Engine {
 		squad.setCurrentPosition(new Point(0, 0));
 		squad.setCurrentCity(currentCity);
 		
+	}
+	
+	public static int getCurrentIndex() {
+		return currentIndex;
+	}
+	
+	public static Villains getVillains() {
+		return villains;
+	}
+	
+	public static Villain getCurrentVillain() {
+		return villains.getCurrentVillain(currentIndex);
 	}
 	
 	/**

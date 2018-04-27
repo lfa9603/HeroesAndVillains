@@ -15,7 +15,7 @@ import engine.VisualUtilities;
  * @author Lorenzo
  *
  */
-class EngineUtilitiesTests {
+class VisualUtilitiesTests {
 
 	/**
 	 * Test method for {@link engine.VisualUtilities#getIcon(engine.Icons)}.
