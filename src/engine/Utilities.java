@@ -15,21 +15,21 @@ public class Utilities {
 		int upperLimit = setupperLimt;
 		int lowerLimit = setlowerLimit;
 		int choice = -1;
+		int userchoice = -1;
 		
 		while (validInput == false) {
 			System.out.println(message);
 			
 			try {
-				int userchoice = nextInt();
+				
+				userchoice = nextInt();
 				if (userchoice >= lowerLimit && userchoice <= upperLimit) {
 					validInput = true;
 					choice = userchoice;
-					return choice;
-				}
-				
-				else {
+//					return choice;
+				} else {
 					System.out.println("Please choose an interger between " + lowerLimit + "-" + upperLimit);
-					next();
+//					next();
 				}
 
 			} catch (InputMismatchException error) {
@@ -39,39 +39,45 @@ public class Utilities {
 				
 			} finally {
 				reset(); 
+				
 			}
 		}
 		
 		return choice;
 	}
 	
-	@SuppressWarnings({ "resource" })
+//	@SuppressWarnings({ "resource" })
 	public static YesNo getStringChoice(String userQuestion) {
 		boolean validInput = false;
+		YesNo resultToReturn = null;
 		
 		while (validInput == false) {
 			System.out.print(userQuestion + " Y/N \n");
-			String userInput = next();
 			
-			if (userInput.equals("Y") || userInput.equals("y")) {
-				validInput = true;
-				return YesNo.yes;
-			}
+//			String userInput = next().toLowerCase();
 			
-			else {
-				
-				if (userInput.equals("N") || userInput.equals("n")) {
-					validInput = true;
-					return YesNo.no;
+			try {
+				String userInput = next().toLowerCase();
+				switch (userInput) {
+					case "y":
+						resultToReturn = YesNo.yes;
+						validInput = true;
+						break;
+					case  "n":
+						resultToReturn = YesNo.no;
+						validInput = true;
+						break;
+					default:
+						throw new InputMismatchException();
 				}
-				
-				else {
-					System.out.println("invalid input, please answer Y/N or y/n");
-				}
+			} catch (InputMismatchException e) {
+				System.out.println("invalid input, please answer Y/N or y/n");
+			} finally {
+				reset();
 			}
 		}
-
-		return null;
+		
+		return resultToReturn;
 		
 	}
 

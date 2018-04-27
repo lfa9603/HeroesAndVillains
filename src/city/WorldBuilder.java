@@ -92,4 +92,9 @@ public class WorldBuilder {
 		return world;
 	}
 	
+	
+	public static void main(String[] args) {
+		WorldBuilder wb = new WorldBuilder();
+	}
+	
 }

@@ -1,8 +1,7 @@
 package engine;
 
 public class VisualUtilities {
-	private static String thumbsUp = "\n"
-			+ "";
+
 	
 	private static String youWin = "\n"
 			+ "_________                                     __        .__          __  .__                                                                 ._._._.\r\n" + 
@@ -12,16 +11,14 @@ public class VisualUtilities {
 			" \\______  /\\____/|___|  /\\___  /|__|  (____  /__| |____/|____(____  /__| |__|\\____/|___|  /____  >  / ____|\\____/|____/    \\/\\_/ \\____/|___|  /_____\r\n" + 
 			"        \\/            \\//_____/            \\/                     \\/                    \\/     \\/   \\/                                      \\/\\/\\/\\/";
 
-	
+	private static String bar = "==========================================================";
 	/**
 	 * @return the bar
 	 */
 	public static String getIcon(Icons icon) {
 		switch (icon) {
-		case bar:  return ("==========================================================");
+		case bar:  return (bar);
 		case youWin: return (youWin);
-		case thumbsUp:
-			return "";
 		default:
 			return "";
 		}
