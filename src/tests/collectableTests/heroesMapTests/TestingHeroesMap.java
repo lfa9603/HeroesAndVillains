@@ -10,6 +10,7 @@ import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
+import city.City;
 import collectables.CollectableID;
 import collectables.heroesMap.HeroesMap;
 
@@ -42,6 +43,27 @@ class TestingHeroesMap {
 	void testingApplyMethodForExtendingCollectable() {
 		heroesMap.apply(hero);
 		assertEquals(squad.isHaveMap(), false);
+	}
+	
+	@Test
+	void getterAndSetterForCityProperty() {
+		City city = new City();
+		heroesMap.setCity(city);
+		assertEquals(heroesMap.getCity(), city);
+	}
+	
+	@Test
+	void toStringTest() {
+		assertEquals(heroesMap.toString(), "This is a map of the current city you are in, "
+				+ "you can buy it at the shop and use it ONLY inside your HomeBase" 
+				+ "\nIt costs " + heroesMap.getCost());
+	}
+	
+	@Test
+	void buildingCoordinatesToStringTest() {
+		City city = new City();
+		heroesMap.setCity(city);
+		assertEquals(heroesMap.builidngsCoordinatesToString(), heroesMap.getCity().toString());
 	}
 
 	@AfterEach

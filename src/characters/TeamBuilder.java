@@ -28,7 +28,12 @@ public class TeamBuilder {
 
 	public TeamBuilder() { 
 		createTeam();
-		addTeamMembers();
+		if (Team != null) {
+			addTeamMembers();
+		//TODO: POSSIBLE FIX TO ONE OF THE BUGS, NOW WE ARE LEFT WITH IMPLEMENTIG THE GAMEOVER;
+		} else {
+//			Engine.setToGameOver();
+		}
 	}
 	
 	private void createTeam() {
@@ -125,6 +130,7 @@ public class TeamBuilder {
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 //			Scanner userinput_1 = new Scanner(System.in);
 			
+			//TODO: PROBLEM AROUND HERE (WHEN I HAVE TO SELECT THE HERO ABILITY) IF I TYPE A WRONG NUMBER IT DOES NOT WORK.(EG. 8 OR jhdfkj)
 			try {
 				Integer selectedCharacter = nextInt();
 				if (selectedCharacter >= 1 && selectedCharacter <= 6) {
@@ -205,7 +211,7 @@ public class TeamBuilder {
 			}
 			runInner = true;
 		}
-		}
+	}
 	
 	private void createHero(Types type, Abilities abilty) {
 //		Scanner userinput_2 = HelperScanner.getScanner();
@@ -228,3 +234,5 @@ public class TeamBuilder {
 		System.out.println(team.getTeam());
 	}
 }
+
+

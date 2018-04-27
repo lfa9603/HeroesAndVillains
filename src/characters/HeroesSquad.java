@@ -54,6 +54,7 @@ public class HeroesSquad {
 		 }
 	}
 	
+	
 	public boolean squadContains(Hero hero) {
 		boolean result = false;
 		for(Hero heroinsquad: heroSquad) {
@@ -154,6 +155,13 @@ public class HeroesSquad {
 		return backPack;
 	}
 
+	/**
+	 * @param backPack the backPack to set
+	 */
+	public void setBackPack(Inventory backPack) {
+		this.backPack = backPack;
+	}
+	
     /**
 	 * @return the wallet
 	 */
@@ -168,13 +176,6 @@ public class HeroesSquad {
 	 */
 	public void setWallet(Money wallet) {
 		this.wallet = wallet;
-	}
-
-	/**
-	 * @param backPack the backPack to set
-	 */
-	public void setBackPack(Inventory backPack) {
-		this.backPack = backPack;
 	}
 	
 	/**
@@ -204,7 +205,7 @@ public class HeroesSquad {
 				return "Alive";
 			}
 			else {
-				return "dead";
+				return "Dead";
 			}
 		}
 	}
@@ -220,20 +221,21 @@ public class HeroesSquad {
 			}
 			
 			else {
-				if (currentArmor < 0) {
-					int finalHealth = currentArmor + hero.getHealth();
-					if (finalHealth > 0) {
-						hero.setHealth(finalHealth);
-						System.out.println(hero.getCharacterName() + "'s Health is " + hero.getHealth() + "HP");
-					}
-					else {
-						hero.setHealth(0);
-						hero.setisAlive(false);
-						System.out.println(hero.getCharacterName() + " has Died!!");
-						checkTeamStatus();
-					}
+				hero.setArmor(0);//I added this part, think it makes sense to bring the armor to 0
+
+				int finalHealth = currentArmor + hero.getHealth();
+				if (finalHealth > 0) {
+					hero.setHealth(finalHealth);
+//					hero.setArmor(0);//I added this part, think it makes sense to bring the armor to 0
+					System.out.println(hero.getCharacterName() + "'s Health is " + hero.getHealth() + "HP");
 				}
-		}
+				else {
+					hero.setHealth(0);
+					hero.setisAlive(false);
+					System.out.println(hero.getCharacterName() + " has Died!!");
+					checkTeamStatus();
+				}
+			}
 		}
 		else {
 			if (currentHealth > 0) {
@@ -249,7 +251,6 @@ public class HeroesSquad {
 		}
 	}
 	
-		
 	/**
 	 * @return the allDead
 	 */
@@ -283,6 +284,7 @@ public class HeroesSquad {
 
 
 
+	//TODO: update Hero toString() and then make this method better, not tested yet
 	public String toString() {
 		String squad = new String("Heros in " + teamName + ": \n"
 				+ "Index : Name : Health : Type : Abilty : Status \n"
@@ -292,6 +294,7 @@ public class HeroesSquad {
 			+ hero.getCharacterAbility() + " : " + heroStatus(hero) + "\n";
 		}
 		return squad;
+		
 		
 	}
 	

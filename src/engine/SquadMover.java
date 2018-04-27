@@ -2,32 +2,34 @@ package engine;
 
 import java.awt.Point;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 import characters.HeroesSquad;
 import city.City;
 import city.buildings.Building;
 import city.buildings.TypeBuildings;
-import collectables.Money;
+
+import static engine.HelperScanner.*;
 
 public class SquadMover {
 
 	private City city;
 	private HeroesSquad squad;
-	private boolean inCity = true;
+	private boolean inCity;
 
 	
 	public SquadMover(City currentCity, HeroesSquad heroesSquad) {
 		squad = heroesSquad;
 		city = currentCity;
+		inCity = true;
 	}
 
 	public void startMoving() {
+		
 		squad.setCurrentPosition(new Point(0, 0));
 		
 //		boolean inCity = true;
-		Scanner moveInput = new Scanner(System.in);
-		Scanner askToEnter = new Scanner(System.in);
+//		Scanner moveInput = new Scanner(System.in);
+//		Scanner askToEnter = new Scanner(System.in);
 		
 		VisualUtilities.getIcon(Icons.bar);
 		System.out.println("Welcome to level: " + (Engine.getCurrentIndex() + 1));
@@ -36,11 +38,12 @@ public class SquadMover {
 
 		while (inCity) {
 			try {
-				String keyPressed = moveInput.next();
+				String keyPressed = next();
 				
 				Point squadPosition = squad.getCurrentPosition();
 				int xValue = squadPosition.x;
 				int yValue = squadPosition.y;
+				
 				Point currentPosition = null;
 				switch (keyPressed) {
 					case ("w"):
@@ -66,7 +69,7 @@ public class SquadMover {
 				System.out.println("The heroes are in position: " + squad.getCurrentPosition());
 				Building building = city.returnBuildingAtSpecificCoordinates(squad.getCurrentPosition());
 				
-				ifEncounteringABuilding(building, squad, askToEnter);
+				ifEncounteringABuilding(building, squad);
 				if (Engine.getCurrentVillain().isBeaten()) {
 					inCity = false;
 					VisualUtilities.getIcon(Icons.bar);
@@ -77,7 +80,7 @@ public class SquadMover {
 			} catch (InputMismatchException e) {
 				System.out.println("Please press w, a, s or d");
 			} finally {
-				moveInput.reset();
+				reset();
 			}
 		}
 		
@@ -93,7 +96,7 @@ public class SquadMover {
 	}
 	
 	
-	private void ifEncounteringABuilding(Building building, HeroesSquad squad, Scanner askToEnter) {
+	private void ifEncounteringABuilding(Building building, HeroesSquad squad) {
 		if (building != null) {
 			boolean deciding = true;
 			while (deciding) {
@@ -107,7 +110,7 @@ public class SquadMover {
 				System.out.println("[Y/N]");
 				
 				try {
-					String entering = askToEnter.next().toLowerCase();
+					String entering = next().toLowerCase();
 					switch(entering) {
 						case ("y"):
 							building.interact(squad);
@@ -123,7 +126,7 @@ public class SquadMover {
 				} catch (InputMismatchException e) {
 					System.out.println("Please type Y or N...");
 				} finally {
-					askToEnter.reset();
+					reset();
 				}
 			}
 		}

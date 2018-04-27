@@ -3,13 +3,16 @@ package city.buildings.shop;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import characters.Abilities;
+import characters.Hero;
 import characters.HeroesSquad;
-
+import characters.Types;
 import city.buildings.Building;
 import city.buildings.TypeBuildings;
 
 import collectables.Collectable;
 import collectables.CollectableID;
+import collectables.Money;
 import collectables.healingItem.HealingItem;
 import collectables.heroesMap.HeroesMap;
 import collectables.powerUp.Armor;
@@ -205,7 +208,7 @@ public class Shop extends Building{
 						inHealingItemSession = false;
 						break;
 					default:
-						throw new InputMismatchException();
+						System.out.println("Press a valid integer!");
 				}
 				
 			} catch (InputMismatchException e) {
@@ -254,12 +257,12 @@ public class Shop extends Building{
 						inPowerUpSession = false;
 						break;
 					default:
-						throw new InputMismatchException();
+						System.out.println("Press a valid integer!");
 				}
 				
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the two options");
-				confirm.next();
+//				confirm.next();
 				
 			} finally {
 				confirm.reset();
@@ -323,9 +326,9 @@ public class Shop extends Building{
 	
 //	public static void main(String[] args) {
 //		HeroesSquad heroesSquad = new HeroesSquad();
-//		heroesSquad.addHero(new Hero("Lorenzo", "C","c"));
+//		heroesSquad.addHero(new Hero("Lorenzo", Types.dog, Abilities.betterOdds));
 //		heroesSquad.setWallet(new Money(1000000));
-//		Shop shop = new Shop("Shop", TypeBuildings.Shop, new Merchandise());
+//		Shop shop = new Shop("Shop", TypeBuildings.Shop);
 //		shop.interact(heroesSquad);
 //	}
 

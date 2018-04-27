@@ -1,4 +1,4 @@
-package tests.charactersTests;
+package tests.engineTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,13 +10,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import characters.Hero;
-import characters.HeroesSquad;
-import characters.TeamBuilder;
 import engine.HelperScanner;
+import engine.Utilities;
+import engine.YesNo;
 
-class TeamBuilderTests {
-
+class UtilitiesTests {
 
 	private ByteArrayOutputStream outputStream;
 	private ByteArrayInputStream inputStream;
@@ -27,7 +25,7 @@ class TeamBuilderTests {
 		outputStream = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outputStream));
 	}
-	
+
 	private void setInputStream(String input) {
 		inputStream = new ByteArrayInputStream(input.getBytes());
 		System.setIn(inputStream);
@@ -39,33 +37,36 @@ class TeamBuilderTests {
 		System.setIn(System.in);
 	}
 
-	
 	@Test
-	void testGetNewTeam() {
+	void testGetChoice() {
 		
-		setInputStream("y\n"
-				+ "TheLory\n"
-				+ "y\n"
-				+ "1\n"
-				+ "jay\n"
-				+ "n\n"
-				+ "2\n"
-				+ "lorenzo\n"
-				
-				+ "y\n");
+		setInputStream("jkdhf\n111\n11\n");
 		HelperScanner.create();
 		
-		TeamBuilder testTeam = new TeamBuilder();
+		int choice = Utilities.getChoice("How awesome am I from 1 to 10", 1, 11);
+		assertEquals(11, choice);
+	}
+
+	@Test
+	void testGetStringChoice() {
+		setInputStream("ofcourse\n66\ny\n");
+		HelperScanner.create();
 		
-		HeroesSquad squad = testTeam.getTeam();
+		YesNo choice = Utilities.getStringChoice("Am I the greatest programmer in the world?");
+		assertEquals(YesNo.yes, choice);
 		
-		assertEquals(squad.getLength(),  2);
+		setInputStream("maybeALittle\nNever!\nn\n");
+		HelperScanner.create();
+		YesNo choice2 = Utilities.getStringChoice("Am I tired of writing tests?");
+		assertEquals(YesNo.no, choice2);
+	}
+
+	@Test
+	void testGetRandInt() {
 		
-		Hero jay = squad.getHero(0);
-		Hero lorenzo = squad.getHero(1);
+		int chosenValue = Utilities.getRandInt(4);
+		assertTrue(chosenValue <= 4 && chosenValue >= 0);
 		
-		assertEquals("jay", jay.getCharacterName());
-		assertEquals("lorenzo", lorenzo.getCharacterName());
 		
 	}
 

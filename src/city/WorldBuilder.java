@@ -45,7 +45,7 @@ public class WorldBuilder {
 				integerTyped = nextInt();
 				if (integerTyped >= 3 && integerTyped <= 6) {
 					stillAsking = false;
-//					input.close();
+					
 				} else {
 					System.out.println("Invalid integer, please type a value betwen (and including) 3 and 6");
 				}
@@ -90,6 +90,11 @@ public class WorldBuilder {
 	 */
 	public ArrayList<City> getWorld() {
 		return world;
+	}
+	
+	
+	public static void main(String[] args) {
+		WorldBuilder wb = new WorldBuilder();
 	}
 	
 }
