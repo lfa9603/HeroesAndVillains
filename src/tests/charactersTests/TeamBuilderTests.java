@@ -40,32 +40,68 @@ class TeamBuilderTests {
 	}
 
 	
+//	@Test
+//	void testGetNewTeam() {
+//		
+//		setInputStream("y\n"
+//				+ "TheLory\n"
+//				+ "y\n"
+//				+ "1\n"
+//				+ "jay\n"
+//				+ "n\n"
+//				+ "2\n"
+//				+ "lorenzo\n"
+//				
+//				+ "y\n");
+//		HelperScanner.create();
+//		
+//		TeamBuilder testTeam = new TeamBuilder();
+//		
+//		HeroesSquad squad = testTeam.getTeam();
+//		
+//		assertEquals(squad.getLength(),  2);
+//		
+//		Hero jay = squad.getHero(0);
+//		Hero lorenzo = squad.getHero(1);
+//		
+//		assertEquals("jay", jay.getCharacterName());
+//		assertEquals("lorenzo", lorenzo.getCharacterName());
+//		
+//	}
+	
 	@Test
-	void testGetNewTeam() {
+	void testGetNewTeam2() {
 		
 		setInputStream("y\n"
-				+ "TheLory\n"
+				+ "TestTeam\n"
 				+ "y\n"
 				+ "1\n"
-				+ "jay\n"
+				+ "Hero1\n"
 				+ "n\n"
 				+ "2\n"
-				+ "lorenzo\n"
+				+ "Hero2\n"
+				+ "n\n"
+				+ "3\n"
+				+ "Hero3\n"
+				+ "n\n"
+				+ "y\n"
 				
 				+ "y\n");
 		HelperScanner.create();
 		
-		TeamBuilder testTeam = new TeamBuilder();
+		TeamBuilder testTeam2 = new TeamBuilder();
 		
-		HeroesSquad squad = testTeam.getTeam();
+		HeroesSquad squad2 = testTeam2.getTeam();
 		
-		assertEquals(squad.getLength(),  2);
+		assertEquals(squad2.getLength(),  3);
 		
-		Hero jay = squad.getHero(0);
-		Hero lorenzo = squad.getHero(1);
+		Hero hero1 = squad2.getHero(0);
+		Hero hero2 = squad2.getHero(1);
+		Hero hero3 = squad2.getHero(2);
 		
-		assertEquals("jay", jay.getCharacterName());
-		assertEquals("lorenzo", lorenzo.getCharacterName());
+		assertEquals("Hero1", hero1.getCharacterName());
+		assertEquals("Hero2", hero2.getCharacterName());
+		assertEquals("Hero3", hero3.getCharacterName());
 		
 	}
 

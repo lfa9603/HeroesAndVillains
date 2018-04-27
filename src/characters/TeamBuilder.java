@@ -228,7 +228,7 @@ public class TeamBuilder {
 	}
 	
 	
-	
+	// For initial testing purposes only.
 	public static void main(String[] args) {
 		TeamBuilder team = new TeamBuilder();
 		System.out.println(team.getTeam());

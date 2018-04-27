@@ -21,8 +21,8 @@ public class Utilities {
 			System.out.println(message);
 			
 			try {
-<<<<<<< HEAD
-				int userchoice = nextInt();
+
+				userchoice = nextInt();
 				if (userchoice >= lowerLimit && userchoice <= upperLimit) {
 					validInput = true;
 					choice = userchoice;
@@ -32,18 +32,22 @@ public class Utilities {
 				else {
 					System.out.println("Please choose an interger between " + lowerLimit + "-" + upperLimit);
 					next();
-=======
-				
-				userchoice = nextInt();
-				if (userchoice >= lowerLimit && userchoice <= upperLimit) {
-					validInput = true;
-					choice = userchoice;
-//					return choice;
-				} else {
-					System.out.println("Please choose an interger between " + lowerLimit + "-" + upperLimit);
-//					next();
->>>>>>> 83b3708e0161c4040a20136b2de2c7fbae444426
 				}
+
+				// This stuff below came through after some merging conflicts
+				
+				
+//				userchoice = nextInt();
+//				if (userchoice >= lowerLimit && userchoice <= upperLimit) {
+//					validInput = true;
+//					choice = userchoice;
+//					return choice;
+//				} 
+//				else {
+//					System.out.println("Please choose an interger between " + lowerLimit + "-" + upperLimit);
+//					next();
+//
+//				}
 
 			} catch (InputMismatchException error) {
 				System.out.println("Invalid input, have you typed a valid integer?");
@@ -52,10 +56,6 @@ public class Utilities {
 				
 			} finally {
 				reset(); 
-<<<<<<< HEAD
-=======
-				
->>>>>>> 83b3708e0161c4040a20136b2de2c7fbae444426
 			}
 		}
 		
@@ -69,15 +69,13 @@ public class Utilities {
 		
 		while (validInput == false) {
 			System.out.print(userQuestion + " Y/N \n");
-<<<<<<< HEAD
+
 			String userInput = next();
-=======
->>>>>>> 83b3708e0161c4040a20136b2de2c7fbae444426
 			
 //			String userInput = next().toLowerCase();
 			
 			try {
-				String userInput = next().toLowerCase();
+				userInput = next().toLowerCase();
 				switch (userInput) {
 					case "y":
 						resultToReturn = YesNo.yes;

@@ -35,18 +35,16 @@ public class RockPaperScissors extends MiniGame {
 		System.out.println("The rules are: TODO add rules");
 		System.out.println(choices);
 		
-<<<<<<< HEAD
 		VisualUtilities.getIcon(Icons.bar);		
 		int villainChoice = villain.getVillainsChoice(3);
 		MiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 1);
-=======
+
 		VisualUtilities.getIcon(Icons.bar);
 		
-		int villainChoice = getVillain().getVillainsChoice(3);
+//		int villainChoice = getVillain().getVillainsChoice(3);
 		
 		MiniGameUtilities.getHeroAbiltyEffects(hero, getVillain(), getSquad(), villainChoice, 1);
 		
->>>>>>> 83b3708e0161c4040a20136b2de2c7fbae444426
 		VisualUtilities.getIcon(Icons.bar);
 		
 		int choice = Utilities.getChoice("Choose a number between 1-3 to select Rock, Paper or Scissors respectivly", 1, 3);
@@ -62,7 +60,7 @@ public class RockPaperScissors extends MiniGame {
 			break;
 			
 		case 2: 
-			System.out.println(youChoose + gameResourses.Paper);//System.out.println(youChoose + paper); 
+			System.out.println(youChoose + gameResourses.Paper);
 			switch(villainChoice) {
 				case 1: System.out.println(villianChoose + gameResourses.Rock); heroWins(hero); break;
 				case 2: System.out.println(villianChoose + gameResourses.Paper); battleDraw(hero); break;
@@ -70,7 +68,7 @@ public class RockPaperScissors extends MiniGame {
 			}; 
 			break;
 			
-		case 3: System.out.println(youChoose + gameResourses.Scissors);//System.out.println(youChoose + scissors); 
+		case 3: System.out.println(youChoose + gameResourses.Scissors);
 			switch(villainChoice) {
 				case 1: System.out.println(villianChoose + gameResourses.Rock); herolosses(hero); break;
 				case 2: System.out.println(villianChoose + gameResourses.Paper); heroWins(hero); break;
