@@ -28,7 +28,12 @@ public class TeamBuilder {
 
 	public TeamBuilder() { 
 		createTeam();
-		addTeamMembers();
+		if (Team != null) {
+			addTeamMembers();
+		//TODO: POSSIBLE FIX TO ONE OF THE BUGS, NOW WE ARE LEFT WITH IMPLEMENTIG THE GAMEOVER;
+		} else {
+//			Engine.setToGameOver();
+		}
 	}
 	
 	private void createTeam() {
@@ -206,7 +211,7 @@ public class TeamBuilder {
 			}
 			runInner = true;
 		}
-		}
+	}
 	
 	private void createHero(Types type, Abilities abilty) {
 //		Scanner userinput_2 = HelperScanner.getScanner();

@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
-
+import characters.Types;
 import city.buildings.Building;
 import city.buildings.TypeBuildings;
 
@@ -59,8 +60,7 @@ public class Hospital extends Building {
 
 		boolean atHospital = true;
 		while (atHospital) {
-			
-			System.out.println(healingWard.toString());
+			System.out.println(healingWard.toString());//TODO:THERE IS A PROBLEM HERE WHEN RUNNING THE GIVEN C0NFIGURATION
 			
 			ArrayList<Collectable> healingItems = InventoryTools.healingItems();
 			
@@ -162,7 +162,7 @@ public class Hospital extends Building {
 //					input.close();
 					System.out.println("Come back later, maybe after a visit to the shop!!");
 				} else {
-					throw new InputMismatchException();
+					System.out.println("Please press 0, to exit.");
 				}
 			} catch (InputMismatchException e) {
 					System.out.println("Please press 0, to exit.");
@@ -176,13 +176,13 @@ public class Hospital extends Building {
 	
 
 
-//	public static void main(String[] args) {
-//		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
-//		HeroesSquad heroes = new HeroesSquad();
-//		heroes.addHero(new Hero("Lorenzo", Types.level_1, "C"));
-//
-//		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
-//		hospital.interact(heroes);
-//	}
+	public static void main(String[] args) {
+		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
+		HeroesSquad heroes = new HeroesSquad();
+		heroes.addHero(new Hero("Lorenzo", Types.dog, Abilities.badDay));
+
+		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
+		hospital.interact(heroes);
+	}
 
 }
