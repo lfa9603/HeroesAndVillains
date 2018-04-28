@@ -3,7 +3,6 @@ package engine;
 import java.util.InputMismatchException;
 import java.util.Random;
 
-
 import static engine.HelperScanner.*;
 
 
@@ -31,7 +30,7 @@ public class Utilities {
 				
 				else {
 					System.out.println("Please choose an interger between " + lowerLimit + "-" + upperLimit);
-					next();
+//					next();
 				}
 
 				// This stuff below came through after some merging conflicts
@@ -54,9 +53,9 @@ public class Utilities {
 				System.out.println("Please Try again \n");
 				next();
 				
-			} finally {
-				reset(); 
-			}
+			} //finally {
+//				reset(); 
+//			}
 		}
 		
 		return choice;
@@ -70,12 +69,12 @@ public class Utilities {
 		while (validInput == false) {
 			System.out.print(userQuestion + " Y/N \n");
 
-			String userInput = next();
+//			String userInput = next();
 			
 //			String userInput = next().toLowerCase();
 			
 			try {
-				userInput = next().toLowerCase();
+				String userInput = next().toLowerCase();
 				switch (userInput) {
 					case "y":
 						resultToReturn = YesNo.yes;
@@ -86,10 +85,14 @@ public class Utilities {
 						validInput = true;
 						break;
 					default:
-						throw new InputMismatchException();
+						//throw new InputMismatchException();
+						System.out.println("invalid input, please answer Y/N or y/n");
+//						next();
+						break;
 				}
 			} catch (InputMismatchException e) {
 				System.out.println("invalid input, please answer Y/N or y/n");
+				next();
 			} finally {
 				reset();
 			}

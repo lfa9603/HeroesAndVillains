@@ -16,7 +16,7 @@ import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
 import city.City;
-import city.buildings.Home;
+import city.buildings.homeBase.Home;
 import collectables.Money;
 import engine.HelperScanner;
 

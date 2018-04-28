@@ -53,7 +53,7 @@ public class Merchandise {
 	 * (directly as HealingItem or indirectly as objects that extend PowerUp).
 	 * 
 	 */
-	private ArrayList<Collectable> retrieveAllCollectables() {
+	public ArrayList<Collectable> retrieveAllCollectables() {
 		ArrayList<Collectable> collectables = new ArrayList<Collectable>();
 		
 		//Create an instance for HealingItems

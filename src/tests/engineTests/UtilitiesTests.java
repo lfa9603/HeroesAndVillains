@@ -55,8 +55,10 @@ class UtilitiesTests {
 		YesNo choice = Utilities.getStringChoice("Am I the greatest programmer in the world?");
 		assertEquals(YesNo.yes, choice);
 		
+		
 		setInputStream("maybeALittle\nNever!\nn\n");
 		HelperScanner.create();
+		
 		YesNo choice2 = Utilities.getStringChoice("Am I tired of writing tests?");
 		assertEquals(YesNo.no, choice2);
 	}

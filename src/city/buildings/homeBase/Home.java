@@ -1,4 +1,4 @@
-package city.buildings;
+package city.buildings.homeBase;
 
 import java.awt.Point;
 //import java.awt.Point;
@@ -20,6 +20,9 @@ import characters.Types;
 //import collectables.Money;
 //import collectables.heroesMap.HeroesMap;
 import city.City;
+import city.buildings.Building;
+import city.buildings.TypeBuildings;
+import collectables.Collectable;
 import collectables.Money;
 
 import static engine.HelperScanner.*;
@@ -56,6 +59,8 @@ public class Home extends Building {
 	 */
 	public void interact(HeroesSquad heroesSquad) {
 		
+		checkingSomeoneRobbedOrDonated(heroesSquad);
+		
 		boolean atHome = true;
 		System.out.println("Welcome in your Home Base!");
 		while (atHome) {
@@ -88,6 +93,30 @@ public class Home extends Building {
 			}
 		}
 	}
+	
+	
+	
+	private void checkingSomeoneRobbedOrDonated(HeroesSquad heroesSquad) {
+		
+		Collectable itemStolen = RandomEventsInHomeBase.haveWeBeenRobbed(heroesSquad);
+		Collectable itemDonated = RandomEventsInHomeBase.hasAnyoneBeenGenerous(heroesSquad);
+		
+		
+		if (itemDonated != null) {
+			System.out.println("Someone has been generous!! \n"
+					+ "A " + itemDonated.getCollectableID() + " has been left in the house for you!"
+					+ "\n Enjoy!");
+		}
+		
+		if (itemStolen != null) {
+			System.out.println("Someone broke into the house!\n "
+					+ "A " + itemStolen.getCollectableID() + " has been stolen!");
+		}
+		
+		System.out.println(heroesSquad.getBackPack().toString());
+			
+	}
+	
 	
 	/**
 	 * 
@@ -138,7 +167,6 @@ public class Home extends Building {
 //		
 //		HeroesSquad squad = new HeroesSquad();
 //		squad.addHero(lorenzo);
-//		squad.addHero(jay);
 //		
 //		squad.setWallet(new Money(1000));
 //		

@@ -36,16 +36,16 @@ public class RockPaperScissors extends MiniGame {
 		System.out.println(choices);
 		
 		VisualUtilities.getIcon(Icons.bar);		
-		int villainChoice = villain.getVillainsChoice(3);
-		MiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 1);
+		int villainChoice = getVillain().getVillainsChoice(3);
+		MiniGameUtilities.getHeroAbiltyEffects(hero, getVillain(), getSquad(), villainChoice, 1);
 
 		VisualUtilities.getIcon(Icons.bar);
 		
 //		int villainChoice = getVillain().getVillainsChoice(3);
 		
-		MiniGameUtilities.getHeroAbiltyEffects(hero, getVillain(), getSquad(), villainChoice, 1);
-		
-		VisualUtilities.getIcon(Icons.bar);
+//		MiniGameUtilities.getHeroAbiltyEffects(hero, getVillain(), getSquad(), villainChoice, 1);
+//		
+//		VisualUtilities.getIcon(Icons.bar);
 		
 		int choice = Utilities.getChoice("Choose a number between 1-3 to select Rock, Paper or Scissors respectivly", 1, 3);
 		
