@@ -4,11 +4,11 @@ import engine.Utilities;
 
 public class Villain extends Character{
 
-	private boolean isBeaten = false;
+	private boolean isBeaten;
 	private int timesBeaten;
 	private String villainTaunt;
 	private int villainDamage;
-	private boolean damageModified = false;
+	private boolean damageModified;
 	
 	
 	/**
@@ -21,6 +21,8 @@ public class Villain extends Character{
 		super(name, type, specialAbility);
 		villainTaunt = taunt;
 		setVillainDamage(damage);
+		isBeaten = false;
+		damageModified = false;
 	}
 
 	public String getVillainTaunt() { 

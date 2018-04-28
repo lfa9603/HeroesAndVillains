@@ -26,6 +26,7 @@ public class MiniGameUtilities {
 			}
 		}
 		
+		
 		else {
 			System.out.println("No abilities this game.");
 		}
@@ -44,12 +45,13 @@ public class MiniGameUtilities {
 			default: noEffect(); break;
 			}
 	}
+	
 
 	private static void cancer(HeroesSquad squad, Villain villain) {
 		boolean run = true;
 		while (run == true) {
-			int randInt = Utilities.getRandInt(squad.getLength());
-			Hero hero = squad.getHero(randInt-1);
+			int randInt = Utilities.getRandInt(squad.getLength() - 1);
+			Hero hero = squad.getHero(randInt);
 			if (hero.isAlive()) {
 
 				
@@ -155,7 +157,7 @@ public class MiniGameUtilities {
 		}
 		else {
 			System.out.println("You Hero is Big and Strong, They will protect your team, everyone "
-					+ "will take 25% less damage, from now on.");
+					+ "will take 30% less damage, from now on.");
 			int oldDamage = villain.getVillainDamage();
 			int newDamge = (int) (oldDamage * 0.70);
 			villain.setVillainDamage(newDamge);
@@ -210,6 +212,7 @@ public class MiniGameUtilities {
 		if (userInput == YesNo.yes) {
 			selectedMiniGame = Utilities.getChoice(string, 1, 3);
 		}
+		
 		
 		return selectedMiniGame;
 	}
