@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,6 +34,17 @@ class TeamBuilderTests {
 	private void setInputStream(String input) {
 		inputStream = new ByteArrayInputStream(input.getBytes());
 		System.setIn(inputStream);
+	}
+	
+	private String getOutputStream() {
+		
+		byte[] bytes = outputStream.toByteArray();
+		CharBuffer charBuffer = Charset.defaultCharset().decode(ByteBuffer.wrap(bytes));
+		
+		outputStream = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outputStream));
+		
+		return charBuffer.toString();
 	}
 	
 	@AfterEach
@@ -84,8 +98,7 @@ class TeamBuilderTests {
 				+ "3\n"
 				+ "Hero3\n"
 				+ "n\n"
-				+ "y\n"
-				
+				+ "n\n"
 				+ "y\n");
 		HelperScanner.create();
 		
@@ -99,9 +112,13 @@ class TeamBuilderTests {
 		Hero hero2 = squad2.getHero(1);
 		Hero hero3 = squad2.getHero(2);
 		
+		String outStream = getOutputStream();
+		
 		assertEquals("Hero1", hero1.getCharacterName());
 		assertEquals("Hero2", hero2.getCharacterName());
 		assertEquals("Hero3", hero3.getCharacterName());
+		System.out.println(outStream);
+		assertEquals("You cannot have more than 3 x heros is a team.", outStream);
 		
 	}
 
