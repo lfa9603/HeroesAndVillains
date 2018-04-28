@@ -87,7 +87,8 @@ public class RandomEventsInHomeBase {
 		Merchandise merchandise = new Merchandise();
 		Inventory inventory = heroesSquad.getBackPack();
 		ArrayList<Collectable> collectables = merchandise.retrieveAllCollectables();
-
+		collectables.add(new HeroesMap(CollectableID.HeroesMap));
+		
 		int randomIndexInCollectables = Utilities.getRandInt(collectables.size() - 1);
 		int randomInt = Utilities.getRandInt(100);
 		
@@ -102,6 +103,8 @@ public class RandomEventsInHomeBase {
 					
 					if (heroesSquad.isHaveMap()) {
 						heroesSquad.setHaveMap(false);
+						return itemToRemove;
+						
 					} else {
 						return null;
 					}

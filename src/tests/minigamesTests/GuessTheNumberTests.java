@@ -19,16 +19,16 @@ import characters.HeroesSquad;
 import characters.Types;
 import characters.Villain;
 import engine.HelperScanner;
+import engine.Utilities;
 import minigames_V2.Games;
-import minigames_V2.RockPaperScissors;
+import minigames_V2.GuessTheNumber;
 
 /**
- * @author Lorenzo
+ * @author LorenzoFasano
  *
  */
-class RockPaperScissorsTest {
+class GuessTheNumberTests {
 
-	
 	private ByteArrayOutputStream outputStream;
 	private ByteArrayInputStream inputStream;
 	
@@ -37,8 +37,7 @@ class RockPaperScissorsTest {
 	private HeroesSquad squad;
 	private Hero hero;
 	
-	private RockPaperScissors rps;	
-	
+	private GuessTheNumber gtn;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -49,13 +48,13 @@ class RockPaperScissorsTest {
 		outputStream = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outputStream));
 		
-		villain = new Villain("Jay", Types.level_1, Abilities.stealLunchMoney, "Ciao", 15);
+		villain = new Villain("Jay", Types.Boss, Abilities.stealLunchMoney, "Ciao", 15);
 		game = Games.RPS;
 		squad = new HeroesSquad();
 		hero =  new Hero("Lorenzo", Types.sly, Abilities.charm);
 		squad.addHero(hero);
 		
-		rps = new RockPaperScissors(game, villain, squad, true);
+		gtn = new GuessTheNumber(game, villain, squad, true);
 	}
 
 	private void setInputStream(String input) {
@@ -76,43 +75,31 @@ class RockPaperScissorsTest {
 		squad = null;
 		hero =  null;
 		
-		rps = null;
+		gtn = null;
 		
 	}
 
 	/**
-	 * Test method for {@link minigames_V2.RockPaperScissors#runGame(characters.Hero)}.
+	 * Test method for {@link minigames_V2.GuessTheNumber#runGame(characters.Hero)}.
 	 */
+
 	@RepeatedTest(100)
-	void runGameTest() {
+	void testRunGame() {
+		Integer randomInt1 = Utilities.getRandInt(10);
+		Integer randomInt2 = Utilities.getRandInt(10);
 		
-		String string = new String();
-		for (int i =0; i < 100; i++) {
-			string += "1\n2\n3\n";
-		}
-		setInputStream(string);
+		setInputStream(randomInt1.toString() + "\n" + randomInt2.toString() + "\n");
 		HelperScanner.create();
 		
-		for (int i = 0; i < 3; i++) {
-			rps.runGame(hero);
-				
-			if (hero.getHealth() == 100) {
-				if (villain.getTimesBeaten() > 0)
-				assertTrue(hero.getHealth() >= 70);
-			} else {
-				assertTrue(hero.getHealth() >= 55);
-			}
+		gtn.runGame(hero);
+		
+		if (villain.getTimesBeaten() == 1) {
+			assertEquals(hero.getHealth(), 100);
+		} else {
+			assertEquals(villain.getTimesBeaten(), 0);
+			assertEquals(hero.getHealth(), 85);
 		}
 		
 	}
-
-	
-	/**
-	 * Test method for {@link minigames_V2.RockPaperScissors#RockPaperScissors(minigames_V2.Games, characters.Villain, characters.HeroesSquad, boolean)}.
-	 */
-//	@Test
-//	void testRockPaperScissors() {
-//		fail("Not yet implemented");
-//	}
 
 }

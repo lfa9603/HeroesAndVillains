@@ -2,6 +2,8 @@ package tests.cityTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +12,6 @@ import characters.HeroesSquad;
 import city.buildings.homeBase.RandomEventsInHomeBase;
 import collectables.Collectable;
 import collectables.CollectableID;
-import collectables.Inventory;
 
 class RandomEventsInHomeBaseTests {
 
@@ -55,6 +56,7 @@ class RandomEventsInHomeBaseTests {
 	void haveWeBeenRobbedTests() {
 		
 		for (int i=0; i <= 1000; i++) {
+			RandomEventsInHomeBase.hasAnyoneBeenGenerous(squad);
 			
 			int sizeSquadInventoryBeforeMethod = squad.getBackPack().getInventory().size();
 			Collectable collectableStolen = RandomEventsInHomeBase.haveWeBeenRobbed(squad);
@@ -62,7 +64,7 @@ class RandomEventsInHomeBaseTests {
 			if (collectableStolen != null) {
 				if (sizeSquadInventoryBeforeMethod > sizeSquadInventoryAfterMethod) {
 					assertNotNull(collectableStolen);
-					assertEquals(sizeSquadInventoryBeforeMethod + 1, sizeSquadInventoryAfterMethod);
+					assertTrue(sizeSquadInventoryBeforeMethod >= sizeSquadInventoryAfterMethod);
 				}
 				
 				if (collectableStolen.getCollectableID().equals(CollectableID.HeroesMap)) {

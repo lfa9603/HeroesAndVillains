@@ -18,7 +18,6 @@ public class DiceWars extends MiniGame{
 		
 	}
 
-
 	@Override
 	public void runGame(Hero hero) {
 		System.out.println("You are playing Dice Wars! \n"
