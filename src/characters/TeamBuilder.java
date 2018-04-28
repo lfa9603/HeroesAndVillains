@@ -36,7 +36,7 @@ public class TeamBuilder {
 		}
 	}
 	
-	private void createTeam() {
+	public void createTeam() {
 		boolean run = true;
 		
 		/* Asks if the user wants to create a new team, takes Y/N or y/n as a input. 
@@ -47,61 +47,62 @@ public class TeamBuilder {
 		
 		while (run == true) {
 			System.out.print("Do you want to create a New Team? Y/N \n");
-			String createTeam = next();
-			
-			if (createTeam.equals("Y") || createTeam.equals("y")) {
+			String createTeam = next(); 
+			try {
 				
-				
-				/* If input is accepted then it asks the user what the name of the team will be, 
-				* character limit is 2-10 characters.
-				*/
-				
-				while (run == true) {
+				if (createTeam.equals("Y") || createTeam.equals("y")) {
 					
-//					Scanner newinput = new Scanner(System.in);
-					System.out.println("Team name: ");
-					String teamName = next();
 					
-				
-					if ((teamName.length() >= 2) && (teamName.length() <= 10)) {
+					/* If input is accepted then it asks the user what the name of the team will be, 
+					* character limit is 2-10 characters.
+					*/
+					
+					while (run == true) {
 						
+						System.out.println("Team name: ");
+						String teamName = next();
 						
-						
-//						Scanner secondNewinput = new Scanner(System.in);
-						System.out.println("Your Teams name is: " + teamName);
-						System.out.println("Are you happy with this? Y/N");
-						String confirmation = next();
-						
-						// Confirms the user is happy with there Team name.
-						
-						if (confirmation.equals("Y") || confirmation.equals("y")) {
-							
-							Team = new HeroesSquad();
-							Team.setTeamName(teamName);
-							finalteamName = Team.getTeamName();
-							run = false;
-							System.out.println("Congrads your Team: " + finalteamName + " has been created. \n");
-						}
-						 
-						else {
-							
-							if (confirmation.equals("N") || confirmation.equals("n")) {
-								System.out.println("...Please re-enter");
+						try {
+							if ((teamName.length() >= 2) && (teamName.length() <= 10)) {
+
+								System.out.println("Your Teams name is: " + teamName);
+								System.out.println("Are you happy with this? Y/N");
+								String confirmation = next();
+								
+								// Confirms the user is happy with there Team name.
+								
+								if (confirmation.equals("Y") || confirmation.equals("y")) {
+									
+									Team = new HeroesSquad();
+									Team.setTeamName(teamName); 
+									finalteamName = Team.getTeamName();
+									run = false;
+									System.out.println("Congrads your Team: " + finalteamName + " has been created. \n");
+								}
+								 
+								else {
+									
+									if (confirmation.equals("N") || confirmation.equals("n")) {
+										System.out.println("...Please re-enter");
+									}
+									
+									else {
+										throw new IllegalArgumentException();
+									}
+								}
 							}
-							
+								
 							else {
-								System.out.println("invalid input, please answer Y/N or y/n");
+								throw new InputMismatchException();
 							}
+						
+						} catch (InputMismatchException error) {
+							System.out.println("Team Name must be between 2 and 10 characters long");
 						}
 					}
-						
-					else {
-						System.out.println("Team Name must be between 2 and 10 characters long");
-					}
+		
+					
 				}
-	
-				
-			}
 							
 			else {
 				if (createTeam.equals("N") || createTeam.equals("n")) {
@@ -110,10 +111,13 @@ public class TeamBuilder {
 				}
 				
 				else {
-					System.out.println("invalid input, please answer Y/N or y/n");
+					throw new IllegalArgumentException();
 				}
+			}
 			
-		}
+			} catch (IllegalArgumentException error) {
+				System.out.println("invalid input, please answer Y/N or y/n");
+			}
 
 		}
 	}
@@ -143,16 +147,17 @@ public class TeamBuilder {
 					case 6: createHero(Types.dog, Abilities.goodBoy); break;
 					default: 
 						throw new InputMismatchException();
-					}
+					} 
 				}
 					
-				else {
-						System.out.println("Invalid integer, please type a value betwen (and including) 1 and 6 \n");
-						next();
-					}
+//				else {
+//						System.out.println("Invalid integer, please type a value betwen (and including) 1 and 6 \n");
+//						next();
+//					}
 				
 			} catch (InputMismatchException error) {
 				System.out.println("Invalid input, have you typed a valid integer?");
+				System.out.println("please type a number between (and including) 1 and 6 \n");
 				System.out.println("Please Try again \n");
 				next();
 			}
