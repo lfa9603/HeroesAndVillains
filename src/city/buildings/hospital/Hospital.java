@@ -2,7 +2,7 @@ package city.buildings.hospital;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 import characters.Abilities;
 import characters.Hero;
@@ -17,6 +17,7 @@ import collectables.InventoryTools;
 import collectables.healingItem.HealingItem;
 
 import engine.Utilities;
+import static engine.HelperScanner.*;
 
 /**
  * 
@@ -57,6 +58,7 @@ public class Hospital extends Building {
 	 */
 	@Override
 	public void interact(HeroesSquad heroesSquad) {
+		Integer intInput = -1;
 
 		boolean atHospital = true;
 		while (atHospital) {
@@ -68,7 +70,8 @@ public class Hospital extends Building {
 			System.out.println(InventoryTools.showTypeItemsInInventory(heroesSquad, healingItems));
 //			Returns the number of heroes that are healing and how long it will be before potion has finished healing hero
 //			System.out.println(HospitalTools.getHeroesAndHealingTime());TODO: hard stuff, gotta find a smart way to do it
-			Scanner input = new Scanner(System.in);
+//			Scanner input = new Scanner(System.in);
+//			Integer input = nextInt();
 			if (InventoryTools.getTotTypeItems(heroesSquad, healingItems) > 0) {
 				
 				System.out.println("Press: "
@@ -79,7 +82,8 @@ public class Hospital extends Building {
 						+ "\n\nCAUTION! YOU CANNOT USE AN ITEM IF YOU DO NOT OWN IT "
 						+ "DON'T TRY TO BE CHEECKY ;) ");
 				try {
-					Integer intInput = input.nextInt();
+//					Integer intInput = input.nextInt();
+					intInput = nextInt();
 					HealingItem healingItem = null; 
 					
 					
@@ -123,11 +127,13 @@ public class Hospital extends Building {
 				} catch (InputMismatchException e) {
 					System.out.println("Please type a valid integer\n\n");
 				} finally {
-					input.reset();
+//					input.reset();
+					reset();
 				}
 				
-			} else {
-				noHealingItems(input);
+			} 
+			else {
+				noHealingItems(intInput);
 //				input.close();
 				atHospital = false;
 			}	
@@ -138,7 +144,7 @@ public class Hospital extends Building {
 	 * Helper method for good coding practice created to throw a new InputMismatchError.
 	 */
 	private void extracted() {
-		throw new InputMismatchException();
+		throw new InputMismatchException(); 
 	}
 	
 	
@@ -150,13 +156,13 @@ public class Hospital extends Building {
 	 * called if the HeroesSquad object has no HealingItem objects in their backpack property.
 	 * 
 	 */
-	private void noHealingItems(Scanner input) {
+	private void noHealingItems(Integer input) {
 		boolean deciding = true;
 		while (deciding) {
 			System.out.println("Looks like you have no Healing items in the backpack! "
 					+ "\nPress 0 for exiting the game");
 			try {
-				String exiting = input.next();
+				String exiting = next();
 				if (exiting.equals("0")) {//TODO:Check all nextInt() readings and possibly convert them to next or nextLine because nextInt is shit
 					deciding = false;
 //					input.close();
@@ -166,10 +172,10 @@ public class Hospital extends Building {
 				}
 			} catch (InputMismatchException e) {
 					System.out.println("Please press 0, to exit.");
-					input.next();
+					reset();
 					
 			} finally {
-				input.reset();
+				reset();
 			}
 		}
 	}

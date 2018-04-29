@@ -24,6 +24,7 @@ import city.buildings.TypeBuildings;
 import city.buildings.hospital.Hospital;
 import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
+import engine.HelperScanner;
 
 /**
  * @author Jay Hamilton
@@ -35,6 +36,7 @@ class HospitalTests {
 	
 	private Hospital hospital;
 	private HeroesSquad squad;
+	private HealingItem potion;
 
 
 	/**
@@ -51,7 +53,8 @@ class HospitalTests {
 		squad.addHero(hero1);
 		hero1.setHealth(50);
 		hero1.setArmor(30);
-		squad.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
+		potion = new HealingItem(CollectableID.BestHealingItem);
+		squad.getBackPack().addItemToInventory(potion);
 		
 		
 	}
@@ -80,7 +83,7 @@ class HospitalTests {
 		System.setOut(System.out); 
 		System.setIn(System.in);
 		hospital = null;
-		heroes = null;
+		squad = null;
 	}
 
 	/**
@@ -88,7 +91,12 @@ class HospitalTests {
 	 */
 	@Test
 	void testInteract() {
-		fail("Not yet implemented");
+		setInputStream("0\n"
+				+ "1\n"
+				+ "3\n");
+		HelperScanner.create();
+		hospital.interact(squad);
+		assertTrue(squad.getBackPack().getInventory().containsKey(potion));
 	}
 
 	/**
