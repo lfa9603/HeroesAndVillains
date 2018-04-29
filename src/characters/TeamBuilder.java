@@ -1,9 +1,6 @@
 package characters;
 
 import java.util.InputMismatchException;
-
-import com.sun.org.apache.bcel.internal.generic.Select;
-
 import engine.Icons;
 import engine.VisualUtilities;
 
@@ -151,10 +148,6 @@ public class TeamBuilder {
 						default: throw new IllegalArgumentException();
 						}
 					}
-						
-					else {
-							throw new InputMismatchException();
-						}
 					
 				} catch (InputMismatchException error) {
 					System.out.println("Invalid input, have you typed a valid integer?");
@@ -186,6 +179,7 @@ public class TeamBuilder {
 					if (confirmation.equals("R") || confirmation.equals("r")) {
 						System.out.println("Team has been reset.");
 						Team.squadReset();
+						runSecondLoop = true;
 						runThirdLoop = false;
 						
 					}
@@ -241,11 +235,11 @@ public class TeamBuilder {
 	}
 	
 	
-	// For initial testing purposes only.
-	public static void main(String[] args) {
-		TeamBuilder team = new TeamBuilder();
-		System.out.println(team.getTeam());
-	}
+//	// For initial testing purposes only.
+//	public static void main(String[] args) {
+//		TeamBuilder team = new TeamBuilder();
+//		System.out.println(team.getTeam());
+//	}
 }
 
 

@@ -28,14 +28,6 @@ class TeamBuilderTests {
 			"invalid input, please answer Y/N or y/n\n" + 
 			"Do you want to create a New Team? Y/N \n" + 
 			"Thanks for Playing!\n";
-	private String teamCreationExpectedOutput2 = "Do you want to create a New Team? Y/N \n" +  
-			"Team name: \n" + 
-			"Team Name must be between 2 and 10 characters long\n" + 
-			"Team name: \n" + 
-			"Your Teams name is: 123456789\n" + 
-			"Are you happy with this? Y/N\n" + 
-			"...Please re-enter\n" + 
-			"Team name:";
 	
 	
 	@BeforeEach
@@ -93,12 +85,20 @@ class TeamBuilderTests {
 				+ "y\n"
 				+ "TheLory\n"
 				+ "y\n"
+				+ "8\n"
+				+ "akjshdlkjahsdlkajhsd"
 				+ "1\n"
 				+ "jay\n"
 				+ "n\n"
 				+ "2\n"
 				+ "lorenzo\n"
-				
+				+ "r\n"
+				+ "1\n"
+				+ "jay\n"
+				+ "6\n"
+				+ "n\n"
+				+ "2\n"
+				+ "lorenzo\n"
 				+ "y\n");
 		HelperScanner.create();
 		
