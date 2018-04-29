@@ -36,6 +36,7 @@ class HospitalTests {
 	
 	private Hospital hospital;
 	private HeroesSquad squad;
+	private HeroesSquad squad2;
 	private HealingItem potion;
 
 
@@ -46,15 +47,25 @@ class HospitalTests {
 	void setUp() {
 		outputStream = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outputStream));
-		
+		//Squad for testing
 		hospital = new Hospital("Hospital", TypeBuildings.Hospital);
 		squad = new HeroesSquad();
 		Hero hero1 = new Hero("Hero1", Types.dog, Abilities.badDay);
 		squad.addHero(hero1);
 		hero1.setHealth(50);
 		hero1.setArmor(30);
+		
+		//Added a healing item to squad ones backPack
 		potion = new HealingItem(CollectableID.BestHealingItem);
 		squad.getBackPack().addItemToInventory(potion);
+		
+		//Adding a second squad with no healing items
+		squad2 = new HeroesSquad();
+		Hero hero2 = new Hero("Hero1", Types.sly, Abilities.betterOdds);
+		squad2.addHero(hero2);
+		hero2.setHealth(90);
+		hero2.setArmor(30);
+		
 		
 		
 	}
@@ -64,16 +75,16 @@ class HospitalTests {
 		System.setIn(inputStream);
 	}
 	
-	private String getOutputStream() {
-		
-		byte[] bytes = outputStream.toByteArray();
-		CharBuffer charBuffer = Charset.defaultCharset().decode(ByteBuffer.wrap(bytes));
-		
-		outputStream = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(outputStream));
-		
-		return charBuffer.toString().replaceAll("\r\n", "\n");
-	}
+//	private String getOutputStream() {
+//		
+//		byte[] bytes = outputStream.toByteArray();
+//		CharBuffer charBuffer = Charset.defaultCharset().decode(ByteBuffer.wrap(bytes));
+//		
+//		outputStream = new ByteArrayOutputStream();
+//		System.setOut(new PrintStream(outputStream));
+//		
+//		return charBuffer.toString().replaceAll("\r\n", "\n");
+//	}
 
 	/**
 	 * @throws java.lang.Exception
@@ -84,6 +95,7 @@ class HospitalTests {
 		System.setIn(System.in);
 		hospital = null;
 		squad = null;
+		squad2 = null;
 	}
 
 	/**
@@ -93,6 +105,21 @@ class HospitalTests {
 	void testInteract() {
 		setInputStream("0\n"
 				+ "1\n"
+				+ "3\n");
+		HelperScanner.create();
+		hospital.interact(squad);
+		assertTrue(squad.getBackPack().getInventory().containsKey(potion));
+	}
+	
+	@Test
+	void testInteract2() {
+		setInputStream("9\n"
+				+ "0\n"
+				+ "1\n"
+				+ "2\n"
+				+ "akljdsfhlaksjdhf\n"
+				+ "8\n"
+				+ "0\n"
 				+ "3\n");
 		HelperScanner.create();
 		hospital.interact(squad);
