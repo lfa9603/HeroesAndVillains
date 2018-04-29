@@ -2,6 +2,8 @@ package characters;
 
 import java.util.InputMismatchException;
 
+import com.sun.org.apache.bcel.internal.generic.Select;
+
 import engine.Icons;
 import engine.VisualUtilities;
 
@@ -100,8 +102,7 @@ public class TeamBuilder {
 							System.out.println("Team Name must be between 2 and 10 characters long");
 						}
 					}
-		
-					
+
 				}
 							
 			else {
@@ -123,50 +124,55 @@ public class TeamBuilder {
 	}
 	
 	private void addTeamMembers() {
-		boolean run = true;
-		boolean runInner = true;
-		while (run == true) {
+		boolean runfirstLoop = true;
+		boolean runSecondLoop = true;
+		boolean runThirdLoop = true;
+		while (runfirstLoop == true) {
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			System.out.println("Avaliable Heros (A Max of 3 x Heros allowed):");
 			System.out.println(characterTypes + "\n");
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			System.out.println("Please enter 1-6 to select a character (Press \'Q\' when done selecting):");
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
-//			Scanner userinput_1 = new Scanner(System.in);
 			
-			//TODO: PROBLEM AROUND HERE (WHEN I HAVE TO SELECT THE HERO ABILITY) IF I TYPE A WRONG NUMBER IT DOES NOT WORK.(EG. 8 OR jhdfkj)
-			try {
-				Integer selectedCharacter = nextInt();
-				if (selectedCharacter >= 1 && selectedCharacter <= 6) {
-					switch(selectedCharacter) {
-					case 1: createHero(Types.talkitive, Abilities.charm); break;
-					case 2: createHero(Types.smart, Abilities.mystery); break;
-					case 3: createHero(Types.practical, Abilities.betterOdds); break;
-					case 4: createHero(Types.strong, Abilities.lessDamage); break;
-					case 5: createHero(Types.sly, Abilities.winDraws); break;
-					case 6: createHero(Types.dog, Abilities.goodBoy); break;
-					default: 
-						throw new InputMismatchException();
-					} 
-				}
-					
-//				else {
-//						System.out.println("Invalid integer, please type a value betwen (and including) 1 and 6 \n");
-//						next();
-//					}
+			//TODO: Done --- PROBLEM AROUND HERE (WHEN I HAVE TO SELECT THE HERO ABILITY) IF I TYPE A WRONG NUMBER IT DOES NOT WORK.(EG. 8 OR jhdfkj)
+			while (runSecondLoop) {
 				
-			} catch (InputMismatchException error) {
-				System.out.println("Invalid input, have you typed a valid integer?");
-				System.out.println("please type a number between (and including) 1 and 6 \n");
-				System.out.println("Please Try again \n");
-				next();
+				try {
+					Integer selectedCharacter = nextInt();
+					if (selectedCharacter instanceof Integer) {
+						switch(selectedCharacter) {
+						case 1: createHero(Types.talkitive, Abilities.charm); runSecondLoop = false; break;
+						case 2: createHero(Types.smart, Abilities.mystery); runSecondLoop = false; break;
+						case 3: createHero(Types.practical, Abilities.betterOdds); runSecondLoop = false; break;
+						case 4: createHero(Types.strong, Abilities.lessDamage); runSecondLoop = false; break;
+						case 5: createHero(Types.sly, Abilities.winDraws); runSecondLoop = false; break;
+						case 6: createHero(Types.dog, Abilities.goodBoy); runSecondLoop = false; break;
+						default: throw new IllegalArgumentException();
+						}
+					}
+						
+					else {
+							throw new InputMismatchException();
+						}
+					
+				} catch (InputMismatchException error) {
+					System.out.println("Invalid input, have you typed a valid integer?");
+					System.out.println("Please Try again:");
+					next();
+					
+				} catch (IllegalArgumentException error) {
+					System.out.println("please type a number between (and including) 1 and 6");
+					System.out.println("Please Try again:");
+				}
+				
+				finally {
+					reset();
+				}
+				
 			}
 			
-			finally {
-				reset();
-			}
-			
-			while (runInner == true) {
+			while (runThirdLoop == true) {
 				if (Team.getLength() >= 1) {
 //					Scanner userinput_3 = new Scanner(System.in);
 					System.out.println(VisualUtilities.getIcon(Icons.bar));
@@ -180,13 +186,14 @@ public class TeamBuilder {
 					if (confirmation.equals("R") || confirmation.equals("r")) {
 						System.out.println("Team has been reset.");
 						Team.squadReset();
-						runInner = false;
+						runThirdLoop = false;
 						
 					}
 					else {
 						if (confirmation.equals("Y") || confirmation.equals("y")) {
-							run = false;
-							runInner = false;
+							runfirstLoop = false;
+							runSecondLoop = false;
+							runThirdLoop = false;
 							System.out.println("Congradulations Your team is ready!");
 							System.out.println("The initial abilties will be applied if you have them in your squad.");
 							InitialAbiltyEffects.applyHeroSquadAbilties(Team.getHeroSquad());
@@ -202,7 +209,8 @@ public class TeamBuilder {
 							else {
 								if (confirmation.equals("N") || confirmation.equals("n")) {
 									System.out.println("Please pick another hero.");
-									runInner = false;
+									runSecondLoop = true;
+									runThirdLoop = false;
 								}
 								else {
 									System.out.println("invalid input, please answer Y/N/R or y/n/r");
@@ -214,7 +222,7 @@ public class TeamBuilder {
 					}
 				}
 			}
-			runInner = true;
+			runThirdLoop = true;
 		}
 	}
 	

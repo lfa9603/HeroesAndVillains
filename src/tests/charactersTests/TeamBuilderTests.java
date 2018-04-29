@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import characters.Hero;
 import characters.HeroesSquad;
 import characters.TeamBuilder;
+import characters.Types;
 import engine.HelperScanner;
 
 class TeamBuilderTests {
@@ -86,8 +87,10 @@ class TeamBuilderTests {
 		setInputStream("y\n"
 				+ "12345678910\n"
 				+ "123456789\n"
-				+ "1\n"
 				+ "n\n"
+				+ "123456789\n"
+				+ "1\n"
+				+ "y\n"
 				+ "TheLory\n"
 				+ "y\n"
 				+ "1\n"
@@ -99,14 +102,10 @@ class TeamBuilderTests {
 				+ "y\n");
 		HelperScanner.create();
 		
-		TeamBuilder teamBuild = new TeamBuilder();
-		
-		teamBuild.createTeam();
-		
-		String outStream = getOutputStream();
-		System.out.println(outStream);
-		assertEquals(teamCreationExpectedOutput2, outStream);
-		
+		TeamBuilder teamBuilder = new TeamBuilder();
+		HeroesSquad squad = teamBuilder.getTeam();
+		String teamName = squad.getTeamName();
+		assertTrue(teamName.length() > 2 && teamName.length() < 10);
 	}
 
 	
@@ -116,6 +115,7 @@ class TeamBuilderTests {
 		setInputStream("y\n"
 				+ "TheLory\n"
 				+ "y\n"
+				+ "7\n"
 				+ "1\n"
 				+ "jay\n"
 				+ "n\n"
@@ -139,42 +139,82 @@ class TeamBuilderTests {
 		
 	}
 	
-//	@Test
-//	void testGetNewTeam2() {
-//		
-//		setInputStream("y\n"
-//				+ "TestTeam\n"
-//				+ "y\n"
-//				+ "1\n"
-//				+ "Hero1\n"
-//				+ "n\n"
-//				+ "2\n"
-//				+ "Hero2\n"
-//				+ "n\n"
-//				+ "3\n"
-//				+ "Hero3\n"
-//				+ "n\n"
-//				+ "y\n");
-//		HelperScanner.create();
-//		
-//		TeamBuilder testTeam2 = new TeamBuilder();
-//		
-//		HeroesSquad squad2 = testTeam2.getTeam();
-//		
-//		assertEquals(squad2.getLength(),  3);
-//		
-//		Hero hero1 = squad2.getHero(0);
-//		Hero hero2 = squad2.getHero(1); 
-//		Hero hero3 = squad2.getHero(2);
-//		
-//		String outStream = getOutputStream();
-//		
-//		assertEquals("Hero1", hero1.getCharacterName());
-//		assertEquals("Hero2", hero2.getCharacterName());
-//		assertEquals("Hero3", hero3.getCharacterName());
-//		System.out.println(outStream);
-//		assertEquals(teamBuilderTest2ExpectedOutput, outStream);
-//		
-//	}
+	@Test
+	void testGetNewTeam2() {
+		
+		setInputStream("y\n"
+				+ "TestTeam\n"
+				+ "y\n"
+				+ "1\n"
+				+ "Hero1\n"
+				+ "n\n"
+				+ "2\n"
+				+ "Hero2\n"
+				+ "n\n"
+				+ "3\n"
+				+ "Hero3\n"
+				+ "n\n"
+				+ "y\n");
+		HelperScanner.create();
+		
+		TeamBuilder testTeam2 = new TeamBuilder();
+		
+		HeroesSquad squad2 = testTeam2.getTeam();
+		
+		assertEquals(squad2.getLength(),  3);
+		
+		Hero hero1 = squad2.getHero(0);
+		Hero hero2 = squad2.getHero(1); 
+		Hero hero3 = squad2.getHero(2);
+		
+		String outStream = getOutputStream();
+		
+		assertEquals("Hero1", hero1.getCharacterName());
+		assertEquals(Types.talkitive, hero1.getCharacterType());
+		assertEquals("Hero2", hero2.getCharacterName());
+		assertEquals(Types.smart, hero2.getCharacterType());
+		assertEquals("Hero3", hero3.getCharacterName());
+		assertEquals(Types.practical, hero3.getCharacterType());
+		
+	}
+	
+	@Test
+	void testGetNewTeam3() {
+		
+		setInputStream("y\n"
+				+ "TestTeam\n"
+				+ "y\n"
+				+ "4\n"
+				+ "Hero4\n"
+				+ "n\n"
+				+ "5\n"
+				+ "Hero5\n"
+				+ "n\n"
+				+ "6\n"
+				+ "Hero6\n"
+				+ "n\n"
+				+ "y\n");
+		HelperScanner.create();
+		
+		TeamBuilder testTeam2 = new TeamBuilder();
+		
+		HeroesSquad squad2 = testTeam2.getTeam();
+		
+		assertEquals(squad2.getLength(),  3);
+		
+		Hero hero4 = squad2.getHero(0);
+		Hero hero5 = squad2.getHero(1); 
+		Hero hero6 = squad2.getHero(2);
+		
+		String outStream = getOutputStream();
+		
+		assertEquals("Hero4", hero4.getCharacterName());
+		assertEquals(Types.strong, hero4.getCharacterType());
+		assertEquals("Hero5", hero5.getCharacterName());
+		assertEquals(Types.sly, hero5.getCharacterType());
+		assertEquals("Hero6", hero6.getCharacterName());
+		assertEquals(Types.dog, hero6.getCharacterType());
+		
+	}
 
 }
