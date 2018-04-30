@@ -1,11 +1,11 @@
 package minigames_V2;
 
-import characters.Abilities;
+//import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
 import characters.Villain;
-import collectables.Money;
+//import collectables.Money;
 import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
@@ -140,40 +140,42 @@ public class MiniGameEngine {
 		selectedMiniGame = newGame;
 		
 	}
+
+	
 	
 	//  For testing
-	public static void main(String[] args) {
-//		TeamBuilder team = new TeamBuilder();
-		Hero hero1 = new Hero("hero1", Types.talkitive, Abilities.charm);
-		Hero hero2 = new Hero("hero2", Types.smart, Abilities.mystery);
-		Hero hero3 = new Hero("hero3", Types.practical, Abilities.betterOdds);
-		Hero hero4 = new Hero("hero4", Types.strong, Abilities.lessDamage);
-		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
-		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
-		HeroesSquad testsquad = new HeroesSquad();
-		testsquad.addHero(hero2);
-//		testsquad.addHero(hero3);
-//		testsquad.addHero(hero5);
-//		hero2.setisAlive(false);
-//		hero3.setisAlive(false);
-//		hero3.setisAlive(false);
-		testsquad.checkTeamStatus();
-		hero2.setArmor(30);
-		hero2.setIsGameChooser(true);
-		Money wallet = testsquad.getWallet();
-		
-		
-		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.stealLunchMoney, "Ciao bella dona ;p", 10);
-//		testVillain.setBeaten(true);
-//		testVillain.setTimesBeaten();
-//		testVillain.setTimesBeaten();
-		
-		MiniGameEngine game = new MiniGameEngine();	
-		game.runMiniGameEngine(testVillain, testsquad);
-		
-		System.out.println(wallet);
-		
-	}
+//	public static void main(String[] args) {
+////		TeamBuilder team = new TeamBuilder();
+//		Hero hero1 = new Hero("hero1", Types.talkitive, Abilities.charm);
+//		Hero hero2 = new Hero("hero2", Types.smart, Abilities.mystery);
+//		Hero hero3 = new Hero("hero3", Types.practical, Abilities.betterOdds);
+//		Hero hero4 = new Hero("hero4", Types.strong, Abilities.lessDamage);
+//		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
+//		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
+//		HeroesSquad testsquad = new HeroesSquad();
+//		testsquad.addHero(hero2);
+////		testsquad.addHero(hero3);
+////		testsquad.addHero(hero5);
+////		hero2.setisAlive(false);
+////		hero3.setisAlive(false);
+////		hero3.setisAlive(false);
+//		testsquad.checkTeamStatus();
+//		hero2.setArmor(30);
+//		hero2.setIsGameChooser(true);
+//		Money wallet = testsquad.getWallet();
+//		
+//		
+//		Villain testVillain = new Villain("Lorenzo", Types.level_1, Abilities.stealLunchMoney, "Ciao bella dona ;p", 10);
+////		testVillain.setBeaten(true);
+////		testVillain.setTimesBeaten();
+////		testVillain.setTimesBeaten();
+//		
+//		MiniGameEngine game = new MiniGameEngine();	
+//		game.runMiniGameEngine(testVillain, testsquad);
+//		
+//		System.out.println(wallet);
+//		
+//	}
 
 
 	

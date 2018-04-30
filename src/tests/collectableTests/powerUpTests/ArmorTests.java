@@ -27,7 +27,8 @@ class ArmorTests {
 	void testingApplyPowerUp() {
 		
 		armor.apply(hero);
-//		assertTrue(hero.isHasArmor());TODO:RE-TEST RIGHT VALUE
+		assertEquals(hero.getArmor(), 30);
+		
 	}
 	
 	@AfterEach

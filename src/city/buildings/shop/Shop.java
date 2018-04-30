@@ -5,19 +5,26 @@ import java.util.Scanner;
 
 import characters.Abilities;
 import characters.Hero;
+//import characters.Abilities;
+//import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
+//import characters.Types;
 import city.buildings.Building;
 import city.buildings.TypeBuildings;
 
 import collectables.Collectable;
 import collectables.CollectableID;
+import collectables.Inventory;
 import collectables.Money;
+//import collectables.Money;
 import collectables.healingItem.HealingItem;
 import collectables.heroesMap.HeroesMap;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
+
+import static engine.HelperScanner.*;
 
 
 /**
@@ -31,6 +38,10 @@ import collectables.powerUp.IncreaseMaxLife;
  *
  * This class uses Merchandise.java as an helper class to store a random amount (between 0 and 2) of each Collectable object present in the game. 
  * 
+ */
+/**
+ * @author LorenzoFasano
+ *
  */
 public class Shop extends Building{
 
@@ -69,8 +80,8 @@ public class Shop extends Building{
 				+ "\nHey mate! What can I get ya");
 		boolean inShop = true;
 		while (inShop) {
-			Scanner input = new Scanner(System.in);
-			Scanner confirmation = new Scanner(System.in);
+//			Scanner input = new Scanner(System.in);
+//			Scanner confirmation = new Scanner(System.in);
 			
 			System.out.println("Current Available items:");
 			System.out.println(merchandise.getInventory().toString());
@@ -81,20 +92,20 @@ public class Shop extends Building{
 					+ " 2 to buy a powerUp\n"
 					+ " 3 to get outta here!");
 			try {
-				Integer valueTyped = input.nextInt();
+				Integer valueTyped = nextInt();
 				
 				switch(valueTyped) {
 			
 				case 0:
-					buyMap(heroesSquad, confirmation);				
+					buyMap(heroesSquad);				
 					break;
 				
 				case 1:
-					buyHealingPotion(heroesSquad, confirmation);
+					buyHealingPotion(heroesSquad);
 					break;
 				
 				case 2:
-					buyPowerUp(heroesSquad, confirmation);
+					buyPowerUp(heroesSquad);
 					break;
 				
 				case 3:
@@ -103,13 +114,16 @@ public class Shop extends Building{
 					inShop = false;
 					System.out.println("Come back soon!");
 					break;
+				default:
+					System.out.println("Please press a key corresponding to one of the three options");
+					break;
 				} 
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the three options");
-				input.next();
+				next();
 				
 			} finally {
-				input.reset();
+				reset();
 			}
 		}
 	}	
@@ -125,7 +139,7 @@ public class Shop extends Building{
 	 * If the @param heros does not have enough money to buy it or it already has a map of the current city, the purchase will not happen.
 	 * 
 	 */
-	private void buyMap(HeroesSquad heros, Scanner confirm) {
+	private void buyMap(HeroesSquad heros) {
 		
 		boolean notSure = true;
 		
@@ -133,7 +147,7 @@ public class Shop extends Building{
 			System.out.println("Nearly Done! Press Y to confirm your HeroesMap purchase "
 					+ "or N to go back to general menu");
 			try {
-				String confirmed = confirm.next().toLowerCase();
+				String confirmed = next().toLowerCase();
 				if (confirmed.equals("y")) {
 					HeroesMap map = new HeroesMap(CollectableID.HeroesMap);
 	
@@ -158,15 +172,15 @@ public class Shop extends Building{
 				}
 				 
 				if (!confirmed.equals("n") && !confirmed.equals("y")) {
-					throw (new InputMismatchException());
+					System.out.println("Please press a key corresponding to one of the two options");
 				}
 				
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the two options");
-				confirm.next();
+				next();
 				
 			} finally {
-				confirm.reset();
+				reset();
 			}
 		}
 	}
@@ -183,7 +197,7 @@ public class Shop extends Building{
 	 * Uses confirmPurchase(HeroesSquad heroSquad, Collectable collectable) as helper method.
 	 * 
 	 */
-	private void buyHealingPotion(HeroesSquad heros, Scanner confirm) {
+	private void buyHealingPotion(HeroesSquad heros) {
 		boolean inHealingItemSession = true;
 		while (inHealingItemSession) {
 			System.out.println("Select: "
@@ -192,7 +206,7 @@ public class Shop extends Building{
 					+ "\n  2 for a BestHealingItem"
 					+ "\n  3 to exit");
 			try {
-				Integer confirmed = confirm.nextInt();
+				Integer confirmed = nextInt();
 				switch (confirmed) {
 					case 0:
 						confirmPurchase(heros, new HealingItem(CollectableID.GoodHealingItem));
@@ -213,10 +227,10 @@ public class Shop extends Building{
 				
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the two options");
-				confirm.next();
+				next();
 				
 			} finally {
-				confirm.reset();
+				reset();
 			}
 		}
 	}
@@ -232,7 +246,7 @@ public class Shop extends Building{
 	 * Uses confirmPurchase(HeroesSquad heroSquad, Collectable collectable) as helper method.
 	 * 
 	 */
-	private void buyPowerUp(HeroesSquad heros, Scanner confirm) {
+	private void buyPowerUp(HeroesSquad heros) {
 		boolean inPowerUpSession = true;
 		while (inPowerUpSession) {
 			System.out.println("Select: "
@@ -241,7 +255,7 @@ public class Shop extends Building{
 					+ "\n  2 for a GameChooser"
 					+ "\n  3 to exit");
 			try {
-				Integer confirmed = confirm.nextInt();
+				Integer confirmed = nextInt();
 				switch (confirmed) {
 					case 0:
 						confirmPurchase(heros, new Armor(CollectableID.Armor));
@@ -262,10 +276,10 @@ public class Shop extends Building{
 				
 			} catch (InputMismatchException e) {
 				System.out.println("Please press a key corresponding to one of the two options");
-//				confirm.next();
+				next();
 				
 			} finally {
-				confirm.reset();
+				reset();
 			}
 		}
 	}
@@ -329,6 +343,7 @@ public class Shop extends Building{
 //		heroesSquad.addHero(new Hero("Lorenzo", Types.dog, Abilities.betterOdds));
 //		heroesSquad.setWallet(new Money(1000000));
 //		Shop shop = new Shop("Shop", TypeBuildings.Shop);
+//		shop.getMerchandise().setInventory(new Inventory());
 //		shop.interact(heroesSquad);
 //	}
 

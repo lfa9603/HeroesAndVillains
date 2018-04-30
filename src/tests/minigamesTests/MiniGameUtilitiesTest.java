@@ -52,12 +52,12 @@ class MiniGameUtilitiesTest {
 		outputStream = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outputStream));
 		
-		Hero hero1 = new Hero("Hero1", Types.dog, Abilities.charm);
-		Hero hero2 = new Hero("Hero2", Types.dog, Abilities.mystery);
-		Hero hero3 = new Hero("Hero3", Types.dog, Abilities.betterOdds);
-		Hero hero4 = new Hero("Hero4", Types.dog, Abilities.lessDamage);
-		Hero hero5 = new Hero("Hero5", Types.dog, Abilities.winDraws);
-		Hero hero6 = new Hero("Hero6", Types.dog, Abilities.arrogance);
+		hero1 = new Hero("Hero1", Types.dog, Abilities.charm);
+		hero2 = new Hero("Hero2", Types.dog, Abilities.mystery);
+		hero3 = new Hero("Hero3", Types.dog, Abilities.betterOdds);
+		hero4 = new Hero("Hero4", Types.dog, Abilities.lessDamage);
+		hero5 = new Hero("Hero5", Types.dog, Abilities.winDraws);
+		hero6 = new Hero("Hero6", Types.dog, Abilities.arrogance);
 		
 		squad = new HeroesSquad();
 		squad.addHero(hero1);

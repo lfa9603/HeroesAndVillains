@@ -1,29 +1,28 @@
 package city.buildings.homeBase;
 
-import java.awt.Point;
 //import java.awt.Point;
 //import java.io.ByteArrayOutputStream;
 //import java.io.PrintStream;
 import java.util.InputMismatchException;
 //import java.util.Scanner;
 
-import characters.Abilities;
+//import characters.Abilities;
 //import characters.Abilities;
 import characters.Character;
-import characters.Hero;
+//import characters.Hero;
 //import characters.Hero;
 import characters.HeroesSquad;
-import characters.Types;
+//import characters.Types;
 //import characters.Types;
 //import city.City;
 //import collectables.CollectableID;
 //import collectables.Money;
 //import collectables.heroesMap.HeroesMap;
-import city.City;
+//import city.City;
 import city.buildings.Building;
 import city.buildings.TypeBuildings;
 import collectables.Collectable;
-import collectables.Money;
+//import collectables.Money;
 
 import static engine.HelperScanner.*;
 
