@@ -184,6 +184,7 @@ public class Hospital extends Building {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public static void main(String[] args) {
 		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
 		HeroesSquad heroes = new HeroesSquad();
@@ -194,6 +195,8 @@ public class Hospital extends Building {
 		hospital.interact(heroes);
 	}
 =======
+=======
+>>>>>>> da9e01f3ce76f02044db755c10a8b55711d62731
 //	public static void main(String[] args) {
 //		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
 //		HeroesSquad heroes = new HeroesSquad();
@@ -204,6 +207,9 @@ public class Hospital extends Building {
 //		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 //		hospital.interact(heroes);
 //	}
+<<<<<<< HEAD
+>>>>>>> da9e01f3ce76f02044db755c10a8b55711d62731
+=======
 >>>>>>> da9e01f3ce76f02044db755c10a8b55711d62731
 
 }
