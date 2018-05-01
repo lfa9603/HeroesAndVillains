@@ -52,7 +52,7 @@ class HospitalTests {
 		squad = new HeroesSquad();
 		Hero hero1 = new Hero("Hero1", Types.dog, Abilities.badDay);
 		squad.addHero(hero1);
-		hero1.setHealth(50);
+		hero1.setHealth(98);
 		hero1.setArmor(30);
 		
 		//Added a healing item to squad ones backPack
@@ -125,69 +125,28 @@ class HospitalTests {
 		hospital.interact(squad);
 		assertTrue(squad.getBackPack().getInventory().containsKey(potion));
 	}
-
-	/**
-	 * Test method for {@link city.buildings.hospital.Hospital#Hospital(java.lang.String, city.buildings.TypeBuildings)}.
-	 */
+	
 	@Test
-	void testHospital() {
-		fail("Not yet implemented");
+	void testInteract3() {
+		setInputStream("2\n"
+				+ "1\n"
+				+ "0\n");
+		HelperScanner.create();
+		// Can't get this to cover ... Still having issues
+		hospital.interact(squad);
+		assertFalse(squad.getBackPack().getInventory().containsKey(potion));
+		boolean expected = squad.getHero(1).getHealth() == squad.getHero(1).getMaxHealth();
+		assertTrue(expected);
 	}
-
-	/**
-	 * Test method for {@link city.buildings.Building#Building(java.lang.String, city.buildings.TypeBuildings)}.
-	 */
+	
 	@Test
-	void testBuilding() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link city.buildings.Building#getBuildingName()}.
-	 */
-	@Test
-	void testGetBuildingName() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link city.buildings.Building#setBuildingName(java.lang.String)}.
-	 */
-	@Test
-	void testSetBuildingName() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link city.buildings.Building#getBuildingCoordinates()}.
-	 */
-	@Test
-	void testGetBuildingCoordinates() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link city.buildings.Building#setBuildingCoordinates(java.awt.Point)}.
-	 */
-	@Test
-	void testSetBuildingCoordinates() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link city.buildings.Building#getBuildingType()}.
-	 */
-	@Test
-	void testGetBuildingType() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link city.buildings.Building#toString()}.
-	 */
-	@Test
-	void testToString() {
-		fail("Not yet implemented");
+	void testInteract4() {
+		setInputStream("9\n"
+				+ "akljdsfhlaksjdhf\n"
+				+ "0\n");
+		HelperScanner.create();
+		hospital.interact(squad2);
+		assertFalse(squad2.getBackPack().getInventory().containsKey(potion));
 	}
 
 }

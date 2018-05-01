@@ -182,13 +182,15 @@ public class Hospital extends Building {
 	
 
 
-	public static void main(String[] args) {
-		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
-		HeroesSquad heroes = new HeroesSquad();
-		heroes.addHero(new Hero("Lorenzo", Types.dog, Abilities.badDay));
-
-		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
-		hospital.interact(heroes);
-	}
+//	public static void main(String[] args) {
+//		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
+//		HeroesSquad heroes = new HeroesSquad();
+//		Hero hero1 = new Hero("Hero1test", Types.dog, Abilities.badDay);
+//		hero1.setHealth(98);
+//		heroes.addHero(hero1);
+// 
+//		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
+//		hospital.interact(heroes);
+//	}
 
 }
