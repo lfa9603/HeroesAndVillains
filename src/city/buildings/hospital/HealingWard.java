@@ -98,8 +98,9 @@ public class HealingWard {
 	 * @return The Hero objects names in patientsAndHealingTime and the corresponding Integer value converted to seconds.
 	 */
 	public String toString() {
-		if (!patientsAndHealingTime.isEmpty()) {
-			Iterator<Map.Entry<Hero, Integer>> entries = patientsAndHealingTime.entrySet().iterator();
+		HashMap<Hero, Integer> copyPatientsAndHealingTime = (HashMap<Hero, Integer>) patientsAndHealingTime.clone();
+		if (!copyPatientsAndHealingTime.isEmpty()) {
+			Iterator<Map.Entry<Hero, Integer>> entries = copyPatientsAndHealingTime.entrySet().iterator();
 			String string = new String();
 			string += "\n" + VisualUtilities.getIcon(Icons.bar) + "\n";
 			string += "HEALING WARD\n";
@@ -126,8 +127,8 @@ public class HealingWard {
 	public static void main(String[] args) {
 		Hero hero1 = new Hero("Ciao", Types.level_2, Abilities.arrogance);
 		Hero hero2 = new Hero("Bye", Types.level_2, Abilities.badDay);
-		hero1.setHealth(20);
-		hero2.setHealth(30);
+		hero1.setHealth(90);
+		hero2.setHealth(90);
 		HealingWard hw = new HealingWard();
 		HealingItem healingItem = new HealingItem(CollectableID.BestHealingItem);
 		healingItem.apply(hero1);
@@ -138,7 +139,7 @@ public class HealingWard {
 		while (i > 0) {
 			System.out.println(hw.toString());
 			try {
-				Thread.sleep(9000);
+				Thread.sleep(90);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

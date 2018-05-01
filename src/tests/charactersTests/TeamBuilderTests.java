@@ -8,6 +8,7 @@ import java.io.PrintStream;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
+//import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -66,11 +67,11 @@ class TeamBuilderTests {
 		HelperScanner.create();
 		
 		TeamBuilder testTeamCreation = new TeamBuilder();
+		testTeamCreation.getClass();//to eliminate the yellow marker in Eclipse.
 		
 		String outStream = getOutputStream();
 		System.out.println(outStream);
 		assertEquals(teamCreationExpectedOutput, outStream);  
-		
 	}
 	
 	@Test
@@ -167,7 +168,7 @@ class TeamBuilderTests {
 		Hero hero2 = squad2.getHero(1); 
 		Hero hero3 = squad2.getHero(2);
 		
-		String outStream = getOutputStream();
+//		String outStream = getOutputStream();
 		
 		assertEquals("Hero1", hero1.getCharacterName());
 		assertEquals(Types.talkitive, hero1.getCharacterType());
@@ -206,7 +207,7 @@ class TeamBuilderTests {
 		Hero hero5 = squad2.getHero(1); 
 		Hero hero6 = squad2.getHero(2);
 		
-		String outStream = getOutputStream();
+//		String outStream = getOutputStream();
 		
 		assertEquals("Hero4", hero4.getCharacterName());
 		assertEquals(Types.strong, hero4.getCharacterType());

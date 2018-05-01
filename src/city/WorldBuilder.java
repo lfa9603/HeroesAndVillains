@@ -93,8 +93,8 @@ public class WorldBuilder {
 	}
 	
 	
-	public static void main(String[] args) {
-		WorldBuilder wb = new WorldBuilder();
-	}
+//	public static void main(String[] args) {
+//		WorldBuilder wb = new WorldBuilder();
+//	}
 	
 }
