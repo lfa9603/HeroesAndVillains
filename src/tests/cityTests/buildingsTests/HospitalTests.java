@@ -124,7 +124,9 @@ class HospitalTests {
 		// Can't get this to cover ... Still having issues
 		hospital.interact(squad);
 		assertFalse(squad.getBackPack().getInventory().containsKey(potion));
-		boolean expected = squad.getHero(1).getHealth() == squad.getHero(1).getMaxHealth();
+		boolean expected = squad.getHero(0).getHealth() == squad.getHero(0).getMaxHealth();
+		System.out.println(expected);
+		
 		assertTrue(expected);
 	}
 	

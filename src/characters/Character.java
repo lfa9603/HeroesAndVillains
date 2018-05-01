@@ -2,9 +2,10 @@ package characters;
 
 /**
  * 
- * @author LorenzoFasano
- *Character abstract class needed to implement classes that take Character elements as objects,
- *This will make it easier to implement code that accepts both Hero and Villain objects.
+ * @author LorenzoFasano and Jay Hamilton
+ *Character abstract class implements classes that take Character elements as objects,
+ *this class is parent to both the villain and hero classes. This class implements an abstract toString()
+ *method.
  */
 public abstract class Character {
 	
@@ -17,9 +18,9 @@ public abstract class Character {
 	
 
 	/**
-	 * 
-	 * @param name
-	 * @param specialAbility
+	 * Constructor for the Character class.
+	 * @param name the name of the character.
+	 * @param specialAbility the ability associated with the character.
 	 */
 	public Character(String name, Types type, Abilities specialAbility) {
 		characterName = name;
@@ -28,6 +29,7 @@ public abstract class Character {
 	}
 	
 	/**
+	 * Returns the Characters name.
 	 * @return characterName
 	 */
 	public String getCharacterName() {
@@ -35,8 +37,8 @@ public abstract class Character {
 	}
 
 	/**
-	 * @param characterName 
-	 * characterName setter
+	 * Setter Method of the character's name.
+	 * @param characterName
 	 */
 	public void setCharacterName(String characterName) {
 		this.characterName = characterName;
@@ -44,20 +46,23 @@ public abstract class Character {
 
 
 	/**
-	 * @return the characterType
+	 * Getter Method of the Characters Type.
+	 * @return characterType
 	 */
 	public Types getCharacterType() {
 		return characterType;
-	}
+	} 
 
 	/**
-	 * @param characterType the characterType to set
+	 * Setter method for the Charater's type.
+	 * @param characterType the character Type to set to.
 	 */
 	public void setCharacterType(Types characterType) {
 		this.characterType = characterType;
 	}
 
 	/**
+	 * Getter method for the Character's Ability.
 	 * @return characterAbility
 	 */
 	public Abilities getCharacterAbility() {
@@ -65,36 +70,40 @@ public abstract class Character {
 	}
 
 	/**
+	 * Setter method for the Characters Ability.
 	 * @param characterAbility 
-	 * characterAbility setter
 	 */
 	public void setCharacterAbility(Abilities characterAbility) {
 		this.characterAbility = characterAbility;
 	}
 	
 	/**
-	 * @return the maxHealth
+	 * Getter method for the Character's Max Health parameter.
+	 * @return maxHealth
 	 */
 	public int getMaxHealth() {
 		return maxHealth;
 	}
 
 	/**
-	 * @param maxHealth the maxHealth to set
+	 * Setter Method for the Character's max health parameter.
+	 * @param maxHealth
 	 */
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
 	}
 
 	/**
-	 * @return the health
+	 * Getter method for the Characters health.
+	 * @return health
 	 */
 	public int getHealth() {
 		return health;
 	}
 
 	/**
-	 * @param health the health to set
+	 * Setter method for the Characters health.
+	 * @param health
 	 */
 	public void setHealth(int health) {
 		if (health <= maxHealth) {
@@ -106,14 +115,16 @@ public abstract class Character {
 	}
 
 	/**
-	 * @return the alive
+	 * Getter method for the character is alive parameter which is a boolean value.
+	 * @return alive
 	 */
 	public boolean isAlive() {
 		return alive;
 	}
 
 	/**
-	 * @param alive the alive to set
+	 * Setter method for the characters is alive parameter.
+	 * @param alive
 	 */
 	public void setisAlive(boolean alive) {
 		this.alive = alive;
@@ -121,7 +132,7 @@ public abstract class Character {
 	}
 
 	/**
-	 * The class all children classes have to implement
+	 * The abstract method all children have to implement.
 	 */
 	public abstract String toString();
 }
