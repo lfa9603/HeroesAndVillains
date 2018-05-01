@@ -74,17 +74,6 @@ class HospitalTests {
 		inputStream = new ByteArrayInputStream(input.getBytes());
 		System.setIn(inputStream);
 	}
-	
-//	private String getOutputStream() {
-//		
-//		byte[] bytes = outputStream.toByteArray();
-//		CharBuffer charBuffer = Charset.defaultCharset().decode(ByteBuffer.wrap(bytes));
-//		
-//		outputStream = new ByteArrayOutputStream();
-//		System.setOut(new PrintStream(outputStream));
-//		
-//		return charBuffer.toString().replaceAll("\r\n", "\n");
-//	}
 
 	/**
 	 * @throws java.lang.Exception
