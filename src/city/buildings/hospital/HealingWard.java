@@ -98,8 +98,9 @@ public class HealingWard {
 	 * @return The Hero objects names in patientsAndHealingTime and the corresponding Integer value converted to seconds.
 	 */
 	public String toString() {
-		if (!patientsAndHealingTime.isEmpty()) {
-			Iterator<Map.Entry<Hero, Integer>> entries = patientsAndHealingTime.entrySet().iterator();
+		HashMap<Hero, Integer> copyPatientsAndHealingTime = (HashMap<Hero, Integer>) patientsAndHealingTime.clone();
+		if (!copyPatientsAndHealingTime.isEmpty()) {
+			Iterator<Map.Entry<Hero, Integer>> entries = copyPatientsAndHealingTime.entrySet().iterator();
 			String string = new String();
 			string += "\n" + VisualUtilities.getIcon(Icons.bar) + "\n";
 			string += "HEALING WARD\n";

@@ -2,7 +2,6 @@ package city.buildings.hospital;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-//import java.util.Scanner;
 
 import characters.Abilities;
 import characters.Hero;
@@ -155,6 +154,8 @@ public class Hospital extends Building {
 	 * Helper method for interact(HeroesSquad heroesSquad), it is 
 	 * called if the HeroesSquad object has no HealingItem objects in their backpack property.
 	 * 
+	/**
+	 * @param input
 	 */
 	private void noHealingItems(Integer input) {
 		boolean deciding = true;
@@ -182,6 +183,17 @@ public class Hospital extends Building {
 	
 
 
+
+	public static void main(String[] args) {
+		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
+		HeroesSquad heroes = new HeroesSquad();
+		Hero hero = new Hero("Lorenzo", Types.dog, Abilities.badDay);
+		heroes.addHero(hero);
+
+		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
+		hospital.interact(heroes);
+	}
+
 //	public static void main(String[] args) {
 //		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
 //		HeroesSquad heroes = new HeroesSquad();
@@ -192,5 +204,6 @@ public class Hospital extends Building {
 //		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 //		hospital.interact(heroes);
 //	}
+
 
 }
