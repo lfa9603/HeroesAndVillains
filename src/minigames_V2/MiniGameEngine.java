@@ -1,10 +1,12 @@
 package minigames_V2;
 
+import characters.Abilities;
 //import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
 import characters.Villain;
+import collectables.Money;
 //import collectables.Money;
 import engine.Icons;
 import engine.Utilities;
@@ -68,7 +70,7 @@ public class MiniGameEngine {
 	private void villainEffects(Villain villain, HeroesSquad squad) {
 		int randInt = Utilities.getRandInt(100);
 		Types level = villain.getCharacterType();
-		int difficulty = 5;
+		int difficulty = 0;
 		
 		//Sets how often the villains ability will be activated, this will help adjust the games difficulty.
 		switch (level) {
@@ -140,6 +142,10 @@ public class MiniGameEngine {
 		selectedMiniGame = newGame;
 		
 	}
+	
+	public static int getSelectedMiniGame() {
+		return selectedMiniGame;
+	}
 
 	
 	
@@ -153,7 +159,7 @@ public class MiniGameEngine {
 //		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
 //		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
 //		HeroesSquad testsquad = new HeroesSquad();
-//		testsquad.addHero(hero2);
+//		testsquad.addHero(hero1);
 ////		testsquad.addHero(hero3);
 ////		testsquad.addHero(hero5);
 ////		hero2.setisAlive(false);
@@ -161,7 +167,7 @@ public class MiniGameEngine {
 ////		hero3.setisAlive(false);
 //		testsquad.checkTeamStatus();
 //		hero2.setArmor(30);
-//		hero2.setIsGameChooser(true);
+//		hero1.setIsGameChooser(true);
 //		Money wallet = testsquad.getWallet();
 //		
 //		
