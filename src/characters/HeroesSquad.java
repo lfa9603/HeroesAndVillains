@@ -12,11 +12,12 @@ import collectables.heroesMap.HeroesMap;
 /**
  * 
  * @author LorenzoFasano and JayHamilton
- *Collection of Character objects stored in an ArrayList 
+ * A Collection of Hero objects stored in an ArrayList. This class holds the main functionality for the Team of Hero objects
+ * in the game. The HeroSquad object also holds the Inventory, Wallet and current position.  
  */
+
 public class HeroesSquad {
 	
-//	private static ArrayList<Hero> heroSquad = new ArrayList<Hero>();
 	private static ArrayList<Hero> heroSquad;
 	private String teamName;
 	private boolean allDead; 
@@ -43,7 +44,8 @@ public class HeroesSquad {
 
 
 	/**
-	 * @param Checks if hero is in the Squad and adds it, else it raises an error.
+	 * Checks if hero is in the Squad and adds it, else it raises an error.
+	 * @param hero
 	 */
 	public void addHero(Hero hero) {
 		 if (!this.squadContains(hero)){
@@ -54,6 +56,11 @@ public class HeroesSquad {
 		 }
 	}
 	
+	/**
+	 * Checks if the hero object is in the array list heroSquad and returns the result
+	 * @param hero
+	 * @return result
+	 */
 	
 	public boolean squadContains(Hero hero) {
 		boolean result = false;
@@ -65,13 +72,28 @@ public class HeroesSquad {
 		return result;
 	}
 	
+	/**
+	 * Returns the Hero object in the given index
+	 * @param choice(index)
+	 * @return
+	 */
+	
 	public Hero getHero(int choice) {
 		return heroSquad.get(choice);
 	}
 	
+	/**
+	 * Returns how many Hero objects are in the array list heroSquad
+	 * @return int
+	 */
+	
 	public int getLength() {
 		return heroSquad.size();
 	}
+	
+	/**
+	 * Removes all Hero objects from the array list heroSquad
+	 */
 	
 	public void squadReset() {
 		heroSquad.removeAll(heroSquad);
@@ -79,37 +101,47 @@ public class HeroesSquad {
 	
 
 	/**
+	 * Getter method for the array list heroSquad
 	 * @return the heroSquad
 	 */
+	
 	public ArrayList<Hero> getHeroSquad() {
 		return heroSquad;
 	}
 	
 	/**
+	 * Getter method for the TeamName parameter 
 	 * @return the teamName
 	 */
+	
 	public String getTeamName() {
 		return teamName;
 	}
 
 
 	/**
+	 * Setter method for the TeamName parameter 
 	 * @param teamName the teamName to set
 	 */
+	
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
 	}
 	
 	/**
+	 * Getter method for the HaveMap parameter
 	 * @return the haveMap
 	 */
+	
 	public boolean isHaveMap() {
 		return haveMap;
 	}
 
 	/**
-	 * @param haveMap the haveMap to set
+	 * Setter method for the HaveMap parameter
+	 * @param haveMap
 	 */
+	
 	public void setHaveMap(boolean haveMap) {
 		this.haveMap = haveMap;
 		if (haveMap) {
@@ -120,27 +152,32 @@ public class HeroesSquad {
 	}
 	
 	/**
+	 * Getter method for the heroMap parameter
 	 * @return the heroesMap
 	 */
+	
 	public HeroesMap getHeroesMap() {
 		return heroesMap;
 	}
 
 	/**
-	 * @param heroesMap the heroesMap to set
+	 * Setter method for the heroMap parameter
+	 * @param heroesMap
 	 */
 	public void setHeroesMap(HeroesMap heroesMap) {
 		this.heroesMap = heroesMap;
 	}
 	
 	/**
-	 * @return the currentCity
+	 * Getter method for the currentCity parameter
+	 * @return currentCity
 	 */
 	public City getCurrentCity() {
 		return currentCity;
 	}
 
 	/**
+	 * Setter method for the currentCity parameter
 	 * @param currentCity the currentCity to set
 	 */
 	public void setCurrentCity(City currentCity) {
@@ -149,20 +186,23 @@ public class HeroesSquad {
 	
 
 	/**
-	 * @return the backPack
+	 * Getter method for the backPack parameter
+	 * @return backPack
 	 */
 	public Inventory getBackPack() {
 		return backPack;
 	}
 
 	/**
-	 * @param backPack the backPack to set
+	 * Getter method for the backPack parameter
+	 * @param backPack
 	 */
 	public void setBackPack(Inventory backPack) {
 		this.backPack = backPack;
 	}
 	
     /**
+     * Getter method for the wallet parameter
 	 * @return the wallet
 	 */
 	public Money getWallet() {
@@ -172,7 +212,8 @@ public class HeroesSquad {
 
 
 	/**
-	 * @param wallet the wallet to set
+	 * Setter method for the wallet parameter
+	 * @param wallet
 	 */
 	public void setWallet(Money wallet) {
 		this.wallet = wallet;
@@ -185,9 +226,8 @@ public class HeroesSquad {
 		return currentPosition;
 	}
 
-
-
 	/**
+	 * Setter method for the currentPosition parameter
 	 * @param currentPosition the currentPosition to set
 	 */
 	public void setCurrentPosition(Point currentPosition) {
@@ -195,7 +235,11 @@ public class HeroesSquad {
 	}
 	
 	
-	
+	/**
+	 * A method that checks if the Hero given is alive, dead of in detention.
+	 * @param hero
+	 * @return String
+	 */
 	public String heroStatus(Hero hero) {
 		if (hero.isinDetention) {
 			return "In Detention";
@@ -209,6 +253,16 @@ public class HeroesSquad {
 			}
 		}
 	}
+	
+	/**
+	 * A method calculates how much damage the hero takes. If the hero has no armor then all 
+	 * the villainDamge is removed from the heros current health (HP). If the Hero has armor and that armor 
+	 * has enough AP (Armor points) then the damage is taken from the armor and a new armor value is set. If the 
+	 * armor does not cover all the damage then the damage is split between the armor and health, 
+	 * with the armor being drained first.  
+	 * @param hero
+	 * @param villainDamge
+	 */
 	
 	public void heroTakesDamage(Hero hero, int villainDamge) {
 		int hasArmor = hero.getArmor();
@@ -252,12 +306,24 @@ public class HeroesSquad {
 	}
 	
 	/**
-	 * @return the allDead
+	 * Getter method for the allDead parameter
+	 * @return allDead
 	 */
 	public boolean isAllDead() {
 		return allDead;
 	}
 	
+	/**
+	 * Setter method for the allDead parameter
+	 * @param allDead
+	 */
+	public void setAllDead(boolean allDead) {
+		this.allDead = allDead;
+	}
+	
+	/**
+	 * A method that checks the status of all the Heros in HeroSquad and sets allDead to true if all the heros are dead.
+	 */
 	public void checkTeamStatus() {
 		int  teamSize = heroSquad.size();
 		int deadTeamMembers = 0;
@@ -271,18 +337,10 @@ public class HeroesSquad {
 			}
 		}
 	}
-
-
 	
-
 	/**
-	 * @param allDead the allDead to set
+	 * A method the provides the String representation of the HeroSquad object.
 	 */
-	public void setAllDead(boolean allDead) {
-		this.allDead = allDead;
-	}
-
-
 
 	//TODO: update Hero toString() and then make this method better, not tested yet
 	public String toString() {
