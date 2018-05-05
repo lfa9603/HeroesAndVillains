@@ -3,6 +3,11 @@ package characters;
 /**
  * 
  * @author LorenzoFasano and JayHamilton
+ * The Hero class extends the Character class, it provides specific functionality for the Hero object and has 
+ * three unique parameters armor, isGamechooser and isinDentention. 
+ * Armor provides an extra health pool of 30 armor points (AP) for the Hero.
+ * isGameChooser is a boolean, that allows the user to choose which minigame they play (rather than having it at random), if they select 
+ * the Hero, to play the minigame. This parameter is activated by the gameChooser powerUp.
  *
  */
 

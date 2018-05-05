@@ -6,6 +6,14 @@ import engine.VisualUtilities;
 
 import static engine.HelperScanner.*;
 
+/**
+ * @author JayHamilton
+ * This Class guides the User through the creation of a HeroSquad. It starts by creating the HeroSquad object, then it queries the 
+ * user about the name and type of hero the user wants to add to the HeroSquad. Once the user decides the Hero object 
+ * is created and added to the HeroSquad. Once the user confirms they are happy with their HeroSquad, the intialAbilitiesEffects class 
+ * is called to apply any initial effects to the game.  
+ *
+ */
 
 public class TeamBuilder {
 	private HeroesSquad Team;
@@ -19,11 +27,15 @@ public class TeamBuilder {
 			+ "5. Sly : Wins all match draws unless the Villain has this abilty \n"
 			+ "6. Dog : Is a good boy (Grants all team member extra 25HP Max Health)";
 	
-//	private String characterTypesArray[] = {"ability1", "ability2", "ability3", "ability4", "ability5", "ability6"};
-	
 	public HeroesSquad getTeam() {
 		return Team;
 	}
+	
+	/**
+	 * The CreateTeam method prompts the user, asking if they want to create a squad. If the user confirms, the method then asks the name of the 
+	 * squad, a limit of 2-10 Characters is applied. The method then confirms that the User is happy with the Squad name and 
+	 * creates the HeroSquad object.  
+	 */
 
 	public TeamBuilder() { 
 		createTeam();
@@ -119,6 +131,15 @@ public class TeamBuilder {
 
 		}
 	}
+	
+	/**
+	 * The addTeamMembers method prompts the user to choose an integer 1-6 to select the type of hero they want to select. 
+	 * The method then prompts the user to create a name for this hero. The Hero object is then created and the current 
+	 * HeroSquad is then displayed to the user. The user is then asked if they are happy with the current squad, 
+	 * if they want to add further members to the squad, or if the want to reset the Squad and start again.
+	 * this process is repeated until the user confirms they are happy. Once the User confirms they are happy with there squad, 
+	 * the initialAbilityEffects class is called.
+	 */
 	
 	private void addTeamMembers() {
 		boolean runfirstLoop = true;
@@ -219,6 +240,14 @@ public class TeamBuilder {
 			runThirdLoop = true;
 		}
 	}
+	
+	/**
+	 * The createHero method is called when the user selects the type of Hero they want. 
+	 * The method then prompts the user for a Character name. Once the User has entered a name
+	 * the HeroSquad toString is called to display the current squad.
+	 * @param type
+	 * @param abilty
+	 */
 	
 	private void createHero(Types type, Abilities abilty) {
 //		Scanner userinput_2 = HelperScanner.getScanner();
