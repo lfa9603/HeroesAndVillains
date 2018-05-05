@@ -59,6 +59,12 @@ public class Villain extends Character{
 //		return getCharacterName() + " taunts you, they say " + getVillainTaunt();
 //	}
 	
+	
+	/**
+	 * The getVillainsChoice method returns a random integer for interaction in the minigame class.
+	 * @param upperLimit
+	 * @return
+	 */
 	public int getVillainsChoice(int upperLimit) {
 		return Utilities.getRandInt(upperLimit);
 	}
@@ -72,28 +78,32 @@ public class Villain extends Character{
 	}
 
 	/**
-	 * @return the villainDamage
+	 * Getter method for the villainDamage parameter
+	 * @return villainDamage
 	 */
 	public int getVillainDamage() {
 		return villainDamage;
 	}
 
 	/**
-	 * @param villainDamage the villainDamage to set
+	 * Setter method for the villainDamage parameter
+	 * @param villainDamage
 	 */
 	public void setVillainDamage(int villainDamage) {
 		this.villainDamage = villainDamage;
 	}
 
 	/**
-	 * @return the timesBeaten
+	 * Getter method for the timesBeaten parameter
+	 * @return timesBeaten
 	 */
 	public int getTimesBeaten() {
 		return timesBeaten;
 	}
 
 	/**
-	 * @param timesBeaten the timesBeaten to set
+	 * Setter method for the timesBeaten parameter
+	 * @param timesBeaten
 	 */
 	public void setTimesBeaten() {
 		this.timesBeaten += 1;
@@ -103,6 +113,7 @@ public class Villain extends Character{
 	}
 
 	/**
+	 * Getter method for the isBeaten parameter
 	 * @return the isBeaten
 	 */
 	public boolean isBeaten() {
@@ -110,7 +121,8 @@ public class Villain extends Character{
 	}
 
 	/**
-	 * @param isBeaten the isBeaten to set
+	 * Setter method for the isBeaten parameter
+	 * @param isBeaten
 	 */
 	public void setBeaten(boolean isBeaten) {
 		this.isBeaten = isBeaten;

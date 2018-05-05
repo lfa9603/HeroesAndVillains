@@ -2,6 +2,14 @@ package characters;
 
 import java.util.ArrayList;
 
+/**
+ * @author JayHamilton
+ * This Class constructs all the Villains for the game world, it is used to balance the game and 
+ * provide a central point to change key elements of the game-play. This class is called by the GameEngine class when the world is being setup.
+ * When the class is constructed all the villain objects are constructed and are then added to the ArrayList villains. Then depending on the size 
+ * of the world chosen by the user the villains that are surplus to requirement are removed.
+ *
+ */
 public class Villains {
 	private ArrayList<Villain> villains;
 	private Villain schoolBully1;
@@ -35,22 +43,45 @@ public class Villains {
 	}
 
 	/**
-	 * @return the villains
+	 * Getter Method for the villains parameter
+	 * @return villains
 	 */
+	
 	public ArrayList<Villain> getVillains() {
 		return villains;
 	}
 
 	/**
-	 * @param villains the villains to set
+	 * Setter method for the villains parameter
+	 * @param villains
 	 */
+	
 	public void addVillain(Villain villain) {
 		villains.add(villain);
 	}
 	
+	/**
+	 * The removeVillain method is used to remove a villains from the Array-list Villains as required
+	 * @param index
+	 */
+	
 	public void removeVillain(int index) {
 		villains.remove(index);
 	}
+	
+	/**
+	 * The getCurrentVillain method returns the villain associated with the city/level that the player is in.
+	 * @param currentIndex
+	 * @return villain
+	 */
+	
+	public Villain getCurrentVillain(int currentIndex) {
+		return villains.get(currentIndex);
+	}
+	
+	/**
+	 * the toString method provides a string representation for the Villains class
+	 */
 	
 	public String toString() {
 		String villainsList = "Villains: \n"; 
@@ -59,11 +90,6 @@ public class Villains {
 		}
 		
 		return villainsList;
-		
-	}
-
-	public Villain getCurrentVillain(int currentIndex) {
-		return villains.get(currentIndex);
 	}
 
 }
