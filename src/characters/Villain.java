@@ -12,6 +12,8 @@ import engine.Utilities;
  * timesBeaten is how many times the villain has been beaten.
  * villainTaunt is a string that is displayed on occasion to taunt the player and invoke an emotional response.
  * villainDamage is how much damage the villain does to armor of the Hero's health.
+ * damageModified is a boolean which is used to indicate whether the villains damage is modified, this parameter is changed by
+ * one of the Hero abilities the user can choose
  * 
  */
 
@@ -21,19 +23,21 @@ public class Villain extends Character{
 	private int timesBeaten;
 	private String villainTaunt;
 	private int villainDamage;
-//	private boolean damageModified; TODO remove this parameter.
+	private boolean damageModified;
 	
 	
 	/**
 	 * @param name the name of the villain
 	 * @param specialAbility the ability that the villain has
 	 * @param taunt a string used to taunt the user
+	 * @param damage the amount of damage done by the villain to the Heros health or armor
 	 */
 	public Villain(String name, Types type, Abilities specialAbility, String taunt, int damage) {
 		super(name, type, specialAbility);
 		villainTaunt = taunt;
 		setVillainDamage(damage);
 		isBeaten = false;
+		damageModified = false;
 	}
 	
 	/**
@@ -127,6 +131,26 @@ public class Villain extends Character{
 	public void setBeaten(boolean isBeaten) {
 		this.isBeaten = isBeaten;
 	}
+	
+	/**
+	 * Getter method for the isDamageModified parameter
+	 * @return
+	 */
+
+	public boolean isDamageModified() {
+		return damageModified;
+	}
+	
+	/**
+	 * Setter method for the isDamageModified parameter
+	 * @param modifyDamage
+	 */
+
+	public void setDamageModified(boolean modifyDamage) {
+		damageModified = modifyDamage;
+	}
+	
+	
 
 
 }
