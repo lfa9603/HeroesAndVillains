@@ -39,16 +39,7 @@ class VillainTests {
 		assertEquals(Types.level_2, actual);
 	}
 
-//	@Test
-//	void testGetCharacterAbility() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSetCharacterAbility() {
-//		fail("Not yet implemented");
-//	}
-	
+
 
 	@Test
 	void testToString() {

@@ -34,6 +34,13 @@ public abstract class MiniGame {
 	
 	public abstract void runGame(Hero hero);
 	
+	/**
+	 * The method battleDraw checks to see if the Villain is a boss type, and if it is the villain wins the draw. Otherwise it
+	 * takes the current Hero as a parameter, and checks if they have the winDraws ability, if they do, the player wins the draw. 
+	 * If neither the player or the villain have the ability, a draw is just a draw and no damage is dealt.
+	 * @param hero
+	 */
+	
 	public void battleDraw(Hero hero) {
 		System.out.println("Its a Draw!");
 		if (villain.getCharacterType() != Types.Boss && hero.getCharacterType() == Types.sly) {
@@ -51,6 +58,11 @@ public abstract class MiniGame {
 		}
 	}
 	
+	/**
+	 * The heroWins method, adds 1 increment to the villains, timesBeaten attribute.  
+	 * @param hero
+	 */
+	
 	public void heroWins(Hero hero) {
 		System.out.println("You win! the villain has been defeated!");
 		villain.setTimesBeaten();
@@ -58,61 +70,74 @@ public abstract class MiniGame {
 				+ "you must beat hime three times to defeat him and move on to the next level");
 	}
 	
+	/**
+	 * The heroLosses method calls the villain get damage method and the heroSquad method heroTakesDamage.
+	 * @param hero
+	 */
+	
 	public void herolosses(Hero hero) {
 		System.out.println("You lost " + villain.getVillainDamage() + "HP");
 		squad.heroTakesDamage(hero, villain.getVillainDamage());
 	}
 
 	/**
-	 * @return the gameName
+	 * Getter method for the parameter gameName
+	 * @return gameName
 	 */
 	public Games getGameName() {
 		return gameName;
 	}
 
 	/**
-	 * @param gameName the gameName to set
+	 * Setter method for the parameter gameName
+	 * @param gameName
 	 */
 	public void setGameName(Games gameName) {
 		this.gameName = gameName;
 	}
 
 	/**
-	 * @return the hero
+	 * Getter method for the parameter hero
+	 * @return hero
 	 */
 	public Hero getHero() {
 		return hero;
 	}
 
 	/**
-	 * @param hero the hero to set
+	 * Setter method for the parameter hero
+	 * @param hero
 	 */
 	public void setHero(Hero hero) {
 		this.hero = hero;
 	}
 
 	/**
-	 * @return the squad
+	 * Getter method for the parameter squad
+	 * @return squad
 	 */
 	public HeroesSquad getSquad() {
 		return squad;
 	}
 
 	/**
-	 * @param squad the squad to set
+	 * Setter method for the parameter squad
+	 * @param squad
 	 */
 	public void setSquad(HeroesSquad squad) {
 		this.squad = squad;
 	}
 
 	/**
-	 * @return the villain
+	 * Getter method for the parameter villain
+	 * @return villain
 	 */
 	public Villain getVillain() {
 		return villain;
 	}
 
 	/**
+	 * Setter method for the parameter villain
 	 * @param villain the villain to set
 	 */
 	public void setVillain(Villain villain) {
@@ -120,6 +145,7 @@ public abstract class MiniGame {
 	}
 	
 	/**
+	 * Getter method for the parameter abilitiesAvaliable
 	 * @return the abilitiesAvaliable
 	 */
 	public static boolean isAbilitiesAvaliable() {
@@ -127,7 +153,8 @@ public abstract class MiniGame {
 	}
 
 	/**
-	 * @param abilitiesAvaliable the abilitiesAvaliable to set
+	 * Setter method for the parameter abilitiesAvaliable
+	 * @param abilitiesAvaliable
 	 */
 	public static void setAbilitiesAvaliable(boolean abilitiesAvaliable) {
 		MiniGame.abilitiesAvaliable = abilitiesAvaliable;
