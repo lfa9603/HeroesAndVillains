@@ -5,6 +5,18 @@ import characters.HeroesSquad;
 import characters.Types;
 import characters.Villain;
 
+
+
+/**
+ * @author JayHamilton
+ * The Abstract class MInigame sets the structure for the three minigames that will be run as apart of a battle between a Hero and villain
+ * The Abstract method of the class is the runGame method, which will be implemented by the children of this class.
+ * the gameName parameter is an enum value which stores the name of the mingame
+ * the hero parameter hold the selected hero that will play the minigame
+ * the squad parameter holds the squad object that the hero came from
+ * the villain object holds the villain object that the hero will battle against
+ * the abilitiesAvaliable parameter is a boolean value that controls whether the abilities of the heros are avaliable to use in the current minigame
+ */
 public abstract class MiniGame {
 	private Games gameName;
 	private Hero hero;
