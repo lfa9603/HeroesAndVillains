@@ -17,7 +17,7 @@ import engine.VisualUtilities;
 /**
  * @author JayHamilton
  * This class controls the running of the minigame sequences, it prompts the user to select a hero to battle the villain, check to
- * see if the selected hero has any active powerups, or if the heros abilty has an effect on the game, then it
+ * see if the selected hero has any active powerups, or if the heros ability has an effect on the game, then it
  * constructs a minigame object in the moment that a minigame is required. The engine also checks to see if the villain 
  * is beaten or if all the heros are dead, after each battle sequence, the loop continues until this occurs.
  *
