@@ -16,6 +16,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 import city.buildings.Building;
+import city.buildings.shop.Shop;
 
 import java.awt.Font;
 
@@ -52,6 +53,7 @@ public class MainGameWindow {
 		infosPopUpMessage = new ArrayList<JLabel>();
 		
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 800, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -275,6 +277,7 @@ public class MainGameWindow {
 				throw new IndexOutOfBoundsException("There is no Builidng object left");
 		}
 	}
+	
 	
 	//WATCH OUT: the newCoordinates value is hardcoded, which means that if the distances change
 	//there is going to be a good chance that also this variables in the respective windows have 

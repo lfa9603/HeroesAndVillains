@@ -13,6 +13,7 @@ import city.buildings.Building;
 * It allows to start each city window and from there managing all the buildings windows. 
 */
 import city.buildings.TypeBuildings;
+import city.buildings.homeBase.Home;
 
 public class GameWindowManager {
 	
@@ -100,7 +101,7 @@ public class GameWindowManager {
 		
 		switch (building.getBuildingType()) {
 			case Home:
-				HomeWindow homeWindow = new HomeWindow(this, building, mainWindow);
+				HomeWindow homeWindow = new HomeWindow(this, (Home) building, mainWindow);
 				break;
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
@@ -112,6 +113,8 @@ public class GameWindowManager {
 	public static void main(String[] args) {
 		City city = new City();
 		HeroesSquad squad = new HeroesSquad();
+		squad.setHaveMap(true);
+		squad.setCurrentCity(city);
 		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
 		squad.addHero(lorenzo);
 		GameWindowManager manager = new GameWindowManager(city, squad);
