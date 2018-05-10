@@ -54,7 +54,7 @@ public class HomeWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 877, 723);
+		frame.setBounds(100, 100, 927, 832);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		

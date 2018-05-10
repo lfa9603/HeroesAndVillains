@@ -95,25 +95,30 @@ public class Home extends Building {
 	
 	
 	
-	private void checkingSomeoneRobbedOrDonated(HeroesSquad heroesSquad) {
+	public String checkingSomeoneRobbedOrDonated(HeroesSquad heroesSquad) {
 		
 		Collectable itemStolen = RandomEventsInHomeBase.haveWeBeenRobbed(heroesSquad);
 		Collectable itemDonated = RandomEventsInHomeBase.hasAnyoneBeenGenerous(heroesSquad);
 		
+		String toReturn = new String();
 		
 		if (itemDonated != null) {
-			System.out.println("Someone has been generous!! \n"
+			toReturn += ("Someone has been generous!! \n"
 					+ "A " + itemDonated.getCollectableID() + " has been left in the house for you!"
-					+ "\n Enjoy!");
+					+ "\n Enjoy!\n");
 		}
 		
 		if (itemStolen != null) {
-			System.out.println("Someone broke into the house!\n "
+			toReturn += ("Someone broke into the house!\n "
 					+ "A " + itemStolen.getCollectableID() + " has been stolen!");
 		}
 		
-		System.out.println(heroesSquad.getBackPack().toString());
-			
+//		System.out.println(heroesSquad.getBackPack().toString());
+		
+		if (toReturn.length() == 0) {
+			toReturn = "No good or bad luck this time!";
+		}
+		return toReturn;
 	}
 	
 	

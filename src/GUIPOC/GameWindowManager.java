@@ -8,6 +8,7 @@ import characters.HeroesSquad;
 import characters.Types;
 import city.City;
 import city.buildings.Building;
+import city.buildings.PowerUpDen;
 /*
 * This class deals with the GUI transitions and information transfer among the main windows of the game.
 * It allows to start each city window and from there managing all the buildings windows. 
@@ -84,7 +85,15 @@ public class GameWindowManager {
 		//Hardcoded!! Watch out when measurements change
 		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 		mainWindow.getFrame().setVisible(true);
-		
+	}
+	
+	public void closeHomePowerUpDenWindow(PowerUpDenWindow powerUpDenWindow, MainGameWindow mainWindow) {
+		powerUpDenWindow.closeWindow();
+		//Hardcoded!! Watch out when measurements change
+		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
+		// but it looks hard to do at the moment, leave it as a refinement.
+		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+		mainWindow.getFrame().setVisible(true);
 	}
 	
 	/**
@@ -103,6 +112,8 @@ public class GameWindowManager {
 			case Home:
 				HomeWindow homeWindow = new HomeWindow(this, (Home) building, mainWindow);
 				break;
+			case PowerUpDen:
+				PowerUpDenWindow powerUpDenWindow = new PowerUpDenWindow(this, (PowerUpDen) building, mainWindow);
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
 		}
