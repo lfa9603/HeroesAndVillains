@@ -21,7 +21,7 @@ public class Villain extends Character{
 	private int timesBeaten;
 	private String villainTaunt;
 	private int villainDamage;
-//	private boolean damageModified; TODO remove this parameter.
+	private boolean damageModified;
 	
 	
 	/**
@@ -126,6 +126,24 @@ public class Villain extends Character{
 	 */
 	public void setBeaten(boolean isBeaten) {
 		this.isBeaten = isBeaten;
+	}
+	
+	/**
+	 * Getter method for the isDamageModified parameter
+	 * @return
+	 */
+
+	public boolean isDamageModified() {
+		return damageModified;
+	}
+	
+	/**
+	 * Setter method for the isDamageModified parameter
+	 * @param modifyDamage
+	 */
+
+	public void setDamageModified(boolean modifyDamage) {
+		damageModified = modifyDamage;
 	}
 
 

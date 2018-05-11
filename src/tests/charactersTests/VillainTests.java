@@ -75,11 +75,11 @@ class VillainTests {
 		assertEquals("test taunt2", actual);
 	}
 
-	@Test
-	void testSayTaunt() {
-		String actual = villain.sayTaunt();
-		assertEquals("villain taunts you, they say test taunt", actual);
-	}
+//	@Test
+//	void testSayTaunt() {
+//		String actual = villain.sayTaunt();
+//		assertEquals("villain taunts you, they say test taunt", actual);
+//	}
 
 	@Test
 	void testGetVillainsChoice() {
