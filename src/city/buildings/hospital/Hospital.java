@@ -182,7 +182,20 @@ public class Hospital extends Building {
 	}
 	
 
+	/**
+	 * @return the healingWard
+	 */
+	public HealingWard getHealingWard() {
+		return healingWard;
+	}
 
+	/**
+	 * @param healingWard the healingWard to set
+	 */
+	public void setHealingWard(HealingWard healingWard) {
+		this.healingWard = healingWard;
+	}
+	
 
 	public static void main(String[] args) {
 		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
@@ -193,6 +206,7 @@ public class Hospital extends Building {
 		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 		hospital.interact(heroes);
 	}
+
 
 //	public static void main(String[] args) {
 //		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);

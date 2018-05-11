@@ -214,6 +214,7 @@ public class PowerUpDenWindow {
 		squad.setCurrentCity(city);
 		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
 		Hero lorenzo1 = new Hero("Lorenzo1", Types.dog, Abilities.betterOdds);
+		lorenzo.setisAlive(false);
 		squad.addHero(lorenzo);
 		squad.addHero(lorenzo1);
 		squad.getBackPack().addItemToInventory(new Armor(CollectableID.Armor));

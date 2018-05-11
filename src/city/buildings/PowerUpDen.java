@@ -171,14 +171,18 @@ public class PowerUpDen extends Building {
 	
 	public String applyPotionOrRejectIt(HeroesSquad heroesSquad, Hero hero, PowerUp powerUp) {
 		String messageToReturn = new String();
-		if (heroesSquad.getBackPack().isInInventory(powerUp) != null) {
+		if (heroesSquad.getBackPack().isInInventory(powerUp) != null && hero.isAlive()) {
 			System.out.println(heroesSquad);
 			powerUp.apply(hero);
 			heroesSquad.getBackPack().removeItemFromInventory(powerUp);
 			messageToReturn = "Great! You applied one " + powerUp.getCollectableID() + " to " + hero.getCharacterName() + ".";
 			
 		} else {
-			messageToReturn = ("MATE! DON'T BE CHEEKY! YOU DON'T HAVE THIS POWER-UP!!;)");
+			if (heroesSquad.getBackPack().isInInventory(powerUp) == null) {
+				messageToReturn = ("MATE! DON'T BE CHEEKY! YOU DON'T HAVE THIS POWER-UP!!;)");
+			} else {
+				messageToReturn = ("Unfortunately " + hero.getCharacterName() + " is dead, apply a power-up to a hero that is alive!");
+			}
 		}
 		
 		return messageToReturn;
