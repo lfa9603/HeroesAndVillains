@@ -16,7 +16,6 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 import city.buildings.Building;
-import city.buildings.shop.Shop;
 
 import java.awt.Font;
 

@@ -124,7 +124,7 @@ public class GameWindowManager {
 	public static void main(String[] args) {
 		City city = new City();
 		HeroesSquad squad = new HeroesSquad();
-		squad.setHaveMap(true);
+		squad.setHaveMap(false);
 		squad.setCurrentCity(city);
 		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
 		squad.addHero(lorenzo);

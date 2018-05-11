@@ -89,6 +89,7 @@ public class PowerUpDenWindow {
 		});
 		
 		JTextArea txtrWelcomeToThe = new JTextArea();
+		txtrWelcomeToThe.setEditable(false);
 		txtrWelcomeToThe.setText("Welcome to the Power-Up den! Select a hero and a potion to apply on him!");
 		txtrWelcomeToThe.setWrapStyleWord(true);
 		txtrWelcomeToThe.setLineWrap(true);
