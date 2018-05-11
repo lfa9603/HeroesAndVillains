@@ -72,7 +72,13 @@ public class MiniGameUtilities {
 			}
 	}
 	
-
+	/**
+	 * The badDay method implements the following effects in the mingame sequence:
+	 * - Causes 50 damage to the Hero 
+	 * - removes all the coins from the HeroSquads wallet   
+	 * @param squad
+	 * @param villain
+	 */
 	private static void sickness(HeroesSquad squad, Villain villain) {
 		boolean run = true;
 		while (run == true) {
@@ -87,7 +93,7 @@ public class MiniGameUtilities {
 				run = false;
 				System.out.println(villain.toString());
 				System.out.println(hero.getCharacterName() + " has been diagnosed with cancer.\n"
-						+ "Cancer is expensive and life threatning.\n"
+						+ "Being sick is expensive and life threatning.\n"
 						+ "You are charged " + cost + " coins and "
 						+ hero.getCharacterName() + " loses 50HP");
 				squad.heroTakesDamage(hero, 50);
@@ -95,13 +101,24 @@ public class MiniGameUtilities {
 		}
 		
 	}
-
+	/**
+	 * The badDay method implements the following effects in the mingame sequence:
+	 * - removes the ability to use Hero's abilities for a round.
+	 * @param villain
+	 */
+	
 	private static void badDay(Villain villain) {
 		System.out.println(villain.getCharacterName() + " your Partner is having a bad day, therefore YOUR having a bad day...");
 		System.out.println("You will not be able to use your abilties for the rest of this battle.");
 		System.out.println(villain.toString());
 		MiniGame.setAbilitiesAvaliable(false);
 	}
+	
+	/**
+	 * The judge method implements the following effects in the mingame sequence:
+	 * changes the game to guess the number
+	 * @param villain
+	 */
 
 	private static void judge(Villain villain) {
 		System.out.println(villain.toString());
@@ -109,11 +126,22 @@ public class MiniGameUtilities {
 		System.out.println(villain.getCharacterName() + " changes the game to Guess the number.");
 		MiniGameEngine.setSelectedGame(2);
 	}
-
+	
+	/**
+	 * The arrogance method implements the following effects in the mingame sequence:
+	 * The villain wins all draws.
+	 */
 	private static void arrogance() {
 		System.out.println("Your boss is never wrong, he will win all draws.");
 	}
-
+	
+	/**
+	 * The detention method implements the following effects in the mingame sequence:
+	 * stops a random Hero from being selected to battle the villain.
+	 * @param squad
+	 * @param villain
+	 */
+	
 	private static void detention(HeroesSquad squad, Villain villain) {
 		boolean run = true;
 		while (run == true) {
@@ -127,7 +155,14 @@ public class MiniGameUtilities {
 			}
 		}
 	}
-
+	
+	/**
+	 * The stealLunchMoney method implements the following effects in the mingame sequence:
+	 * 5 coins are removed from the HeroSquads wallet
+	 * @param squad
+	 * @param villain
+	 */
+	
 	private static void stealLunchMoney(HeroesSquad squad, Villain villain) {
 		Money wallet = squad.getWallet();
 		Money cost = new Money(5);
@@ -136,13 +171,24 @@ public class MiniGameUtilities {
 		villain.getVillainTaunt();
 		
 	}
-
+	
+	/**
+	 * The noEffect method prints a string to inform the user that no effect has been applied.
+	 */
+	
 	private static void noEffect() {
 		VisualUtilities.getIcon(Icons.bar);
 		System.out.println("Your Characters abilty has no effect in this minigame.");
 		VisualUtilities.getIcon(Icons.bar);
 	}
-
+	
+	/**
+	 * The betterOddsAbility method implements the following effects in the mingame sequence:
+	 * A string is printed telling you a that the villain has probably not chosen rock, paper or scissors.
+	 * @param villainsChoice
+	 * @param selectedGame
+	 */
+	
 	public static void betterOddsAbilty(int villainsChoice, int selectedGame) {
 		if (selectedGame == 1) {
 			
@@ -167,6 +213,12 @@ public class MiniGameUtilities {
 		
 	}
 	
+	/**
+	 * The getRPS string stores the string representations of the villains choice of rock, paper or Scissors.
+	 * @param villainsChoice
+	 * @return
+	 */
+	
 	private static String getRPS(int villainsChoice) {
 		String result = null;
 		switch (villainsChoice) {
@@ -176,6 +228,12 @@ public class MiniGameUtilities {
 		}
 		return result;
 	}
+	
+	/**
+	 * The lessDamageAbility method implements the following effects in the mingame sequence:
+	 * Damage from the villain is reduced by 30% for the rest of the battle.
+	 * @param villain
+	 */
 	
 	private static void lessDamageAbilty(Villain villain) {
 		if (villain.isDamageModified()) {
@@ -191,6 +249,11 @@ public class MiniGameUtilities {
 		}
 		
 	}
+	
+	/**
+	 * The WinDrawsAbility method implements the following effects in the mingame sequence:
+	 * The Hero will win all draws as long as the current Villain is not a boss Type.
+	 */
 	
 	private static void winDrawsAbilty() {
 		System.out.println("Your Hero is a Sly Character, they will make sure that if it is a draw, they will win.");
@@ -229,6 +292,14 @@ public class MiniGameUtilities {
 		}
 	}
 
+	/**
+	 * The gameChooserPowerUp method implements the following effects in the mingame sequence:
+	 * Allows the player to select which game they want to play rather than the game being chosen at random.
+	 * @param selectedMiniGame
+	 * @param hero
+	 * @return
+	 */
+	
 	public static int gameChooserPowerUp(int selectedMiniGame, Hero hero) {
 		YesNo userInput = Utilities.getStringChoice("Do you want to use your GameChooser power up?");
 		String string = "1 to select Paper Scissors Rock. \n"
