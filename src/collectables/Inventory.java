@@ -89,7 +89,7 @@ public class Inventory {
 		while (iterator.hasNext()) {
 			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
 			if (CollectableID.isPowerUp(collectable.getKey().getCollectableID())) {
-				powerUpsAndQuantities += collectable.getKey() + "   " + collectable.getValue().toString();
+				powerUpsAndQuantities += collectable.getKey() + "\nQUANTITY: " + collectable.getValue().toString();
 			}
 		}
 		

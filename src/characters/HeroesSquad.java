@@ -338,6 +338,18 @@ public class HeroesSquad {
 		}
 	}
 	
+	public Hero getHeroByName(String heroName) {
+		Hero heroToReturn = null;
+		
+		for (Hero hero : heroSquad) {
+			if (hero.getCharacterName().equals(heroName)) {
+				heroToReturn = hero;
+			}
+		}
+		
+		return heroToReturn;
+	}
+	
 	/**
 	 * A method the provides the String representation of the HeroSquad object.
 	 */
@@ -352,8 +364,6 @@ public class HeroesSquad {
 			+ hero.getCharacterAbility() + " : " + heroStatus(hero) + "\n";
 		}
 		return squad;
-		
-		
 	}
 	
 }

@@ -9,8 +9,10 @@ import city.City;
 import city.buildings.PowerUpDen;
 import city.buildings.TypeBuildings;
 import collectables.CollectableID;
-import collectables.healingItem.HealingItem;
 import collectables.powerUp.Armor;
+import collectables.powerUp.GameChooser;
+import collectables.powerUp.IncreaseMaxLife;
+import collectables.powerUp.PowerUp;
 
 import javax.swing.JButton;
 
@@ -108,27 +110,30 @@ public class PowerUpDenWindow {
 		}
 		heroesComboBox.setSelectedIndex(0);
 		heroesComboBox.setMaximumRowCount(3);
-		heroesComboBox.setBounds(32, 94, 180, 32);
+		heroesComboBox.setBounds(32, 144, 180, 32);
 		frame.getContentPane().add(heroesComboBox);
 		
+		//COMPLETE
 		JComboBox<String> powerUpComboBox = new JComboBox<String>();
 		powerUpComboBox.addItem("Armor");
 		powerUpComboBox.addItem("Increase Max HP potion");
 		powerUpComboBox.addItem("Game Chooser");
-		
 		powerUpComboBox.setSelectedIndex(0);
 		powerUpComboBox.setMaximumRowCount(3);
-		powerUpComboBox.setBounds(241, 94, 180, 32);
+		powerUpComboBox.setBounds(241, 144, 180, 32);
 		frame.getContentPane().add(powerUpComboBox);
 		
+		//COMPLETE
 		JLabel selectAHeroLabel = new JLabel("Select a hero");
-		selectAHeroLabel.setBounds(32, 69, 180, 14);
+		selectAHeroLabel.setBounds(32, 106, 180, 14);
 		frame.getContentPane().add(selectAHeroLabel);
 		
+		//COMPLETE
 		JLabel lblSelectAPowerup = new JLabel("Select a power-up");
-		lblSelectAPowerup.setBounds(241, 67, 180, 14);
+		lblSelectAPowerup.setBounds(241, 106, 180, 14);
 		frame.getContentPane().add(lblSelectAPowerup);
 		
+		//COMPLETE
 		JTextArea heroesSquadPowerUpsTxtArea = new JTextArea();
 		heroesSquadPowerUpsTxtArea.setWrapStyleWord(true);
 		heroesSquadPowerUpsTxtArea.setText((String) null);
@@ -139,6 +144,52 @@ public class PowerUpDenWindow {
 		heroesSquadPowerUpsTxtArea.setText(manager.getSquad().getBackPack().showPowerUpsInInventory());
 		frame.getContentPane().add(heroesSquadPowerUpsTxtArea);
 		
+		JButton applyPowerUpToHeroBtn = new JButton("Apply power-up to the hero");
+		applyPowerUpToHeroBtn.setBounds(32, 214, 389, 23);
+		frame.getContentPane().add(applyPowerUpToHeroBtn);
+		
+		JTextArea showingPotionApplicationResultTxtArea = new JTextArea();
+		showingPotionApplicationResultTxtArea.setWrapStyleWord(true);
+		showingPotionApplicationResultTxtArea.setText((String) null);
+		showingPotionApplicationResultTxtArea.setLineWrap(true);
+		showingPotionApplicationResultTxtArea.setEditable(false);
+		showingPotionApplicationResultTxtArea.setBackground(SystemColor.menu);
+		showingPotionApplicationResultTxtArea.setBounds(32, 278, 389, 117);
+		frame.getContentPane().add(showingPotionApplicationResultTxtArea);
+		
+		applyPowerUpToHeroBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String nameHeroSelected = heroesComboBox.getItemAt(heroesComboBox.getSelectedIndex());
+				Hero heroToApplyPotionTo = manager.getSquad().getHeroByName(nameHeroSelected);
+				
+				PowerUp powerUpToApply = null;
+				switch (powerUpComboBox.getSelectedIndex()) {
+					case 0:
+						powerUpToApply = new Armor(CollectableID.Armor);
+						break;
+					case 1:
+						powerUpToApply = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
+						break;
+					case 2:
+						powerUpToApply = new GameChooser(CollectableID.GameChooser);
+						break;
+				}
+
+				String resultFromPotionApplication = powerUpDenBuilding.applyPotionOrRejectIt(manager.getSquad(), heroToApplyPotionTo, powerUpToApply);
+				
+				showingPotionApplicationResultTxtArea.setText(resultFromPotionApplication);
+				
+				//display updated inventory
+				heroesSquadPowerUpsTxtArea.setText(manager.getSquad().getBackPack().showPowerUpsInInventory());
+				
+				//tidy up the combo boxes
+				powerUpComboBox.setSelectedIndex(0);
+				heroesComboBox.setSelectedIndex(0);
+				
+			}
+		});
 		
 		
 		
@@ -165,7 +216,7 @@ public class PowerUpDenWindow {
 		squad.addHero(lorenzo);
 		squad.addHero(lorenzo1);
 		squad.getBackPack().addItemToInventory(new Armor(CollectableID.Armor));
-		squad.getBackPack().addItemToInventory(new HealingItem(CollectableID.GoodHealingItem));
+		squad.getBackPack().addItemToInventory(new GameChooser(CollectableID.GameChooser));
 		
 		GameWindowManager manager = new GameWindowManager(city, squad);
 		PowerUpDen pb = new PowerUpDen("Ciao", TypeBuildings.PowerUpDen); 
