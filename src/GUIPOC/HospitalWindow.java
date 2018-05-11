@@ -4,8 +4,19 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import city.City;
+import city.buildings.TypeBuildings;
 import city.buildings.hospital.Hospital;
+import collectables.CollectableID;
+import collectables.healingItem.HealingItem;
+
 import javax.swing.JTextArea;
+
+import characters.Abilities;
+import characters.Hero;
+import characters.HeroesSquad;
+import characters.Types;
+
 import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -65,7 +76,7 @@ public class HospitalWindow {
 		healingWardTxtArea.setBackground(SystemColor.menu);
 		healingWardTxtArea.setBounds(10, 81, 338, 231);
 		
-		healingWardTxtArea.setText(hospitalBuilding.get);
+		healingWardTxtArea.setText(hospitalBuilding.getHealingWard().toString());
 		
 		frame.getContentPane().add(healingWardTxtArea);
 		
@@ -134,5 +145,20 @@ public class HospitalWindow {
 		frame.getContentPane().add(applyHealingItemToHeroBtn);
 		
 		
+	}
+	
+	public static void main(String[] args) {
+		City city = new City();
+		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
+		HeroesSquad heroes = new HeroesSquad();
+		Hero hero1 = new Hero("Hero1test", Types.dog, Abilities.badDay);
+		hero1.setHealth(50);
+		heroes.addHero(hero1);
+	
+		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
+		
+		GameWindowManager gm = new GameWindowManager(city, heroes);
+		MainGameWindow mw = new MainGameWindow(gm);
+		HospitalWindow hw = new HospitalWindow(gm, hospital, mw);
 	}
 }

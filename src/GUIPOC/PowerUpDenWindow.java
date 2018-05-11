@@ -107,7 +107,14 @@ public class PowerUpDenWindow {
 		JComboBox<String> heroesComboBox = new JComboBox<String>();
 		
 		for (Hero hero : manager.getSquad().getHeroSquad()) {
-			heroesComboBox.addItem(hero.getCharacterName());
+			String isAlive = new String();
+			if (hero.isAlive()) {
+				isAlive = "Alive";
+			} else {
+				isAlive = "Dead";
+			}
+			//VERY IMPORTANT THIS FORMAT IS USED ALL THE TIME, IF CHANGED IT WILL CRASH, see applyPowerUpToHeroBtn.addActionListener 60 lines below.
+			heroesComboBox.addItem(hero.getCharacterName() + "  (" + isAlive + ")");
 		}
 		heroesComboBox.setSelectedIndex(0);
 		heroesComboBox.setMaximumRowCount(3);
@@ -162,7 +169,9 @@ public class PowerUpDenWindow {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String nameHeroSelected = heroesComboBox.getItemAt(heroesComboBox.getSelectedIndex());
+				// A bit of a nasty one-liner, selects the String at right index in heroesComboBox, splits the string in two parts (name and dead/alive) 
+				// and then selects only the name part
+				String nameHeroSelected = heroesComboBox.getItemAt(heroesComboBox.getSelectedIndex()).split(" ")[0];
 				Hero heroToApplyPotionTo = manager.getSquad().getHeroByName(nameHeroSelected);
 				
 				PowerUp powerUpToApply = null;
