@@ -1,21 +1,19 @@
 package GUIPOC;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 import city.City;
 import city.buildings.PowerUpDen;
 import city.buildings.TypeBuildings;
-import city.buildings.homeBase.Home;
+import collectables.CollectableID;
+import collectables.healingItem.HealingItem;
+import collectables.powerUp.Armor;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+
 
 import characters.Abilities;
 import characters.Hero;
@@ -23,14 +21,11 @@ import characters.HeroesSquad;
 import characters.Types;
 
 import javax.swing.JTextArea;
-import javax.swing.ListModel;
 
 import java.awt.SystemColor;
-import javax.swing.JSpinner;
-import javax.swing.JList;
 import java.awt.Color;
-import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 
 
 public class PowerUpDenWindow {
@@ -100,17 +95,52 @@ public class PowerUpDenWindow {
 		frame.getContentPane().add(txtrWelcomeToThe);
 		
 		
-		String[] heroesNames = new String[manager.getSquad().getHeroSquad().size()];
+//		String[] heroesNames = new String[manager.getSquad().getHeroSquad().size()];
+//		
+//		for (int i=0; i < manager.getSquad().getHeroSquad().size(); i++) {
+//			heroesNames[i] = manager.getSquad().getHeroSquad().get(i).getCharacterName();
+//		}
 		
-		for (int i=0; i < manager.getSquad().getHeroSquad().size(); i++) {
-			heroesNames[i] = manager.getSquad().getHeroSquad().get(i).getCharacterName();
+		JComboBox<String> heroesComboBox = new JComboBox<String>();
+		
+		for (Hero hero : manager.getSquad().getHeroSquad()) {
+			heroesComboBox.addItem(hero.getCharacterName());
 		}
+		heroesComboBox.setSelectedIndex(0);
+		heroesComboBox.setMaximumRowCount(3);
+		heroesComboBox.setBounds(32, 94, 180, 32);
+		frame.getContentPane().add(heroesComboBox);
 		
-		JComboBox<String> comboBox = new JComboBox<String>(heroesNames);
-		comboBox.setSelectedIndex(0);
-		comboBox.setMaximumRowCount(3);
-		comboBox.setBounds(101, 94, 137, 32);
-		frame.getContentPane().add(comboBox);
+		JComboBox<String> powerUpComboBox = new JComboBox<String>();
+		powerUpComboBox.addItem("Armor");
+		powerUpComboBox.addItem("Increase Max HP potion");
+		powerUpComboBox.addItem("Game Chooser");
+		
+		powerUpComboBox.setSelectedIndex(0);
+		powerUpComboBox.setMaximumRowCount(3);
+		powerUpComboBox.setBounds(241, 94, 180, 32);
+		frame.getContentPane().add(powerUpComboBox);
+		
+		JLabel selectAHeroLabel = new JLabel("Select a hero");
+		selectAHeroLabel.setBounds(32, 69, 180, 14);
+		frame.getContentPane().add(selectAHeroLabel);
+		
+		JLabel lblSelectAPowerup = new JLabel("Select a power-up");
+		lblSelectAPowerup.setBounds(241, 67, 180, 14);
+		frame.getContentPane().add(lblSelectAPowerup);
+		
+		JTextArea heroesSquadPowerUpsTxtArea = new JTextArea();
+		heroesSquadPowerUpsTxtArea.setWrapStyleWord(true);
+		heroesSquadPowerUpsTxtArea.setText((String) null);
+		heroesSquadPowerUpsTxtArea.setLineWrap(true);
+		heroesSquadPowerUpsTxtArea.setEditable(false);
+		heroesSquadPowerUpsTxtArea.setBackground(SystemColor.menu);
+		heroesSquadPowerUpsTxtArea.setBounds(468, 67, 282, 346);
+		heroesSquadPowerUpsTxtArea.setText(manager.getSquad().getBackPack().showPowerUpsInInventory());
+		frame.getContentPane().add(heroesSquadPowerUpsTxtArea);
+		
+		
+		
 		
 //		
 //		JList<String> list = new JList<String>();
@@ -134,6 +164,9 @@ public class PowerUpDenWindow {
 		Hero lorenzo1 = new Hero("Lorenzo1", Types.dog, Abilities.betterOdds);
 		squad.addHero(lorenzo);
 		squad.addHero(lorenzo1);
+		squad.getBackPack().addItemToInventory(new Armor(CollectableID.Armor));
+		squad.getBackPack().addItemToInventory(new HealingItem(CollectableID.GoodHealingItem));
+		
 		GameWindowManager manager = new GameWindowManager(city, squad);
 		PowerUpDen pb = new PowerUpDen("Ciao", TypeBuildings.PowerUpDen); 
 		MainGameWindow mw = new MainGameWindow(manager);

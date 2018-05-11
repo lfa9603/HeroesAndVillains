@@ -5,6 +5,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.hamcrest.core.IsInstanceOf;
+
+import collectables.healingItem.HealingItem;
+import collectables.powerUp.PowerUp;
+
 public class Inventory {
 
 	private HashMap<Collectable, Integer> inventory;
@@ -75,6 +80,44 @@ public class Inventory {
 		}
 	}
     
+    
+    public String showPowerUpsInInventory() {
+    	
+    	String powerUpsAndQuantities = new String();
+    	
+    	Iterator<Entry<Collectable, Integer>> iterator = inventory.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
+			if (CollectableID.isPowerUp(collectable.getKey().getCollectableID())) {
+				powerUpsAndQuantities += collectable.getKey() + "   " + collectable.getValue().toString();
+			}
+		}
+		
+		if (powerUpsAndQuantities.length() == 0) {
+			powerUpsAndQuantities = "Looks like you have no power-ups";
+		}
+		
+		return powerUpsAndQuantities;
+    }
+    
+    public String showHealingItemsInInventory() {
+    	
+    	String healingItemsAndQuantities = new String();
+    	
+    	Iterator<Entry<Collectable, Integer>> iterator = inventory.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
+			if (CollectableID.isHealingItem(collectable.getKey().getCollectableID())) {
+				healingItemsAndQuantities += collectable.getKey() + "   " + collectable.getValue().toString();
+			}
+		}
+		
+		if (healingItemsAndQuantities.length() == 0) {
+			healingItemsAndQuantities = "Looks like you have no healing item";
+		}
+		
+		return healingItemsAndQuantities;
+    }
     
 	
     /**
