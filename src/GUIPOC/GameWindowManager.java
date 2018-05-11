@@ -76,8 +76,8 @@ public class GameWindowManager {
 	 * @param homeWindow (Type HomeWindow)
 	 * @param mainWindow (Type MainGameWindow)
 	 * 
-	 * It deals with closing the MainGameWindow parameter. As homeWindow can exist only if mainWindow exists, every time 
-	 * it is needid to exit the HomeBase, the main map needs to be visible and to reset the position of the moving label so that 
+	 * It deals with closing the homeWindow parameter. As homeWindow can exist only if mainWindow exists, every time 
+	 * it is needed to exit the HomeBaseWindow, the main map needs to be visible and to reset the position of the moving label so that 
 	 * the movingLabel will not involuntarily reactivate the listener and be sent back to HomeBase again.
 	 * 
 	 */
@@ -90,6 +90,26 @@ public class GameWindowManager {
 	
 	public void closePowerUpDenWindow(PowerUpDenWindow powerUpDenWindow, MainGameWindow mainWindow) {
 		powerUpDenWindow.closeWindow();
+		//Hardcoded!! Watch out when measurements change
+		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
+		// but it looks hard to do at the moment, leave it as a refinement.
+		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+		mainWindow.getFrame().setVisible(true);
+	}
+	
+	/**
+	 * 
+	 * @param hospitalWindow (Type HospitalWindow)
+	 * @param mainWindow (Type MainGameWindow)
+	 * 
+	 * It deals with closing the MainGameWindow parameter. As hospitalWindow can exist only if mainWindow exists, every time 
+	 * it is needed to exit the HospitalWindow, the main map needs to be visible and to reset the position of the moving label so that 
+	 * the movingLabel will not involuntarily reactivate the listener and be sent back to HomeBase again.
+	 * 
+	 */
+	public void closeHospitalWindow(HospitalWindow hospitalWindow, MainGameWindow mainWindow) {
+		
+		hospitalWindow.closeWindow();
 		//Hardcoded!! Watch out when measurements change
 		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
 		// but it looks hard to do at the moment, leave it as a refinement.

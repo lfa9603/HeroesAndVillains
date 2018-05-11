@@ -18,10 +18,17 @@ import characters.HeroesSquad;
 import characters.Types;
 
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
+/**
+ * @author LorenzoFasano
+ *
+ */
 public class HospitalWindow {
 
 	private JFrame frame;
@@ -76,6 +83,7 @@ public class HospitalWindow {
 		healingWardTxtArea.setBackground(SystemColor.menu);
 		healingWardTxtArea.setBounds(10, 81, 338, 231);
 		
+		//
 		healingWardTxtArea.setText(hospitalBuilding.getHealingWard().toString());
 		
 		frame.getContentPane().add(healingWardTxtArea);
@@ -90,6 +98,7 @@ public class HospitalWindow {
 		welcomeToHospitalTxtArea.setBounds(10, 11, 714, 35);
 		frame.getContentPane().add(welcomeToHospitalTxtArea);
 		
+		
 		JTextArea squadHealingItemsTxtArea = new JTextArea();
 		squadHealingItemsTxtArea.setWrapStyleWord(true);
 		squadHealingItemsTxtArea.setText((String) null);
@@ -97,18 +106,35 @@ public class HospitalWindow {
 		squadHealingItemsTxtArea.setEditable(false);
 		squadHealingItemsTxtArea.setBackground(SystemColor.menu);
 		squadHealingItemsTxtArea.setBounds(396, 81, 338, 231);
+		
+		//
+		squadHealingItemsTxtArea.setText(manager.getSquad().getBackPack().showHealingItemsInInventory());
+		
 		frame.getContentPane().add(squadHealingItemsTxtArea);
 		
+		//Done
 		JLabel hospitalhealingWardLbl = new JLabel("Hospital Healing ward");
 		hospitalhealingWardLbl.setBounds(20, 57, 180, 14);
 		frame.getContentPane().add(hospitalhealingWardLbl);
 		
+		//Done
 		JLabel squadHealingItemsLbl = new JLabel("Squad Healing items");
 		squadHealingItemsLbl.setBounds(386, 56, 180, 14);
 		frame.getContentPane().add(squadHealingItemsLbl);
 		
+		//Done
 		JButton backToMapBtn = new JButton("Back to the Map! ");
 		backToMapBtn.setBounds(109, 509, 504, 35);
+		backToMapBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				manager.closeHospitalWindow(HospitalWindow.this, mainWindow);
+				
+			}
+		});
+		
 		frame.getContentPane().add(backToMapBtn);
 		
 		JLabel selectHeroLabel = new JLabel("Select a hero");
@@ -144,7 +170,10 @@ public class HospitalWindow {
 		applyHealingItemToHeroBtn.setBounds(427, 348, 144, 33);
 		frame.getContentPane().add(applyHealingItemToHeroBtn);
 		
-		
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
 	}
 	
 	public static void main(String[] args) {
