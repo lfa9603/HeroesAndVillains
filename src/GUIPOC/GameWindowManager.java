@@ -87,7 +87,7 @@ public class GameWindowManager {
 		mainWindow.getFrame().setVisible(true);
 	}
 	
-	public void closeHomePowerUpDenWindow(PowerUpDenWindow powerUpDenWindow, MainGameWindow mainWindow) {
+	public void closePowerUpDenWindow(PowerUpDenWindow powerUpDenWindow, MainGameWindow mainWindow) {
 		powerUpDenWindow.closeWindow();
 		//Hardcoded!! Watch out when measurements change
 		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 

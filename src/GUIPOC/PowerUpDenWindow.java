@@ -30,6 +30,7 @@ import javax.swing.JSpinner;
 import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.AbstractListModel;
+import javax.swing.JComboBox;
 
 
 public class PowerUpDenWindow {
@@ -83,6 +84,13 @@ public class PowerUpDenWindow {
 		backToMapBtn.setBounds(129, 452, 504, 35);
 		frame.getContentPane().add(backToMapBtn);
 		
+		backToMapBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				manager.closePowerUpDenWindow(PowerUpDenWindow.this, mainWindow);
+			}
+		});
+		
 		JTextArea txtrWelcomeToThe = new JTextArea();
 		txtrWelcomeToThe.setText("Welcome to the Power-Up den! Select a hero and a potion to apply on him!");
 		txtrWelcomeToThe.setWrapStyleWord(true);
@@ -92,6 +100,24 @@ public class PowerUpDenWindow {
 		frame.getContentPane().add(txtrWelcomeToThe);
 		
 		
+		String[] heroesNames = new String[manager.getSquad().getHeroSquad().size()];
+		
+		for (int i=0; i < manager.getSquad().getHeroSquad().size(); i++) {
+			heroesNames[i] = manager.getSquad().getHeroSquad().get(i).getCharacterName();
+		}
+		
+		JComboBox<String> comboBox = new JComboBox<String>(heroesNames);
+		comboBox.setSelectedIndex(0);
+		comboBox.setMaximumRowCount(3);
+		comboBox.setBounds(101, 94, 137, 32);
+		frame.getContentPane().add(comboBox);
+		
+//		
+//		JList<String> list = new JList<String>();
+//		list.
+//		list.setBounds(48, 77, 179, 35);
+//		frame.getContentPane().add(list);
+
 		
 	}
 
@@ -105,7 +131,9 @@ public class PowerUpDenWindow {
 		squad.setHaveMap(true);
 		squad.setCurrentCity(city);
 		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
+		Hero lorenzo1 = new Hero("Lorenzo1", Types.dog, Abilities.betterOdds);
 		squad.addHero(lorenzo);
+		squad.addHero(lorenzo1);
 		GameWindowManager manager = new GameWindowManager(city, squad);
 		PowerUpDen pb = new PowerUpDen("Ciao", TypeBuildings.PowerUpDen); 
 		MainGameWindow mw = new MainGameWindow(manager);
