@@ -10,7 +10,27 @@ import engine.Utilities;
 import engine.VisualUtilities;
 import engine.YesNo;
 
+
+
+/**
+ * @author JayHamilton
+ * The MiniGameUtilities holds all the static methods needed to run the various effects associated with the respective hero
+ * abilities. There are two main static methods that are called by the Minigame Engine. The getHeroAbilityEffects and the GetVillainAbilityEffects.
+ * These methods call the individual effects associated with the hero or villain ability.
+ *
+ */
 public class MiniGameUtilities {
+	
+	/**
+	 * The getHeroAbiltyEffects Takes a Hero object, gets the Hero's ability and then passes that object and the other required parameters onto
+	 * to the effect method associated with that ability. If the Ability has no effect the noEffect method is called and a string is printed for the users
+	 * information.
+	 * @param hero
+	 * @param villain
+	 * @param squad
+	 * @param villainsChoice
+	 * @param selectedGame
+	 */
 	
 	public static void getHeroAbiltyEffects(Hero hero, Villain villain, HeroesSquad squad, int villainsChoice, int selectedGame) {
 		Abilities abilty = hero.getCharacterAbility();
@@ -32,7 +52,13 @@ public class MiniGameUtilities {
 		}
 		
 	}
-	
+	/**
+	 * The getVillainAbiltyEffects Takes a Villain object, gets the Villain's ability and then passes that object and the other required parameters onto
+	 * to the effect method associated with that ability. If the Ability has no effect the noEffect method is called and a string is printed for the users
+	 * information.
+	 * @param villain
+	 * @param squad
+	 */
 	public static void getVillainAbiltyEffects(Villain villain, HeroesSquad squad) {
 		Abilities abilty = villain.getCharacterAbility();
 		switch (abilty) {
@@ -40,14 +66,14 @@ public class MiniGameUtilities {
 			case detention: detention(squad, villain); break;
 			case judge: judge(villain); break;
 			case badDay: badDay(villain); break;
-			case cancer: cancer(squad, villain); break;
+			case sickness: sickness(squad, villain); break;
 			case arrogance: arrogance(); break;
 			default: noEffect(); break;
 			}
 	}
 	
 
-	private static void cancer(HeroesSquad squad, Villain villain) {
+	private static void sickness(HeroesSquad squad, Villain villain) {
 		boolean run = true;
 		while (run == true) {
 			int randInt = Utilities.getRandInt(squad.getLength() - 1);

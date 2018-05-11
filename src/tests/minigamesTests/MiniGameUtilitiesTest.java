@@ -77,7 +77,7 @@ class MiniGameUtilitiesTest {
 		villain2 = new Villain("villain2",Types.level_2, Abilities.detention, "Ciao", 15);
 		villain3 = new Villain("villain3",Types.level_3, Abilities.judge, "Ciao", 15);
 		villain4 = new Villain("villain4",Types.level_4, Abilities.badDay, "Ciao", 15);
-		villain5 = new Villain("villain5",Types.level_5, Abilities.cancer, "Ciao", 15);
+		villain5 = new Villain("villain5",Types.level_5, Abilities.sickness, "Ciao", 15);
 		villain6 = new Villain("villain6",Types.Boss, Abilities.arrogance, "Ciao", 15);
 		villains = new Villains(6);
 		villains.addVillain(villain1);
