@@ -2,9 +2,22 @@ package GUIPOC;
 
 import javax.swing.JFrame;
 
+import city.City;
+import city.buildings.PowerUpDen;
+import city.buildings.TypeBuildings;
 import city.buildings.shop.Shop;
+import collectables.CollectableID;
+import collectables.powerUp.Armor;
+import collectables.powerUp.GameChooser;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import characters.Abilities;
+import characters.Hero;
+import characters.HeroesSquad;
+import characters.Types;
+
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import javax.swing.JButton;
@@ -93,9 +106,35 @@ public class ShopWindow {
 		backToMapBtn.setBounds(105, 532, 504, 35);
 		frame.getContentPane().add(backToMapBtn);
 		
+		backToMapBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				manager.closeShopWindow(ShopWindow.this, mainWindow);
+			}
+		});
+		
 	}
-	
 	public void closeWindow() {
 		frame.dispose();
+	}
+	
+	public static void main(String[] args) {
+		City city = new City();
+		HeroesSquad squad = new HeroesSquad();
+		squad.setHaveMap(true);
+		squad.setCurrentCity(city);
+		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
+		Hero lorenzo1 = new Hero("Lorenzo1", Types.dog, Abilities.betterOdds);
+		lorenzo.setisAlive(false);
+		squad.addHero(lorenzo);
+		squad.addHero(lorenzo1);
+		squad.getBackPack().addItemToInventory(new Armor(CollectableID.Armor));
+		squad.getBackPack().addItemToInventory(new GameChooser(CollectableID.GameChooser));
+		
+		GameWindowManager manager = new GameWindowManager(city, squad);
+		Shop shop = new Shop("Shop", TypeBuildings.Shop); 
+		MainGameWindow mw = new MainGameWindow(manager);
+		ShopWindow win = new ShopWindow(manager, shop, mw);
 	}
 }
