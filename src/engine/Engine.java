@@ -48,8 +48,7 @@ public class Engine {
 		
 		
 		villains = new Villains(world.size()); 
-		choosePartsUsingIndex(currentIndex);
-		
+//		choosePartsUsingIndex(currentIndex);
 	}
 	
 	private void choosePartsUsingIndex(int index) {
