@@ -317,7 +317,29 @@ public class Shop extends Building{
 		}
 	}
 
-
+//  Methods to keep implementing tomorrow 
+//	public void String successOrRejectionPurchasedItem() {
+//		
+//		if (merchandise.getInventory().isInInventory(collectable) != null) {
+//			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
+//				heroSquad.getBackPack().addItemToInventory(collectable); 
+//				merchandise.getInventory().removeItemFromInventory(collectable);
+//				System.out.println("Great! You bought a " + collectable.getCollectableID());
+//			} else {
+//				System.out.println("Sorry not enough money to purchase this item");
+//				System.out.println("You currently have " + heroSquad.getWallet());
+//				System.out.println("You need " + collectable.getCost() 
+//				+ " to purchase a " + collectable.getCollectableID() + " item");
+//			}
+//		}
+//		else {
+//			System.out.println("Sorry guys we have no " + collectable.getCollectableID());
+//
+//		}
+//		
+//	}
+	
+	
 	/**
 	 * 
 	 * Getter method for merchandise property.
