@@ -115,7 +115,15 @@ public class ShopWindow {
 		frame.getContentPane().add(talkToInnkeeperPanel);
 		talkToInnkeeperPanel.setLayout(null);
 		
-		JComboBox allItemsComboBox = new JComboBox();
+		JComboBox<CollectableID> allItemsComboBox = new JComboBox<CollectableID>();
+		allItemsComboBox.addItem(CollectableID.Armor);
+		allItemsComboBox.addItem(CollectableID.IncreaseMaxLife);
+		allItemsComboBox.addItem(CollectableID.GameChooser);
+		allItemsComboBox.addItem(CollectableID.HeroesMap);
+		allItemsComboBox.addItem(CollectableID.GoodHealingItem);
+		allItemsComboBox.addItem(CollectableID.BetterHealingItem);
+		allItemsComboBox.addItem(CollectableID.BestHealingItem);
+		
 		allItemsComboBox.setBounds(21, 104, 124, 32);
 		talkToInnkeeperPanel.add(allItemsComboBox);
 		
@@ -150,29 +158,29 @@ public class ShopWindow {
 		frame.getContentPane().add(heroesInfosPanel);
 		heroesInfosPanel.setLayout(null);
 		
-		JTextArea txtrSjhrweshjewhrehjriowejroiwjreoiw = new JTextArea();
-		txtrSjhrweshjewhrehjriowejroiwjreoiw.setWrapStyleWord(true);
-		txtrSjhrweshjewhrehjriowejroiwjreoiw.setLineWrap(true);
-		txtrSjhrweshjewhrehjriowejroiwjreoiw.setEditable(false);
-		txtrSjhrweshjewhrehjriowejroiwjreoiw.setBackground(SystemColor.menu);
-		txtrSjhrweshjewhrehjriowejroiwjreoiw.setBounds(0, 36, 522, 131);
-		heroesInfosPanel.add(txtrSjhrweshjewhrehjriowejroiwjreoiw);
+		JTextArea heroesBackpackTxtArea = new JTextArea();
+		heroesBackpackTxtArea.setWrapStyleWord(true);
+		heroesBackpackTxtArea.setLineWrap(true);
+		heroesBackpackTxtArea.setEditable(false);
+		heroesBackpackTxtArea.setBackground(SystemColor.menu);
+		heroesBackpackTxtArea.setBounds(0, 36, 522, 131);
+		heroesInfosPanel.add(heroesBackpackTxtArea);
 		
-		JLabel lblNewLabel = new JLabel("Heroes backpack");
-		lblNewLabel.setBounds(21, 0, 165, 32);
-		heroesInfosPanel.add(lblNewLabel);
+		JLabel heroesBackpackLbl = new JLabel("Heroes backpack");
+		heroesBackpackLbl.setBounds(21, 0, 165, 32);
+		heroesInfosPanel.add(heroesBackpackLbl);
 		
-		JLabel lblWallet = new JLabel("Wallet: " + manager.getSquad().getWallet() + " coins.");
-		lblWallet.setBounds(537, 41, 234, 26);
-		heroesInfosPanel.add(lblWallet);
+		JLabel walletLbl = new JLabel("Wallet: " + manager.getSquad().getWallet() + " coins.");
+		walletLbl.setBounds(537, 41, 234, 26);
+		heroesInfosPanel.add(walletLbl);
 		
 		String haveMap = new String("no");
 		if (manager.getSquad().isHaveMap()) {
 			haveMap = "yes";
 		}
-		JLabel lblNewLabel_1 = new JLabel("City map available: " + haveMap);
-		lblNewLabel_1.setBounds(537, 88, 234, 26);
-		heroesInfosPanel.add(lblNewLabel_1);
+		JLabel cityMapLbl = new JLabel("City map available: " + haveMap);
+		cityMapLbl.setBounds(537, 88, 234, 26);
+		heroesInfosPanel.add(cityMapLbl);
 		
 		backToMapBtn.addActionListener(new ActionListener() {
 			
