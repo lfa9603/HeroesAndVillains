@@ -75,7 +75,7 @@ public class WorldBuilder {
 	 * Helper method for createWorld() method.
 	 * 
 	 */
-	private void createWorldHelper(Integer numberCities, ArrayList<City> listCities) {
+	public void createWorldHelper(Integer numberCities, ArrayList<City> listCities) {
 		for (int i = 0; i < numberCities; i++) {
 			City city = new City();
 			listCities.add(city);
