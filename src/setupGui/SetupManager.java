@@ -4,7 +4,10 @@
 package setupGui;
 
 
+import characters.Abilities;
+import characters.HeroTypes;
 import characters.HeroesSquad;
+import characters.Types;
 
 /**
  * @author JayHamilton
@@ -73,6 +76,36 @@ public class SetupManager {
 	 */
 	public void setCharacterTypes(String characterTypes) {
 		this.characterTypes = characterTypes;
+	}
+	
+	public Types typeConversion (HeroTypes heroType) {
+		switch (heroType) {
+		case Talkitive: return Types.talkitive;
+		case Smart: return Types.smart;
+		case Practical: return Types.practical;
+		case Strong: return Types.strong;
+		case Sly: return Types.sly;
+		case Dog: return Types.dog;
+		}
+		
+		return null;
+		
+	}
+	
+	public Abilities getHeroAbility (Types heroType) {
+		switch (heroType) {
+		case talkitive: return Abilities.charm;
+		case smart: return Abilities.mystery;
+		case practical: return Abilities.betterOdds;
+		case strong: return Abilities.lessDamage;
+		case sly: return Abilities.winDraws;
+		case dog: return Abilities.goodBoy;
+		default:
+			break;
+		}
+		
+		return null;
+		
 	}
 
 }
