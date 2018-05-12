@@ -36,18 +36,35 @@ public class SetupManager {
 //		SetupScreen setupWindow = new SetupScreen(this);
 //	}
 	
-	public void launchSetupScreen() {
-		SetupTeamAndWorld setupWindow = new SetupTeamAndWorld(this);
+	
+	public void launchSetupTeamAndWorld() {
+		setupTeamAndWorld setupWindow = new setupTeamAndWorld(this);
 	}
 	
-	public void closeSetupScreen(SetupTeamAndWorld setupWindow) {
+	public void closeSetupTeamAndWorld(setupTeamAndWorld setupTeamAndWorld) {
+		setupTeamAndWorld.closeWindow();
+		launchsetupAddHeros(this);
+		
+	}
+	
+	public void launchsetupAddHeros(SetupManager setupManager) {
+		SetupAddHeros setupWindow = new SetupAddHeros(this);
+	}
+	
+	public void closeSetupAddHeros(SetupAddHeros setupWindow) {
+		setupWindow.closeWindow();
+		launchSetupTeamAndWorld();
+		
+	}
+	
+	public void finalcloseSetupAddHeros(SetupAddHeros setupWindow) {
 		setupWindow.closeWindow();
 		
 	}
 	
 	public static void main(String[] args) {
 		SetupManager manager = new SetupManager();
-		manager.launchSetupScreen();
+		manager.launchSetupTeamAndWorld();
 	}
 
 	/**
