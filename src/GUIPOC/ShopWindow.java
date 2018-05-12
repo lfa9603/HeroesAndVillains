@@ -57,7 +57,7 @@ public class ShopWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("Welcome to the Shop! Make " + shopBuilding.getNameOfInnkeeper() + ", the owner, happy and spend your money!");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(21, 21, 691, 26);
 		frame.getContentPane().add(lblNewLabel);

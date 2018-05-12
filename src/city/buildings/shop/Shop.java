@@ -46,6 +46,7 @@ import static engine.HelperScanner.*;
 public class Shop extends Building{
 
 	private Merchandise merchandise;
+	private NamesForInnkeeper nameOfInnkeeper;
 	
 	/**
 	 * 
@@ -59,6 +60,7 @@ public class Shop extends Building{
 	public Shop(String name, TypeBuildings buildType) {
 		super(name, buildType);
 		merchandise = new Merchandise();
+		nameOfInnkeeper = NamesForInnkeeper.returnRendomNameOutOfThePool();
 	}	
 	
 	
@@ -335,6 +337,24 @@ public class Shop extends Building{
 	 */
 	public void setMerchandise(Merchandise merchandise) {
 		this.merchandise = merchandise;
+	}
+
+
+
+
+	/**
+	 * @return the nameOfInnkeeper (Type {@link NamesForInnkeeper})
+	 */
+	public NamesForInnkeeper getNameOfInnkeeper() {
+		return nameOfInnkeeper;
+	}
+
+
+	/**
+	 * @param nameOfInnkeeper (Type {@link NamesForInnkeeper})
+	 */
+	public void setNameOfInnkeeper(NamesForInnkeeper nameOfInnkeeper) {
+		this.nameOfInnkeeper = nameOfInnkeeper;
 	}
 
 	
