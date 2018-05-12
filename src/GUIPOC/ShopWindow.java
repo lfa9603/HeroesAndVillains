@@ -155,7 +155,7 @@ public class ShopWindow {
 		txtrSjhrweshjewhrehjriowejroiwjreoiw.setLineWrap(true);
 		txtrSjhrweshjewhrehjriowejroiwjreoiw.setEditable(false);
 		txtrSjhrweshjewhrehjriowejroiwjreoiw.setBackground(SystemColor.menu);
-		txtrSjhrweshjewhrehjriowejroiwjreoiw.setBounds(21, 36, 510, 131);
+		txtrSjhrweshjewhrehjriowejroiwjreoiw.setBounds(0, 36, 522, 131);
 		heroesInfosPanel.add(txtrSjhrweshjewhrehjriowejroiwjreoiw);
 		
 		JLabel lblNewLabel = new JLabel("Heroes backpack");
@@ -163,8 +163,16 @@ public class ShopWindow {
 		heroesInfosPanel.add(lblNewLabel);
 		
 		JLabel lblWallet = new JLabel("Wallet: " + manager.getSquad().getWallet() + " coins.");
-		lblWallet.setBounds(556, 41, 92, 26);
+		lblWallet.setBounds(537, 41, 234, 26);
 		heroesInfosPanel.add(lblWallet);
+		
+		String haveMap = new String("no");
+		if (manager.getSquad().isHaveMap()) {
+			haveMap = "yes";
+		}
+		JLabel lblNewLabel_1 = new JLabel("City map available: " + haveMap);
+		lblNewLabel_1.setBounds(537, 88, 234, 26);
+		heroesInfosPanel.add(lblNewLabel_1);
 		
 		backToMapBtn.addActionListener(new ActionListener() {
 			
