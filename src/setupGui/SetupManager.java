@@ -11,7 +11,6 @@ import characters.HeroTypes;
 import characters.HeroesSquad;
 import characters.Types;
 import city.City;
-import city.WorldBuilder;
 
 /**
  * @author JayHamilton
@@ -32,15 +31,11 @@ public class SetupManager {
 	private ArrayList<City> world = new ArrayList<City>();
 	
 	
-//	public void closeMainScreen(SetupTeamAndWorld mainWindow) {
-//		mainWindow.closeWindow();
-//		
-//	}
 	
-//	public void launchSetupScreen() {
-//		SetupScreen setupWindow = new SetupScreen(this);
-//	}
-	
+	public SetupManager() {
+//		super();
+		launchSetupTeamAndWorld();
+	}
 	
 	public void launchSetupTeamAndWorld() {
 		setupTeamAndWorld setupWindow = new setupTeamAndWorld(this);
@@ -67,10 +62,10 @@ public class SetupManager {
 		
 	}
 	
-	public static void main(String[] args) {
-		SetupManager manager = new SetupManager();
-		manager.launchSetupTeamAndWorld();
-	}
+//	public static void main(String[] args) {
+//		SetupManager manager = new SetupManager();
+//		manager.launchSetupTeamAndWorld();
+//	}
 
 	/**
 	 * @return the squad

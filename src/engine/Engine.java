@@ -9,6 +9,7 @@ import characters.Villain;
 import characters.Villains;
 import city.City;
 import city.WorldBuilder;
+import setupGui.SetupManager;
 
 public class Engine {
 
@@ -21,19 +22,30 @@ public class Engine {
 	
 	private  ArrayList<City> world;
 	private static int currentIndex = 0;
-	private City currentCity; 
+	private City currentCity;
+	private static boolean guiActive = false;
 	
 	
 	
 	public Engine() {
 		
 //		currentIndex = 0;
+		int choice = Utilities.getChoice("Choose 1 for TUI and 2 for GUI", 1, 2);
+		if (choice == 1) {
+			builtTeam = new TeamBuilder();
+			squad = builtTeam.getTeam(); //Gets the squad object from team builder
+			
+			WorldBuilder worldBuilder = new WorldBuilder();
+			world = worldBuilder.getWorld();
+		}
 		
-		builtTeam = new TeamBuilder();
-		squad = builtTeam.getTeam(); //Gets the squad object from team builder
+		else {
+			guiActive = true;
+			SetupManager setup = new SetupManager();
+			world = setup.getWorld();
+			squad = setup.getSquad(); 
+		}
 		
-		WorldBuilder worldBuilder = new WorldBuilder();
-		world = worldBuilder.getWorld();
 		
 		villains = new Villains(world.size()); 
 		choosePartsUsingIndex(currentIndex);
@@ -45,7 +57,7 @@ public class Engine {
 		squad.setCurrentCity(currentCity);
 	}
 	
-	public void start() {
+	public void startTui() {
 //		HeroesSquad squad = new TeamBuilder();
 		
 //		WorldBuilder worldBuilder = new WorldBuilder();
@@ -77,6 +89,11 @@ public class Engine {
 				playingGame = false;
 			}
 		}
+		
+	}
+	
+	private void startGui() {
+		// TODO Auto-generated method stub
 		
 	}
 	
@@ -125,10 +142,15 @@ public class Engine {
 //		VisualUtilities.getIcon(Icons.youWin); Just a test of icons
 		Engine engine = new Engine();
 		// for random tests
-		engine.start();
-		
-		
-		
+		if (guiActive) {
+			engine.startGui();
+		}
+		else {
+			engine.startTui();
+		}
+
 	}
+
+
 	
 }
