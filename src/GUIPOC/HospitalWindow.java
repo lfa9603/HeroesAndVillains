@@ -71,7 +71,8 @@ public class HospitalWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 750, 594);
+		frame.setResizable(false);
+		frame.setBounds(100, 100, 826, 680);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -81,7 +82,7 @@ public class HospitalWindow {
 		healingWardTxtArea.setLineWrap(true);
 		healingWardTxtArea.setEditable(false);
 		healingWardTxtArea.setBackground(SystemColor.menu);
-		healingWardTxtArea.setBounds(10, 81, 338, 231);
+		healingWardTxtArea.setBounds(20, 81, 338, 231);
 		
 		//
 		healingWardTxtArea.setText(hospitalBuilding.getHealingWard().toString());
@@ -114,12 +115,12 @@ public class HospitalWindow {
 		
 		//Done
 		JLabel hospitalhealingWardLbl = new JLabel("Hospital Healing ward");
-		hospitalhealingWardLbl.setBounds(20, 57, 180, 14);
+		hospitalhealingWardLbl.setBounds(20, 45, 238, 26);
 		frame.getContentPane().add(hospitalhealingWardLbl);
 		
 		//Done
 		JLabel squadHealingItemsLbl = new JLabel("Squad Healing items");
-		squadHealingItemsLbl.setBounds(386, 56, 180, 14);
+		squadHealingItemsLbl.setBounds(386, 45, 279, 25);
 		frame.getContentPane().add(squadHealingItemsLbl);
 		
 		//Done
@@ -136,27 +137,46 @@ public class HospitalWindow {
 		});
 		
 		frame.getContentPane().add(backToMapBtn);
-		
+		//Done
 		JLabel selectHeroLabel = new JLabel("Select a hero");
-		selectHeroLabel.setBounds(10, 323, 180, 14);
+		selectHeroLabel.setBounds(10, 315, 180, 26);
 		frame.getContentPane().add(selectHeroLabel);
 		
+		//Done
 		JComboBox<String> selectHeroComboBox = new JComboBox<String>();
-		selectHeroComboBox.setSelectedIndex(0);
 		selectHeroComboBox.setMaximumRowCount(3);
-		selectHeroComboBox.setBounds(10, 348, 180, 32);
+		selectHeroComboBox.setBounds(10, 358, 180, 32);
+		
+		for (Hero hero : manager.getSquad().getHeroSquad()) {
+			String isAlive = new String();
+			if (hero.isAlive()) {
+				isAlive = "Alive";
+			} else {
+				isAlive = "Dead";
+			}
+			//VERY IMPORTANT THIS FORMAT IS USED ALL THE TIME, IF CHANGED IT WILL CRASH, see applyPowerUpToHeroBtn.addActionListener 60 lines below.
+			selectHeroComboBox.addItem(hero.getCharacterName() + "  (" + isAlive + ")");
+		}
+		
+		selectHeroComboBox.setSelectedIndex(0);
 		frame.getContentPane().add(selectHeroComboBox);
 		
+		//Done
 		JComboBox<String> selectHealingItemComboBox = new JComboBox<String>();
+		selectHealingItemComboBox.addItem("Potion");
+		selectHealingItemComboBox.addItem("SuperPotion");
+		selectHealingItemComboBox.addItem("HyperPotion");
 		selectHealingItemComboBox.setSelectedIndex(0);
 		selectHealingItemComboBox.setMaximumRowCount(3);
-		selectHealingItemComboBox.setBounds(200, 348, 180, 32);
+		selectHealingItemComboBox.setBounds(200, 358, 180, 32);
 		frame.getContentPane().add(selectHealingItemComboBox);
 		
+		//Done
 		JLabel selectHealingItemLbl = new JLabel("Select healing item");
-		selectHealingItemLbl.setBounds(200, 323, 180, 14);
+		selectHealingItemLbl.setBounds(200, 315, 180, 33);
 		frame.getContentPane().add(selectHealingItemLbl);
 		
+		//Done
 		JTextArea showSuccessOrFailureApplyingHealItemTxtArea = new JTextArea();
 		showSuccessOrFailureApplyingHealItemTxtArea.setWrapStyleWord(true);
 		showSuccessOrFailureApplyingHealItemTxtArea.setText((String) null);
@@ -167,7 +187,7 @@ public class HospitalWindow {
 		frame.getContentPane().add(showSuccessOrFailureApplyingHealItemTxtArea);
 		
 		JButton applyHealingItemToHeroBtn = new JButton("Apply healing item!");
-		applyHealingItemToHeroBtn.setBounds(427, 348, 144, 33);
+		applyHealingItemToHeroBtn.setBounds(425, 358, 238, 33);
 		frame.getContentPane().add(applyHealingItemToHeroBtn);
 		
 	}

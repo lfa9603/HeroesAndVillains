@@ -138,6 +138,30 @@ public class Hospital extends Building {
 			}	
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * @param index (Type int)
+	 * Helper for the GUI, replicates the behaviour of the switch statement in the interact() method.
+	 * 
+	 * 
+	 */
+	public HealingItem returnCorrectHealingItemGivenIndex(int index) {
+		HealingItem healingItem = null; 
+		switch (index) {
+		 	case 0:
+		 		healingItem = new HealingItem(CollectableID.GoodHealingItem);
+		 		break;
+		 	case 1:
+		 		healingItem = new HealingItem(CollectableID.BetterHealingItem);
+		 		break;
+		 	case 2:
+		 		healingItem = new HealingItem(CollectableID.BestHealingItem);
+		 		break;
+		 	}
+		return healingItem;
+	}
 
 	/**
 	 * Helper method for good coding practice created to throw a new InputMismatchError.

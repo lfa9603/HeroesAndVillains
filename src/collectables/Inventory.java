@@ -89,7 +89,7 @@ public class Inventory {
 		while (iterator.hasNext()) {
 			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
 			if (CollectableID.isPowerUp(collectable.getKey().getCollectableID())) {
-				powerUpsAndQuantities += collectable.getKey() + "\nQUANTITY: " + collectable.getValue().toString();
+				powerUpsAndQuantities += collectable.getKey() + "\nQUANTITY: " + collectable.getValue().toString() + "\n";
 			}
 		}
 		
@@ -108,7 +108,7 @@ public class Inventory {
 		while (iterator.hasNext()) {
 			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
 			if (CollectableID.isHealingItem(collectable.getKey().getCollectableID())) {
-				healingItemsAndQuantities += collectable.getKey() + "   " + collectable.getValue().toString();
+				healingItemsAndQuantities += collectable.getKey() + "\nQUANTITY: " + collectable.getValue().toString() + "\n";
 			}
 		}
 		
