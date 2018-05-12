@@ -153,7 +153,6 @@ public class PowerUpDenWindow {
 		frame.getContentPane().add(heroesSquadPowerUpsTxtArea);
 		
 		JButton applyPowerUpToHeroBtn = new JButton("Apply power-up to the hero");
-		applyPowerUpToHeroBtn.setToolTipText("It applies the selected power-up to the selected hero");
 		applyPowerUpToHeroBtn.setBounds(32, 214, 389, 23);
 		frame.getContentPane().add(applyPowerUpToHeroBtn);
 		

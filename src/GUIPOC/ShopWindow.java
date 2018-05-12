@@ -1,14 +1,19 @@
 package GUIPOC;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import city.buildings.shop.Shop;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class ShopWindow {
 
 	private JFrame frame;
+	
+	private GameWindowManager manager;
+	private MainGameWindow mainWindow;
+	private Shop shopBuilding;
+	
 
 //	/**
 //	 * Launch the application.
@@ -35,7 +40,11 @@ public class ShopWindow {
 	
 	public ShopWindow(GameWindowManager incomingWindow, Shop shopBuild, MainGameWindow mainWind) {
 		
+		manager = incomingWindow;
+		shopBuilding = shopBuild;
+		mainWindow = mainWind;
 		
+		initialize();
 		
 	}
 
@@ -44,8 +53,14 @@ public class ShopWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 759, 657);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(21, 21, 691, 26);
+		frame.getContentPane().add(lblNewLabel);
 	}
 
 }
