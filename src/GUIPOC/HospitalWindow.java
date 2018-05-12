@@ -9,6 +9,10 @@ import city.buildings.TypeBuildings;
 import city.buildings.hospital.Hospital;
 import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
+import collectables.powerUp.Armor;
+import collectables.powerUp.GameChooser;
+import collectables.powerUp.IncreaseMaxLife;
+import collectables.powerUp.PowerUp;
 
 import javax.swing.JTextArea;
 
@@ -24,6 +28,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.Font;
 
 /**
  * @author LorenzoFasano
@@ -71,7 +76,9 @@ public class HospitalWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 750, 594);
+		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 18));
+		frame.setResizable(false);
+		frame.setBounds(100, 100, 826, 680);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -81,7 +88,7 @@ public class HospitalWindow {
 		healingWardTxtArea.setLineWrap(true);
 		healingWardTxtArea.setEditable(false);
 		healingWardTxtArea.setBackground(SystemColor.menu);
-		healingWardTxtArea.setBounds(10, 81, 338, 231);
+		healingWardTxtArea.setBounds(20, 81, 338, 231);
 		
 		//
 		healingWardTxtArea.setText(hospitalBuilding.getHealingWard().toString());
@@ -114,12 +121,12 @@ public class HospitalWindow {
 		
 		//Done
 		JLabel hospitalhealingWardLbl = new JLabel("Hospital Healing ward");
-		hospitalhealingWardLbl.setBounds(20, 57, 180, 14);
+		hospitalhealingWardLbl.setBounds(20, 45, 212, 26);
 		frame.getContentPane().add(hospitalhealingWardLbl);
 		
 		//Done
 		JLabel squadHealingItemsLbl = new JLabel("Squad Healing items");
-		squadHealingItemsLbl.setBounds(386, 56, 180, 14);
+		squadHealingItemsLbl.setBounds(386, 45, 279, 25);
 		frame.getContentPane().add(squadHealingItemsLbl);
 		
 		//Done
@@ -136,27 +143,46 @@ public class HospitalWindow {
 		});
 		
 		frame.getContentPane().add(backToMapBtn);
-		
+		//Done
 		JLabel selectHeroLabel = new JLabel("Select a hero");
-		selectHeroLabel.setBounds(10, 323, 180, 14);
+		selectHeroLabel.setBounds(10, 315, 180, 26);
 		frame.getContentPane().add(selectHeroLabel);
 		
+		//Done
 		JComboBox<String> selectHeroComboBox = new JComboBox<String>();
-		selectHeroComboBox.setSelectedIndex(0);
 		selectHeroComboBox.setMaximumRowCount(3);
-		selectHeroComboBox.setBounds(10, 348, 180, 32);
+		selectHeroComboBox.setBounds(10, 358, 180, 32);
+		
+		for (Hero hero : manager.getSquad().getHeroSquad()) {
+			String isAlive = new String();
+			if (hero.isAlive()) {
+				isAlive = "Alive";
+			} else {
+				isAlive = "Dead";
+			}
+			//VERY IMPORTANT THIS FORMAT IS USED ALL THE TIME, IF CHANGED IT WILL CRASH, see applyPowerUpToHeroBtn.addActionListener 60 lines below.
+			selectHeroComboBox.addItem(hero.getCharacterName() + "  (" + isAlive + ")");
+		}
+		
+		selectHeroComboBox.setSelectedIndex(0);
 		frame.getContentPane().add(selectHeroComboBox);
 		
+		//Done
 		JComboBox<String> selectHealingItemComboBox = new JComboBox<String>();
+		selectHealingItemComboBox.addItem("Potion");
+		selectHealingItemComboBox.addItem("SuperPotion");
+		selectHealingItemComboBox.addItem("HyperPotion");
 		selectHealingItemComboBox.setSelectedIndex(0);
 		selectHealingItemComboBox.setMaximumRowCount(3);
-		selectHealingItemComboBox.setBounds(200, 348, 180, 32);
+		selectHealingItemComboBox.setBounds(200, 358, 180, 32);
 		frame.getContentPane().add(selectHealingItemComboBox);
 		
+		//Done
 		JLabel selectHealingItemLbl = new JLabel("Select healing item");
-		selectHealingItemLbl.setBounds(200, 323, 180, 14);
+		selectHealingItemLbl.setBounds(200, 315, 180, 33);
 		frame.getContentPane().add(selectHealingItemLbl);
 		
+		//Done
 		JTextArea showSuccessOrFailureApplyingHealItemTxtArea = new JTextArea();
 		showSuccessOrFailureApplyingHealItemTxtArea.setWrapStyleWord(true);
 		showSuccessOrFailureApplyingHealItemTxtArea.setText((String) null);
@@ -167,8 +193,64 @@ public class HospitalWindow {
 		frame.getContentPane().add(showSuccessOrFailureApplyingHealItemTxtArea);
 		
 		JButton applyHealingItemToHeroBtn = new JButton("Apply healing item!");
-		applyHealingItemToHeroBtn.setBounds(427, 348, 144, 33);
+		applyHealingItemToHeroBtn.setBounds(425, 358, 238, 33);
+		
+		applyHealingItemToHeroBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String nameHeroSelected = selectHeroComboBox.getItemAt(selectHeroComboBox.getSelectedIndex()).split(" ")[0];
+				Hero heroToApplyPotionTo = manager.getSquad().getHeroByName(nameHeroSelected);
+				
+				HealingItem healingItem = hospitalBuilding.returnCorrectHealingItemGivenIndex(selectHealingItemComboBox.getSelectedIndex());
+				
+				String resultFromHealingItemApplication = hospitalBuilding.completeOrRejectHealingItemApplication(manager.getSquad(), heroToApplyPotionTo, healingItem);
+				
+				showSuccessOrFailureApplyingHealItemTxtArea.setText(resultFromHealingItemApplication);
+				
+				//Update HealingItems in HeroesSquad backpack
+				
+				squadHealingItemsTxtArea.setText(manager.getSquad().getBackPack().showHealingItemsInInventory());
+				//Update healing ward display
+				healingWardTxtArea.setText(hospitalBuilding.getHealingWard().toString());
+				
+				//Reset JComboBoxes to first item
+				selectHealingItemComboBox.setSelectedIndex(0);
+				selectHeroComboBox.setSelectedIndex(0);
+				
+				
+			}
+		});
 		frame.getContentPane().add(applyHealingItemToHeroBtn);
+		
+//		JButton healingWardRefreshButton = new JButton("Refresh");
+//		healingWardRefreshButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		healingWardRefreshButton.setBounds(229, 50, 97, 21);
+//		frame.getContentPane().add(healingWardRefreshButton);
+//		
+//		healingWardRefreshButton.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				//Update healing ward display
+//				healingWardTxtArea.setText(hospitalBuilding.getHealingWard().toString());
+//				
+//			}
+//		});
+		
+		//Is this thread killed if I close the page??
+		Thread healingWardTxtAreaThread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while(manager.isHospitalWindowOpen()) {
+					healingWardTxtArea.setText(hospitalBuilding.getHealingWard().toString());
+					System.out.println("Go Big or Go Ciao");
+				}
+			}
+		});
+		healingWardTxtAreaThread.start();
 		
 	}
 	
@@ -181,12 +263,17 @@ public class HospitalWindow {
 		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
 		HeroesSquad heroes = new HeroesSquad();
 		Hero hero1 = new Hero("Hero1test", Types.dog, Abilities.badDay);
+		Hero hero2 = new Hero("Hero2test", Types.dog, Abilities.badDay);
 		hero1.setHealth(50);
+		hero2.setHealth(30);
 		heroes.addHero(hero1);
-	
+		heroes.addHero(hero2);
+		
+		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 		
 		GameWindowManager gm = new GameWindowManager(city, heroes);
+		gm.setHospitalWindowOpen(true);
 		MainGameWindow mw = new MainGameWindow(gm);
 		HospitalWindow hw = new HospitalWindow(gm, hospital, mw);
 	}

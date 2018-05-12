@@ -174,18 +174,19 @@ public class PowerUpDenWindow {
 				String nameHeroSelected = heroesComboBox.getItemAt(heroesComboBox.getSelectedIndex()).split(" ")[0];
 				Hero heroToApplyPotionTo = manager.getSquad().getHeroByName(nameHeroSelected);
 				
-				PowerUp powerUpToApply = null;
-				switch (powerUpComboBox.getSelectedIndex()) {
-					case 0:
-						powerUpToApply = new Armor(CollectableID.Armor);
-						break;
-					case 1:
-						powerUpToApply = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
-						break;
-					case 2:
-						powerUpToApply = new GameChooser(CollectableID.GameChooser);
-						break;
-				}
+				PowerUp powerUp = powerUpDenBuilding.returnCorrectPowerUp(powerUpComboBox.getSelectedIndex());
+//				PowerUp powerUpToApply = null;
+//				switch (powerUpComboBox.getSelectedIndex()) {
+//					case 0:
+//						powerUpToApply = new Armor(CollectableID.Armor);
+//						break;
+//					case 1:
+//						powerUpToApply = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
+//						break;
+//					case 2:
+//						powerUpToApply = new GameChooser(CollectableID.GameChooser);
+//						break;
+//				}
 
 				String resultFromPotionApplication = powerUpDenBuilding.applyPotionOrRejectIt(manager.getSquad(), heroToApplyPotionTo, powerUpToApply);
 				

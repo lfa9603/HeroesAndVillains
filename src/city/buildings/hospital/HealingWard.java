@@ -3,6 +3,7 @@ package city.buildings.hospital;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import characters.Abilities;
 import characters.Hero;
@@ -121,6 +122,28 @@ public class HealingWard {
 		} else {
 			return "You currently have no hero in the healing ward!";
 		}
+	}
+	
+	/**
+	 * 
+	 * Takes a @Collectable object and checks if the @inventory already has the same type of item in it. 
+	 * This is achieved by comparing the CollectableID of the @param item and of each Collectable item in the inventory property.
+	 * @param item
+	 * @return the Collectable object if the item is in the inventory property or @null if the item is not in it.
+	 * 
+	 */
+	public boolean isInHealingWard(Hero hero) {
+		
+		HashMap<Hero, Integer> copyPatientsAndHealingTime = (HashMap<Hero, Integer>) patientsAndHealingTime.clone();
+		
+		Iterator<Entry<Hero, Integer>> iterator = copyPatientsAndHealingTime.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Map.Entry<Hero, Integer> collectable = (Entry<Hero, Integer>) iterator.next();
+			if ((collectable.getKey().getCharacterName()).equals(hero.getCharacterName())) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	

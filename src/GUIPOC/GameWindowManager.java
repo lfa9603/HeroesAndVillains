@@ -23,6 +23,9 @@ public class GameWindowManager {
 	private City city;
 	private HeroesSquad squad;
 	
+	private boolean isHospitalWindowOpen;
+	
+
 	public GameWindowManager(City city, HeroesSquad squad) {
 		super();
 		this.city = city;
@@ -110,6 +113,7 @@ public class GameWindowManager {
 	public void closeHospitalWindow(HospitalWindow hospitalWindow, MainGameWindow mainWindow) {
 		
 		hospitalWindow.closeWindow();
+		isHospitalWindowOpen = false;
 		//Hardcoded!! Watch out when measurements change
 		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
 		// but it looks hard to do at the moment, leave it as a refinement.
@@ -136,14 +140,28 @@ public class GameWindowManager {
 			case PowerUpDen:
 				PowerUpDenWindow powerUpDenWindow = new PowerUpDenWindow(this, (PowerUpDen) building, mainWindow);
 			case Hospital:
+				isHospitalWindowOpen = true;
 				HospitalWindow hospitalWindow = new HospitalWindow(this, (Hospital) building, mainWindow);
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
 		}
-				
-		
 	}
 	
+	/**
+	 * @return the isHospitalWindowOpen
+	 */
+	public boolean isHospitalWindowOpen() {
+		return isHospitalWindowOpen;
+	}
+	
+	
+	/**
+	 * @param isHospitalWindowOpen the isHospitalWindowOpen to set
+	 */
+	public void setHospitalWindowOpen(boolean isHospitalWindowOpen) {
+		this.isHospitalWindowOpen = isHospitalWindowOpen;
+	}
+
 	public static void main(String[] args) {
 		City city = new City();
 		HeroesSquad squad = new HeroesSquad();
