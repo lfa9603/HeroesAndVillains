@@ -16,6 +16,7 @@ import city.buildings.PowerUpDen;
 import city.buildings.TypeBuildings;
 import city.buildings.homeBase.Home;
 import city.buildings.hospital.Hospital;
+import city.buildings.shop.Shop;
 
 public class GameWindowManager {
 	
@@ -139,9 +140,14 @@ public class GameWindowManager {
 				break;
 			case PowerUpDen:
 				PowerUpDenWindow powerUpDenWindow = new PowerUpDenWindow(this, (PowerUpDen) building, mainWindow);
+				break;
 			case Hospital:
 				isHospitalWindowOpen = true;
 				HospitalWindow hospitalWindow = new HospitalWindow(this, (Hospital) building, mainWindow);
+				break;
+			case Shop:
+				ShopWindow shopWindow = new ShopWindow(this, (Shop) building, mainWindow);
+				break;
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
 		}

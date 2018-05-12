@@ -133,12 +133,12 @@ public class PowerUpDenWindow {
 		
 		//COMPLETE
 		JLabel selectAHeroLabel = new JLabel("Select a hero");
-		selectAHeroLabel.setBounds(32, 106, 180, 14);
+		selectAHeroLabel.setBounds(32, 106, 180, 23);
 		frame.getContentPane().add(selectAHeroLabel);
 		
 		//COMPLETE
 		JLabel lblSelectAPowerup = new JLabel("Select a power-up");
-		lblSelectAPowerup.setBounds(241, 106, 180, 14);
+		lblSelectAPowerup.setBounds(241, 106, 180, 23);
 		frame.getContentPane().add(lblSelectAPowerup);
 		
 		//COMPLETE
@@ -153,6 +153,7 @@ public class PowerUpDenWindow {
 		frame.getContentPane().add(heroesSquadPowerUpsTxtArea);
 		
 		JButton applyPowerUpToHeroBtn = new JButton("Apply power-up to the hero");
+		applyPowerUpToHeroBtn.setToolTipText("It applies the selected power-up to the selected hero");
 		applyPowerUpToHeroBtn.setBounds(32, 214, 389, 23);
 		frame.getContentPane().add(applyPowerUpToHeroBtn);
 		
@@ -188,7 +189,7 @@ public class PowerUpDenWindow {
 //						break;
 //				}
 
-				String resultFromPotionApplication = powerUpDenBuilding.applyPotionOrRejectIt(manager.getSquad(), heroToApplyPotionTo, powerUpToApply);
+				String resultFromPotionApplication = powerUpDenBuilding.applyPotionOrRejectIt(manager.getSquad(), heroToApplyPotionTo, powerUp);
 				
 				showingPotionApplicationResultTxtArea.setText(resultFromPotionApplication);
 				
