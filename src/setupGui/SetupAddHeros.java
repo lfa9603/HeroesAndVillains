@@ -111,6 +111,7 @@ public class SetupAddHeros {
 		txtpnEmpty.setText("Empty...");
 		txtpnEmpty.setBounds(371, 146, 323, 158);
 		frmTeamBuilder.getContentPane().add(txtpnEmpty);
+		txtpnEmpty.setText(manager.getSquad().toString());
 		
 		JLabel lblAvaliableHeroTypes = new JLabel("Avaliable Hero types below:");
 		lblAvaliableHeroTypes.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -208,7 +209,7 @@ public class SetupAddHeros {
 		});
 		ContinueToGame.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		ContinueToGame.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		ContinueToGame.setBounds(374, 413, 187, 50);
+		ContinueToGame.setBounds(370, 446, 187, 50);
 		frmTeamBuilder.getContentPane().add(ContinueToGame);
 		
 		JButton btnBack = new JButton("Back");
@@ -219,7 +220,7 @@ public class SetupAddHeros {
 			}
 		});
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnBack.setBounds(161, 413, 187, 50);
+		btnBack.setBounds(157, 446, 187, 50);
 		frmTeamBuilder.getContentPane().add(btnBack);
 		
 		JLabel label = new JLabel("Setup");

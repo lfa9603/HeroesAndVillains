@@ -11,8 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.SoftBevelBorder;
+
+import city.City;
+import city.WorldBuilder;
+
 import javax.swing.border.BevelBorder;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class setupTeamAndWorld {
@@ -100,6 +105,13 @@ public class setupTeamAndWorld {
 		TeamAndWorldSetup.getContentPane().add(textField);
 		textField.setColumns(10);
 		
+		
+		JLabel TeamNameConfirmation = new JLabel("");
+		TeamNameConfirmation.setHorizontalAlignment(SwingConstants.CENTER);
+		TeamNameConfirmation.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		TeamNameConfirmation.setBounds(139, 265, 383, 24);
+		TeamAndWorldSetup.getContentPane().add(TeamNameConfirmation);
+		
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,7 +120,47 @@ public class setupTeamAndWorld {
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnContinue.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnContinue.setBounds(214, 297, 187, 50);
+		btnContinue.setBounds(445, 293, 187, 50);
 		TeamAndWorldSetup.getContentPane().add(btnContinue);
+		
+		JLabel WorldCreationLabel = new JLabel("");
+		WorldCreationLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		WorldCreationLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		WorldCreationLabel.setBounds(139, 146, 383, 24);
+		TeamAndWorldSetup.getContentPane().add(WorldCreationLabel);
+		
+		JButton btnApplyTeamName = new JButton("Apply Team Name");
+		btnApplyTeamName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				manager.getSquad().setTeamName(textField.getText());
+				TeamNameConfirmation.setText("Your team is called " + textField.getText());
+			}
+		});
+		btnApplyTeamName.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnApplyTeamName.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnApplyTeamName.setBounds(51, 293, 187, 50);
+		TeamAndWorldSetup.getContentPane().add(btnApplyTeamName);
+		
+		JButton btnConfirmWorldSize = new JButton("Confirm World Size");
+		btnConfirmWorldSize.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				ArrayList<City> world = new ArrayList<City>();
+				ArrayList<City> world = manager.getWorld();
+				int numberCities = slider.getValue();
+				world.removeAll(world);
+				for (int i = 0; i < numberCities; i++) {
+					City city = new City();
+					world.add(city);
+				WorldCreationLabel.setText("A World of " + world.size() + " cities has been created.");
+				}
+			}
+		});
+		btnConfirmWorldSize.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnConfirmWorldSize.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnConfirmWorldSize.setBounds(248, 293, 187, 50);
+		TeamAndWorldSetup.getContentPane().add(btnConfirmWorldSize);
+		
+		
+
 	}
 }

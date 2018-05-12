@@ -4,10 +4,14 @@
 package setupGui;
 
 
+import java.util.ArrayList;
+
 import characters.Abilities;
 import characters.HeroTypes;
 import characters.HeroesSquad;
 import characters.Types;
+import city.City;
+import city.WorldBuilder;
 
 /**
  * @author JayHamilton
@@ -25,6 +29,7 @@ public class SetupManager {
 			+ "6. Dog : Is a good boy (Grants all team member\n"
 			+ "    extra 25HP Max Health)";
 	private HeroesSquad squad = new HeroesSquad();
+	private ArrayList<City> world = new ArrayList<City>();
 	
 	
 //	public void closeMainScreen(SetupTeamAndWorld mainWindow) {
@@ -95,6 +100,20 @@ public class SetupManager {
 		this.characterTypes = characterTypes;
 	}
 	
+	/**
+	 * @return the world
+	 */
+	public ArrayList<City> getWorld() {
+		return world;
+	}
+
+	/**
+	 * @param world the world to set
+	 */
+	public void setWorld(ArrayList<City> world) {
+		this.world = world;
+	}
+
 	public Types typeConversion (HeroTypes heroType) {
 		switch (heroType) {
 		case Talkitive: return Types.talkitive;
