@@ -122,6 +122,29 @@ public class GameWindowManager {
 		mainWindow.getFrame().setVisible(true);
 	}
 	
+	
+	/**
+	 * 
+	 * @param hospitalWindow (Type ShopWindow)
+	 * @param mainWindow (Type MainGameWindow)
+	 * 
+	 * It deals with closing the MainGameWindow parameter. As hospitalWindow can exist only if mainWindow exists, every time 
+	 * it is needed to exit the ShopWindow, the main map needs to be visible and to reset the position of the moving label so that 
+	 * the movingLabel will not involuntarily reactivate the listener and be sent back to HomeBase again.
+	 * 
+	 */
+	public void closeShopWindow(ShopWindow shopWindow, MainGameWindow mainWindow) {
+		
+		shopWindow.closeWindow();
+		isHospitalWindowOpen = false;
+		//Hardcoded!! Watch out when measurements change
+		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
+		// but it looks hard to do at the moment, leave it as a refinement.
+		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+		mainWindow.getFrame().setVisible(true);
+	}
+	
+	
 	/**
 	 * 
 	 * @param building (Type {@link Building})

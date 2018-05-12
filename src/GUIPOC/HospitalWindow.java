@@ -1,6 +1,5 @@
 package GUIPOC;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
@@ -9,10 +8,7 @@ import city.buildings.TypeBuildings;
 import city.buildings.hospital.Hospital;
 import collectables.CollectableID;
 import collectables.healingItem.HealingItem;
-import collectables.powerUp.Armor;
-import collectables.powerUp.GameChooser;
-import collectables.powerUp.IncreaseMaxLife;
-import collectables.powerUp.PowerUp;
+
 
 import javax.swing.JTextArea;
 
