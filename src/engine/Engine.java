@@ -3,6 +3,7 @@ package engine;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import GUIPOC.GameWindowManager;
 import characters.HeroesSquad;
 import characters.TeamBuilder;
 import characters.Villain;
@@ -92,8 +93,30 @@ public class Engine {
 	}
 	
 	private void startGui() {
-		// TODO Auto-generated method stub
 		
+		boolean playingGame = true;
+			
+			while (playingGame) {
+//				SquadMover mover = new SquadMover(currentCity, squad);
+//				mover.startMoving();
+				
+				GameWindowManager manager = new GameWindowManager(currentCity, squad);
+				manager.launchMainGameScreen();
+				
+				if (nextCityExists()) {
+					setUpgameForNextCity();
+				} else {
+			
+					for (int i = 0; i < 100; i++) {
+						System.out.println("MMMMMMMAAAAAAAAAAAAATEEEEEEEEEEEEEEEEE! YOU WON THE GAME!");
+						System.out.println("\n");
+						VisualUtilities.getIcon(Icons.youWin);
+						
+					}
+					
+					playingGame = false;
+				}
+			}
 	}
 	
 	private boolean nextCityExists() {

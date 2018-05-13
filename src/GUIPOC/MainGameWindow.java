@@ -39,6 +39,7 @@ public class MainGameWindow {
 		manager = incomingManager;
 		initialize();
 		frame.setVisible(true);
+		
 	}
 
 
