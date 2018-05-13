@@ -112,9 +112,67 @@ public class MainGameWindow {
 		dialogueTextPane.setBounds(199, 67, 474, 151);
 		battleWindow.getContentPane().add(dialogueTextPane);
 		
+		//Mini-game Panels
+		JPanel RPSpanel = new JPanel();
+		RPSpanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		RPSpanel.setBounds(10, 539, 285, 366);
+		battleWindow.getContentPane().add(RPSpanel);
+		RPSpanel.setLayout(null);
+		
+		JLabel lblRockPaperScissors = new JLabel("Rock, Paper, Scissors");
+		lblRockPaperScissors.setBounds(0, 11, 285, 17);
+		RPSpanel.add(lblRockPaperScissors);
+		lblRockPaperScissors.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRockPaperScissors.setFont(new Font("Tahoma", Font.BOLD, 14));
+		
+		JLabel HeroSelected = new JLabel("");
+		HeroSelected.setHorizontalAlignment(SwingConstants.CENTER);
+		HeroSelected.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		HeroSelected.setBounds(0, 29, 285, 17);
+		RPSpanel.add(HeroSelected);
+		
+		JPanel GTNpanel = new JPanel();
+		GTNpanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		GTNpanel.setBounds(305, 539, 280, 366);
+		battleWindow.getContentPane().add(GTNpanel);
+		GTNpanel.setLayout(null);
+		
+		JLabel lblGuessTheNumber = new JLabel("Guess the Number");
+		lblGuessTheNumber.setBounds(0, 11, 280, 17);
+		GTNpanel.add(lblGuessTheNumber);
+		lblGuessTheNumber.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGuessTheNumber.setFont(new Font("Tahoma", Font.BOLD, 14));
+		
+		JLabel label = new JLabel("");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		label.setBounds(0, 28, 280, 17);
+		GTNpanel.add(label);
+		
+		JPanel DWpanel = new JPanel();
+		DWpanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		DWpanel.setBounds(595, 539, 280, 366);
+		battleWindow.getContentPane().add(DWpanel);
+		DWpanel.setLayout(null);
+		
+		JLabel lblDiceWar = new JLabel("Dice War");
+		lblDiceWar.setBounds(0, 11, 280, 17);
+		DWpanel.add(lblDiceWar);
+		lblDiceWar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDiceWar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		label_1.setBounds(0, 28, 280, 17);
+		DWpanel.add(label_1);
+
+		
+		//Hero Selection buttons
 		JButton heroBtn1 = new JButton("Select " + manager.getSquad().getHero(0).getCharacterName());
 		heroBtn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				HeroSelected.setText("test");
 			}
 		});
 		heroBtn1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -141,38 +199,5 @@ public class MainGameWindow {
 		heroBtn3.setBounds(585, 455, 159, 23);
 		battleWindow.getContentPane().add(heroBtn3); break;
 		}
-
-		JPanel RPSpanel = new JPanel();
-		RPSpanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		RPSpanel.setBounds(10, 539, 285, 366);
-		battleWindow.getContentPane().add(RPSpanel);
-		RPSpanel.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblRockPaperScissors = new JLabel("Rock, Paper, Scissors");
-		RPSpanel.add(lblRockPaperScissors, BorderLayout.NORTH);
-		lblRockPaperScissors.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRockPaperScissors.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		JPanel GTNpanel = new JPanel();
-		GTNpanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		GTNpanel.setBounds(305, 539, 280, 366);
-		battleWindow.getContentPane().add(GTNpanel);
-		GTNpanel.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblGuessTheNumber = new JLabel("Guess the Number");
-		lblGuessTheNumber.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGuessTheNumber.setFont(new Font("Tahoma", Font.BOLD, 14));
-		GTNpanel.add(lblGuessTheNumber, BorderLayout.NORTH);
-		
-		JPanel DWpanel = new JPanel();
-		DWpanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		DWpanel.setBounds(595, 539, 280, 366);
-		battleWindow.getContentPane().add(DWpanel);
-		DWpanel.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblDiceWar = new JLabel("Dice War");
-		lblDiceWar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDiceWar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		DWpanel.add(lblDiceWar, BorderLayout.NORTH);
 	}
 }
