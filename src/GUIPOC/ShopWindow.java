@@ -7,6 +7,7 @@ import city.City;
 import city.buildings.TypeBuildings;
 import city.buildings.shop.Shop;
 import collectables.CollectableID;
+import collectables.Money;
 import collectables.healingItem.HealingItem;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
@@ -27,6 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 
 public class ShopWindow {
 
@@ -91,31 +93,36 @@ public class ShopWindow {
 		frame.getContentPane().add(welcomeShopTxtArea);
 		
 		JToggleButton justBrowsingTgBtn = new JToggleButton("Just Browsing");
-		justBrowsingTgBtn.setBounds(21, 265, 207, 35);
+		justBrowsingTgBtn.setBounds(66, 265, 207, 35);
 		frame.getContentPane().add(justBrowsingTgBtn);
 		
 		JToggleButton talkToInnkeeperTgBtn = new JToggleButton("Talk to " + shopBuilding.getNameOfInnkeeper());
-		talkToInnkeeperTgBtn.setBounds(464, 265, 207, 35);
+		talkToInnkeeperTgBtn.setBounds(505, 265, 207, 35);
 		frame.getContentPane().add(talkToInnkeeperTgBtn);
 		
 		//Done
 		JPanel justBrowsingPanel = new JPanel();
-		justBrowsingPanel.setBounds(21, 321, 303, 347);
+		justBrowsingPanel.setBounds(21, 321, 341, 347);
 		frame.getContentPane().add(justBrowsingPanel);
 		justBrowsingPanel.setLayout(null);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		scrollPane_1.setBounds(21, 21, 271, 305);
+		justBrowsingPanel.add(scrollPane_1);
+		
 		JTextArea shopGoodsTxtArea = new JTextArea();
+		scrollPane_1.setViewportView(shopGoodsTxtArea);
 		shopGoodsTxtArea.setWrapStyleWord(true);
 		shopGoodsTxtArea.setText((String) null);
 		shopGoodsTxtArea.setLineWrap(true);
 		shopGoodsTxtArea.setEditable(false);
 		shopGoodsTxtArea.setBackground(SystemColor.menu);
-		shopGoodsTxtArea.setBounds(21, 21, 271, 305);
-		justBrowsingPanel.add(shopGoodsTxtArea);
+		shopGoodsTxtArea.setText(returnItemsInMerchandise());
 		
 		//Done
 		JPanel talkToInnkeeperPanel = new JPanel();
-		talkToInnkeeperPanel.setBounds(464, 321, 313, 347);
+		talkToInnkeeperPanel.setBounds(436, 321, 341, 347);
 		frame.getContentPane().add(talkToInnkeeperPanel);
 		talkToInnkeeperPanel.setLayout(null);
 		
@@ -144,9 +151,22 @@ public class ShopWindow {
 		talkToInnkeeperPanel.add(whatCanIGetYaLabel);
 		
 		
-		JButton buyItemBtn = new JButton("Buy Item");
-		buyItemBtn.setBounds(166, 104, 127, 32);
-		talkToInnkeeperPanel.add(buyItemBtn);
+//		JButton buyItemBtn = new JButton("Buy Item");
+//		buyItemBtn.setBounds(166, 104, 127, 32);
+//		
+//		buyItemBtn.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				int index = allItemsComboBox.getSelectedIndex();
+//				shopBuilding.successOrRejectionPurchasedItem(index, manager.getSquad());
+//				
+//				
+//			}
+//		});
+//		
+//		talkToInnkeeperPanel.add(buyItemBtn);
 		
 		//Done
 		JTextArea displaySuccessOrRejectionPurchase = new JTextArea();
@@ -155,12 +175,12 @@ public class ShopWindow {
 		displaySuccessOrRejectionPurchase.setLineWrap(true);
 		displaySuccessOrRejectionPurchase.setEditable(false);
 		displaySuccessOrRejectionPurchase.setBackground(SystemColor.menu);
-		displaySuccessOrRejectionPurchase.setBounds(21, 346, 271, 141);
+		displaySuccessOrRejectionPurchase.setBounds(21, 167, 271, 159);
 		talkToInnkeeperPanel.add(displaySuccessOrRejectionPurchase);
 		
 		//Done
 		JButton backToMapBtn = new JButton("Back to the Map! ");
-		backToMapBtn.setBounds(191, 691, 504, 35);
+		backToMapBtn.setBounds(167, 689, 504, 35);
 		backToMapBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -176,8 +196,8 @@ public class ShopWindow {
 		frame.getContentPane().add(heroesInfosPanel);
 		heroesInfosPanel.setLayout(null);
 		
-		String backPackContent = new String(manager.getSquad().getBackPack().showPowerUpsInInventory());
-		backPackContent += manager.getSquad().getBackPack().showHealingItemsInInventory();
+//		String backPackContent = new String(manager.getSquad().getBackPack().showPowerUpsInInventory());
+//		backPackContent += manager.getSquad().getBackPack().showHealingItemsInInventory();
 		
 		//Done, setting up scroll pane
 		JScrollPane scrollPane = new JScrollPane();
@@ -192,7 +212,7 @@ public class ShopWindow {
 		heroesBackpackTxtArea.setLineWrap(true);
 		heroesBackpackTxtArea.setEditable(false);
 		heroesBackpackTxtArea.setBackground(SystemColor.menu);
-		heroesBackpackTxtArea.setText(backPackContent);
+		heroesBackpackTxtArea.setText(returnItemsInBackPack());
 		
 		//Done
 		JLabel heroesBackpackLbl = new JLabel("Heroes backpack");
@@ -204,19 +224,56 @@ public class ShopWindow {
 		walletLbl.setBounds(537, 41, 234, 26);
 		heroesInfosPanel.add(walletLbl);
 		
+		
+		//Done
+		JLabel cityMapLbl = new JLabel("City map available: " + doesTheSquadHaveTheMap());
+		cityMapLbl.setBounds(537, 88, 234, 26);
+		heroesInfosPanel.add(cityMapLbl);
+		
+		JButton buyItemBtn = new JButton("Buy Item");
+		buyItemBtn.setBounds(193, 104, 127, 32);
+		
+		buyItemBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int index = allItemsComboBox.getSelectedIndex();
+				String stringSuccesOrReject = shopBuilding.successOrRejectionPurchasedItem(index, manager.getSquad());
+				displaySuccessOrRejectionPurchase.setText(stringSuccesOrReject);
+				
+				walletLbl.setText(manager.getSquad().getWallet().toString());
+				cityMapLbl.setText("City map available: " + doesTheSquadHaveTheMap());
+				heroesBackpackTxtArea.setText(returnItemsInBackPack());
+				shopGoodsTxtArea.setText(returnItemsInMerchandise());
+				
+			}
+		});
+		
+		talkToInnkeeperPanel.add(buyItemBtn);
+		
+	}
+	
+	private String doesTheSquadHaveTheMap() {
 		String haveMap = new String("No");
 		if (manager.getSquad().isHaveMap()) {
 			haveMap = "Yes";
 		}
-		
-		//Done
-		JLabel cityMapLbl = new JLabel("City map available: " + haveMap);
-		cityMapLbl.setBounds(537, 88, 234, 26);
-		heroesInfosPanel.add(cityMapLbl);
-		
-		
-		
+		return haveMap;
 	}
+	
+	private String returnItemsInBackPack() {
+		String backPackContent = new String(manager.getSquad().getBackPack().showPowerUpsInInventory());
+		backPackContent += manager.getSquad().getBackPack().showHealingItemsInInventory();
+		return backPackContent;
+	}
+	
+	private String returnItemsInMerchandise() {
+		String merchandiseContent = new String(shopBuilding.getMerchandise().getInventory().showPowerUpsInInventory());
+		merchandiseContent += shopBuilding.getMerchandise().getInventory().showHealingItemsInInventory();
+		return merchandiseContent;
+	}
+	
 	public void closeWindow() {
 		frame.dispose();
 	}
@@ -235,6 +292,7 @@ public class ShopWindow {
 		squad.getBackPack().addItemToInventory(new GameChooser(CollectableID.GameChooser));
 		squad.getBackPack().addItemToInventory(new IncreaseMaxLife(CollectableID.Armor));
 		squad.getBackPack().addItemToInventory(new HealingItem(CollectableID.GoodHealingItem));
+		squad.setWallet(new Money(1000));
 		
 		GameWindowManager manager = new GameWindowManager(city, squad);
 		Shop shop = new Shop("Shop", TypeBuildings.Shop); 
