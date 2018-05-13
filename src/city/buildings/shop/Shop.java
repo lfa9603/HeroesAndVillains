@@ -433,7 +433,11 @@ public class Shop extends Building{
 		Collectable collectable = retrieveRightCollectable(index);
 		if (merchandise.getInventory().isInInventory(collectable) != null) {
 			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
-				heroSquad.getBackPack().addItemToInventory(collectable); 
+				if (collectable instanceof HeroesMap) {
+					heroSquad.setHaveMap(true);
+				} else {
+					heroSquad.getBackPack().addItemToInventory(collectable); 
+				}
 				merchandise.getInventory().removeItemFromInventory(collectable);
 				strToReturn = "Great! You bought a " + collectable.getCollectableID();
 			} else {

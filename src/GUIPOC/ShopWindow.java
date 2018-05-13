@@ -7,6 +7,7 @@ import city.City;
 import city.buildings.TypeBuildings;
 import city.buildings.shop.Shop;
 import collectables.CollectableID;
+import collectables.Money;
 import collectables.healingItem.HealingItem;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
@@ -27,6 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 
 public class ShopWindow {
 
@@ -91,32 +93,36 @@ public class ShopWindow {
 		frame.getContentPane().add(welcomeShopTxtArea);
 		
 		JToggleButton justBrowsingTgBtn = new JToggleButton("Just Browsing");
-		justBrowsingTgBtn.setBounds(21, 265, 207, 35);
+		justBrowsingTgBtn.setBounds(66, 265, 207, 35);
 		frame.getContentPane().add(justBrowsingTgBtn);
 		
 		JToggleButton talkToInnkeeperTgBtn = new JToggleButton("Talk to " + shopBuilding.getNameOfInnkeeper());
-		talkToInnkeeperTgBtn.setBounds(464, 265, 207, 35);
+		talkToInnkeeperTgBtn.setBounds(505, 265, 207, 35);
 		frame.getContentPane().add(talkToInnkeeperTgBtn);
 		
 		//Done
 		JPanel justBrowsingPanel = new JPanel();
-		justBrowsingPanel.setBounds(21, 321, 303, 347);
+		justBrowsingPanel.setBounds(21, 321, 341, 347);
 		frame.getContentPane().add(justBrowsingPanel);
 		justBrowsingPanel.setLayout(null);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		scrollPane_1.setBounds(21, 21, 271, 305);
+		justBrowsingPanel.add(scrollPane_1);
+		
 		JTextArea shopGoodsTxtArea = new JTextArea();
+		scrollPane_1.setViewportView(shopGoodsTxtArea);
 		shopGoodsTxtArea.setWrapStyleWord(true);
 		shopGoodsTxtArea.setText((String) null);
 		shopGoodsTxtArea.setLineWrap(true);
 		shopGoodsTxtArea.setEditable(false);
 		shopGoodsTxtArea.setBackground(SystemColor.menu);
-		shopGoodsTxtArea.setBounds(21, 21, 271, 305);
 		shopGoodsTxtArea.setText(returnItemsInMerchandise());
-		justBrowsingPanel.add(shopGoodsTxtArea);
 		
 		//Done
 		JPanel talkToInnkeeperPanel = new JPanel();
-		talkToInnkeeperPanel.setBounds(464, 321, 313, 347);
+		talkToInnkeeperPanel.setBounds(436, 321, 341, 347);
 		frame.getContentPane().add(talkToInnkeeperPanel);
 		talkToInnkeeperPanel.setLayout(null);
 		
@@ -169,12 +175,12 @@ public class ShopWindow {
 		displaySuccessOrRejectionPurchase.setLineWrap(true);
 		displaySuccessOrRejectionPurchase.setEditable(false);
 		displaySuccessOrRejectionPurchase.setBackground(SystemColor.menu);
-		displaySuccessOrRejectionPurchase.setBounds(21, 185, 271, 141);
+		displaySuccessOrRejectionPurchase.setBounds(21, 167, 271, 159);
 		talkToInnkeeperPanel.add(displaySuccessOrRejectionPurchase);
 		
 		//Done
 		JButton backToMapBtn = new JButton("Back to the Map! ");
-		backToMapBtn.setBounds(191, 691, 504, 35);
+		backToMapBtn.setBounds(167, 689, 504, 35);
 		backToMapBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -225,7 +231,7 @@ public class ShopWindow {
 		heroesInfosPanel.add(cityMapLbl);
 		
 		JButton buyItemBtn = new JButton("Buy Item");
-		buyItemBtn.setBounds(166, 104, 127, 32);
+		buyItemBtn.setBounds(193, 104, 127, 32);
 		
 		buyItemBtn.addActionListener(new ActionListener() {
 			
@@ -240,6 +246,7 @@ public class ShopWindow {
 				cityMapLbl.setText("City map available: " + doesTheSquadHaveTheMap());
 				heroesBackpackTxtArea.setText(returnItemsInBackPack());
 				shopGoodsTxtArea.setText(returnItemsInMerchandise());
+				
 			}
 		});
 		
@@ -285,6 +292,7 @@ public class ShopWindow {
 		squad.getBackPack().addItemToInventory(new GameChooser(CollectableID.GameChooser));
 		squad.getBackPack().addItemToInventory(new IncreaseMaxLife(CollectableID.Armor));
 		squad.getBackPack().addItemToInventory(new HealingItem(CollectableID.GoodHealingItem));
+		squad.setWallet(new Money(1000));
 		
 		GameWindowManager manager = new GameWindowManager(city, squad);
 		Shop shop = new Shop("Shop", TypeBuildings.Shop); 
