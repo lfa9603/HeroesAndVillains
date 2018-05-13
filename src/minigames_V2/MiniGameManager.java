@@ -92,8 +92,8 @@ public class MiniGameManager {
 		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero1);
-		testsquad.addHero(hero3);
-		testsquad.addHero(hero5);
+//		testsquad.addHero(hero3);
+//		testsquad.addHero(hero5);
 //		hero2.setisAlive(false);
 //		hero3.setisAlive(false);
 //		hero3.setisAlive(false);

@@ -125,11 +125,11 @@ public class MainGameWindow {
 		lblRockPaperScissors.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRockPaperScissors.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel HeroSelected = new JLabel("");
-		HeroSelected.setHorizontalAlignment(SwingConstants.CENTER);
-		HeroSelected.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		HeroSelected.setBounds(0, 29, 285, 17);
-		RPSpanel.add(HeroSelected);
+		JLabel heroSelected = new JLabel("");
+		heroSelected.setHorizontalAlignment(SwingConstants.CENTER);
+		heroSelected.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		heroSelected.setBounds(0, 29, 285, 17);
+		RPSpanel.add(heroSelected);
 		
 		JPanel GTNpanel = new JPanel();
 		GTNpanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -143,11 +143,11 @@ public class MainGameWindow {
 		lblGuessTheNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGuessTheNumber.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label = new JLabel("");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label.setBounds(0, 28, 280, 17);
-		GTNpanel.add(label);
+		JLabel heroSelected2 = new JLabel("");
+		heroSelected2.setHorizontalAlignment(SwingConstants.CENTER);
+		heroSelected2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		heroSelected2.setBounds(0, 28, 280, 17);
+		GTNpanel.add(heroSelected2);
 		
 		JPanel DWpanel = new JPanel();
 		DWpanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -161,18 +161,20 @@ public class MainGameWindow {
 		lblDiceWar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDiceWar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_1 = new JLabel("");
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_1.setBounds(0, 28, 280, 17);
-		DWpanel.add(label_1);
+		JLabel heroSelected3 = new JLabel("");
+		heroSelected3.setHorizontalAlignment(SwingConstants.CENTER);
+		heroSelected3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		heroSelected3.setBounds(0, 28, 280, 17);
+		DWpanel.add(heroSelected3);
 
 		
 		//Hero Selection buttons
 		JButton heroBtn1 = new JButton("Select " + manager.getSquad().getHero(0).getCharacterName());
 		heroBtn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				HeroSelected.setText("test");
+				heroSelected.setText(manager.getSquad().getHero(0).getCharacterName() + " selected");
+				heroSelected2.setText(manager.getSquad().getHero(0).getCharacterName() + " selected");
+				heroSelected3.setText(manager.getSquad().getHero(0).getCharacterName() + " selected");
 			}
 		});
 		heroBtn1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -180,24 +182,75 @@ public class MainGameWindow {
 		heroBtn1.setBounds(471, 421, 159, 23);
 		battleWindow.getContentPane().add(heroBtn1);
 		
+		
 		switch (manager.getSquad().getLength()) {
-		case 2: JButton heroBtn2 = new JButton("Select " + manager.getSquad().getHero(1).getCharacterName());
-		heroBtn2.setToolTipText("Click to select this hero to fight with");
-		heroBtn2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		heroBtn2.setBounds(706, 421, 159, 23);
-		battleWindow.getContentPane().add(heroBtn2); break;
+		case 2: 		JButton herobtn2 = new JButton("Select " + manager.getSquad().getHero(1).getCharacterName());
+		herobtn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				heroSelected.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+				heroSelected2.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+				heroSelected3.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+			}
+		});
+		herobtn2.setToolTipText("Click to select this hero to fight with");
+		herobtn2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		herobtn2.setBounds(706, 421, 159, 23);
+		battleWindow.getContentPane().add(herobtn2); break;
 		
 		case 3: JButton herobtn22 = new JButton("Select " + manager.getSquad().getHero(1).getCharacterName());
+		herobtn22.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				heroSelected.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+				heroSelected2.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+				heroSelected3.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+			}
+		});
 		herobtn22.setToolTipText("Click to select this hero to fight with");
 		herobtn22.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		herobtn22.setBounds(706, 421, 159, 23);
 		battleWindow.getContentPane().add(herobtn22);
 		
 		JButton heroBtn3 = new JButton("Select " + manager.getSquad().getHero(2).getCharacterName());
+		heroBtn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				heroSelected.setText(manager.getSquad().getHero(2).getCharacterName() + " selected");
+				heroSelected2.setText(manager.getSquad().getHero(2).getCharacterName() + " selected");
+				heroSelected3.setText(manager.getSquad().getHero(2).getCharacterName() + " selected");
+			}
+		});
 		heroBtn3.setToolTipText("Click to select this hero to fight with");
 		heroBtn3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		heroBtn3.setBounds(585, 455, 159, 23);
 		battleWindow.getContentPane().add(heroBtn3); break;
 		}
-	}
+		}
+
+		
+		
+//		switch (manager.getSquad().getLength()) {
+//		case 2: JButton heroBtn2 = new JButton("Select " + manager.getSquad().getHero(1).getCharacterName());
+//		heroBtn2.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				heroSelected.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+//			}
+//		});
+//		heroBtn2.setToolTipText("Click to select this hero to fight with");
+//		heroBtn2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		heroBtn2.setBounds(706, 421, 159, 23);
+//		battleWindow.getContentPane().add(heroBtn2); break;
+//		
+//		case 3: JButton herobtn22 = new JButton("Select " + manager.getSquad().getHero(1).getCharacterName());
+//		herobtn22.setToolTipText("Click to select this hero to fight with");
+//		herobtn22.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		herobtn22.setBounds(706, 421, 159, 23);
+//		battleWindow.getContentPane().add(herobtn22);
+//		
+//		JButton heroBtn3 = new JButton("Select " + manager.getSquad().getHero(2).getCharacterName());
+//		heroBtn3.setToolTipText("Click to select this hero to fight with");
+//		heroBtn3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		heroBtn3.setBounds(585, 455, 159, 23);
+//		battleWindow.getContentPane().add(heroBtn3); break;
+//		}
+//	}
 }
