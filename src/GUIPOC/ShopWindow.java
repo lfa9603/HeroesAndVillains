@@ -111,6 +111,7 @@ public class ShopWindow {
 		shopGoodsTxtArea.setEditable(false);
 		shopGoodsTxtArea.setBackground(SystemColor.menu);
 		shopGoodsTxtArea.setBounds(21, 21, 271, 305);
+		shopGoodsTxtArea.setText(returnItemsInMerchandise());
 		justBrowsingPanel.add(shopGoodsTxtArea);
 		
 		//Done
@@ -144,9 +145,22 @@ public class ShopWindow {
 		talkToInnkeeperPanel.add(whatCanIGetYaLabel);
 		
 		
-		JButton buyItemBtn = new JButton("Buy Item");
-		buyItemBtn.setBounds(166, 104, 127, 32);
-		talkToInnkeeperPanel.add(buyItemBtn);
+//		JButton buyItemBtn = new JButton("Buy Item");
+//		buyItemBtn.setBounds(166, 104, 127, 32);
+//		
+//		buyItemBtn.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				int index = allItemsComboBox.getSelectedIndex();
+//				shopBuilding.successOrRejectionPurchasedItem(index, manager.getSquad());
+//				
+//				
+//			}
+//		});
+//		
+//		talkToInnkeeperPanel.add(buyItemBtn);
 		
 		//Done
 		JTextArea displaySuccessOrRejectionPurchase = new JTextArea();
@@ -155,7 +169,7 @@ public class ShopWindow {
 		displaySuccessOrRejectionPurchase.setLineWrap(true);
 		displaySuccessOrRejectionPurchase.setEditable(false);
 		displaySuccessOrRejectionPurchase.setBackground(SystemColor.menu);
-		displaySuccessOrRejectionPurchase.setBounds(21, 346, 271, 141);
+		displaySuccessOrRejectionPurchase.setBounds(21, 185, 271, 141);
 		talkToInnkeeperPanel.add(displaySuccessOrRejectionPurchase);
 		
 		//Done
@@ -176,8 +190,8 @@ public class ShopWindow {
 		frame.getContentPane().add(heroesInfosPanel);
 		heroesInfosPanel.setLayout(null);
 		
-		String backPackContent = new String(manager.getSquad().getBackPack().showPowerUpsInInventory());
-		backPackContent += manager.getSquad().getBackPack().showHealingItemsInInventory();
+//		String backPackContent = new String(manager.getSquad().getBackPack().showPowerUpsInInventory());
+//		backPackContent += manager.getSquad().getBackPack().showHealingItemsInInventory();
 		
 		//Done, setting up scroll pane
 		JScrollPane scrollPane = new JScrollPane();
@@ -192,7 +206,7 @@ public class ShopWindow {
 		heroesBackpackTxtArea.setLineWrap(true);
 		heroesBackpackTxtArea.setEditable(false);
 		heroesBackpackTxtArea.setBackground(SystemColor.menu);
-		heroesBackpackTxtArea.setText(backPackContent);
+		heroesBackpackTxtArea.setText(returnItemsInBackPack());
 		
 		//Done
 		JLabel heroesBackpackLbl = new JLabel("Heroes backpack");
@@ -204,19 +218,55 @@ public class ShopWindow {
 		walletLbl.setBounds(537, 41, 234, 26);
 		heroesInfosPanel.add(walletLbl);
 		
+		
+		//Done
+		JLabel cityMapLbl = new JLabel("City map available: " + doesTheSquadHaveTheMap());
+		cityMapLbl.setBounds(537, 88, 234, 26);
+		heroesInfosPanel.add(cityMapLbl);
+		
+		JButton buyItemBtn = new JButton("Buy Item");
+		buyItemBtn.setBounds(166, 104, 127, 32);
+		
+		buyItemBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int index = allItemsComboBox.getSelectedIndex();
+				String stringSuccesOrReject = shopBuilding.successOrRejectionPurchasedItem(index, manager.getSquad());
+				displaySuccessOrRejectionPurchase.setText(stringSuccesOrReject);
+				
+				walletLbl.setText(manager.getSquad().getWallet().toString());
+				cityMapLbl.setText("City map available: " + doesTheSquadHaveTheMap());
+				heroesBackpackTxtArea.setText(returnItemsInBackPack());
+				shopGoodsTxtArea.setText(returnItemsInMerchandise());
+			}
+		});
+		
+		talkToInnkeeperPanel.add(buyItemBtn);
+		
+	}
+	
+	private String doesTheSquadHaveTheMap() {
 		String haveMap = new String("No");
 		if (manager.getSquad().isHaveMap()) {
 			haveMap = "Yes";
 		}
-		
-		//Done
-		JLabel cityMapLbl = new JLabel("City map available: " + haveMap);
-		cityMapLbl.setBounds(537, 88, 234, 26);
-		heroesInfosPanel.add(cityMapLbl);
-		
-		
-		
+		return haveMap;
 	}
+	
+	private String returnItemsInBackPack() {
+		String backPackContent = new String(manager.getSquad().getBackPack().showPowerUpsInInventory());
+		backPackContent += manager.getSquad().getBackPack().showHealingItemsInInventory();
+		return backPackContent;
+	}
+	
+	private String returnItemsInMerchandise() {
+		String merchandiseContent = new String(shopBuilding.getMerchandise().getInventory().showPowerUpsInInventory());
+		merchandiseContent += shopBuilding.getMerchandise().getInventory().showHealingItemsInInventory();
+		return merchandiseContent;
+	}
+	
 	public void closeWindow() {
 		frame.dispose();
 	}
