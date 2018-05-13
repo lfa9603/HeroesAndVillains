@@ -329,7 +329,7 @@ public class Shop extends Building{
 	 * this deals with returning the expected object (the index indicated is the index of the object as displayed in {@link ShopWindow})
 	 * 
 	 */
-	public Collectable returningAPowerUp(int index) {
+	private Collectable returningAPowerUp(int index) {
 		PowerUp powerUpToReturn = null;
 		switch (index) {
 			case 0:
@@ -356,7 +356,7 @@ public class Shop extends Building{
 	 * this deals with returning the expected object (the index indicated is the index of the object as displayed in {@link ShopWindow})
 	 * 
 	 */
-	public Collectable returningAHealingItem(int index) {
+	private Collectable returningAHealingItem(int index) {
 		HealingItem healingItemToReturn = null;
 		switch (index) {
 			case 4:
@@ -380,33 +380,75 @@ public class Shop extends Building{
 	 * 
 	 * This method replicates the part of the interact method where a HeroesMap item wants to be bought 
 	 */
-	public Collectable returningTheHeroesMap(int index) {
+	private Collectable returningTheHeroesMap(int index) {
 		
 		HeroesMap heroesMapToReturn = new HeroesMap(CollectableID.HeroesMap);
 		return heroesMapToReturn;
 	}
 
-//  Methods to keep implementing tomorrow 
-//	public void String successOrRejectionPurchasedItem() {
-//		
-//		if (merchandise.getInventory().isInInventory(collectable) != null) {
-//			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
-//				heroSquad.getBackPack().addItemToInventory(collectable); 
-//				merchandise.getInventory().removeItemFromInventory(collectable);
-//				System.out.println("Great! You bought a " + collectable.getCollectableID());
-//			} else {
-//				System.out.println("Sorry not enough money to purchase this item");
-//				System.out.println("You currently have " + heroSquad.getWallet());
-//				System.out.println("You need " + collectable.getCost() 
-//				+ " to purchase a " + collectable.getCollectableID() + " item");
-//			}
-//		}
-//		else {
-//			System.out.println("Sorry guys we have no " + collectable.getCollectableID());
-//
-//		}
-//		
-//	}
+	/**
+	 * 
+	 * USED IN GUI IMPLEMENTATION, INDEX COMES FROM GUI COMBOBOX IN {@link ShopWindow}.
+	 * 
+	 * @param index
+	 * @return collectableToReturn (Type Collectable)
+	 * 
+	 * This method calls the 3 helpers above to return the right Collectable object for 
+	 * successOrRejectionPurchasedItem(int index, HeroesSquad heroSquad) method below. 
+	 *  
+	 */
+	private Collectable retrieveRightCollectable(int index) {
+		Collectable collectableToReturn = null;
+		if (index < 3) {
+			collectableToReturn = returningAPowerUp(index);
+		}
+		
+		if (index == 3) {
+			collectableToReturn = returningTheHeroesMap(index);
+		}
+		
+		if (index > 3) {
+			collectableToReturn = returningAHealingItem(index);
+		}
+		
+		return collectableToReturn;
+	}
+	
+	/**
+	 * 
+	 * USED IN GUI IMPLEMENTATION, INDEX COMES FROM GUI COMBOBOX IN {@link ShopWindow}.
+	 * 
+	 * @param index
+	 * @return strToReturn (Type String)
+	 * 
+	 * This method uses the 4 helpers above, it deals with retrieving the right Collectable item and add it 
+	 * to the HeroesSquad object property if everything goes well.
+	 * The returned String shows the transaction status once the user tries to purchase an item.
+	 * 
+	 */
+	public String successOrRejectionPurchasedItem(int index, HeroesSquad heroSquad) {
+		
+		String strToReturn = new String();
+		
+		Collectable collectable = retrieveRightCollectable(index);
+		if (merchandise.getInventory().isInInventory(collectable) != null) {
+			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
+				heroSquad.getBackPack().addItemToInventory(collectable); 
+				merchandise.getInventory().removeItemFromInventory(collectable);
+				strToReturn = "Great! You bought a " + collectable.getCollectableID();
+			} else {
+				strToReturn += ("\nSorry not enough money to purchase this item");
+				strToReturn += ("\nYou currently have " + heroSquad.getWallet());
+				strToReturn += ("\nYou need " + collectable.getCost() 
+				+ " to purchase a " + collectable.getCollectableID() + " item");
+			}
+		}
+		else {
+			strToReturn = ("Sorry guys we have no " + collectable.getCollectableID());
+		}
+
+		return strToReturn;		
+	}
 	
 	
 	/**
