@@ -184,23 +184,48 @@ public class MainGameWindow {
 			public void keyPressed(KeyEvent keyEvent) {
 				
 				if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-					movingLabel.setLocation(new Point(movingLabel.getX(), movingLabel.getY() - 10 ));	
+					keepObjectInBoundariesWhileMoving(0, movingLabel);
 				}
 				if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-					movingLabel.setLocation(new Point(movingLabel.getX(), movingLabel.getY() + 10 ));	
+					keepObjectInBoundariesWhileMoving(1, movingLabel);	
 				}
 				if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-					movingLabel.setLocation(new Point(movingLabel.getX() + 10, movingLabel.getY()));	
+
+					keepObjectInBoundariesWhileMoving(2, movingLabel);
 				}
 				if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-					movingLabel.setLocation(new Point(movingLabel.getX() - 10, movingLabel.getY()));	
+					keepObjectInBoundariesWhileMoving(3, movingLabel);	
 				}
 				
+//				System.out.println(movingLabel.getLocation());
 				checkActionAvailable(movingLabel, entrances, infos);
 				
 			}
 		});
 		
+	}
+	
+	private void keepObjectInBoundariesWhileMoving(int index, JLabel movingLabel) {
+		
+		Point newPosition = null;
+		switch(index) {
+			case 0:
+				newPosition = new Point(movingLabel.getX(), movingLabel.getY() - 10 );
+				break;
+			case 1:
+				newPosition = new Point(movingLabel.getX(), movingLabel.getY() + 10 );
+				break;
+			case 2:
+				newPosition = new Point(movingLabel.getX() + 10, movingLabel.getY());
+				break;
+			case 3:
+				newPosition = new Point(movingLabel.getX() - 10, movingLabel.getY());
+				break;
+		}
+			
+		if (newPosition.x <= 776 && newPosition.x >= 6 && newPosition.y <= 720 && newPosition.y >= 0) {
+			movingLabel.setLocation(newPosition);
+		}
 	}
 	
 	private void checkActionAvailable(JLabel movingLabel, ArrayList<JLabel> entrances, ArrayList<JLabel> infos) {
