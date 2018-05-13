@@ -144,7 +144,7 @@ public class SetupAddHeros {
 		btnRemoveHero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int selectedHero = comboBox_1.getSelectedIndex();
-				if (selectedHero <= manager.getSquad().getLength()) {
+				if (selectedHero < manager.getSquad().getLength()) {
 					manager.getSquad().removeHero(selectedHero);
 					txtpnEmpty.setText(manager.getSquad().toString());
 				}
