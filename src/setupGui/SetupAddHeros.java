@@ -1,9 +1,7 @@
 package setupGui;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import java.awt.Font;
@@ -21,11 +19,9 @@ import characters.HeroesSquad;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Cursor;
-import javax.swing.DropMode;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import javax.swing.UIManager;
 
 public class SetupAddHeros {
 

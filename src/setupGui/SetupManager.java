@@ -71,10 +71,10 @@ public class SetupManager {
 		notify();
 	}
 	
-	public static void main(String[] args) {
-		SetupManager manager = new SetupManager();
-//		manager.launchSetupTeamAndWorld();
-	}
+//	public static void main(String[] args) {
+//		SetupManager manager = new SetupManager();
+////		manager.launchSetupTeamAndWorld();
+//	}
 
 	/**
 	 * @return the squad
