@@ -89,7 +89,8 @@ public class GameWindowManager {
 		homeWindow.closeWindow();
 		//Hardcoded!! Watch out when measurements change
 		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
-		mainWindow.getFrame().setVisible(true);
+//		mainWindow.getFrame().setVisible(true);
+		mainWindow.getDialog().setVisible(true);
 	}
 	
 	public void closePowerUpDenWindow(PowerUpDenWindow powerUpDenWindow, MainGameWindow mainWindow) {
@@ -98,7 +99,8 @@ public class GameWindowManager {
 		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
 		// but it looks hard to do at the moment, leave it as a refinement.
 		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
-		mainWindow.getFrame().setVisible(true);
+//		mainWindow.getFrame().setVisible(true);
+		mainWindow.getDialog().setVisible(true);
 	}
 	
 	/**
@@ -119,7 +121,8 @@ public class GameWindowManager {
 		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
 		// but it looks hard to do at the moment, leave it as a refinement.
 		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
-		mainWindow.getFrame().setVisible(true);
+//		mainWindow.getFrame().setVisible(true);
+		mainWindow.getDialog().setVisible(true);
 	}
 	
 	
@@ -141,7 +144,8 @@ public class GameWindowManager {
 		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
 		// but it looks hard to do at the moment, leave it as a refinement.
 		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
-		mainWindow.getFrame().setVisible(true);
+//		mainWindow.getFrame().setVisible(true);
+		mainWindow.getDialog().setVisible(true);
 	}
 	
 	
