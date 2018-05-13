@@ -204,8 +204,13 @@ public class SetupAddHeros {
 		JButton ContinueToGame = new JButton("Continue to Game");
 		ContinueToGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
-				characters.InitialAbiltyEffects.applyHeroSquadAbilties(manager.getSquad().getHeroSquad());
+				if (manager.getSquad().getLength() == 0) {
+					ErrorLabel.setText("You must choose at least one Hero");
+				}
+				else {
+					finishedWindow();
+					characters.InitialAbiltyEffects.applyHeroSquadAbilties(manager.getSquad().getHeroSquad());
+				}
 			}
 		});
 		ContinueToGame.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));

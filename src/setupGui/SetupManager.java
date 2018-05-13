@@ -17,7 +17,7 @@ import city.City;
  *
  */
 public class SetupManager {
-	private String characterTypes = "1. Talkitive : Has the ability to Charm people \n"
+	private final String characterTypes = "1. Talkitive : Has the ability to Charm people \n"
 			+ "    (Gets 25% better prices at shops) \n"
 			+ "2. Smart : Mystery Ability, which could help or hinder \n"
 			+ "    your team (Minigame dependant) \n"
@@ -27,13 +27,17 @@ public class SetupManager {
 			+ "    has this abilty \n"
 			+ "6. Dog : Is a good boy (Grants all team member\n"
 			+ "    extra 25HP Max Health)";
-	private HeroesSquad squad = new HeroesSquad();
-	private ArrayList<City> world = new ArrayList<City>();
+//	private HeroesSquad squad = new HeroesSquad();
+//	private ArrayList<City> world = new ArrayList<City>();
+	private HeroesSquad squad;
+	private ArrayList<City> world;
 	
 	
 	
 	public SetupManager() {
 //		super();
+		squad = new HeroesSquad();
+		world = new ArrayList<City>();
 		launchSetupTeamAndWorld();
 	}
 	
@@ -86,13 +90,6 @@ public class SetupManager {
 	 */
 	public String getCharacterTypes() {
 		return characterTypes;
-	}
-
-	/**
-	 * @param characterTypes the characterTypes to set
-	 */
-	public void setCharacterTypes(String characterTypes) {
-		this.characterTypes = characterTypes;
 	}
 	
 	/**

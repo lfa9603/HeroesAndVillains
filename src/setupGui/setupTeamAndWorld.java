@@ -132,8 +132,15 @@ public class setupTeamAndWorld {
 		JButton btnApplyTeamName = new JButton("Apply Team Name");
 		btnApplyTeamName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.getSquad().setTeamName(textField.getText());
-				TeamNameConfirmation.setText("Your team is called " + textField.getText());
+				String teamName = textField.getText();
+				if (2 < teamName.length() && teamName.length() < 10) {
+					manager.getSquad().setTeamName(teamName);
+					TeamNameConfirmation.setText("Your team is called " + textField.getText());
+				}
+				else {
+					TeamNameConfirmation.setText("Your teams name must be between 2 and 10 characters long");
+				}
+				
 			}
 		});
 		btnApplyTeamName.setFont(new Font("Tahoma", Font.PLAIN, 18));

@@ -30,7 +30,7 @@ public class Engine {
 	public Engine() {
 		
 //		currentIndex = 0;
-		int choice = Utilities.getChoice("Choose 1 for TUI and 2 for GUI", 1, 2);
+		int choice = Utilities.getChoice("Choose 1 for CLI and 2 for GUI", 1, 2);
 		if (choice == 1) {
 			builtTeam = new TeamBuilder();
 			squad = builtTeam.getTeam(); //Gets the squad object from team builder
