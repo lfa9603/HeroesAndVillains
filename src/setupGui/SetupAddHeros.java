@@ -33,21 +33,21 @@ public class SetupAddHeros {
 	private static SetupManager manager;
 	private JTextField txtHerosName;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SetupAddHeros window = new SetupAddHeros(manager);
-					window.frmTeamBuilder.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					SetupAddHeros window = new SetupAddHeros(manager);
+//					window.frmTeamBuilder.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
@@ -60,6 +60,7 @@ public class SetupAddHeros {
 	
 	public void closeWindow() {
 		frmTeamBuilder.dispose();
+		manager.notifyMainThread();
 	}
 	
 	public void backWindow() {
@@ -208,8 +209,8 @@ public class SetupAddHeros {
 					ErrorLabel.setText("You must choose at least one Hero");
 				}
 				else {
-					finishedWindow();
 					characters.InitialAbiltyEffects.applyHeroSquadAbilties(manager.getSquad().getHeroSquad());
+					finishedWindow();
 				}
 			}
 		});

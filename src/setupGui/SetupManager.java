@@ -63,13 +63,18 @@ public class SetupManager {
 	
 	public void finalcloseSetupAddHeros(SetupAddHeros setupWindow) {
 		setupWindow.closeWindow();
-		
+		//notifyMainThread();
 	}
 	
-//	public static void main(String[] args) {
-//		SetupManager manager = new SetupManager();
+	public void notifyMainThread() {
+//		Thread.currentThread().stop();
+		notify();
+	}
+	
+	public static void main(String[] args) {
+		SetupManager manager = new SetupManager();
 //		manager.launchSetupTeamAndWorld();
-//	}
+	}
 
 	/**
 	 * @return the squad

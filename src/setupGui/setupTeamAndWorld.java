@@ -10,6 +10,7 @@ import javax.swing.JSlider;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.border.SoftBevelBorder;
 
 import city.City;
@@ -22,7 +23,7 @@ import java.awt.event.ActionEvent;
 
 public class setupTeamAndWorld {
 
-	private JFrame TeamAndWorldSetup;
+	private JDialog TeamAndWorldSetup;
 	private static SetupManager manager;
 	private JTextField textField;
 
@@ -64,7 +65,7 @@ public class setupTeamAndWorld {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		TeamAndWorldSetup = new JFrame();
+		TeamAndWorldSetup = new JDialog();
 		TeamAndWorldSetup.setBounds(100, 100, 703, 421);
 		TeamAndWorldSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		TeamAndWorldSetup.getContentPane().setLayout(null);
@@ -133,7 +134,7 @@ public class setupTeamAndWorld {
 		btnApplyTeamName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String teamName = textField.getText();
-				if (2 < teamName.length() && teamName.length() < 10) {
+				if (2 <= teamName.length() && teamName.length() <= 10) {
 					manager.getSquad().setTeamName(teamName);
 					TeamNameConfirmation.setText("Your team is called " + textField.getText());
 				}
