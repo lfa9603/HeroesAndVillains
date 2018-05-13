@@ -39,8 +39,8 @@ public class MainGameWindow {
 	public MainGameWindow(GameWindowManager incomingManager) {
 		manager = incomingManager;
 		initialize();
-		dialog.setVisible(true);
-		
+		dialog.setModal(true);
+		dialog.setVisible(true);		
 	}
 
 
