@@ -3,6 +3,7 @@ package city.buildings.shop;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import GUIPOC.ShopWindow;
 import characters.Abilities;
 import characters.Hero;
 //import characters.Abilities;
@@ -23,6 +24,7 @@ import collectables.heroesMap.HeroesMap;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
+import collectables.powerUp.PowerUp;
 
 import static engine.HelperScanner.*;
 
@@ -315,6 +317,73 @@ public class Shop extends Building{
 			System.out.println("Sorry guys we have no " + collectable.getCollectableID());
 
 		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param index (Type int)
+	 * @return powerUpToReturn (Type PowerUp)
+	 * 
+	 * This method replicates the part of the interact method where a PowerUp item wants to be bought, 
+	 * this deals with returning the expected object (the index indicated is the index of the object as displayed in {@link ShopWindow})
+	 * 
+	 */
+	public Collectable returningAPowerUp(int index) {
+		PowerUp powerUpToReturn = null;
+		switch (index) {
+			case 0:
+				powerUpToReturn = new Armor(CollectableID.Armor);
+				break;
+			case 1:
+				powerUpToReturn = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
+				break;
+			case 2:
+				powerUpToReturn = new GameChooser(CollectableID.GameChooser);
+				break;
+		}
+		
+		return powerUpToReturn;
+	}
+	
+	
+	/**
+	 * 
+	 * @param index (Type int)
+	 * @return healingItemToReturn (Type PowerUp)
+	 * 
+	 * This method replicates the part of the interact method where a HealingItem item wants to be bought, 
+	 * this deals with returning the expected object (the index indicated is the index of the object as displayed in {@link ShopWindow})
+	 * 
+	 */
+	public Collectable returningAHealingItem(int index) {
+		HealingItem healingItemToReturn = null;
+		switch (index) {
+			case 4:
+				healingItemToReturn = new HealingItem(CollectableID.GoodHealingItem);
+				break;
+			case 5:
+				healingItemToReturn = new HealingItem(CollectableID.BetterHealingItem);
+				break;
+			case 6:
+				healingItemToReturn = new HealingItem(CollectableID.BestHealingItem);
+				break;
+		}
+		
+		return healingItemToReturn;
+	}
+	
+	/**
+	 * 
+	 * @param index (Type int)
+	 * @return heroesMapToReturn (Type PowerUp)
+	 * 
+	 * This method replicates the part of the interact method where a HeroesMap item wants to be bought 
+	 */
+	public Collectable returningTheHeroesMap(int index) {
+		
+		HeroesMap heroesMapToReturn = new HeroesMap(CollectableID.HeroesMap);
+		return heroesMapToReturn;
 	}
 
 //  Methods to keep implementing tomorrow 
