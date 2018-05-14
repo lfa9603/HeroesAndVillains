@@ -1,11 +1,14 @@
 package GUIPOC;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
 import characters.Types;
+import characters.Villain;
+import characters.Villains;
 import city.City;
 import city.buildings.Building;
 import city.buildings.PowerUpDen;
@@ -20,30 +23,33 @@ import city.buildings.shop.Shop;
 
 public class GameWindowManager {
 	
+	private int currentIndex;
 	
-	private City city;
+	private ArrayList<City> world;
 	private HeroesSquad squad;
+	private Villains villains;
 	
+	private City currentCity;
+	private Villain currentVillain;
 	private boolean isHospitalWindowOpen;
 	
 
 	public GameWindowManager(City city, HeroesSquad squad) {
-		super();
-		this.city = city;
+		this.currentCity = city;
 		this.squad = squad;
 	}
 	
 	/**
 	 * @return the city
 	 */
-	public City getCity() {
-		return city;
+	public City getCurrentCity() {
+		return currentCity;
 	}
 	/**
 	 * @param city the city to set
 	 */
-	public void setCity(City city) {
-		this.city = city;
+	public void setCurrentCity(City city) {
+		this.currentCity = city;
 	}
 	/**
 	 * @return the squad
