@@ -49,7 +49,7 @@ public class GameWindowManager {
 	private boolean isHospitalWindowOpen;
 	
 
-	public GameWindowManager(City city, HeroesSquad squad) {
+	public GameWindowManager() {
 //		this.currentCity = city;
 //		this.squad = squad;
 		squad = new HeroesSquad();
@@ -113,7 +113,7 @@ public class GameWindowManager {
 		//Hardcoded!! Watch out when measurements change
 		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 //		mainWindow.getFrame().setVisible(true);
-		mainWindow.getDialog().setVisible(true);
+		mainWindow.getFrame().setVisible(true);
 	}
 	
 	public void closePowerUpDenWindow(PowerUpDenWindow powerUpDenWindow, MainGameWindow mainWindow) {
@@ -123,7 +123,7 @@ public class GameWindowManager {
 		// but it looks hard to do at the moment, leave it as a refinement.
 		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 //		mainWindow.getFrame().setVisible(true);
-		mainWindow.getDialog().setVisible(true);
+		mainWindow.getFrame().setVisible(true);
 	}
 	
 	/**
@@ -145,7 +145,7 @@ public class GameWindowManager {
 		// but it looks hard to do at the moment, leave it as a refinement.
 		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 //		mainWindow.getFrame().setVisible(true);
-		mainWindow.getDialog().setVisible(true);
+		mainWindow.getFrame().setVisible(true);
 	}
 	
 	
@@ -168,7 +168,7 @@ public class GameWindowManager {
 		// but it looks hard to do at the moment, leave it as a refinement.
 		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 //		mainWindow.getFrame().setVisible(true);
-		mainWindow.getDialog().setVisible(true);
+		mainWindow.getFrame().setVisible(true);
 	}
 	
 	
@@ -219,13 +219,13 @@ public class GameWindowManager {
 	}
 
 	public static void main(String[] args) {
-		City city = new City();
-		HeroesSquad squad = new HeroesSquad();
-		squad.setHaveMap(false);
-		squad.setCurrentCity(city);
-		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
-		squad.addHero(lorenzo);
-		GameWindowManager manager = new GameWindowManager(city, squad);
+//		City city = new City();
+//		HeroesSquad squad = new HeroesSquad();
+//		squad.setHaveMap(false);
+//		squad.setCurrentCity(city);
+//		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
+//		squad.addHero(lorenzo);
+		GameWindowManager manager = new GameWindowManager();
 //		manager.launchMainGameScreen();
 		manager.launchSetupTeamAndWorld();
 		
@@ -255,6 +255,8 @@ public class GameWindowManager {
 	
 	public void finalcloseSetupAddHeros(SetupAddHeros setupWindow) {
 		setupWindow.closeWindow();
+		launchMainGameScreen();
+		
 	}
 	
 	
