@@ -130,9 +130,9 @@ public class SetupAddHeros {
 		frmTeamBuilder.getContentPane().add(txtHerosName);
 		txtHerosName.setColumns(10);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		JComboBox<String> comboBox_1 = new JComboBox<String>();
 		comboBox_1.setToolTipText("select index of hero you want to remove");
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));
+		comboBox_1.setModel(new DefaultComboBoxModel<String>(new String[] {"1", "2", "3"}));
 		comboBox_1.setBounds(371, 315, 59, 20);
 		frmTeamBuilder.getContentPane().add(comboBox_1);
 		
@@ -164,9 +164,6 @@ public class SetupAddHeros {
 		btnReset.setToolTipText("Press to reset your team");
 		btnReset.setBounds(579, 314, 115, 23);
 		frmTeamBuilder.getContentPane().add(btnReset);
-		
-		
-		
 
 		
 		JButton btnAddToTeam = new JButton("Add to Team");
