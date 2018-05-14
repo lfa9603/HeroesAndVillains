@@ -16,10 +16,13 @@ import city.buildings.PowerUpDen;
 * It allows to start each city window and from there managing all the buildings windows. 
 */
 import city.buildings.TypeBuildings;
-import city.buildings.VillainsLair;
 import city.buildings.homeBase.Home;
 import city.buildings.hospital.Hospital;
 import city.buildings.shop.Shop;
+import minigames_V2.DiceWars;
+import minigames_V2.GuessTheNumber;
+import minigames_V2.MiniGameEngine;
+import minigames_V2.RockPaperScissors;
 
 public class GameWindowManager {
 	
@@ -44,6 +47,12 @@ public class GameWindowManager {
 	
 	private City currentCity;
 	private boolean isHospitalWindowOpen;
+	
+	//Minigame stuff
+	private MiniGameEngine miniGameEngine;
+	private RockPaperScissors rockPaperScissors;
+	private GuessTheNumber guessTheNumber;
+	private DiceWars diceWars;
 	
 
 	public GameWindowManager() {
@@ -224,7 +233,12 @@ public class GameWindowManager {
 				ShopWindow shopWindow = new ShopWindow(this, (Shop) building, mainWindow);
 				break;
 			case VillainsLair:
+<<<<<<< HEAD
 				VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainWindow);
+=======
+				miniGameEngine = new MiniGameEngine();
+				VillainLairWindow villainsLairWindow = new VillainLairWindow(this);
+>>>>>>> a61dffaa9168600240213cc7d9dc90d9d40b12ea
 				break;
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
@@ -328,6 +342,20 @@ public class GameWindowManager {
 	 */
 	public void setCurrentIndex(int currentIndex) {
 		this.currentIndex = currentIndex;
+	}
+
+	/**
+	 * @return the miniGameEngine
+	 */
+	public MiniGameEngine getMiniGameEngine() {
+		return miniGameEngine;
+	}
+
+	/**
+	 * @param miniGameEngine the miniGameEngine to set
+	 */
+	public void setMiniGameEngine(MiniGameEngine miniGameEngine) {
+		this.miniGameEngine = miniGameEngine;
 	}
 
 	public Types typeConversion (HeroTypes heroType) {
