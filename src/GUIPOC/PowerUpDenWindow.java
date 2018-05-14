@@ -230,7 +230,7 @@ public class PowerUpDenWindow {
 		squad.getBackPack().addItemToInventory(new Armor(CollectableID.Armor));
 		squad.getBackPack().addItemToInventory(new GameChooser(CollectableID.GameChooser));
 		
-		GameWindowManager manager = new GameWindowManager(city, squad);
+		GameWindowManager manager = new GameWindowManager();
 		PowerUpDen pb = new PowerUpDen("Ciao", TypeBuildings.PowerUpDen); 
 		MainGameWindow mw = new MainGameWindow(manager);
 		PowerUpDenWindow win = new PowerUpDenWindow(manager, pb, mw);

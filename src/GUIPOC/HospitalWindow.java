@@ -268,7 +268,7 @@ public class HospitalWindow {
 		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
 		
-		GameWindowManager gm = new GameWindowManager(city, heroes);
+		GameWindowManager gm = new GameWindowManager();
 		gm.setHospitalWindowOpen(true);
 		MainGameWindow mw = new MainGameWindow(gm);
 		HospitalWindow hw = new HospitalWindow(gm, hospital, mw);

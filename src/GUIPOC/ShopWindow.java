@@ -294,7 +294,7 @@ public class ShopWindow {
 		squad.getBackPack().addItemToInventory(new HealingItem(CollectableID.GoodHealingItem));
 		squad.setWallet(new Money(1000));
 		
-		GameWindowManager manager = new GameWindowManager(city, squad);
+		GameWindowManager manager = new GameWindowManager();
 		Shop shop = new Shop("Shop", TypeBuildings.Shop); 
 		MainGameWindow mw = new MainGameWindow(manager);
 		ShopWindow win = new ShopWindow(manager, shop, mw);

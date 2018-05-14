@@ -179,6 +179,19 @@ public class GameWindowManager {
 	}
 	
 	
+	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, boolean herosWon) {
+		currentIndex += 1;
+		if (herosWon) {
+			if (currentIndex < world.size()) {
+				currentCity = world.get(currentIndex);
+				mainGameWindow.getFrame().setVisible(true);
+			} else {
+				//Celebration time!
+			}
+		} else {
+			//Commemoration time!
+		}
+	}
 	/**
 	 * 
 	 * @param building (Type {@link Building})
@@ -261,6 +274,7 @@ public class GameWindowManager {
 		launchMainGameScreen();
 	}
 	
+	
 
 	/**
 	 * @return the characterTypes
@@ -296,6 +310,20 @@ public class GameWindowManager {
 	public void setVillains(Villains villains) {
 		this.villains = villains;
 	}
+	
+	/**
+	 * @return the currentIndex
+	 */
+	public int getCurrentIndex() {
+		return currentIndex;
+	}
+
+	/**
+	 * @param currentIndex the currentIndex to set
+	 */
+	public void setCurrentIndex(int currentIndex) {
+		this.currentIndex = currentIndex;
+	}
 
 	public Types typeConversion (HeroTypes heroType) {
 		switch (heroType) {
@@ -326,7 +354,5 @@ public class GameWindowManager {
 		return null;
 		
 	}
-	
-	
 	
 }
