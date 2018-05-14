@@ -21,7 +21,7 @@ public class MiniGameEngine {
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			
 			int selectedMiniGame = selectNewGame(3);
-			System.out.println("The Game will be " + getGame(selectedMiniGame));
+			System.out.println("The Game will be " + getGameString(selectedMiniGame));
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			villainEffects(villain, squad);
 			squad.checkTeamStatus();
@@ -122,7 +122,7 @@ public class MiniGameEngine {
 		return null;
 	}
 	
-	private String getGame(int selectedMiniGame) {
+	public String getGameString(int selectedMiniGame) {
 		String result = "";
 		switch (selectedMiniGame) {
 		case 1: result = "Paper, Scissors, Rock"; break;
@@ -143,7 +143,16 @@ public class MiniGameEngine {
 		
 	}
 	
-	public static int getSelectedMiniGame() {
+	public static void setSelectedGame(Games gameID) {
+		switch (gameID) {
+		case RPS: setSelectedGame(1); break;
+		case GTN: setSelectedGame(2); break;
+		case DW: setSelectedGame(3); break;
+		}
+		
+	}
+	
+	public int getSelectedMiniGame() {
 		return selectedMiniGame;
 	}
 

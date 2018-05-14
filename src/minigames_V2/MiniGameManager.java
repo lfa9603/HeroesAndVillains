@@ -9,7 +9,6 @@ import characters.HeroesSquad;
 import characters.Types;
 import characters.Villain;
 import collectables.Money;
-import setupGui.setupTeamAndWorld;
 
 /**
  * @author JayHamilton
@@ -32,17 +31,17 @@ public class MiniGameManager {
 	public MiniGameManager(HeroesSquad squad, Villain villain) {
 		this.setSquad(squad);
 		this.setVillain(villain);
-		this.miniGameEngine = new MiniGameEngine();
+		this.setMiniGameEngine(new MiniGameEngine());
 //		this.rockPaperScissors = new RockPaperScissors(game, givenVillain, theSquad, gotAbilities);
 //		this.guessTheNumber = guessTheNumber;
 //		this.diceWars = diceWars;
+		
 		launchmainGameWindow();
 	}
 	
 	public void launchmainGameWindow() {
 		MainGameWindow battleWindow = new MainGameWindow(this);
 	}
-
 	
 	
 	
@@ -78,6 +77,20 @@ public class MiniGameManager {
 	
 	
 	
+	/**
+	 * @return the miniGameEngine
+	 */
+	public MiniGameEngine getMiniGameEngine() {
+		return miniGameEngine;
+	}
+
+	/**
+	 * @param miniGameEngine the miniGameEngine to set
+	 */
+	public void setMiniGameEngine(MiniGameEngine miniGameEngine) {
+		this.miniGameEngine = miniGameEngine;
+	}
+
 	/** For Testing
 	 * 
 	 * @param args
@@ -92,8 +105,8 @@ public class MiniGameManager {
 		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
 		HeroesSquad testsquad = new HeroesSquad();
 		testsquad.addHero(hero1);
-//		testsquad.addHero(hero3);
-//		testsquad.addHero(hero5);
+		testsquad.addHero(hero3);
+		testsquad.addHero(hero5);
 //		hero2.setisAlive(false);
 //		hero3.setisAlive(false);
 //		hero3.setisAlive(false);
@@ -114,5 +127,7 @@ public class MiniGameManager {
 //		System.out.println(wallet);
 		MiniGameManager game = new MiniGameManager(testsquad, testVillain);
 	}
+
+
 
 }

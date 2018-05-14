@@ -1,5 +1,6 @@
 package engine;
 
+import java.awt.EventQueue;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -42,27 +43,28 @@ public class Engine_v2 {
 		
 		else {
 			guiActive = true;
-			Thread main = Thread.currentThread();
+			
 //			SetupManager setup = new SetupManager();
 //
 //			world = setup.getWorld();
 //			squad = setup.getSquad();
-			
-			GuiThread guiThread = new GuiThread();
-			guiThread.start();
-			synchronized (guiThread) {
-				try {
-					System.out.println("Wait till Guithread dies...");
-					main.wait();
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-			}
+			Thread main = Thread.currentThread();
 
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							SetupManager setup = new SetupManager();
+							squad = setup.getSquad();
+							world = setup.getWorld();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						
+						
+					}
+				});
 			System.out.println("Main Thread active");
-			squad = guiThread.getSquad();
-			world = guiThread.getWorld();
-			
+
 		}
 		
 		
