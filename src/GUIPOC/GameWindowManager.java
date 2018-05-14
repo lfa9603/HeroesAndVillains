@@ -186,12 +186,14 @@ public class GameWindowManager {
 		if (herosWon) {
 			if (currentIndex < world.size()) {
 				currentCity = world.get(currentIndex);
+				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 				mainGameWindow.getFrame().setVisible(true);
 			} else {
 				closeMainGameWindow(mainGameWindow);
 				System.out.println("YOU WON!");
 			}
 		} else {
+			closeMainGameWindow(mainGameWindow);
 			System.out.println("YOU LOST");
 		}
 	}
@@ -222,7 +224,7 @@ public class GameWindowManager {
 				ShopWindow shopWindow = new ShopWindow(this, (Shop) building, mainWindow);
 				break;
 			case VillainsLair:
-				VillainLairWindow villainsLairWindow = new VillainLairWindow(this);
+				VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainWindow);
 				break;
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
