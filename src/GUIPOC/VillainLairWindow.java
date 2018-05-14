@@ -13,6 +13,7 @@ import javax.swing.JProgressBar;
 import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
 
+import minigames_V2.Games;
 import minigames_V2.MiniGameManager;
 
 import javax.swing.border.BevelBorder;
@@ -28,6 +29,7 @@ public class VillainLairWindow {
 
 	private JFrame battleWindow;
 	private static GameWindowManager manager;
+	private MainGameWindow mainGameWindow;
 
 //	/**
 //	 * Launch the application.
@@ -48,8 +50,9 @@ public class VillainLairWindow {
 	/**
 	 * Create the application.
 	 */
-	public VillainLairWindow(GameWindowManager gameWindowManager) {
+	public VillainLairWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
 		manager = gameWindowManager;
+		this.mainGameWindow = mainGameWindow;
 		initialize();
 		battleWindow.setVisible(true);
 
@@ -168,6 +171,24 @@ public class VillainLairWindow {
 		JButton btnBattle = new JButton("Battle");
 		btnBattle.setBounds(259, 630, 371, 56);
 		battleWindow.getContentPane().add(btnBattle);
+		
+		JButton btnWin = new JButton("Win");
+		btnWin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, true);
+			}
+		});
+		btnWin.setBounds(644, 641, 194, 35);
+		battleWindow.getContentPane().add(btnWin);
+		
+		JButton button_1 = new JButton("lose");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, false);
+			}
+		});
+		button_1.setBounds(644, 595, 194, 35);
+		battleWindow.getContentPane().add(button_1);
 
 		
 		

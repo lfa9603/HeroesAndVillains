@@ -231,6 +231,7 @@ public class GameWindowManager {
 				ShopWindow shopWindow = new ShopWindow(this, (Shop) building, mainWindow);
 				break;
 			case VillainsLair:
+				miniGameEngine = new MiniGameEngine();
 				VillainLairWindow villainsLairWindow = new VillainLairWindow(this);
 				break;
 			default:
