@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 
 public class setupTeamAndWorld {
 
-	private JDialog teamAndWorldSetupDialog;
+	private JFrame teamAndWorldSetupDialog;
 	private static GameWindowManager manager;
 	private JTextField textField;
 
@@ -50,7 +50,7 @@ public class setupTeamAndWorld {
 	public setupTeamAndWorld(GameWindowManager gameWindowManager) {
 		manager = gameWindowManager;
 		initialize();
-		teamAndWorldSetupDialog.setModal(true);
+//		teamAndWorldSetupDialog.setModal(true);
 		teamAndWorldSetupDialog.setVisible(true);
 	}
 	
@@ -67,7 +67,7 @@ public class setupTeamAndWorld {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		teamAndWorldSetupDialog = new JDialog();
+		teamAndWorldSetupDialog = new JFrame();
 		teamAndWorldSetupDialog.setBounds(100, 100, 703, 421);
 //		TeamAndWorldSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		teamAndWorldSetupDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
