@@ -16,12 +16,15 @@ import javax.swing.border.BevelBorder;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class setupTeamAndWorld {
 
 	private JFrame teamAndWorldSetup;
 	private static GameWindowManager manager;
 	private JTextField textField;
+	private boolean worldCreated = false;
+	private boolean nameApplied  = false;
 
 //	/**
 //	 * Launch the application.
@@ -59,13 +62,40 @@ public class setupTeamAndWorld {
 	
 
 	/**
+	 * @return the worldCreated
+	 */
+	public boolean isWorldCreated() {
+		return worldCreated;
+	}
+
+	/**
+	 * @param worldCreated the worldCreated to set
+	 */
+	public void setWorldCreated(boolean worldCreated) {
+		this.worldCreated = worldCreated;
+	}
+
+	/**
+	 * @return the nameApplied
+	 */
+	public boolean isNameApplied() {
+		return nameApplied;
+	}
+
+	/**
+	 * @param nameApplied the nameApplied to set
+	 */
+	public void setNameApplied(boolean nameApplied) {
+		this.nameApplied = nameApplied;
+	}
+
+	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		teamAndWorldSetup = new JFrame();
 		teamAndWorldSetup.setBounds(100, 100, 703, 421);
 		teamAndWorldSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		teamAndWorldSetup.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		teamAndWorldSetup.getContentPane().setLayout(null);
 		
 		JLabel lblSetup = new JLabel("Setup");
@@ -104,6 +134,12 @@ public class setupTeamAndWorld {
 		teamAndWorldSetup.getContentPane().add(textField);
 		textField.setColumns(10);
 		
+		JLabel ErrorMessage = new JLabel("");
+		ErrorMessage.setHorizontalAlignment(SwingConstants.CENTER);
+		ErrorMessage.setForeground(Color.RED);
+		ErrorMessage.setFont(new Font("Tahoma", Font.BOLD, 14));
+		ErrorMessage.setBounds(61, 357, 571, 14);
+		teamAndWorldSetup.getContentPane().add(ErrorMessage);
 		
 		JLabel TeamNameConfirmation = new JLabel("");
 		TeamNameConfirmation.setHorizontalAlignment(SwingConstants.CENTER);
@@ -114,7 +150,12 @@ public class setupTeamAndWorld {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
+				if (worldCreated && nameApplied) {
+					finishedWindow();
+				}
+				else {
+					ErrorMessage.setText("You must set the world size and create a name for your team.");
+				}
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -135,6 +176,7 @@ public class setupTeamAndWorld {
 				if (2 <= teamName.length() && teamName.length() <= 10) {
 					manager.getSquad().setTeamName(teamName);
 					TeamNameConfirmation.setText("Your team is called " + textField.getText());
+					setNameApplied(true);
 				}
 				else {
 					TeamNameConfirmation.setText("Your teams name must be between 2 and 10 characters long");
@@ -158,6 +200,7 @@ public class setupTeamAndWorld {
 					City city = new City();
 					world.add(city);
 				WorldCreationLabel.setText("A World of " + world.size() + " cities has been created.");
+				setWorldCreated(true);
 				}
 			}
 		});
@@ -165,6 +208,8 @@ public class setupTeamAndWorld {
 		btnConfirmWorldSize.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnConfirmWorldSize.setBounds(248, 293, 187, 50);
 		teamAndWorldSetup.getContentPane().add(btnConfirmWorldSize);
+		
+
 		
 		
 

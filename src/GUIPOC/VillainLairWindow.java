@@ -66,14 +66,6 @@ public class VillainLairWindow {
 		//TODO
 	}
 	
-	
-//	public void setVisibilty() {
-//		switch (manager.getMiniGameEngine().getSelectedMiniGame()) {
-//		case 1:
-//		}
-//		
-//	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -127,8 +119,9 @@ public class VillainLairWindow {
 		dialogueTextPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		dialogueTextPane.setBounds(199, 67, 474, 151);
 		battleWindow.getContentPane().add(dialogueTextPane);
-		int selectedMiniGame = manager.getMiniGameEngine().getSelectedMiniGame();
-		dialogueTextPane.setText("The Minigame will be: " + manager.getMiniGameEngine().getGameString(selectedMiniGame));
+		int selectedMiniGame = manager.getMiniGameEngine().selectNewGame(3);
+		String gameString = manager.getMiniGameEngine().getGameString(selectedMiniGame);
+		dialogueTextPane.setText("The Minigame will be: " + gameString);
 
 		
 		JLabel SelectedHero = new JLabel("Selected Hero");
@@ -136,20 +129,10 @@ public class VillainLairWindow {
 		SelectedHero.setBounds(311, 500, 270, 26);
 		battleWindow.getContentPane().add(SelectedHero);
 		
-		//Hero Selection buttons
-		JButton heroBtn1 = new JButton("Select " + manager.getSquad().getHero(0).getCharacterName());
-		heroBtn1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SelectedHero.setText(manager.getSquad().getHero(0).getCharacterName() + " selected");
-			}
-		});
-		heroBtn1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		heroBtn1.setToolTipText("Click to select this hero to fight with");
-		heroBtn1.setBounds(471, 421, 159, 23);
-		battleWindow.getContentPane().add(heroBtn1);
+		//Game Chooser 
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(Games.values()));
+		JComboBox<Games> comboBox = new JComboBox<Games>();
+		comboBox.setModel(new DefaultComboBoxModel<Games>(Games.values()));
 		comboBox.setBounds(199, 547, 83, 32);
 		battleWindow.getContentPane().add(comboBox);
 		
@@ -163,32 +146,63 @@ public class VillainLairWindow {
 			public void actionPerformed(ActionEvent arg0) {
 				int game = comboBox.getSelectedIndex() + 1;
 				manager.getMiniGameEngine().setSelectedGame(game);
+				int selectedMiniGame = manager.getMiniGameEngine().getSelectedMiniGame();
+				String gameString = manager.getMiniGameEngine().getGameString(selectedMiniGame);
+				dialogueTextPane.setText("The Minigame will be: " + gameString);
 			}
 		});
 		btnChangeGame.setBounds(598, 546, 194, 35);
 		battleWindow.getContentPane().add(btnChangeGame);
+		comboBox.setVisible(false);
+		lblUseChooseGame.setVisible(false);
+		btnChangeGame.setVisible(false);
+		
+		
+		//Hero Selection buttons
+		JButton heroBtn1 = new JButton("Select " + manager.getSquad().getHero(0).getCharacterName());
+		heroBtn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SelectedHero.setText(manager.getSquad().getHero(0).getCharacterName() + " selected");
+				if (manager.getSquad().getHero(0).getIsGameChooser()) {
+					comboBox.setVisible(true);
+					lblUseChooseGame.setVisible(true);
+					btnChangeGame.setVisible(true);
+				}
+				else {
+					comboBox.setVisible(false);
+					lblUseChooseGame.setVisible(false);
+					btnChangeGame.setVisible(false);
+				}
+			}
+		});
+		heroBtn1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		heroBtn1.setToolTipText("Click to select this hero to fight with");
+		heroBtn1.setBounds(471, 421, 159, 23);
+		battleWindow.getContentPane().add(heroBtn1);
 		
 		JButton btnBattle = new JButton("Battle");
 		btnBattle.setBounds(259, 630, 371, 56);
 		battleWindow.getContentPane().add(btnBattle);
+
+		// to Confirm level transition and test other game logic
 		
-		JButton btnWin = new JButton("Win");
-		btnWin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, true);
-			}
-		});
-		btnWin.setBounds(644, 641, 194, 35);
-		battleWindow.getContentPane().add(btnWin);
-		
-		JButton button_1 = new JButton("lose");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, false);
-			}
-		});
-		button_1.setBounds(644, 595, 194, 35);
-		battleWindow.getContentPane().add(button_1);
+//		JButton btnWin = new JButton("Win");
+//		btnWin.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, true);
+//			}
+//		});
+//		btnWin.setBounds(644, 641, 194, 35);
+//		battleWindow.getContentPane().add(btnWin);
+//		
+//		JButton button_1 = new JButton("lose");
+//		button_1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, false);
+//			}
+//		});
+//		button_1.setBounds(644, 595, 194, 35);
+//		battleWindow.getContentPane().add(button_1);
 
 		
 		
@@ -197,6 +211,16 @@ public class VillainLairWindow {
 		herobtn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+				if (manager.getSquad().getHero(1).getIsGameChooser()) {
+					comboBox.setVisible(true);
+					lblUseChooseGame.setVisible(true);
+					btnChangeGame.setVisible(true);
+				}
+				else {
+					comboBox.setVisible(false);
+					lblUseChooseGame.setVisible(false);
+					btnChangeGame.setVisible(false);
+				}
 			}
 		});
 		herobtn2.setToolTipText("Click to select this hero to fight with");
@@ -208,6 +232,16 @@ public class VillainLairWindow {
 		herobtn22.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+				if (manager.getSquad().getHero(1).getIsGameChooser()) {
+					comboBox.setVisible(true);
+					lblUseChooseGame.setVisible(true);
+					btnChangeGame.setVisible(true);
+				}
+				else {
+					comboBox.setVisible(false);
+					lblUseChooseGame.setVisible(false);
+					btnChangeGame.setVisible(false);
+				}
 			}
 		});
 		herobtn22.setToolTipText("Click to select this hero to fight with");
@@ -219,6 +253,16 @@ public class VillainLairWindow {
 		heroBtn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(2).getCharacterName() + " selected");
+				if (manager.getSquad().getHero(2).getIsGameChooser()) {
+					comboBox.setVisible(true);
+					lblUseChooseGame.setVisible(true);
+					btnChangeGame.setVisible(true);
+				}
+				else {
+					comboBox.setVisible(false);
+					lblUseChooseGame.setVisible(false);
+					btnChangeGame.setVisible(false);
+				}
 			}
 		});
 		heroBtn3.setToolTipText("Click to select this hero to fight with");

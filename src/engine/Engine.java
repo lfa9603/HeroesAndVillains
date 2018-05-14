@@ -27,7 +27,6 @@ public class Engine {
 	private static boolean guiActive = false;
 	
 	
-	
 	public Engine() {
 		
 //		currentIndex = 0;
@@ -38,18 +37,13 @@ public class Engine {
 			
 			WorldBuilder worldBuilder = new WorldBuilder();
 			world = worldBuilder.getWorld();
+			villains = new Villains(world.size());
+			choosePartsUsingIndex(currentIndex);
 		}
 		
 		else {
 			guiActive = true;
-			SetupManager setup = new SetupManager();
-			world = setup.getWorld();
-			squad = setup.getSquad(); 
-		}
-		
-		
-		villains = new Villains(world.size()); 
-//		choosePartsUsingIndex(currentIndex);
+		}	
 	}
 	
 	private void choosePartsUsingIndex(int index) {
@@ -93,30 +87,7 @@ public class Engine {
 	}
 	
 	private void startGui() {
-		
-		boolean playingGame = true;
-			
-			while (playingGame) {
-//				SquadMover mover = new SquadMover(currentCity, squad);
-//				mover.startMoving();
-				
-				GameWindowManager manager = new GameWindowManager(currentCity, squad);
-				manager.launchMainGameScreen();
-				
-				if (nextCityExists()) {
-					setUpgameForNextCity();
-				} else {
-			
-					for (int i = 0; i < 100; i++) {
-						System.out.println("MMMMMMMAAAAAAAAAAAAATEEEEEEEEEEEEEEEEE! YOU WON THE GAME!");
-						System.out.println("\n");
-						VisualUtilities.getIcon(Icons.youWin);
-						
-					}
-					
-					playingGame = false;
-				}
-			}
+		GameWindowManager manager = new GameWindowManager();
 	}
 	
 	private boolean nextCityExists() {
@@ -161,18 +132,14 @@ public class Engine {
 	}
 
 	public static void main(String[] args) {
-//		VisualUtilities.getIcon(Icons.youWin); Just a test of icons
+
 		Engine engine = new Engine();
-		// for random tests
+		
 		if (guiActive) {
 			engine.startGui();
 		}
 		else {
 			engine.startTui();
 		}
-
 	}
-
-
-	
 }

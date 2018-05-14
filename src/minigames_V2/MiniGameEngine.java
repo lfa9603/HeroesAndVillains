@@ -133,7 +133,7 @@ public class MiniGameEngine {
 		return result;
 	}
 	
-	private int selectNewGame(int upperLimit) {
+	public int selectNewGame(int upperLimit) {
 		int selectedGame = Utilities.getRandInt(upperLimit);
 		return selectedGame;		
 	}
