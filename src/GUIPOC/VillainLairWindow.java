@@ -1,4 +1,4 @@
-package minigames_V2;
+package GUIPOC;
 
 import java.awt.EventQueue;
 
@@ -12,6 +12,9 @@ import javax.swing.JTextPane;
 import javax.swing.JProgressBar;
 import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
+
+import minigames_V2.MiniGameManager;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -21,10 +24,10 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class MainGameWindow {
+public class VillainLairWindow {
 
 	private JFrame battleWindow;
-	private static MiniGameManager manager;
+	private static GameWindowManager manager;
 
 //	/**
 //	 * Launch the application.
@@ -45,8 +48,8 @@ public class MainGameWindow {
 	/**
 	 * Create the application.
 	 */
-	public MainGameWindow(MiniGameManager incomingManager) {
-		manager = incomingManager;
+	public VillainLairWindow(GameWindowManager gameWindowManager) {
+		manager = gameWindowManager;
 		initialize();
 		battleWindow.setVisible(true);
 
@@ -61,12 +64,12 @@ public class MainGameWindow {
 	}
 	
 	
-	public void setVisibilty() {
-		switch (manager.getMiniGameEngine().getSelectedMiniGame()) {
-		case 1:
-		}
-		
-	}
+//	public void setVisibilty() {
+//		switch (manager.getMiniGameEngine().getSelectedMiniGame()) {
+//		case 1:
+//		}
+//		
+//	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -76,7 +79,7 @@ public class MainGameWindow {
 		battleWindow.setBounds(100, 100, 903, 778);
 		battleWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		battleWindow.getContentPane().setLayout(null);
-		setVisibilty();
+//		setVisibilty();
 		
 		JLabel Titlelbl = new JLabel("Pre Battle Screen");
 		Titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -96,7 +99,8 @@ public class MainGameWindow {
 		VillaintextPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		VillaintextPane.setBounds(10, 229, 394, 181);
 		battleWindow.getContentPane().add(VillaintextPane);
-		VillaintextPane.setText(manager.getVillain().toString());
+		manager.
+		VillaintextPane.setText(manager.getVillains().getCurrentVillain(currentIndex));
 		
 		JLabel VillainHealthLbl = new JLabel("Villains Health:");
 		VillainHealthLbl.setHorizontalAlignment(SwingConstants.CENTER);

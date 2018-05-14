@@ -219,7 +219,7 @@ public class GameWindowManager {
 				ShopWindow shopWindow = new ShopWindow(this, (Shop) building, mainWindow);
 				break;
 			case VillainsLair:
-				VillainLairWindow villLairWindow = new VillainLairWindow(this, (VillainsLair) building, mainWindow);
+				VillainLairWindow villainsLairWindow = new VillainLairWindow(this);
 				break;
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
