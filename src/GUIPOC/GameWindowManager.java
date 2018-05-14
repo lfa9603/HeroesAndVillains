@@ -181,15 +181,18 @@ public class GameWindowManager {
 	
 	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, boolean herosWon) {
 		currentIndex += 1;
+		villainLairWindow.closeWindow();
+		
 		if (herosWon) {
 			if (currentIndex < world.size()) {
 				currentCity = world.get(currentIndex);
 				mainGameWindow.getFrame().setVisible(true);
 			} else {
-				//Celebration time!
+				closeMainGameWindow(mainGameWindow);
+				System.out.println("YOU WON!");
 			}
 		} else {
-			//Commemoration time!
+			System.out.println("YOU LOST");
 		}
 	}
 	/**
