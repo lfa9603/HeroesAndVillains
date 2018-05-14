@@ -1,4 +1,4 @@
-package setupGui;
+package GUIPOC;
 
 
 import javax.swing.JFrame;
@@ -11,6 +11,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import characters.Types;
+import setupGui.SetupManager;
 import characters.Abilities;
 import characters.Hero;
 import characters.HeroTypes;
@@ -26,7 +27,7 @@ import java.awt.Color;
 public class SetupAddHeros {
 
 	private JFrame frmTeamBuilder;
-	private static SetupManager manager;
+	private static GameWindowManager manager;
 	private JTextField txtHerosName;
 
 //	/**
@@ -48,15 +49,14 @@ public class SetupAddHeros {
 	/**
 	 * Create the application.
 	 */
-	public SetupAddHeros(SetupManager incomingManger) {
-		manager = incomingManger;
+	public SetupAddHeros(GameWindowManager gameWindowManager) {
+		manager = gameWindowManager;
 		initialize();
 		frmTeamBuilder.setVisible(true);
 	}
 	
 	public void closeWindow() {
 		frmTeamBuilder.dispose();
-		manager.notifyMainThread();
 	}
 	
 	public void backWindow() {

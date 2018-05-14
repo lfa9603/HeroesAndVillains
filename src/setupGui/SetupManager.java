@@ -6,6 +6,8 @@ package setupGui;
 
 import java.util.ArrayList;
 
+import GUIPOC.SetupAddHeros;
+import GUIPOC.setupTeamAndWorld;
 import characters.Abilities;
 import characters.HeroTypes;
 import characters.HeroesSquad;
@@ -33,6 +35,8 @@ public class SetupManager {
 	private ArrayList<City> world;
 	
 	
+
+//Obserlette
 	
 	public SetupManager() {
 //		super();
@@ -63,13 +67,8 @@ public class SetupManager {
 	
 	public void finalcloseSetupAddHeros(SetupAddHeros setupWindow) {
 		setupWindow.closeWindow();
-		//notifyMainThread();
 	}
-	
-	public void notifyMainThread() {
-//		Thread.currentThread().stop();
-		notify();
-	}
+
 	
 //	public static void main(String[] args) {
 //		SetupManager manager = new SetupManager();

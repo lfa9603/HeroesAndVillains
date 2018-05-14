@@ -1,4 +1,4 @@
-package setupGui;
+package GUIPOC;
 
 import java.awt.EventQueue;
 
@@ -15,6 +15,7 @@ import javax.swing.border.SoftBevelBorder;
 
 import city.City;
 import city.WorldBuilder;
+import setupGui.SetupManager;
 
 import javax.swing.border.BevelBorder;
 import java.awt.event.ActionListener;
@@ -24,7 +25,7 @@ import java.awt.event.ActionEvent;
 public class setupTeamAndWorld {
 
 	private JDialog teamAndWorldSetupDialog;
-	private static SetupManager manager;
+	private static GameWindowManager manager;
 	private JTextField textField;
 
 //	/**
@@ -46,8 +47,8 @@ public class setupTeamAndWorld {
 	/**
 	 * Create the application.
 	 */
-	public setupTeamAndWorld(SetupManager incomingManager) {
-		manager = incomingManager;
+	public setupTeamAndWorld(GameWindowManager gameWindowManager) {
+		manager = gameWindowManager;
 		initialize();
 		teamAndWorldSetupDialog.setModal(true);
 		teamAndWorldSetupDialog.setVisible(true);
