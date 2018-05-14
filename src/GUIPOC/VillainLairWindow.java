@@ -99,8 +99,8 @@ public class VillainLairWindow {
 		VillaintextPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		VillaintextPane.setBounds(10, 229, 394, 181);
 		battleWindow.getContentPane().add(VillaintextPane);
-		manager.
-		VillaintextPane.setText(manager.getVillains().getCurrentVillain(currentIndex));
+		int currentIndex = manager.getCurrentIndex();
+		VillaintextPane.setText(manager.getVillains().getCurrentVillain(currentIndex).toString());
 		
 		JLabel VillainHealthLbl = new JLabel("Villains Health:");
 		VillainHealthLbl.setHorizontalAlignment(SwingConstants.CENTER);
