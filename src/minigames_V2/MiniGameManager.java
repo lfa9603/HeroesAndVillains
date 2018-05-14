@@ -3,6 +3,7 @@
  */
 package minigames_V2;
 
+import GUIPOC.VillainLairWindow;
 import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
@@ -40,7 +41,7 @@ public class MiniGameManager {
 	}
 	
 	public void launchmainGameWindow() {
-		MainGameWindow battleWindow = new MainGameWindow(this);
+		VillainLairWindow battleWindow = new VillainLairWindow(this);
 	}
 	
 	
