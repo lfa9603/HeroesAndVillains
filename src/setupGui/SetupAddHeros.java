@@ -74,7 +74,7 @@ public class SetupAddHeros {
 		frmTeamBuilder = new JFrame();
 		frmTeamBuilder.getContentPane().setName("heros name");
 		frmTeamBuilder.setTitle("Team builder");
-		frmTeamBuilder.setBounds(100, 100, 738, 546);
+		frmTeamBuilder.setBounds(100, 100, 769, 610);
 		frmTeamBuilder.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTeamBuilder.getContentPane().setLayout(null);
 		

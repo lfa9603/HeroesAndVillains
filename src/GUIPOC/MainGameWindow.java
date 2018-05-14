@@ -290,15 +290,15 @@ public class MainGameWindow {
 	private Building chooseRightBuilding(int index) throws IndexOutOfBoundsException {
 		switch (index) {
 			case 0:
-				return manager.getCity().returnBuildingAtSpecificCoordinates(new Point(0, 0));
+				return manager.getCurrentCity().returnBuildingAtSpecificCoordinates(new Point(0, 0));
 			case 1:
-				return manager.getCity().returnBuildingAtSpecificCoordinates(new Point(0, 4));
+				return manager.getCurrentCity().returnBuildingAtSpecificCoordinates(new Point(0, 4));
 			case 2:
-				return manager.getCity().returnBuildingAtSpecificCoordinates(new Point(-4, 0));
+				return manager.getCurrentCity().returnBuildingAtSpecificCoordinates(new Point(-4, 0));
 			case 3:
-				return manager.getCity().returnBuildingAtSpecificCoordinates(new Point(0, -4));
+				return manager.getCurrentCity().returnBuildingAtSpecificCoordinates(new Point(0, -4));
 			case 4:
-				return manager.getCity().returnBuildingAtSpecificCoordinates(new Point(4, 0));
+				return manager.getCurrentCity().returnBuildingAtSpecificCoordinates(new Point(4, 0));
 			default:
 				throw new IndexOutOfBoundsException("There is no Builidng object left");
 		}
