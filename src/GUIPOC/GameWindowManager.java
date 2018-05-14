@@ -4,11 +4,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import characters.Abilities;
-import characters.Hero;
 import characters.HeroTypes;
 import characters.HeroesSquad;
 import characters.Types;
-import characters.Villain;
 import characters.Villains;
 import city.City;
 import city.buildings.Building;
@@ -18,10 +16,10 @@ import city.buildings.PowerUpDen;
 * It allows to start each city window and from there managing all the buildings windows. 
 */
 import city.buildings.TypeBuildings;
+import city.buildings.VillainsLair;
 import city.buildings.homeBase.Home;
 import city.buildings.hospital.Hospital;
 import city.buildings.shop.Shop;
-import setupGui.SetupManager;
 
 public class GameWindowManager {
 	
@@ -45,7 +43,6 @@ public class GameWindowManager {
 	private Villains villains;
 	
 	private City currentCity;
-	private Villain currentVillain;
 	private boolean isHospitalWindowOpen;
 	
 
@@ -54,6 +51,7 @@ public class GameWindowManager {
 //		this.squad = squad;
 		squad = new HeroesSquad();
 		world = new ArrayList<City>();
+		currentIndex = 0;
 	}
 	
 	/**
@@ -88,6 +86,15 @@ public class GameWindowManager {
 	 */
 	public void launchMainGameScreen() {
 		MainGameWindow mainGameScreen = new MainGameWindow(this);
+	}
+	
+	/**
+	 * 
+	 * Method to start the full first part of the game, where the squad and the world are created
+	 * 
+	 */
+	public void launchSetupTeamAndWorld() {
+		setupTeamAndWorld setupWindow = new setupTeamAndWorld(this);
 	}
 	
 	/**
@@ -179,7 +186,7 @@ public class GameWindowManager {
 	 * 
 	 * Contains a switch statement that allows to choose in which building to be sent.
 	 * If the {@link TypeBuildings} of the building parameter is one of the 5 possible ones, 
-	 * it will instantiate a new Window and it will pass it the nexessary parameters.
+	 * it will instantiate a new Window and it will pass it the necessary parameters.
 	 *   
 	 */
 	public void openBuildingWindow(Building building, MainGameWindow mainWindow) {
@@ -197,6 +204,9 @@ public class GameWindowManager {
 				break;
 			case Shop:
 				ShopWindow shopWindow = new ShopWindow(this, (Shop) building, mainWindow);
+				break;
+			case VillainsLair:
+				VillainLairWindow villLairWindow = new VillainLairWindow(this, (VillainsLair) building, mainWindow);
 				break;
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
@@ -219,23 +229,14 @@ public class GameWindowManager {
 	}
 
 	public static void main(String[] args) {
-//		City city = new City();
-//		HeroesSquad squad = new HeroesSquad();
-//		squad.setHaveMap(false);
-//		squad.setCurrentCity(city);
-//		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
-//		squad.addHero(lorenzo);
+
 		GameWindowManager manager = new GameWindowManager();
-//		manager.launchMainGameScreen();
 		manager.launchSetupTeamAndWorld();
 		
 	}
 	
 	// Merged from Jays Setup Manager
 	
-	public void launchSetupTeamAndWorld() {
-		setupTeamAndWorld setupWindow = new setupTeamAndWorld(this);
-	}
 	
 	public void closeSetupTeamAndWorld(setupTeamAndWorld setupTeamAndWorld) {
 		setupTeamAndWorld.closeWindow();
@@ -255,24 +256,11 @@ public class GameWindowManager {
 	
 	public void finalcloseSetupAddHeros(SetupAddHeros setupWindow) {
 		setupWindow.closeWindow();
+		villains = new Villains(world.size());
+		setCurrentCity(world.get(currentIndex));
 		launchMainGameScreen();
-		
 	}
 	
-	
-//	/**
-//	 * @return the squad
-//	 */
-//	public HeroesSquad getSquad() {
-//		return squad;
-//	}
-//
-//	/**
-//	 * @param squad the squad to set
-//	 */
-//	public void setSquad(HeroesSquad squad) {
-//		this.squad = squad;
-//	}
 
 	/**
 	 * @return the characterTypes
@@ -295,6 +283,20 @@ public class GameWindowManager {
 		this.world = world;
 	}
 	
+	/**
+	 * @return the villains
+	 */
+	public Villains getVillains() {
+		return villains;
+	}
+
+	/**
+	 * @param villains the villains to set
+	 */
+	public void setVillains(Villains villains) {
+		this.villains = villains;
+	}
+
 	public Types typeConversion (HeroTypes heroType) {
 		switch (heroType) {
 		case Talkitive: return Types.talkitive;
