@@ -7,16 +7,11 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JSlider;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.border.SoftBevelBorder;
 
 import city.City;
-import city.WorldBuilder;
-import setupGui.SetupManager;
-
 import javax.swing.border.BevelBorder;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -24,7 +19,7 @@ import java.awt.event.ActionEvent;
 
 public class setupTeamAndWorld {
 
-	private JFrame teamAndWorldSetupDialog;
+	private JFrame teamAndWorldSetup;
 	private static GameWindowManager manager;
 	private JTextField textField;
 
@@ -51,11 +46,11 @@ public class setupTeamAndWorld {
 		manager = gameWindowManager;
 		initialize();
 //		teamAndWorldSetupDialog.setModal(true);
-		teamAndWorldSetupDialog.setVisible(true);
+		teamAndWorldSetup.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		teamAndWorldSetupDialog.dispose();
+		teamAndWorldSetup.dispose();
 	}
 	
 	public void finishedWindow() {
@@ -67,17 +62,17 @@ public class setupTeamAndWorld {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		teamAndWorldSetupDialog = new JFrame();
-		teamAndWorldSetupDialog.setBounds(100, 100, 703, 421);
-//		TeamAndWorldSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		teamAndWorldSetupDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		teamAndWorldSetupDialog.getContentPane().setLayout(null);
+		teamAndWorldSetup = new JFrame();
+		teamAndWorldSetup.setBounds(100, 100, 703, 421);
+		teamAndWorldSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		teamAndWorldSetup.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		teamAndWorldSetup.getContentPane().setLayout(null);
 		
 		JLabel lblSetup = new JLabel("Setup");
 		lblSetup.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSetup.setFont(new Font("Tahoma", Font.BOLD, 28));
 		lblSetup.setBounds(10, 11, 572, 49);
-		teamAndWorldSetupDialog.getContentPane().add(lblSetup);
+		teamAndWorldSetup.getContentPane().add(lblSetup);
 		
 		JSlider slider = new JSlider();
 		slider.setMajorTickSpacing(1);
@@ -88,25 +83,25 @@ public class setupTeamAndWorld {
 		slider.setMaximum(6);
 		slider.setSnapToTicks(true);
 		slider.setBounds(312, 72, 343, 49);
-		teamAndWorldSetupDialog.getContentPane().add(slider);
+		teamAndWorldSetup.getContentPane().add(slider);
 		
 		JLabel lblNewLabel = new JLabel("Number of cities to explore:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setBounds(40, 71, 230, 50);
-		teamAndWorldSetupDialog.getContentPane().add(lblNewLabel);
+		teamAndWorldSetup.getContentPane().add(lblNewLabel);
 		
 		JLabel lblSelectTheName = new JLabel("Select the name of your Team:");
 		lblSelectTheName.setHorizontalAlignment(SwingConstants.LEFT);
 		lblSelectTheName.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblSelectTheName.setBounds(40, 204, 257, 50);
-		teamAndWorldSetupDialog.getContentPane().add(lblSelectTheName);
+		teamAndWorldSetup.getContentPane().add(lblSelectTheName);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textField.setToolTipText("Type in the name of your team");
 		textField.setBounds(312, 204, 343, 50);
-		teamAndWorldSetupDialog.getContentPane().add(textField);
+		teamAndWorldSetup.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		
@@ -114,7 +109,7 @@ public class setupTeamAndWorld {
 		TeamNameConfirmation.setHorizontalAlignment(SwingConstants.CENTER);
 		TeamNameConfirmation.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TeamNameConfirmation.setBounds(139, 265, 383, 24);
-		teamAndWorldSetupDialog.getContentPane().add(TeamNameConfirmation);
+		teamAndWorldSetup.getContentPane().add(TeamNameConfirmation);
 		
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
@@ -125,13 +120,13 @@ public class setupTeamAndWorld {
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnContinue.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnContinue.setBounds(445, 293, 187, 50);
-		teamAndWorldSetupDialog.getContentPane().add(btnContinue);
+		teamAndWorldSetup.getContentPane().add(btnContinue);
 		
 		JLabel WorldCreationLabel = new JLabel("");
 		WorldCreationLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		WorldCreationLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		WorldCreationLabel.setBounds(139, 146, 383, 24);
-		teamAndWorldSetupDialog.getContentPane().add(WorldCreationLabel);
+		teamAndWorldSetup.getContentPane().add(WorldCreationLabel);
 		
 		JButton btnApplyTeamName = new JButton("Apply Team Name");
 		btnApplyTeamName.addActionListener(new ActionListener() {
@@ -150,7 +145,7 @@ public class setupTeamAndWorld {
 		btnApplyTeamName.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnApplyTeamName.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnApplyTeamName.setBounds(51, 293, 187, 50);
-		teamAndWorldSetupDialog.getContentPane().add(btnApplyTeamName);
+		teamAndWorldSetup.getContentPane().add(btnApplyTeamName);
 		
 		JButton btnConfirmWorldSize = new JButton("Confirm World Size");
 		btnConfirmWorldSize.addActionListener(new ActionListener() {
@@ -169,7 +164,7 @@ public class setupTeamAndWorld {
 		btnConfirmWorldSize.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnConfirmWorldSize.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnConfirmWorldSize.setBounds(248, 293, 187, 50);
-		teamAndWorldSetupDialog.getContentPane().add(btnConfirmWorldSize);
+		teamAndWorldSetup.getContentPane().add(btnConfirmWorldSize);
 		
 		
 
