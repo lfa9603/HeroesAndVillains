@@ -54,7 +54,6 @@ public class GameWindowManager {
 //		this.squad = squad;
 		squad = new HeroesSquad();
 		world = new ArrayList<City>();
-		launchSetupTeamAndWorld();
 	}
 	
 	/**
@@ -227,7 +226,9 @@ public class GameWindowManager {
 		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
 		squad.addHero(lorenzo);
 		GameWindowManager manager = new GameWindowManager(city, squad);
-		manager.launchMainGameScreen();
+//		manager.launchMainGameScreen();
+		manager.launchSetupTeamAndWorld();
+		
 	}
 	
 	// Merged from Jays Setup Manager
