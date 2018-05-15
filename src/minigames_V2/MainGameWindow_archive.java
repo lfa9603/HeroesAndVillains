@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class MainGameWindow_archive {
 
 	private JFrame battleWindow;
-	private static MiniGameManager manager;
+	private static MiniGameManager_archive manager;
 
 //	/**
 //	 * Launch the application.
@@ -45,7 +45,7 @@ public class MainGameWindow_archive {
 	/**
 	 * Create the application.
 	 */
-	public MainGameWindow_archive(MiniGameManager incomingManager) {
+	public MainGameWindow_archive(MiniGameManager_archive incomingManager) {
 		manager = incomingManager;
 		initialize();
 		battleWindow.setVisible(true);

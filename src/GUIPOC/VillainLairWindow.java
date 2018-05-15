@@ -14,7 +14,7 @@ import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
 
 import minigames_V2.Games;
-import minigames_V2.MiniGameManager;
+import minigames_V2.MiniGameManager_archive;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.JComboBox;
@@ -64,7 +64,7 @@ public class VillainLairWindow {
 	}
 	
 	public void finishedWindow() {
-		//TODO
+		manager.closeVillainLairWindow(this, selectedHeroIndex);
 	}
 	
 	/**
@@ -135,6 +135,7 @@ public class VillainLairWindow {
 		dialogueTextPane.setBounds(199, 67, 474, 151);
 		battleWindow.getContentPane().add(dialogueTextPane);
 		int selectedMiniGame = manager.getMiniGameEngine().selectNewGame(3);
+		manager.getMiniGameEngine().setSelectedGame(selectedMiniGame);
 		String gameString = manager.getMiniGameEngine().getGameString(selectedMiniGame);
 		dialogueTextPane.setText("The Minigame will be: " + gameString);
 
@@ -196,11 +197,14 @@ public class VillainLairWindow {
 		heroBtn1.setBounds(471, 421, 159, 23);
 		battleWindow.getContentPane().add(heroBtn1);
 		
+		
+		//BATTLE BUTTON
+				
 		JButton btnBattle = new JButton("Battle");
 		btnBattle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int selectedMiniGame = manager.getMiniGameEngine().getSelectedMiniGame();
-				manager.launchMinigame(selectedMiniGame);
+				System.out.println("Minigame number: " + selectedMiniGame);
+				finishedWindow();
 			}
 		});
 		btnBattle.setBounds(259, 630, 371, 56);

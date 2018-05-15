@@ -1,4 +1,4 @@
-package GUIPOC;
+package minigames_V2;
 
 import characters.Abilities;
 import characters.Hero;
@@ -9,8 +9,6 @@ import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
 import engine.YesNo;
-import minigames_V2.MiniGame;
-import minigames_V2.MiniGameEngine;
 
 public class GuiMiniGameUtilities {
 	
@@ -21,7 +19,7 @@ public class GuiMiniGameUtilities {
 			switch (abilty) {
 			case charm: noEffect(); break;
 			case mystery: mysteryAbilty(villain, villainsChoice, selectedGame, squad); break;
-			case betterOdds: betterOddsAbilty(villainsChoice, selectedGame); break;
+			case betterOdds: return betterOddsAbilty(villainsChoice, selectedGame);
 			case lessDamage: lessDamageAbilty(villain); break;
 			case winDraws: winDrawsAbilty(); break;
 			default: noEffect(); break;
@@ -119,7 +117,7 @@ public class GuiMiniGameUtilities {
 		return ("Your hero's abilty has no effect");
 	}
 
-	public static void betterOddsAbilty(int villainsChoice, int selectedGame) {
+	public static String betterOddsAbilty(int villainsChoice, int selectedGame) {
 		if (selectedGame == 1) {
 			
 			int randInt = Utilities.getRandInt(3);
@@ -130,20 +128,23 @@ public class GuiMiniGameUtilities {
 			if (randInt != villainsChoice) {
 				int balencer = Utilities.getRandInt(10);
 				if (balencer <= 1) {
-					System.out.println("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(villainsChoice));
+					String string = ("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(villainsChoice));
+					return string;
 				}
 				else {
-					System.out.println("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(randInt));
+					String string = ("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(randInt));
+					return string;
 				}	
 			}
 		}
 		else {
 			noEffect();
 		}
+		return null;
 		
 	}
 	
-	private static String getRPS(int villainsChoice) {
+	public static String getRPS(int villainsChoice) {
 		String result = null;
 		switch (villainsChoice) {
 		case 1: result = "Rock"; break;

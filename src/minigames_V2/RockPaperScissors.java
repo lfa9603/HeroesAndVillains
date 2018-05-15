@@ -10,11 +10,13 @@ import engine.VisualUtilities;
 public class RockPaperScissors extends MiniGame {
 //	private Villain villain;
 //	private HeroesSquad squad;
+	private int villainChoice;
 
 	public RockPaperScissors(Games game, Villain givenVillain, HeroesSquad theSquad, boolean gotAbilities) {
 		super(game, givenVillain, theSquad, gotAbilities);
 //		villain = givenVillain;
 //		squad = theSquad;
+		
 		
 	}
 	
@@ -79,4 +81,53 @@ public class RockPaperScissors extends MiniGame {
 		}
 
 }
+
+	public String runGuiGame(Hero hero, int playerChoice) {
+		villainChoice = getVillain().getVillainsChoice(3);
+		String youChoose = "you chose ";
+		switch(playerChoice) {
+		
+		case 1: System.out.println(youChoose + gameResourses.Rock); 
+			switch(villainChoice) {
+				case 1: return guibattleDraw(hero); 
+				case 2: return guiherolosses(hero); 
+				case 3: return guiheroWins(hero); 
+			}; 
+			break;
+			
+		case 2: 
+			System.out.println(youChoose + gameResourses.Paper);
+			switch(villainChoice) {
+				case 1: return guiheroWins(hero); 
+				case 2: return guibattleDraw(hero); 
+				case 3: return guiherolosses(hero); 
+			}; 
+			break;
+			
+		case 3: System.out.println(youChoose + gameResourses.Scissors);
+			switch(villainChoice) {
+				case 1: return guiherolosses(hero); 
+				case 2: return guiheroWins(hero); 
+				case 3: return guibattleDraw(hero);
+			};
+			break;
+			
+		}
+		
+		return null;
+	}
+
+	/**
+	 * @return the villainChoice
+	 */
+	public int getVillainChoice() {
+		return villainChoice;
+	}
+
+	/**
+	 * @param villainChoice the villainChoice to set
+	 */
+	public void setVillainChoice(int villainChoice) {
+		this.villainChoice = villainChoice;
+	}
 }

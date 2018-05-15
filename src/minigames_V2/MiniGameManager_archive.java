@@ -15,7 +15,7 @@ import collectables.Money;
  * @author JayHamilton
  *
  */
-public class MiniGameManager {
+public class MiniGameManager_archive {
 	private HeroesSquad squad;
 	private Villain villain;
 	private MiniGameEngine miniGameEngine;
@@ -29,7 +29,7 @@ public class MiniGameManager {
 	 * @param guessTheNumber
 	 * @param diceWars
 	 */
-	public MiniGameManager(HeroesSquad squad, Villain villain) {
+	public MiniGameManager_archive(HeroesSquad squad, Villain villain) {
 		this.setSquad(squad);
 		this.setVillain(villain);
 		this.setMiniGameEngine(new MiniGameEngine());
@@ -126,7 +126,7 @@ public class MiniGameManager {
 //		game.runMiniGameEngine(testVillain, testsquad);
 //		
 //		System.out.println(wallet);
-		MiniGameManager game = new MiniGameManager(testsquad, testVillain);
+		MiniGameManager_archive game = new MiniGameManager_archive(testsquad, testVillain);
 	}
 
 

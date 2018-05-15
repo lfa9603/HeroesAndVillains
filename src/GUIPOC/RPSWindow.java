@@ -14,7 +14,13 @@ import javax.swing.border.SoftBevelBorder;
 
 import characters.Hero;
 import characters.HeroesSquad;
+<<<<<<< HEAD
 import minigames_V2.RockPaperScissors;
+=======
+import characters.Villain;
+import minigames_V2.GuiMiniGameUtilities;
+import minigames_V2.MiniGameEngine;
+>>>>>>> 3f091aae73d192fe26cf19a195854aab31eaa1ff
 
 import javax.swing.border.BevelBorder;
 
@@ -46,11 +52,18 @@ public class RPSWindow {
 	 * Create the application.
 	 * @param RPS 
 	 */
+<<<<<<< HEAD
 	public RPSWindow(GameWindowManager gameWindowManager, RockPaperScissors RPS, int selectedHeroIndex) {
 		initialize();
 		this.RPS = RPS;
 		this.selectedHeroIndex = selectedHeroIndex;
+=======
+	
+	public RPSWindow(GameWindowManager gameWindowManager) {
+//		this.selectedHeroIndex = selectedHeroIndex;
+>>>>>>> 3f091aae73d192fe26cf19a195854aab31eaa1ff
 		manager = gameWindowManager;
+		initialize();
 		RPSWindow.setVisible(true);
 
 	}
@@ -58,13 +71,17 @@ public class RPSWindow {
 	public void closeWindow() {
 		RPSWindow.dispose();
 	}
+	
+	public void finishedWindow() {
+		manager.closeRpsWindow(this);
+	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		RPSWindow = new JFrame();
-		RPSWindow.setBounds(100, 100, 840, 544);
+		RPSWindow.setBounds(100, 100, 840, 570);
 		RPSWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		RPSWindow.getContentPane().setLayout(null);
 		
@@ -84,29 +101,12 @@ public class RPSWindow {
 		btnRock.setBounds(21, 390, 243, 62);
 		RPSWindow.getContentPane().add(btnRock);
 		
-		JButton btnPaper = new JButton("Paper");
-		btnPaper.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnPaper.setFont(new Font("Tahoma", Font.PLAIN, 21));
-		btnPaper.setBounds(285, 390, 243, 62);
-		RPSWindow.getContentPane().add(btnPaper);
-		
-		JButton btnPaper_1 = new JButton("Scissors");
-		btnPaper_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnPaper_1.setFont(new Font("Tahoma", Font.PLAIN, 21));
-		btnPaper_1.setBounds(549, 390, 243, 62);
-		RPSWindow.getContentPane().add(btnPaper_1);
 		
 		JTextPane Dialouge = new JTextPane();
 		Dialouge.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		Dialouge.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Dialouge.setText("Dialouge");
-		Dialouge.setBounds(180, 49, 467, 109);
+		Dialouge.setBounds(180, 49, 467, 189);
 		RPSWindow.getContentPane().add(Dialouge);
 		String RPSRules = "You are playing Rock, paper, Scissors\n "
 				+ "The Villain is ready, click one of the buttons below to make your choice.";
@@ -114,13 +114,49 @@ public class RPSWindow {
 		
 		JLabel Abilities = new JLabel("");
 		Abilities.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		Abilities.setBounds(194, 179, 412, 62);
+		Abilities.setBounds(21, 249, 771, 62);
 		RPSWindow.getContentPane().add(Abilities);
 		HeroesSquad squad = manager.getSquad();
+<<<<<<< HEAD
 		Hero hero = squad.getHero(manager.getSelectedHeroIndex());
 		Villain villain = RPS.getVillain();
+=======
+		Villain villain = manager.getVillains().getCurrentVillain(manager.getCurrentIndex());
+		String abiltyString = manager.getMiniGameEngine().getHeroEffectsFromUtils(villain, squad, selectedHeroIndex);
+		System.out.println(abiltyString);
+		Abilities.setText(abiltyString);
+		//manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
+>>>>>>> 3f091aae73d192fe26cf19a195854aab31eaa1ff
 		
-		GuiMiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainsChoice, selectedGame)
 		
+		JButton btnPaper = new JButton("Paper");
+		btnPaper.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int villainsIntChoice = manager.getMiniGameEngine().getVillainsChoice();
+				String villainsChoice = GuiMiniGameUtilities.getRPS(villainsIntChoice);
+				String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, villainsIntChoice);
+			}
+		});
+		btnPaper.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		btnPaper.setBounds(285, 390, 243, 62);
+		RPSWindow.getContentPane().add(btnPaper);
+		
+		JButton btnScissors = new JButton("Scissors");
+		btnScissors.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnScissors.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		btnScissors.setBounds(549, 390, 243, 62);
+		RPSWindow.getContentPane().add(btnScissors);
+		
+		JButton btnContinue = new JButton("Continue");
+		btnContinue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		btnContinue.setBounds(285, 460, 243, 62);
+		RPSWindow.getContentPane().add(btnContinue);
 	}
 }
