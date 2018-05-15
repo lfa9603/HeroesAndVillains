@@ -201,10 +201,12 @@ public class GameWindowManager {
 				mainGameWindow.getFrame().setVisible(true);
 			} else {
 				closeMainGameWindow(mainGameWindow);
+				new YouWonWindow(this);
 				System.out.println("YOU WON!");
 			}
 		} else {
 			closeMainGameWindow(mainGameWindow);
+			new YouLostWindow(this);
 			System.out.println("YOU LOST");
 		}
 	}
