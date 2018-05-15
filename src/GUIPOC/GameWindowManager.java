@@ -8,6 +8,7 @@ import characters.Hero;
 import characters.HeroTypes;
 import characters.HeroesSquad;
 import characters.Types;
+import characters.Villain;
 import characters.Villains;
 import city.City;
 import city.buildings.Building;
@@ -22,6 +23,7 @@ import city.buildings.hospital.Hospital;
 import city.buildings.shop.Shop;
 import collectables.Money;
 import minigames_V2.DiceWars;
+import minigames_V2.Games;
 import minigames_V2.GuessTheNumber;
 import minigames_V2.MiniGameEngine;
 import minigames_V2.RockPaperScissors;
@@ -55,6 +57,7 @@ public class GameWindowManager {
 	private RockPaperScissors rockPaperScissors;
 	private GuessTheNumber guessTheNumber;
 	private DiceWars diceWars;
+	private int selectedHeroIndex;
 	
 
 	public GameWindowManager() {
@@ -311,6 +314,20 @@ public class GameWindowManager {
 		launchMainGameScreen();
 	}
 	
+	public void launchMinigame(int selectedMiniGame) {
+		Villain villain = villains.getCurrentVillain(currentIndex); 
+		switch (selectedMiniGame) {
+		case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
+		RPSWindow rpsWindow = new RPSWindow(this, selectedHeroIndex)
+		break;
+		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
+		GTN.runGame(hero); break;
+		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
+		DW.runGame(hero); break;
+		}
+		
+	}
+	
 	
 
 	/**
@@ -405,5 +422,7 @@ public class GameWindowManager {
 		return null;
 		
 	}
+
+
 	
 }
