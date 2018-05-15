@@ -30,6 +30,7 @@ public class VillainLairWindow {
 	private JFrame battleWindow;
 	private static GameWindowManager manager;
 	private MainGameWindow mainGameWindow;
+	private int selectedHeroIndex;
 
 //	/**
 //	 * Launch the application.
@@ -66,6 +67,20 @@ public class VillainLairWindow {
 		//TODO
 	}
 	
+	/**
+	 * @return the selectedHeroIndex
+	 */
+	public int getSelectedHeroIndex() {
+		return selectedHeroIndex;
+	}
+
+	/**
+	 * @param selectedHeroIndex the selectedHeroIndex to set
+	 */
+	public void setSelectedHeroIndex(int selectedHeroIndex) {
+		this.selectedHeroIndex = selectedHeroIndex;
+	}
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -181,6 +196,12 @@ public class VillainLairWindow {
 		battleWindow.getContentPane().add(heroBtn1);
 		
 		JButton btnBattle = new JButton("Battle");
+		btnBattle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedMiniGame = manager.getMiniGameEngine().getSelectedMiniGame();
+				manager.launchMinigame(selectedMiniGame);
+			}
+		});
 		btnBattle.setBounds(259, 630, 371, 56);
 		battleWindow.getContentPane().add(btnBattle);
 
