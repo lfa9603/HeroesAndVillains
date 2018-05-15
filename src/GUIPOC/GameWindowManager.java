@@ -318,12 +318,12 @@ public class GameWindowManager {
 		Villain villain = villains.getCurrentVillain(currentIndex); 
 		switch (selectedMiniGame) {
 		case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
-		RPSWindow rpsWindow = new RPSWindow(this, selectedHeroIndex)
+		RPSWindow rpsWindow = new RPSWindow(this, selectedHeroIndex);
 		break;
 		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
-		GTN.runGame(hero); break;
+//		GTN.runGame(hero); break;
 		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
-		DW.runGame(hero); break;
+//		DW.runGame(hero); break;
 		}
 		
 	}
@@ -391,6 +391,14 @@ public class GameWindowManager {
 	 */
 	public void setMiniGameEngine(MiniGameEngine miniGameEngine) {
 		this.miniGameEngine = miniGameEngine;
+	}
+
+	public int getSelectedHeroIndex() {
+		return selectedHeroIndex;
+	}
+
+	public void setSelectedHeroIndex(int selectedHeroIndex) {
+		this.selectedHeroIndex = selectedHeroIndex;
 	}
 
 	public Types typeConversion (HeroTypes heroType) {

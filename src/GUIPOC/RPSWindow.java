@@ -12,7 +12,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.border.SoftBevelBorder;
 
+import characters.Hero;
 import characters.HeroesSquad;
+import minigames_V2.RockPaperScissors;
 
 import javax.swing.border.BevelBorder;
 
@@ -21,6 +23,8 @@ public class RPSWindow {
 	private JFrame RPSWindow;
 	private GameWindowManager manager;
 	private int selectedHeroIndex;
+	private RockPaperScissors RPS;
+	
 
 //	/**
 //	 * Launch the application.
@@ -40,9 +44,11 @@ public class RPSWindow {
 
 	/**
 	 * Create the application.
+	 * @param RPS 
 	 */
-	public RPSWindow(GameWindowManager gameWindowManager, int selectedHeroIndex) {
+	public RPSWindow(GameWindowManager gameWindowManager, RockPaperScissors RPS, int selectedHeroIndex) {
 		initialize();
+		this.RPS = RPS;
 		this.selectedHeroIndex = selectedHeroIndex;
 		manager = gameWindowManager;
 		RPSWindow.setVisible(true);
@@ -111,7 +117,8 @@ public class RPSWindow {
 		Abilities.setBounds(194, 179, 412, 62);
 		RPSWindow.getContentPane().add(Abilities);
 		HeroesSquad squad = manager.getSquad();
-		Hero hero = squad.getHero()
+		Hero hero = squad.getHero(manager.getSelectedHeroIndex());
+		Villain villain = RPS.getVillain();
 		
 		GuiMiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainsChoice, selectedGame)
 		
