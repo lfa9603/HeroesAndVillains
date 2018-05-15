@@ -41,7 +41,7 @@ public class MiniGameManager_archive {
 	}
 	
 	public void launchmainGameWindow() {
-		VillainLairWindow battleWindow = new VillainLairWindow(this);
+//		VillainLairWindow battleWindow = new VillainLairWindow(this);
 	}
 	
 	

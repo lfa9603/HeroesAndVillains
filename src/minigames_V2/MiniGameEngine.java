@@ -74,15 +74,15 @@ public class MiniGameEngine {
 		switch (selectedMiniGame) {
 		case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
 		String result = RPS.runGuiGame(hero, playerChoice);
-		return result; break;
+		return result;
 		
-		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
-		String result1 = GTN.runGuiGame(hero);
-		return result1; break;
-		
-		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
-		String result2 = DW.runGuiGame(hero);
-		return result2; break;
+//		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
+//		String result1 = GTN.runGuiGame(hero);
+//		return result1; break;
+//		
+//		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
+//		String result2 = DW.runGuiGame(hero);
+//		return result2; break;
 		default: System.out.println("Error in runGuiMiniGameEngine");
 		}
 		
