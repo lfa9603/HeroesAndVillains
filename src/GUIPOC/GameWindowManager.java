@@ -317,13 +317,15 @@ public class GameWindowManager {
 	public void launchMinigame(int selectedMiniGame) {
 		Villain villain = villains.getCurrentVillain(currentIndex); 
 		switch (selectedMiniGame) {
-		case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
-		RPSWindow rpsWindow = new RPSWindow(this, selectedHeroIndex);
-		break;
-		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
-//		GTN.runGame(hero); break;
-		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
-//		DW.runGame(hero); break;
+			case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
+				RPSWindow rpsWindow = new RPSWindow(this, RPS, selectedHeroIndex);
+				break;
+			case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
+//				GTN.runGame(hero); 
+//				break;
+			case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
+//				DW.runGame(hero); 
+				break;
 		}
 		
 	}
