@@ -1,4 +1,4 @@
-package GUIPOC;
+package setupGui;
 
 public class SetupResourses {
 	private String characterTypes = "1. Talkitive : Has the ability to Charm people (Gets 25% better prices at shops) \n"

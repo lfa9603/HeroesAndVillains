@@ -54,9 +54,9 @@ public class GameWindowManager {
 	
 	//Minigame stuff
 	private MiniGameEngine miniGameEngine;
-	private RockPaperScissors rockPaperScissors;
-	private GuessTheNumber guessTheNumber;
-	private DiceWars diceWars;
+//	private RockPaperScissors rockPaperScissors;
+//	private GuessTheNumber guessTheNumber;
+//	private DiceWars diceWars;
 	private int selectedHeroIndex;
 	
 
@@ -193,7 +193,7 @@ public class GameWindowManager {
 	}
 	
 	
-	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, boolean herosWon) {
+	public void FinalCloseVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, boolean herosWon) {
 		currentIndex += 1;
 		villainLairWindow.closeWindow();
 		
@@ -285,14 +285,14 @@ public class GameWindowManager {
 		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
 		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
 		
-		squad.addHero(hero1);
+		squad.addHero(hero3);
 //		squad.addHero(hero3);
 //		squad.addHero(hero5);
 //		hero2.setisAlive(false);
 //		hero3.setisAlive(false);
 //		hero3.setisAlive(false);
 		hero2.setArmor(30);
-		hero1.setIsGameChooser(true);
+		hero3.setIsGameChooser(true);
 //		Money wallet = testsquad.getWallet();
 
 		
@@ -316,20 +316,35 @@ public class GameWindowManager {
 		launchMainGameScreen();
 	}
 	
-	public void launchMinigame(int selectedMiniGame) {
-		Villain villain = villains.getCurrentVillain(currentIndex); 
+	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, int selectedHeroIndex) {
+		villainLairWindow.closeWindow();
+		int selectedMiniGame = miniGameEngine.getSelectedMiniGame();
+		System.out.println(selectedMiniGame);
 		switch (selectedMiniGame) {
-		case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
-		RPSWindow rpsWindow = new RPSWindow(this, selectedHeroIndex)
-		break;
-		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
-		GTN.runGame(hero); break;
-		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
-		DW.runGame(hero); break;
+		case 1: launchRpsWindow(this); break;
+		case 2: launchRpsWindow(this); break;
+		case 3: launchRpsWindow(this); break;
+		default: System.out.println("Fail on window");
 		}
+		
 		
 	}
 	
+	public void launchRpsWindow(GameWindowManager gameWindowManager) {
+		RPSWindow rpsWindow = new RPSWindow(this);
+	}
+	
+	public void closeRpsWindow(RPSWindow rpswindow) {
+		rpswindow.closeWindow();
+	}
+	
+//	public void launchrpsWindow1(GameWindowManager gameWindowManager) {
+//		RPSWindow rpsWindow = new RPSWindow(this, selectedHeroIndex);
+//	}
+//	
+//	public void launchrpsWindow2(GameWindowManager gameWindowManager) {
+//		RPSWindow rpsWindow = new RPSWindow(this, selectedHeroIndex);
+//	}
 	
 
 	/**
@@ -395,6 +410,20 @@ public class GameWindowManager {
 		this.miniGameEngine = miniGameEngine;
 	}
 
+	/**
+	 * @return the selectedHeroIndex
+	 */
+	public int getSelectedHeroIndex() {
+		return selectedHeroIndex;
+	}
+
+	/**
+	 * @param selectedHeroIndex the selectedHeroIndex to set
+	 */
+	public void setSelectedHeroIndex(int selectedHeroIndex) {
+		this.selectedHeroIndex = selectedHeroIndex;
+	}
+
 	public Types typeConversion (HeroTypes heroType) {
 		switch (heroType) {
 		case Talkitive: return Types.talkitive;
@@ -424,7 +453,5 @@ public class GameWindowManager {
 		return null;
 		
 	}
-
-
 	
 }

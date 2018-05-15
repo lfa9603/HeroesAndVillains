@@ -50,6 +50,36 @@ public abstract class MiniGame {
 		System.out.println("You lost " + villain.getVillainDamage() + "HP");
 		squad.heroTakesDamage(hero, villain.getVillainDamage());
 	}
+	
+	//Methods For the GUI
+	
+	public String guibattleDraw(Hero hero) {
+		if (villain.getCharacterType() != Types.Boss && hero.getCharacterType() == Types.sly) {
+			heroWins(hero);
+			return ("Its a Draw and Who dares Wins! Your Character is Sly, and you managed to cheat your way through this draw.");
+		}
+		
+		else {
+			if (villain.getCharacterType() == Types.Boss) {
+				herolosses(hero);
+				return ("Its a Draw! But your Boss is NEVER wrong, they win this Draw!");
+			}
+			else {
+				return ("Its a Draw! No damage done");
+			}
+		}
+	}
+	
+	public String guiheroWins(Hero hero) {
+		villain.setTimesBeaten();
+		return ("You win! the villain has been defeated!");
+	}
+	
+	public String guiherolosses(Hero hero) {
+		squad.heroTakesDamage(hero, villain.getVillainDamage());
+		return ("You lost " + villain.getVillainDamage() + "HP");	
+	}
+	
 
 	/**
 	 * @return the gameName
