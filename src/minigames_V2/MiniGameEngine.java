@@ -14,7 +14,6 @@ import engine.VisualUtilities;
 
 public class MiniGameEngine {
 	private static int selectedMiniGame;
-	private static int villainsChoice;
 	private static int playerChoice;
 
 	public void runMiniGameEngine(Villain villain, HeroesSquad squad) {
@@ -74,15 +73,15 @@ public class MiniGameEngine {
 		switch (selectedMiniGame) {
 		case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
 		String result = RPS.runGuiGame(hero, playerChoice);
-		return result; break;
+		return result;
 		
-		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
-		String result1 = GTN.runGuiGame(hero);
-		return result1; break;
-		
-		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
-		String result2 = DW.runGuiGame(hero);
-		return result2; break;
+//		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
+//		String result1 = GTN.runGuiGame(hero);
+//		return result1; break;
+//		
+//		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
+//		String result2 = DW.runGuiGame(hero);
+//		return result2; break;
 		default: System.out.println("Error in runGuiMiniGameEngine");
 		}
 		
@@ -93,6 +92,7 @@ public class MiniGameEngine {
 	
 	public String getHeroEffectsFromUtils(Villain villain, HeroesSquad squad, int selectedHeroIndex) {
 		Hero hero = squad.getHero(selectedHeroIndex);
+		int villainsChoice = villain.getVillainsChoice();
 		String abiltyString = GuiMiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainsChoice, selectedMiniGame);
 		System.out.println(abiltyString);
 		return abiltyString;
@@ -188,19 +188,6 @@ public class MiniGameEngine {
 		return selectedMiniGame;
 	}
 
-	/**
-	 * @return the villainsChoice
-	 */
-	public static int getVillainsChoice() {
-		return villainsChoice;
-	}
-
-	/**
-	 * @param villainsChoice the villainsChoice to set
-	 */
-	public static void setVillainsChoice(int villainsChoice) {
-		MiniGameEngine.villainsChoice = villainsChoice;
-	}
 
 	/**
 	 * @return the playerChoice

@@ -12,15 +12,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.border.SoftBevelBorder;
 
-import characters.Hero;
 import characters.HeroesSquad;
-<<<<<<< HEAD
-import minigames_V2.RockPaperScissors;
-=======
 import characters.Villain;
 import minigames_V2.GuiMiniGameUtilities;
 import minigames_V2.MiniGameEngine;
->>>>>>> 3f091aae73d192fe26cf19a195854aab31eaa1ff
 
 import javax.swing.border.BevelBorder;
 
@@ -29,8 +24,6 @@ public class RPSWindow {
 	private JFrame RPSWindow;
 	private GameWindowManager manager;
 	private int selectedHeroIndex;
-	private RockPaperScissors RPS;
-	
 
 //	/**
 //	 * Launch the application.
@@ -50,18 +43,10 @@ public class RPSWindow {
 
 	/**
 	 * Create the application.
-	 * @param RPS 
 	 */
-<<<<<<< HEAD
-	public RPSWindow(GameWindowManager gameWindowManager, RockPaperScissors RPS, int selectedHeroIndex) {
-		initialize();
-		this.RPS = RPS;
-		this.selectedHeroIndex = selectedHeroIndex;
-=======
 	
 	public RPSWindow(GameWindowManager gameWindowManager) {
 //		this.selectedHeroIndex = selectedHeroIndex;
->>>>>>> 3f091aae73d192fe26cf19a195854aab31eaa1ff
 		manager = gameWindowManager;
 		initialize();
 		RPSWindow.setVisible(true);
@@ -81,7 +66,7 @@ public class RPSWindow {
 	 */
 	private void initialize() {
 		RPSWindow = new JFrame();
-		RPSWindow.setBounds(100, 100, 840, 570);
+		RPSWindow.setBounds(100, 100, 840, 620);
 		RPSWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		RPSWindow.getContentPane().setLayout(null);
 		
@@ -113,28 +98,27 @@ public class RPSWindow {
 		Dialouge.setText(RPSRules);
 		
 		JLabel Abilities = new JLabel("");
+		Abilities.setHorizontalAlignment(SwingConstants.CENTER);
 		Abilities.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Abilities.setBounds(21, 249, 771, 62);
 		RPSWindow.getContentPane().add(Abilities);
 		HeroesSquad squad = manager.getSquad();
-<<<<<<< HEAD
-		Hero hero = squad.getHero(manager.getSelectedHeroIndex());
-		Villain villain = RPS.getVillain();
-=======
 		Villain villain = manager.getVillains().getCurrentVillain(manager.getCurrentIndex());
 		String abiltyString = manager.getMiniGameEngine().getHeroEffectsFromUtils(villain, squad, selectedHeroIndex);
 		System.out.println(abiltyString);
 		Abilities.setText(abiltyString);
 		//manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
->>>>>>> 3f091aae73d192fe26cf19a195854aab31eaa1ff
 		
 		
 		JButton btnPaper = new JButton("Paper");
 		btnPaper.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int villainsIntChoice = manager.getMiniGameEngine().getVillainsChoice();
+				manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(3);
+				int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
 				String villainsChoice = GuiMiniGameUtilities.getRPS(villainsIntChoice);
-				String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, villainsIntChoice);
+				String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
+				Dialouge.setText("You chose Paper the villain chose " + villainsChoice +"\n"
+						+ result);
 			}
 		});
 		btnPaper.setFont(new Font("Tahoma", Font.PLAIN, 21));

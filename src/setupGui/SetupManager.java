@@ -46,7 +46,7 @@ public class SetupManager {
 	}
 	
 	public void launchSetupTeamAndWorld() {
-		setupTeamAndWorld setupWindow = new setupTeamAndWorld(this);
+//		setupTeamAndWorld setupWindow = new setupTeamAndWorld(this);
 	}
 	
 	public void closeSetupTeamAndWorld(setupTeamAndWorld setupTeamAndWorld) {
@@ -56,7 +56,7 @@ public class SetupManager {
 	}
 	
 	public void launchsetupAddHeros(SetupManager setupManager) {
-		SetupAddHeros setupWindow = new SetupAddHeros(this);
+//		SetupAddHeros setupWindow = new SetupAddHeros(this);
 	}
 	
 	public void closeSetupAddHeros(SetupAddHeros setupWindow) {

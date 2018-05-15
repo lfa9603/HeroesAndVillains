@@ -7,6 +7,11 @@ import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
 
+
+ /**
+ * @author JayHamilton
+ *
+ */
 public class RockPaperScissors extends MiniGame {
 //	private Villain villain;
 //	private HeroesSquad squad;
@@ -37,8 +42,9 @@ public class RockPaperScissors extends MiniGame {
 		System.out.println("The rules are: TODO add rules");
 		System.out.println(choices);
 		
-		VisualUtilities.getIcon(Icons.bar);		
-		int villainChoice = getVillain().getVillainsChoice(3);
+		VisualUtilities.getIcon(Icons.bar);
+		getVillain().setVillainsChoice(3);
+		int villainChoice = getVillain().getVillainsChoice();
 		MiniGameUtilities.getHeroAbiltyEffects(hero, getVillain(), getSquad(), villainChoice, 1);
 
 		VisualUtilities.getIcon(Icons.bar);
@@ -83,8 +89,9 @@ public class RockPaperScissors extends MiniGame {
 }
 
 	public String runGuiGame(Hero hero, int playerChoice) {
-		villainChoice = getVillain().getVillainsChoice(3);
+		villainChoice = getVillain().getVillainsChoice();
 		String youChoose = "you chose ";
+		System.out.println("in Minigame: PC:" + playerChoice + "VC: " + villainChoice);
 		switch(playerChoice) {
 		
 		case 1: System.out.println(youChoose + gameResourses.Rock); 
@@ -110,11 +117,9 @@ public class RockPaperScissors extends MiniGame {
 				case 2: return guiheroWins(hero); 
 				case 3: return guibattleDraw(hero);
 			};
-			break;
-			
+			break;	
 		}
-		
-		return null;
+		return youChoose;
 	}
 
 	/**

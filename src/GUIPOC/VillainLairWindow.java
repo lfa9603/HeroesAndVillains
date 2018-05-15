@@ -179,7 +179,6 @@ public class VillainLairWindow {
 		heroBtn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(0).getCharacterName() + " selected");
-				manager.setSelectedHeroIndex(0);
 				if (manager.getSquad().getHero(0).getIsGameChooser()) {
 					comboBox.setVisible(true);
 					lblUseChooseGame.setVisible(true);
@@ -237,7 +236,6 @@ public class VillainLairWindow {
 		herobtn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
-				manager.setSelectedHeroIndex(1);
 				if (manager.getSquad().getHero(1).getIsGameChooser()) {
 					comboBox.setVisible(true);
 					lblUseChooseGame.setVisible(true);
@@ -259,7 +257,6 @@ public class VillainLairWindow {
 		herobtn22.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
-				manager.setSelectedHeroIndex(1);
 				if (manager.getSquad().getHero(1).getIsGameChooser()) {
 					comboBox.setVisible(true);
 					lblUseChooseGame.setVisible(true);
@@ -281,7 +278,6 @@ public class VillainLairWindow {
 		heroBtn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(2).getCharacterName() + " selected");
-				manager.setSelectedHeroIndex(2);
 				if (manager.getSquad().getHero(2).getIsGameChooser()) {
 					comboBox.setVisible(true);
 					lblUseChooseGame.setVisible(true);
