@@ -66,7 +66,7 @@ public class RPSWindow {
 	 */
 	private void initialize() {
 		RPSWindow = new JFrame();
-		RPSWindow.setBounds(100, 100, 840, 570);
+		RPSWindow.setBounds(100, 100, 840, 620);
 		RPSWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		RPSWindow.getContentPane().setLayout(null);
 		
@@ -98,6 +98,7 @@ public class RPSWindow {
 		Dialouge.setText(RPSRules);
 		
 		JLabel Abilities = new JLabel("");
+		Abilities.setHorizontalAlignment(SwingConstants.CENTER);
 		Abilities.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Abilities.setBounds(21, 249, 771, 62);
 		RPSWindow.getContentPane().add(Abilities);
@@ -112,9 +113,12 @@ public class RPSWindow {
 		JButton btnPaper = new JButton("Paper");
 		btnPaper.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int villainsIntChoice = manager.getMiniGameEngine().getVillainsChoice();
+				manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(3);
+				int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
 				String villainsChoice = GuiMiniGameUtilities.getRPS(villainsIntChoice);
-				String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, villainsIntChoice);
+				String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
+				Dialouge.setText("You chose Paper the villain chose " + villainsChoice +"\n"
+						+ result);
 			}
 		});
 		btnPaper.setFont(new Font("Tahoma", Font.PLAIN, 21));
