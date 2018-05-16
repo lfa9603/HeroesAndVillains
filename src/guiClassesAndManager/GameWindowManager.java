@@ -285,16 +285,14 @@ public class GameWindowManager {
 		hero2.setArmor(30);
 		hero3.setIsGameChooser(true);
 //		Money wallet = testsquad.getWallet();
-<<<<<<< HEAD:src/guiClassesAndManager/GameWindowManager.java
-=======
+
 //		MainGameWindow mainGameScreen = new MainGameWindow(manager);
 //		VillainLairWindow villainLairWindow = new VillainLairWindow(manager, mainGameScreen);
+	}		
 		
 		
 		
 		
-		
-	}
 	
 	// Merged from Jays Setup Manager
 	
@@ -304,7 +302,6 @@ public class GameWindowManager {
 		launchsetupAddHeros(this);
 
 		
->>>>>>> 3c4a1c6c9769d2c0b22a2c1394442cd178ad6039:src/GUIPOC/GameWindowManager.java
 		
 	}
 	
