@@ -14,6 +14,7 @@ import characters.HeroesSquad;
 import city.buildings.TypeBuildings;
 import city.buildings.shop.Merchandise;
 import city.buildings.shop.Shop;
+import collectables.Collectable;
 import collectables.CollectableID;
 import collectables.Inventory;
 import collectables.Money;
@@ -184,5 +185,64 @@ class ShopTests {
 		shop.setMerchandise(newMerchandise);
 		assertTrue(shop.getMerchandise().getInventory().getInventory().size() == 0);
 	}
+	
+	/**
+	 * 
+	 * This method accepts only indices between 0 and 6 included.
+	 * This is an enforced limit from the GUI (number of elements in the list is always 7)
+	 * 
+	 */
+	
+	@Test 
+	void testRetrieveRightCollectable() {
+		Collectable collectable1 = shop.retrieveRightCollectable(0);
+		assertEquals(collectable1.getCollectableID(), CollectableID.Armor);
+		
+		Collectable collectable2 = shop.retrieveRightCollectable(1);
+		assertEquals(collectable2.getCollectableID(), CollectableID.IncreaseMaxLife);
+		
+		Collectable collectable3 = shop.retrieveRightCollectable(2);
+		assertEquals(collectable3.getCollectableID(), CollectableID.GameChooser);
+		
+		Collectable collectable4 = shop.retrieveRightCollectable(3);
+		assertEquals(collectable4.getCollectableID(), CollectableID.HeroesMap);
+		
+		Collectable collectable5 = shop.retrieveRightCollectable(4);
+		assertEquals(collectable5.getCollectableID(), CollectableID.GoodHealingItem);
+		
+		Collectable collectable6 = shop.retrieveRightCollectable(5);
+		assertEquals(collectable6.getCollectableID(), CollectableID.BetterHealingItem);
+		
+		Collectable collectable7 = shop.retrieveRightCollectable(6);
+		assertEquals(collectable7.getCollectableID(), CollectableID.BestHealingItem);
+		
+	}
+	
+	@Test
+	void testSuccessOrRejectionPurchasedItem() {
+		
+		String string1 = shop.successOrRejectionPurchasedItem(3, squad);
+		assertEquals("Great! You bought a " + CollectableID.HeroesMap, string1);
+		assertEquals(squad.getWallet().getAmount(), 9999980);
+		assertTrue(squad.isHaveMap());
+		
+		String string2 = shop.successOrRejectionPurchasedItem(3, squad);
+		assertEquals("Sorry guys we have no HeroesMap", string2);
+		assertEquals(squad.getWallet().getAmount(), 9999980);
+		
+		squad.setWallet(new Money(0));
+		shop.getMerchandise().setInventory(new Inventory());
+		shop.getMerchandise().getInventory().addItemToInventory(new GameChooser(CollectableID.GameChooser));
+		
+		String string3 = shop.successOrRejectionPurchasedItem(2, squad);
+		String strToReturn = new String();
+		strToReturn += ("\nSorry not enough money to purchase this item");
+		strToReturn += ("\nYou currently have 0");
+		strToReturn += ("\nYou need 90"  
+		+ " to purchase a " + CollectableID.GameChooser + " item");
+		assertEquals(string3, strToReturn);
+	}
+	
+	
 
 }

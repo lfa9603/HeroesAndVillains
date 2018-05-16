@@ -397,7 +397,7 @@ public class Shop extends Building{
 	 * successOrRejectionPurchasedItem(int index, HeroesSquad heroSquad) method below. 
 	 *  
 	 */
-	private Collectable retrieveRightCollectable(int index) {
+	public Collectable retrieveRightCollectable(int index) {
 		Collectable collectableToReturn = null;
 		if (index < 3) {
 			collectableToReturn = returningAPowerUp(index);
@@ -435,7 +435,7 @@ public class Shop extends Building{
 			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
 				if (collectable.getCollectableID().equals(CollectableID.HeroesMap)) {
 					if (heroSquad.isHaveMap()) {
-						return "Don't wast your money on another man mate! You already have one!";
+						return "Don't waste your money on another map mate! You already have one!";
 					} else {
 						heroSquad.setHaveMap(true);
 					}

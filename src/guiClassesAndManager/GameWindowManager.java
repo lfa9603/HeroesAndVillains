@@ -202,6 +202,7 @@ public class GameWindowManager {
 				currentCity = world.get(currentIndex);
 				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 				mainGameWindow.getFrame().setVisible(true);
+				squad.setHaveMap(false);
 			} else {
 				closeMainGameWindow(mainGameWindow);
 				new YouWonWindow(this);
