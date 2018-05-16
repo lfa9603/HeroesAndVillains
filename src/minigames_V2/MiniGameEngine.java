@@ -126,7 +126,8 @@ public class MiniGameEngine {
 	 */
 
 	
-	private void villainEffects(Villain villain, HeroesSquad squad) {
+	public String villainEffects(Villain villain, HeroesSquad squad) {
+		String villainEffect;
 		int randInt = Utilities.getRandInt(100);
 		Types level = villain.getCharacterType();
 		int difficulty = 0;
@@ -143,11 +144,12 @@ public class MiniGameEngine {
 		}
 		
 		if (randInt > difficulty) {
-			System.out.println(villain.getCharacterName() + " Chose not to use there abilty.");
+			villainEffect = (villain.getCharacterName() + " Chose not to use there abilty.");
 		}
 		else {
-			MiniGameUtilities.getVillainAbiltyEffects(villain, squad);
+			villainEffect = GuiMiniGameUtilities.getVillainAbiltyEffects(villain, squad);
 		}
+		return villainEffect;
 		
 		
 	}

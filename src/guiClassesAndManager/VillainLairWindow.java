@@ -12,6 +12,8 @@ import javax.swing.JProgressBar;
 import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
 
+import characters.HeroesSquad;
+import characters.Villain;
 import minigames_V2.Games;
 
 import javax.swing.border.BevelBorder;
@@ -28,6 +30,7 @@ public class VillainLairWindow {
 	private JFrame battleWindow;
 	private static GameWindowManager manager;
 	private MainGameWindow mainGameWindow;
+	private boolean wonGame;
 
 //	/**
 //	 * Launch the application.
@@ -66,6 +69,20 @@ public class VillainLairWindow {
 	}
 	
 	/**
+	 * @return the wonGame
+	 */
+	public boolean isWonGame() {
+		return wonGame;
+	}
+
+	/**
+	 * @param wonGame the wonGame to set
+	 */
+	public void setWonGame(boolean wonGame) {
+		this.wonGame = wonGame;
+	}
+
+	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
@@ -73,7 +90,9 @@ public class VillainLairWindow {
 		battleWindow.setBounds(100, 100, 903, 778);
 		battleWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		battleWindow.getContentPane().setLayout(null);
-//		setVisibilty();
+
+		HeroesSquad squad = manager.getSquad();
+		Villain villain = manager.getVillains().getCurrentVillain(manager.getCurrentIndex());
 		
 		JLabel Titlelbl = new JLabel("Pre Battle Screen");
 		Titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -94,7 +113,8 @@ public class VillainLairWindow {
 		VillaintextPane.setBounds(10, 229, 394, 181);
 		battleWindow.getContentPane().add(VillaintextPane);
 		int currentIndex = manager.getCurrentIndex();
-		VillaintextPane.setText(manager.getVillains().getCurrentVillain(currentIndex).toString());
+		VillaintextPane.setText(manager.getVillains().getCurrentVillain(currentIndex).toString() + '\n'
+				+ manager.getMiniGameEngine().villainEffects(villain, squad));
 		
 		JLabel VillainHealthLbl = new JLabel("Villains Health:");
 		VillainHealthLbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -158,6 +178,71 @@ public class VillainLairWindow {
 		btnChangeGame.setVisible(false);
 		
 		
+		//BATTLE BUTTON
+		
+		JButton btnBattle = new JButton("Battle");
+		btnBattle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Minigame number: " + selectedMiniGame);
+				finishedWindow();
+			}
+		});
+		btnBattle.setBounds(259, 638, 371, 56);
+		battleWindow.getContentPane().add(btnBattle);
+		
+		// to Confirm level transition and test other game logic
+		
+//		JButton btnWin = new JButton("Win");
+//		btnWin.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, true);
+//			}
+//		});
+//		btnWin.setBounds(644, 641, 194, 35);
+//		battleWindow.getContentPane().add(btnWin);
+//		
+//		JButton button_1 = new JButton("lose");
+//		button_1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, false);
+//			}
+//		});
+//		button_1.setBounds(644, 595, 194, 35);
+//		battleWindow.getContentPane().add(button_1);
+		
+		// to check the teams status and game status
+		
+		
+		
+		JButton endbutton = new JButton("Continue to final window");
+		endbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (wonGame) {
+					manager.finalCloseVillainLairWindow(VillainLairWindow.this, mainGameWindow, true);
+				}
+				else {
+					manager.finalCloseVillainLairWindow(VillainLairWindow.this, mainGameWindow, false);
+				}
+			}
+		});
+		endbutton.setBounds(259, 653, 371, 56);
+		battleWindow.getContentPane().add(endbutton);
+		endbutton.setVisible(false);
+		
+		squad.checkTeamStatus();
+		if (squad.isAllDead()) {
+			setWonGame(false);
+			btnBattle.setVisible(false);
+			endbutton.setVisible(true);
+		}
+		
+		if (villain.isBeaten()) {
+			setWonGame(true);
+			btnBattle.setVisible(false);
+			endbutton.setVisible(true);
+		}
+
+		
 		//Hero Selection buttons
 		JButton heroBtn1 = new JButton("Select " + manager.getSquad().getHero(0).getCharacterName());
 		heroBtn1.addActionListener(new ActionListener() {
@@ -180,40 +265,9 @@ public class VillainLairWindow {
 		heroBtn1.setToolTipText("Click to select this hero to fight with");
 		heroBtn1.setBounds(471, 421, 159, 23);
 		battleWindow.getContentPane().add(heroBtn1);
-		
-		
-		//BATTLE BUTTON
-				
-		JButton btnBattle = new JButton("Battle");
-		btnBattle.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Minigame number: " + selectedMiniGame);
-				finishedWindow();
-			}
-		});
-		btnBattle.setBounds(259, 630, 371, 56);
-		battleWindow.getContentPane().add(btnBattle);
-
-		// to Confirm level transition and test other game logic
-		
-//		JButton btnWin = new JButton("Win");
-//		btnWin.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, true);
-//			}
-//		});
-//		btnWin.setBounds(644, 641, 194, 35);
-//		battleWindow.getContentPane().add(btnWin);
-//		
-//		JButton button_1 = new JButton("lose");
-//		button_1.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				manager.closeVillainLairWindow(VillainLairWindow.this, mainGameWindow, false);
-//			}
-//		});
-//		button_1.setBounds(644, 595, 194, 35);
-//		battleWindow.getContentPane().add(button_1);
-
+		if (manager.getSquad().getHero(0).isinDetention | !manager.getSquad().getHero(0).isAlive()) {
+			heroBtn1.setVisible(false);
+		}
 		
 		
 		switch (manager.getSquad().getLength()) {
@@ -237,7 +291,11 @@ public class VillainLairWindow {
 		herobtn2.setToolTipText("Click to select this hero to fight with");
 		herobtn2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		herobtn2.setBounds(706, 421, 159, 23);
-		battleWindow.getContentPane().add(herobtn2); break;
+		battleWindow.getContentPane().add(herobtn2); 
+		if (manager.getSquad().getHero(1).isinDetention | !manager.getSquad().getHero(1).isAlive()) {
+			herobtn2.setVisible(false);
+		}
+		break;
 		
 		case 3: JButton herobtn22 = new JButton("Select " + manager.getSquad().getHero(1).getCharacterName());
 		herobtn22.addActionListener(new ActionListener() {
@@ -261,6 +319,10 @@ public class VillainLairWindow {
 		herobtn22.setBounds(706, 421, 159, 23);
 		battleWindow.getContentPane().add(herobtn22);
 		
+		if (manager.getSquad().getHero(1).isinDetention | !manager.getSquad().getHero(1).isAlive()) {
+			herobtn22.setVisible(false);
+		}
+		
 		JButton heroBtn3 = new JButton("Select " + manager.getSquad().getHero(2).getCharacterName());
 		heroBtn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -281,7 +343,12 @@ public class VillainLairWindow {
 		heroBtn3.setToolTipText("Click to select this hero to fight with");
 		heroBtn3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		heroBtn3.setBounds(585, 455, 159, 23);
-		battleWindow.getContentPane().add(heroBtn3); break;
+		battleWindow.getContentPane().add(heroBtn3); 
+		if (manager.getSquad().getHero(2).isinDetention | !manager.getSquad().getHero(2).isAlive()) {
+			heroBtn3.setVisible(false);
+		}
+		break;
+				
 		}
 		}
 }

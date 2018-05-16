@@ -35,17 +35,19 @@ public class GuiMiniGameUtilities {
 		
 	}
 	
-	public static void getVillainAbiltyEffects(Villain villain, HeroesSquad squad) {
+	public static String getVillainAbiltyEffects(Villain villain, HeroesSquad squad) {
 		Abilities abilty = villain.getCharacterAbility();
+		String villainabilitiesString = "";
 		switch (abilty) {
-			case stealLunchMoney: stealLunchMoney(squad, villain); break;
-			case detention: detention(squad, villain); break;
-			case judge: judge(villain); break;
-			case badDay: badDay(villain); break;
-			case sickness: sickness(squad, villain); break;
-			case arrogance: arrogance(); break;
-			default: noEffect(); break;
+			case stealLunchMoney: villainabilitiesString = stealLunchMoney(squad, villain); break;
+			case detention: villainabilitiesString = detention(squad, villain); break;
+			case judge: villainabilitiesString = judge(villain); break;
+			case badDay: villainabilitiesString = badDay(villain); break;
+			case sickness: villainabilitiesString = sickness(squad, villain); break;
+			case arrogance: villainabilitiesString = arrogance(); break;
+			default: villainabilitiesString = "Error in getVillainAbilities"; break;
 			}
+		return villainabilitiesString;
 	}
 	
 
@@ -81,18 +83,19 @@ public class GuiMiniGameUtilities {
 		return string;
 	}
 
-	private static void judge(Villain villain) {
-		System.out.println(villain.toString());
-		System.out.println("You deserve to lose, then my child will see the loser that your really are...");
-		System.out.println(villain.getCharacterName() + " changes the game to Guess the number.");
+	private static String judge(Villain villain) {
+		String string = (villain.toString() + "You deserve to lose, then my child will see the loser that your really are...\n" 
+	+ villain.getCharacterName() + " changes the game to Guess the number.");
 		MiniGameEngine.setSelectedGame(2);
+		return string;
 	}
 
-	private static void arrogance() {
-		System.out.println("Your boss is never wrong, he will win all draws.");
+	private static String arrogance() {
+		return ("Your boss is never wrong, he will win all draws.");
 	}
 
-	private static void detention(HeroesSquad squad, Villain villain) {
+	private static String detention(HeroesSquad squad, Villain villain) {
+		String string = "";
 		boolean run = true;
 		while (run == true) {
 			int randInt = Utilities.getRandInt(squad.getLength());
@@ -100,18 +103,19 @@ public class GuiMiniGameUtilities {
 			if (hero.isAlive()) {
 				hero.setIsinDetention(true);
 				run = false;
-				System.out.println(hero.getCharacterName() + "you peice of s***! your going to DENTENTION!");
-				System.out.println(villain.toString());
+				string = (hero.getCharacterName() + "you peice of s***! your going to DENTENTION!\n" +
+				villain.toString());
 			}
 		}
+		return string;
 	}
 
-	private static void stealLunchMoney(HeroesSquad squad, Villain villain) {
+	private static String stealLunchMoney(HeroesSquad squad, Villain villain) {
 		Money wallet = squad.getWallet();
 		Money cost = new Money(5);
 		wallet.minus(cost);
-		System.out.println("The school bully stole your lunch money!");
-		villain.getVillainTaunt();
+		return ("The school bully stole your lunch money!\n" +
+		villain.getVillainTaunt());
 		
 	}
 
