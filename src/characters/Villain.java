@@ -24,10 +24,8 @@ public class Villain extends Character{
 	private String villainTaunt;
 	private int villainDamage;
 	private boolean damageModified;
-<<<<<<< HEAD
 	private static int villainsChoice;
-=======
->>>>>>> master
+
 	
 	
 	/**
@@ -157,11 +155,7 @@ public class Villain extends Character{
 	public void setDamageModified(boolean modifyDamage) {
 		damageModified = modifyDamage;
 	}
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> master
+
 
 
 }

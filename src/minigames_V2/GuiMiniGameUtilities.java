@@ -41,14 +41,14 @@ public class GuiMiniGameUtilities {
 			case detention: detention(squad, villain); break;
 			case judge: judge(villain); break;
 			case badDay: badDay(villain); break;
-			case cancer: cancer(squad, villain); break;
+			case sickness: sickness(squad, villain); break;
 			case arrogance: arrogance(); break;
 			default: noEffect(); break;
 			}
 	}
 	
 
-	private static String cancer(HeroesSquad squad, Villain villain) {
+	private static String sickness(HeroesSquad squad, Villain villain) {
 		boolean run = true;
 		while (run == true) {
 			int randInt = Utilities.getRandInt(squad.getLength() - 1);

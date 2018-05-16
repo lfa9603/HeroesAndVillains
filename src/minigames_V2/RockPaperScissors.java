@@ -16,6 +16,7 @@ public class RockPaperScissors extends MiniGame {
 //	private Villain villain;
 //	private HeroesSquad squad;
 	private int villainChoice;
+	private String battleResult;
 
 	public RockPaperScissors(Games game, Villain givenVillain, HeroesSquad theSquad, boolean gotAbilities) {
 		super(game, givenVillain, theSquad, gotAbilities);
@@ -88,38 +89,40 @@ public class RockPaperScissors extends MiniGame {
 
 }
 
-	public String runGuiGame(Hero hero, int playerChoice) {
+	public void runGuiGame(Hero hero, int playerChoice) {
 		villainChoice = getVillain().getVillainsChoice();
 		String youChoose = "you chose ";
-		System.out.println("in Minigame: PC:" + playerChoice + "VC: " + villainChoice);
+		System.out.println("in Minigame: PC:" + playerChoice + " VC: " + villainChoice);
+		String result = "";
 		switch(playerChoice) {
 		
 		case 1: System.out.println(youChoose + gameResourses.Rock); 
 			switch(villainChoice) {
-				case 1: return guibattleDraw(hero); 
-				case 2: return guiherolosses(hero); 
-				case 3: return guiheroWins(hero); 
+				case 1: result = guibattleDraw(hero); 
+				case 2: result = guiherolosses(hero); 
+				case 3: result = guiheroWins(hero); 
 			}; 
 			break;
 			
 		case 2: 
 			System.out.println(youChoose + gameResourses.Paper);
 			switch(villainChoice) {
-				case 1: return guiheroWins(hero); 
-				case 2: return guibattleDraw(hero); 
-				case 3: return guiherolosses(hero); 
+				case 1: result = guiheroWins(hero); 
+				case 2: result = guibattleDraw(hero); 
+				case 3: result = guiherolosses(hero); 
 			}; 
 			break;
 			
 		case 3: System.out.println(youChoose + gameResourses.Scissors);
 			switch(villainChoice) {
-				case 1: return guiherolosses(hero); 
-				case 2: return guiheroWins(hero); 
-				case 3: return guibattleDraw(hero);
+				case 1: result = guiherolosses(hero); 
+				case 2: result = guiheroWins(hero); 
+				case 3: result = guibattleDraw(hero);
 			};
 			break;	
 		}
-		return youChoose;
+		System.out.println(result);
+		setBattleResult(result);
 	}
 
 	/**
@@ -134,5 +137,19 @@ public class RockPaperScissors extends MiniGame {
 	 */
 	public void setVillainChoice(int villainChoice) {
 		this.villainChoice = villainChoice;
+	}
+
+	/**
+	 * @return the battleResult
+	 */
+	public String getBattleResult() {
+		return battleResult;
+	}
+
+	/**
+	 * @param battleResult the battleResult to set
+	 */
+	public void setBattleResult(String battleResult) {
+		this.battleResult = battleResult;
 	}
 }
