@@ -3,7 +3,6 @@ package city.buildings.shop;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import GUIPOC.ShopWindow;
 import characters.Abilities;
 import characters.Hero;
 //import characters.Abilities;
@@ -25,6 +24,7 @@ import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
 import collectables.powerUp.PowerUp;
+import guiClassesAndManager.ShopWindow;
 
 import static engine.HelperScanner.*;
 

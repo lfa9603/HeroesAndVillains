@@ -1,4 +1,4 @@
-package GUIPOC;
+package guiClassesAndManager;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -193,7 +193,7 @@ public class GameWindowManager {
 	}
 	
 	
-	public void FinalCloseVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, boolean herosWon) {
+	public void finalCloseVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, boolean herosWon) {
 		currentIndex += 1;
 		villainLairWindow.closeWindow();
 		
@@ -294,8 +294,6 @@ public class GameWindowManager {
 		hero2.setArmor(30);
 		hero3.setIsGameChooser(true);
 //		Money wallet = testsquad.getWallet();
-
-		
 		
 	}
 	

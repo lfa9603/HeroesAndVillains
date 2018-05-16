@@ -5,4 +5,4 @@
  * @author Lorenzo
  *
  */
-package GUIPOC;
+package guiClassesAndManager;
