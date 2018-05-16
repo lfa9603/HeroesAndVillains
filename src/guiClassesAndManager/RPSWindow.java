@@ -192,7 +192,9 @@ public class RPSWindow {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
+				if (battleFought) {
+					finishedWindow();
+				}
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 21));

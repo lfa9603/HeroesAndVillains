@@ -280,7 +280,7 @@ public class GameWindowManager {
 		manager.getSquad().addHero(hero5);
 		manager.getSquad().addHero(hero2);
 		manager.getSquad().addHero(hero6); 
-		hero2.setisAlive(false);
+//		hero2.setisAlive(false);
 //		hero3.setisAlive(false);
 //		hero3.setisAlive(false);
 		hero2.setArmor(30);
@@ -336,25 +336,13 @@ public class GameWindowManager {
 		System.out.println(selectedMiniGame);
 		switch (selectedMiniGame) {
 			case 1: launchRpsWindow(this, mainGameWindow); break;
-			case 2: launchRpsWindow(this, mainGameWindow); break;
-			case 3: launchRpsWindow(this, mainGameWindow); break;
+			case 2: launchGtnWindow(this, mainGameWindow); break;
+			case 3: launchDWWindow(this, mainGameWindow); break;
 			default: System.out.println("Fail on window");
 		}
 		
 	}
-	
-//	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, int selectedHeroIndex) {
-//		villainLairWindow.closeWindow();
-//		int selectedMiniGame = miniGameEngine.getSelectedMiniGame();
-//		System.out.println(selectedMiniGame);
-//		switch (selectedMiniGame) {
-//			case 1: launchRpsWindow(this, mainGameWindow); break;
-//			case 2: launchRpsWindow(this, mainGameWindow); break;
-//			case 3: launchRpsWindow(this, mainGameWindow); break;
-//			default: System.out.println("Fail on window");
-//		}
-//	}
-	
+		
 	public void launchRpsWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
 		RPSWindow rpsWindow = new RPSWindow(this, mainGameWindow);
 	}
@@ -364,15 +352,24 @@ public class GameWindowManager {
 		VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainGameWindow);
 	}
 	
-//	public void launchrpsWindow1(GameWindowManager gameWindowManager) {
-//		RPSWindow rpsWindow = new RPSWindow(this, selectedHeroIndex);
-//	}
-//	
-//	public void launchrpsWindow2(GameWindowManager gameWindowManager) {
-//		RPSWindow rpsWindow = new RPSWindow(this, selectedHeroIndex);
-//	}
+	public void launchGtnWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
+		GTNWindow gtnWindow = new GTNWindow(this, mainGameWindow);
+	}
 	
-
+	public void closeGtnWindow(GTNWindow gtnWindow, MainGameWindow mainGameWindow) {
+		gtnWindow.closeWindow();
+		VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainGameWindow);
+	}
+	
+	public void launchDWWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
+		DWWindow dwWindow = new DWWindow(this, mainGameWindow);
+	}
+	
+	public void closeDWWindow(DWWindow dwWindow, MainGameWindow mainGameWindow) {
+		dwWindow.closeWindow();
+		VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainGameWindow);
+	}
+	
 	/**
 	 * @return the characterTypes
 	 */

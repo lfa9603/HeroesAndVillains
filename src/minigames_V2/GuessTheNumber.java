@@ -9,6 +9,7 @@ public class GuessTheNumber extends MiniGame{
 	
 	private Villain villain;
 	private HeroesSquad squad;
+	private String battleResult;
 
 	public GuessTheNumber(Games game, Villain givenVillain, HeroesSquad theSquad, boolean gotAbilities) {
 		super(game, givenVillain, theSquad, gotAbilities);
@@ -23,7 +24,8 @@ public class GuessTheNumber extends MiniGame{
 		System.out.println("Your Playing guess the number! \n"
 				+ "The rules are: TODO add rules \n"
 				+ "The Villain has chosen a number. \n");
-		int villainChoice = villain.getVillainsChoice(10);
+		villain.setVillainsChoice(10);
+		int villainChoice = villain.getVillainsChoice();
 		
 		MiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 2);
 		
@@ -50,5 +52,45 @@ public class GuessTheNumber extends MiniGame{
 		}
 		
 	}
+	
+	public void runGuiGame(Hero hero, int playersChoice) {
+		int villainChoice = villain.getVillainsChoice();
+		String result = "";
+		
+		MiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 2);
+		if (MiniGameEngine.getGuessesInGTN() < 2) {
+			if (playersChoice == villainChoice) {
+				result = guiheroWins(hero);
+			}
+			
+			else {
+				if (playersChoice > villainChoice) {
+					result = ("Villain says: Lower");
+				}
+				else {
+					result = ("Villain says: Higher");
+				}
+			}
+		}
+		else {
+			result = guiherolosses(hero);
+		}
+		battleResult = result;
+	}
+
+	/**
+	 * @return the battleResults
+	 */
+	public String getBattleResult() {
+		return battleResult;
+	}
+
+	/**
+	 * @param battleResults the battleResults to set
+	 */
+	public void setBattleResult(String battleResults) {
+		this.battleResult = battleResults;
+	}
+
 
 }

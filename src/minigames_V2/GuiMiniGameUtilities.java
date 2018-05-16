@@ -184,7 +184,6 @@ public class GuiMiniGameUtilities {
 	private static String mysteryAbilty(Villain villain, int villainsChoice, int selectedGame, HeroesSquad squad) {
 		String string1 = "";
 		String string2 = "";
-		String string3 = "";
 		
 		if (selectedGame == 2) {
 			int firstGuess = Utilities.getRandInt(10);
@@ -192,30 +191,28 @@ public class GuiMiniGameUtilities {
 
 			string1 = ("Your Character is smart, thanks to his understanding of multi-Variable Calculas, he knows: ");
 			if (firstGuess >= villainsChoice) {
-				string2 = ("That " + villain.getCharacterName() + " has chosen a number below or equal to " + firstGuess);
+				string2 = string2 + ("That " + villain.getCharacterName() + " has chosen a number below or equal to " + firstGuess + "\n");
 			}
 			else {
-				string3 = ("That " + villain.getCharacterName() + " has chosen a number above " + firstGuess);
+				string2 = string2 + ("That " + villain.getCharacterName() + " has chosen a number above " + firstGuess + "\n");
 			}
-			
-			System.out.println("and");
 			
 			if (secondGuess >= villainsChoice) {
-				string2 = ("That " + villain.getCharacterName() + " has chosen a number below or equal to " + secondGuess);
+				string2 = string2 + ("That " + villain.getCharacterName() + " has chosen a number below or equal to " + secondGuess + "\n");
 			}
 			else {
-				string3 = ("That " + villain.getCharacterName() + " has chosen a number above " + secondGuess);
+				string2 = string2 + ("That " + villain.getCharacterName() + " has chosen a number above " + secondGuess + "\n");
 			}
 		}
 		
 		else {
 			string1 = ("Your Hero is out of his element, " + villain.getCharacterName() + " see's this...");
 			getVillainAbiltyEffects(villain, squad);
-			string2 = (villain.getCharacterName() + " uses his abilty " + villain.getCharacterAbility());
-			string3 = (villain.getVillainTaunt());
+			string2 = string2 + (villain.getCharacterName() + " uses his abilty " + villain.getCharacterAbility() + "\n");
+			string2 = string2 + (villain.getVillainTaunt());
 		}
 		
-		String finalString = (string1 + "\n" + string2 + "\n" + string3 + "\n");
+		String finalString = (string1 + "\n" + string2);
 		return finalString;
 	}
 
