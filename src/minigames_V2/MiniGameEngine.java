@@ -89,8 +89,7 @@ public class MiniGameEngine {
 		Hero hero = squad.getHero(selectedHeroIndex);
 		switch (selectedMiniGame) {
 		case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
-		String result = RPS.runGuiGame(hero, playerChoice);
-		return result;
+		RPS.runGuiGame(hero, playerChoice); break;
 		
 //		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
 //		String result1 = GTN.runGuiGame(hero);

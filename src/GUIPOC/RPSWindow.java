@@ -86,7 +86,7 @@ public class RPSWindow {
 		Dialouge.setText("Dialouge");
 		Dialouge.setBounds(180, 49, 467, 189);
 		RPSWindow.getContentPane().add(Dialouge);
-		String RPSRules = "You are playing Rock, paper, Scissors\n "
+		String RPSRules = "You are playing Rock, paper, Scissors\n"
 				+ "The Villain is ready, click one of the buttons below to make your choice.";
 		Dialouge.setText(RPSRules);
 		
@@ -115,7 +115,7 @@ public class RPSWindow {
 					String villainsChoice = GuiMiniGameUtilities.getRPS(villainsIntChoice);
 					manager.getMiniGameEngine().setPlayerChoice(1);
 					String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
-					Dialouge.setText("You chose Paper the villain chose " + villainsChoice +"\n"
+					Dialouge.setText("You chose Rock the villain chose " + villainsChoice +"\n"
 							+ result);
 				}
 				
@@ -162,7 +162,7 @@ public class RPSWindow {
 					String villainsChoice = GuiMiniGameUtilities.getRPS(villainsIntChoice);
 					manager.getMiniGameEngine().setPlayerChoice(3);
 					String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
-					Dialouge.setText("You chose Paper the villain chose " + villainsChoice +"\n"
+					Dialouge.setText("You chose Scissors the villain chose " + villainsChoice +"\n"
 							+ result);
 				}
 				

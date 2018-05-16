@@ -266,7 +266,7 @@ public class GameWindowManager {
 	public static void main(String[] args) {
 
 		GameWindowManager manager = new GameWindowManager();
-//		manager.launchSetupTeamAndWorld(); Uncomment to run game normally
+		manager.launchSetupTeamAndWorld();
 		
 		// For testing the minigame module
 		Hero hero1 = new Hero("heroOne", Types.talkitive, Abilities.charm);
@@ -285,7 +285,8 @@ public class GameWindowManager {
 		hero2.setArmor(30);
 		hero3.setIsGameChooser(true);
 //		Money wallet = testsquad.getWallet();
-		
+//		MainGameWindow mainGameScreen = new MainGameWindow(manager);
+//		VillainLairWindow villainLairWindow = new VillainLairWindow(manager, mainGameScreen);
 		
 		
 		
