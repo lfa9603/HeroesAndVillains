@@ -22,6 +22,7 @@ import engine.VisualUtilities;
 public class MiniGameEngine {
 	private static int selectedMiniGame;
 	private static int playerChoice;
+	private static int selectedHeroIndex;
 	
 	/**
 	 * The runMiniGameEngine calls the newGame method, it then calls the villainEffects method, then it
@@ -87,22 +88,24 @@ public class MiniGameEngine {
 
 	public String runGuiMiniGameEngine(Villain villain, HeroesSquad squad, int selectedHeroIndex) {
 		Hero hero = squad.getHero(selectedHeroIndex);
+		boolean gotAbilities = MiniGame.isAbilitiesAvaliable();
+		String result = "";
 		switch (selectedMiniGame) {
-		case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
-		RPS.runGuiGame(hero, playerChoice); break;
-		
-//		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
-//		String result1 = GTN.runGuiGame(hero);
-//		return result1; break;
-//		
-//		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
-//		String result2 = DW.runGuiGame(hero);
-//		return result2; break;
-		default: System.out.println("Error in runGuiMiniGameEngine");
+			case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, gotAbilities); 
+			RPS.runGuiGame(hero, playerChoice); result = RPS.getBattleResult(); break;
+			
+	//		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
+	//		String result1 = GTN.runGuiGame(hero);
+	//		return result1; break;
+	//		
+	//		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
+	//		String result2 = DW.runGuiGame(hero);
+	//		return result2; break;
+			default: System.out.println("Error in runGuiMiniGameEngine");
 		}
 		
 		
-		return null;
+		return result;
 		
 	}
 	
@@ -256,6 +259,22 @@ public class MiniGameEngine {
 	 */
 	public static void setPlayerChoice(int playerChoice) {
 		MiniGameEngine.playerChoice = playerChoice;
+	}
+
+
+	/**
+	 * @return the selectedHeroIndex
+	 */
+	public static int getSelectedHeroIndex() {
+		return selectedHeroIndex;
+	}
+
+
+	/**
+	 * @param selectedHeroIndex the selectedHeroIndex to set
+	 */
+	public static void setSelectedHeroIndex(int selectedHeroIndex) {
+		MiniGameEngine.selectedHeroIndex = selectedHeroIndex;
 	}
 
 	

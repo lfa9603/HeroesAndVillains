@@ -83,20 +83,25 @@ public abstract class MiniGame {
 	//Methods For the GUI
 	
 	public String guibattleDraw(Hero hero) {
+		String string1 = "";
+		String string2 = "";
+		
 		if (villain.getCharacterType() != Types.Boss && hero.getCharacterType() == Types.sly) {
-			heroWins(hero);
-			return ("Its a Draw and Who dares Wins! Your Character is Sly, and you managed to cheat your way through this draw.");
+			string1 = guiheroWins(hero);
+			string2 = ("Its a Draw and Who dares Wins! Your Character is Sly, and you managed to cheat your way through this draw.");
 		}
 		
 		else {
 			if (villain.getCharacterType() == Types.Boss) {
 				herolosses(hero);
-				return ("Its a Draw! But your Boss is NEVER wrong, they win this Draw!");
+				string1 = ("Its a Draw! But your Boss is NEVER wrong, they win this Draw!");
 			}
 			else {
-				return ("Its a Draw! No damage done");
+				string1 = ("Its a Draw! No damage done");
 			}
 		}
+		String finalString = (string1 + "\n" + string2);
+		return finalString;
 	}
 	
 	public String guiheroWins(Hero hero) {

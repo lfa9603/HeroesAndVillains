@@ -361,6 +361,7 @@ public class HeroesSquad {
 	//TODO: update Hero toString() and then make this method better, not tested yet
 	public String toString() {
 		String squad = new String("Heros in " + teamName + ": \n"
+				+ "Wallet: " + getWallet() + " coins\n"
 				+ "Index : Name : Health : Type : Abilty : Status \n"
 				+ "\n");
 		for (Hero hero: heroSquad) {

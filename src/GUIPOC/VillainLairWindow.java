@@ -28,7 +28,6 @@ public class VillainLairWindow {
 	private JFrame battleWindow;
 	private static GameWindowManager manager;
 	private MainGameWindow mainGameWindow;
-	private int selectedHeroIndex;
 
 //	/**
 //	 * Launch the application.
@@ -62,23 +61,9 @@ public class VillainLairWindow {
 	}
 	
 	public void finishedWindow() {
-		manager.closeVillainLairWindow(this, mainGameWindow, selectedHeroIndex);
+		manager.closeVillainLairWindow(this, mainGameWindow);
 	}
 	
-	/**
-	 * @return the selectedHeroIndex
-	 */
-	public int getSelectedHeroIndex() {
-		return selectedHeroIndex;
-	}
-
-	/**
-	 * @param selectedHeroIndex the selectedHeroIndex to set
-	 */
-	public void setSelectedHeroIndex(int selectedHeroIndex) {
-		this.selectedHeroIndex = selectedHeroIndex;
-	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -177,6 +162,7 @@ public class VillainLairWindow {
 		heroBtn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(0).getCharacterName() + " selected");
+				manager.getMiniGameEngine().setSelectedHeroIndex(0);
 				if (manager.getSquad().getHero(0).getIsGameChooser()) {
 					comboBox.setVisible(true);
 					lblUseChooseGame.setVisible(true);
@@ -234,6 +220,7 @@ public class VillainLairWindow {
 		herobtn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+				manager.getMiniGameEngine().setSelectedHeroIndex(1);
 				if (manager.getSquad().getHero(1).getIsGameChooser()) {
 					comboBox.setVisible(true);
 					lblUseChooseGame.setVisible(true);
@@ -255,6 +242,7 @@ public class VillainLairWindow {
 		herobtn22.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(1).getCharacterName() + " selected");
+				manager.getMiniGameEngine().setSelectedHeroIndex(1);
 				if (manager.getSquad().getHero(1).getIsGameChooser()) {
 					comboBox.setVisible(true);
 					lblUseChooseGame.setVisible(true);
@@ -276,6 +264,7 @@ public class VillainLairWindow {
 		heroBtn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SelectedHero.setText(manager.getSquad().getHero(2).getCharacterName() + " selected");
+				manager.getMiniGameEngine().setSelectedHeroIndex(2);
 				if (manager.getSquad().getHero(2).getIsGameChooser()) {
 					comboBox.setVisible(true);
 					lblUseChooseGame.setVisible(true);

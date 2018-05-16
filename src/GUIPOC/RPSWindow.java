@@ -24,7 +24,6 @@ public class RPSWindow {
 	private JFrame RPSWindow;
 	private GameWindowManager manager;
 	private MainGameWindow mainGameWindow;
-	private int selectedHeroIndex;
 	private boolean battleFought = false;
 
 //	/**
@@ -84,22 +83,37 @@ public class RPSWindow {
 		Dialouge.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		Dialouge.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Dialouge.setText("Dialouge");
-		Dialouge.setBounds(180, 49, 467, 189);
+		Dialouge.setBounds(180, 49, 467, 145);
 		RPSWindow.getContentPane().add(Dialouge);
 		String RPSRules = "You are playing Rock, paper, Scissors\n"
 				+ "The Villain is ready, click one of the buttons below to make your choice.";
 		Dialouge.setText(RPSRules);
 		
-		JLabel Abilities = new JLabel("");
-		Abilities.setHorizontalAlignment(SwingConstants.CENTER);
-		Abilities.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		Abilities.setBounds(21, 249, 771, 62);
-		RPSWindow.getContentPane().add(Abilities);
+		JTextPane Abilties = new JTextPane();
+		Abilties.setText("Abilties");
+		Abilties.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Abilties.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		Abilties.setBounds(180, 205, 467, 131);
+		RPSWindow.getContentPane().add(Abilties);
 		HeroesSquad squad = manager.getSquad();
 		Villain villain = manager.getVillains().getCurrentVillain(manager.getCurrentIndex());
+		int selectedHeroIndex = manager.getMiniGameEngine().getSelectedHeroIndex();
 		String abiltyString = manager.getMiniGameEngine().getHeroEffectsFromUtils(villain, squad, selectedHeroIndex);
 		System.out.println(abiltyString);
-		Abilities.setText(abiltyString);
+		Abilties.setText(abiltyString);
+		
+		
+//		JLabel Abilities = new JLabel("");
+//		Abilities.setHorizontalAlignment(SwingConstants.CENTER);
+//		Abilities.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		Abilities.setBounds(21, 249, 771, 62);
+//		RPSWindow.getContentPane().add(Abilities);
+//		HeroesSquad squad = manager.getSquad();
+//		Villain villain = manager.getVillains().getCurrentVillain(manager.getCurrentIndex());
+//		int selectedHeroIndex = manager.getMiniGameEngine().getSelectedHeroIndex();
+//		String abiltyString = manager.getMiniGameEngine().getHeroEffectsFromUtils(villain, squad, selectedHeroIndex);
+//		System.out.println(abiltyString);
+//		Abilities.setText(abiltyString);
 		//manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
 		
 		

@@ -15,22 +15,23 @@ public class GuiMiniGameUtilities {
 	public static String getHeroAbiltyEffects(Hero hero, Villain villain, HeroesSquad squad, int villainsChoice, int selectedGame) {
 		Abilities abilty = hero.getCharacterAbility();
 		boolean abilitiesAvaliable = MiniGame.isAbilitiesAvaliable();
+		String abilitiesString = "";
 		if (abilitiesAvaliable) {
 			switch (abilty) {
-			case charm: noEffect(); break;
-			case mystery: mysteryAbilty(villain, villainsChoice, selectedGame, squad); break;
-			case betterOdds: return betterOddsAbilty(villainsChoice, selectedGame);
-			case lessDamage: lessDamageAbilty(villain); break;
-			case winDraws: winDrawsAbilty(); break;
-			default: noEffect(); break;
+			case charm: abilitiesString = noEffect(); break;
+			case mystery: abilitiesString = mysteryAbilty(villain, villainsChoice, selectedGame, squad); break;
+			case betterOdds: abilitiesString = betterOddsAbilty(villainsChoice, selectedGame);
+			case lessDamage: abilitiesString = lessDamageAbilty(villain); break;
+			case winDraws: abilitiesString = winDrawsAbilty(); break;
+			default: abilitiesString = noEffect(); break;
 			}
 		}
 		
 		
 		else {
-			return ("No abilities this game.");
+			return ("Error in getHeroAbilties");
 		}
-		return null;
+		return abilitiesString;
 		
 	}
 	
@@ -49,6 +50,7 @@ public class GuiMiniGameUtilities {
 	
 
 	private static String sickness(HeroesSquad squad, Villain villain) {
+		String string = "";
 		boolean run = true;
 		while (run == true) {
 			int randInt = Utilities.getRandInt(squad.getLength() - 1);
@@ -62,21 +64,21 @@ public class GuiMiniGameUtilities {
 				run = false;
 				String villainTaunt = (villain.toString());
 				squad.heroTakesDamage(hero, 50);
-				return(villainTaunt + hero.getCharacterName() + " has been diagnosed with cancer.\n"
+				string = (villainTaunt + hero.getCharacterName() + " has been diagnosed with cancer.\n"
 						+ "Cancer is expensive and life threatning.\n"
 						+ "You are charged " + cost + " coins and "
 						+ hero.getCharacterName() + " loses 50HP");
 				
 			}
 		}
-		return null;
+		return string;
 	}
 
-	private static void badDay(Villain villain) {
-		System.out.println(villain.getCharacterName() + " your Partner is having a bad day, therefore YOUR having a bad day...");
-		System.out.println("You will not be able to use your abilties for the rest of this battle.");
-		System.out.println(villain.toString());
+	private static String badDay(Villain villain) {
+		String string = (villain.getCharacterName() + " your Partner is having a bad day, therefore YOUR having a bad day..." + 
+	"You will not be able to use your abilties for the rest of this battle." + villain.toString());
 		MiniGame.setAbilitiesAvaliable(false);
+		return string;
 	}
 
 	private static void judge(Villain villain) {
@@ -154,70 +156,77 @@ public class GuiMiniGameUtilities {
 		return result;
 	}
 	
-	private static void lessDamageAbilty(Villain villain) {
+	private static String lessDamageAbilty(Villain villain) {
+		String result = "less Damage issue";
 		if (villain.isDamageModified()) {
-			noEffect();
+			result = noEffect();
 		}
 		else {
-			System.out.println("You Hero is Big and Strong, They will protect your team, everyone "
-					+ "will take 30% less damage, from now on.");
 			int oldDamage = villain.getVillainDamage();
 			int newDamge = (int) (oldDamage * 0.70);
 			villain.setVillainDamage(newDamge);
 			villain.setDamageModified(true);
+			result = ("You Hero is Big and Strong, They will protect your team, everyone "
+					+ "will take 30% less damage, from now on.");
 		}
+		return result; 
 		
 	}
 	
-	private static void winDrawsAbilty() {
-		System.out.println("Your Hero is a Sly Character, they will make sure that if it is a draw, they will win.");
+	private static String winDrawsAbilty() {
+		return ("Your Hero is a Sly Character, they will make sure that if it is a draw, they will win.");
 	}
 	
-	private static void mysteryAbilty(Villain villain, int villainsChoice, int selectedGame, HeroesSquad squad) {
+	private static String mysteryAbilty(Villain villain, int villainsChoice, int selectedGame, HeroesSquad squad) {
+		String string1 = "";
+		String string2 = "";
+		String string3 = "";
+		
 		if (selectedGame == 2) {
 			int firstGuess = Utilities.getRandInt(10);
 			int secondGuess = Utilities.getRandInt(10); 
-			
-			VisualUtilities.getIcon(Icons.bar);
-			System.out.println("Your Character is smart, thanks to his understanding of multi-Variable Calculas, he knows: ");
+
+			string1 = ("Your Character is smart, thanks to his understanding of multi-Variable Calculas, he knows: ");
 			if (firstGuess >= villainsChoice) {
-				System.out.println("That " + villain.getCharacterName() + " has chosen a number below or equal to " + firstGuess);
+				string2 = ("That " + villain.getCharacterName() + " has chosen a number below or equal to " + firstGuess);
 			}
 			else {
-				System.out.println("That " + villain.getCharacterName() + " has chosen a number above " + firstGuess);
+				string3 = ("That " + villain.getCharacterName() + " has chosen a number above " + firstGuess);
 			}
 			
 			System.out.println("and");
 			
 			if (secondGuess >= villainsChoice) {
-				System.out.println("That " + villain.getCharacterName() + " has chosen a number below or equal to " + secondGuess);
+				string2 = ("That " + villain.getCharacterName() + " has chosen a number below or equal to " + secondGuess);
 			}
 			else {
-				System.out.println("That " + villain.getCharacterName() + " has chosen a number above " + secondGuess);
+				string3 = ("That " + villain.getCharacterName() + " has chosen a number above " + secondGuess);
 			}
-			VisualUtilities.getIcon(Icons.bar);
 		}
 		
 		else {
-			System.out.println("Your Hero is out of his element, " + villain.getCharacterName() + " see's this...");
+			string1 = ("Your Hero is out of his element, " + villain.getCharacterName() + " see's this...");
 			getVillainAbiltyEffects(villain, squad);
-			System.out.println(villain.getCharacterName() + " uses his abilty " + villain.getCharacterAbility());
-			System.out.println(villain.getVillainTaunt());
+			string2 = (villain.getCharacterName() + " uses his abilty " + villain.getCharacterAbility());
+			string3 = (villain.getVillainTaunt());
 		}
+		
+		String finalString = (string1 + "\n" + string2 + "\n" + string3 + "\n");
+		return finalString;
 	}
 
-	public static int gameChooserPowerUp(int selectedMiniGame, Hero hero) {
-		YesNo userInput = Utilities.getStringChoice("Do you want to use your GameChooser power up?");
-		String string = "1 to select Paper Scissors Rock. \n"
-				+ "2 to select Guess the number \n"
-				+ "3 to select dice wars.";
-		
-		if (userInput == YesNo.yes) {
-			selectedMiniGame = Utilities.getChoice(string, 1, 3);
-		}
-		
-		
-		return selectedMiniGame;
-	}
+//	public static int gameChooserPowerUp(int selectedMiniGame, Hero hero) {
+//		YesNo userInput = Utilities.getStringChoice("Do you want to use your GameChooser power up?");
+//		String string = "1 to select Paper Scissors Rock. \n"
+//				+ "2 to select Guess the number \n"
+//				+ "3 to select dice wars.";
+//		
+//		if (userInput == YesNo.yes) {
+//			selectedMiniGame = Utilities.getChoice(string, 1, 3);
+//		}
+//		
+//		
+//		return selectedMiniGame;
+//	}
 
 }
