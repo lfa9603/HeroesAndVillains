@@ -4,7 +4,6 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import setupGui.SetupManager;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -14,7 +13,6 @@ import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
 
 import minigames_V2.Games;
-import minigames_V2.MiniGameManager_archive;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.JComboBox;

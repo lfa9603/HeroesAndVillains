@@ -321,22 +321,10 @@ public class GameWindowManager {
 		int selectedMiniGame = miniGameEngine.getSelectedMiniGame();
 		System.out.println(selectedMiniGame);
 		switch (selectedMiniGame) {
-<<<<<<< HEAD
-			case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
-				RPSWindow rpsWindow = new RPSWindow(this, RPS, selectedHeroIndex);
-				break;
-			case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
-//				GTN.runGame(hero); 
-//				break;
-			case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
-//				DW.runGame(hero); 
-				break;
-=======
-		case 1: launchRpsWindow(this); break;
-		case 2: launchRpsWindow(this); break;
-		case 3: launchRpsWindow(this); break;
-		default: System.out.println("Fail on window");
->>>>>>> f98d5aa72ed92fcbdbf8916f62627398a6cb4af4
+			case 1: launchRpsWindow(this); break;
+			case 2: launchRpsWindow(this); break;
+			case 3: launchRpsWindow(this); break;
+			default: System.out.println("Fail on window");
 		}
 		
 		

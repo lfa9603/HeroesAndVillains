@@ -11,7 +11,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import characters.Types;
-import setupGui.SetupManager;
 import characters.Abilities;
 import characters.Hero;
 import characters.HeroTypes;
@@ -46,6 +45,7 @@ public class SetupAddHeros {
 //		});
 //	}
 
+	
 	/**
 	 * Create the application.
 	 */
