@@ -62,7 +62,7 @@ public class VillainLairWindow {
 	}
 	
 	public void finishedWindow() {
-		manager.closeVillainLairWindow(this, selectedHeroIndex);
+		manager.closeVillainLairWindow(this, mainGameWindow, selectedHeroIndex);
 	}
 	
 	/**

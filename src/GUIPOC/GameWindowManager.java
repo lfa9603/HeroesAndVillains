@@ -266,16 +266,7 @@ public class GameWindowManager {
 	public static void main(String[] args) {
 
 		GameWindowManager manager = new GameWindowManager();
-		manager.launchSetupTeamAndWorld();
-		
-	}
-	
-	// Merged from Jays Setup Manager
-	
-	
-	public void closeSetupTeamAndWorld(setupTeamAndWorld setupTeamAndWorld) {
-		setupTeamAndWorld.closeWindow();
-		launchsetupAddHeros(this);
+//		manager.launchSetupTeamAndWorld(); Uncomment to run game normally
 		
 		// For testing the minigame module
 		Hero hero1 = new Hero("heroOne", Types.talkitive, Abilities.charm);
@@ -285,7 +276,7 @@ public class GameWindowManager {
 		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
 		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
 		
-		squad.addHero(hero3);
+		manager.getSquad().addHero(hero3);
 //		squad.addHero(hero3);
 //		squad.addHero(hero5);
 //		hero2.setisAlive(false);
@@ -294,6 +285,20 @@ public class GameWindowManager {
 		hero2.setArmor(30);
 		hero3.setIsGameChooser(true);
 //		Money wallet = testsquad.getWallet();
+		
+		
+		
+		
+		
+		
+	}
+	
+	// Merged from Jays Setup Manager
+	
+	
+	public void closeSetupTeamAndWorld(setupTeamAndWorld setupTeamAndWorld) {
+		setupTeamAndWorld.closeWindow();
+		launchsetupAddHeros(this);
 
 		
 		
@@ -316,26 +321,38 @@ public class GameWindowManager {
 		launchMainGameScreen();
 	}
 	
-	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, int selectedHeroIndex) {
+	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, int selectedHeroIndex) {
 		villainLairWindow.closeWindow();
 		int selectedMiniGame = miniGameEngine.getSelectedMiniGame();
 		System.out.println(selectedMiniGame);
 		switch (selectedMiniGame) {
-			case 1: launchRpsWindow(this); break;
-			case 2: launchRpsWindow(this); break;
-			case 3: launchRpsWindow(this); break;
+			case 1: launchRpsWindow(this, mainGameWindow); break;
+			case 2: launchRpsWindow(this, mainGameWindow); break;
+			case 3: launchRpsWindow(this, mainGameWindow); break;
 			default: System.out.println("Fail on window");
 		}
 		
-		
 	}
 	
-	public void launchRpsWindow(GameWindowManager gameWindowManager) {
-		RPSWindow rpsWindow = new RPSWindow(this);
+//	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, int selectedHeroIndex) {
+//		villainLairWindow.closeWindow();
+//		int selectedMiniGame = miniGameEngine.getSelectedMiniGame();
+//		System.out.println(selectedMiniGame);
+//		switch (selectedMiniGame) {
+//			case 1: launchRpsWindow(this, mainGameWindow); break;
+//			case 2: launchRpsWindow(this, mainGameWindow); break;
+//			case 3: launchRpsWindow(this, mainGameWindow); break;
+//			default: System.out.println("Fail on window");
+//		}
+//	}
+	
+	public void launchRpsWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
+		RPSWindow rpsWindow = new RPSWindow(this, mainGameWindow);
 	}
 	
-	public void closeRpsWindow(RPSWindow rpswindow) {
+	public void closeRpsWindow(RPSWindow rpswindow, MainGameWindow mainGameWindow) {
 		rpswindow.closeWindow();
+		VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainGameWindow);
 	}
 	
 //	public void launchrpsWindow1(GameWindowManager gameWindowManager) {
@@ -453,5 +470,7 @@ public class GameWindowManager {
 		return null;
 		
 	}
+
+
 	
 }

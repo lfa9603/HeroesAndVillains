@@ -23,7 +23,9 @@ public class RPSWindow {
 
 	private JFrame RPSWindow;
 	private GameWindowManager manager;
+	private MainGameWindow mainGameWindow;
 	private int selectedHeroIndex;
+	private boolean battleFought = false;
 
 //	/**
 //	 * Launch the application.
@@ -45,9 +47,10 @@ public class RPSWindow {
 	 * Create the application.
 	 */
 	
-	public RPSWindow(GameWindowManager gameWindowManager) {
+	public RPSWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
 //		this.selectedHeroIndex = selectedHeroIndex;
 		manager = gameWindowManager;
+		this.mainGameWindow = mainGameWindow;
 		initialize();
 		RPSWindow.setVisible(true);
 
@@ -58,7 +61,7 @@ public class RPSWindow {
 	}
 	
 	public void finishedWindow() {
-		manager.closeRpsWindow(this);
+		manager.closeRpsWindow(this, mainGameWindow);
 	}
 
 	/**
@@ -76,17 +79,7 @@ public class RPSWindow {
 		lblRockPaperScissors.setBounds(0, 0, 808, 45);
 		RPSWindow.getContentPane().add(lblRockPaperScissors);
 
-		
-		JButton btnRock = new JButton("Rock");
-		btnRock.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRock.setFont(new Font("Tahoma", Font.PLAIN, 21));
-		btnRock.setBounds(21, 390, 243, 62);
-		RPSWindow.getContentPane().add(btnRock);
-		
-		
+	
 		JTextPane Dialouge = new JTextPane();
 		Dialouge.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		Dialouge.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -110,15 +103,49 @@ public class RPSWindow {
 		//manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
 		
 		
+		//RockPaperScissorsbuttons
+		
+		JButton btnRock = new JButton("Rock");
+		btnRock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!battleFought) {
+					battleFought = true;
+					manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(3);
+					int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
+					String villainsChoice = GuiMiniGameUtilities.getRPS(villainsIntChoice);
+					manager.getMiniGameEngine().setPlayerChoice(1);
+					String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
+					Dialouge.setText("You chose Paper the villain chose " + villainsChoice +"\n"
+							+ result);
+				}
+				
+				else {
+					Dialouge.setText("Click the continue button.");
+				}
+			}
+		});
+		btnRock.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		btnRock.setBounds(21, 390, 243, 62);
+		RPSWindow.getContentPane().add(btnRock);
+		
 		JButton btnPaper = new JButton("Paper");
 		btnPaper.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(3);
-				int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
-				String villainsChoice = GuiMiniGameUtilities.getRPS(villainsIntChoice);
-				String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
-				Dialouge.setText("You chose Paper the villain chose " + villainsChoice +"\n"
-						+ result);
+				if (!battleFought) {
+					battleFought = true;
+					manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(3);
+					int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
+					String villainsChoice = GuiMiniGameUtilities.getRPS(villainsIntChoice);
+					manager.getMiniGameEngine().setPlayerChoice(2);
+					String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
+					Dialouge.setText("You chose Paper the villain chose " + villainsChoice +"\n"
+							+ result);
+				}
+				
+				else {
+					Dialouge.setText("Click the continue button.");
+				}
+
 			}
 		});
 		btnPaper.setFont(new Font("Tahoma", Font.PLAIN, 21));
@@ -128,6 +155,20 @@ public class RPSWindow {
 		JButton btnScissors = new JButton("Scissors");
 		btnScissors.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (!battleFought) {
+					battleFought = true;
+					manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(3);
+					int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
+					String villainsChoice = GuiMiniGameUtilities.getRPS(villainsIntChoice);
+					manager.getMiniGameEngine().setPlayerChoice(3);
+					String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
+					Dialouge.setText("You chose Paper the villain chose " + villainsChoice +"\n"
+							+ result);
+				}
+				
+				else {
+					Dialouge.setText("Click the continue button.");
+				}
 			}
 		});
 		btnScissors.setFont(new Font("Tahoma", Font.PLAIN, 21));
@@ -137,6 +178,7 @@ public class RPSWindow {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 21));
