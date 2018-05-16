@@ -24,6 +24,10 @@ import engine.VisualUtilities;
  */
 public class MiniGameEngine {
 	private static int selectedMiniGame;
+<<<<<<< HEAD
+	private static int playerChoice;
+
+=======
 	
 	
 	/**
@@ -34,13 +38,14 @@ public class MiniGameEngine {
 	 * @param villain
 	 * @param squad
 	 */
+>>>>>>> master
 	public void runMiniGameEngine(Villain villain, HeroesSquad squad) {
 
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			
 			int selectedMiniGame = selectNewGame(3);
-			System.out.println("The Game will be " + getGame(selectedMiniGame));
+			System.out.println("The Game will be " + getGameString(selectedMiniGame));
 			System.out.println(VisualUtilities.getIcon(Icons.bar));
 			villainEffects(villain, squad);
 			squad.checkTeamStatus();
@@ -86,12 +91,45 @@ public class MiniGameEngine {
 		
 	}
 	
+<<<<<<< HEAD
+	public String runGuiMiniGameEngine(Villain villain, HeroesSquad squad, int selectedHeroIndex) {
+		Hero hero = squad.getHero(selectedHeroIndex);
+		switch (selectedMiniGame) {
+		case 1: RockPaperScissors RPS = new RockPaperScissors(Games.RPS, villain, squad, false); 
+		String result = RPS.runGuiGame(hero, playerChoice);
+		return result;
+		
+//		case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, false); 
+//		String result1 = GTN.runGuiGame(hero);
+//		return result1; break;
+//		
+//		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, false); 
+//		String result2 = DW.runGuiGame(hero);
+//		return result2; break;
+		default: System.out.println("Error in runGuiMiniGameEngine");
+		}
+		
+		
+		return null;
+		
+	}
+	
+	public String getHeroEffectsFromUtils(Villain villain, HeroesSquad squad, int selectedHeroIndex) {
+		Hero hero = squad.getHero(selectedHeroIndex);
+		int villainsChoice = villain.getVillainsChoice();
+		String abiltyString = GuiMiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainsChoice, selectedMiniGame);
+		System.out.println(abiltyString);
+		return abiltyString;
+		
+	}
+=======
 	/**
 	 * The villainEffects method checks the villains type parameter, then uses this to reference the difficulty level of that villain object
 	 * the getVillainAbilties effects method is then called from the MiniGameUtilities class. 
 	 * @param villain
 	 * @param squad
 	 */
+>>>>>>> master
 	
 	private void villainEffects(Villain villain, HeroesSquad squad) {
 		int randInt = Utilities.getRandInt(100);
@@ -154,6 +192,9 @@ public class MiniGameEngine {
 		return null;
 	}
 	
+<<<<<<< HEAD
+	public String getGameString(int selectedMiniGame) {
+=======
 	/**
 	 * The getGame method returns a string representation of the current game.
 	 * @param selectedMiniGame
@@ -161,6 +202,7 @@ public class MiniGameEngine {
 	 */
 	
 	private String getGame(int selectedMiniGame) {
+>>>>>>> master
 		String result = "";
 		switch (selectedMiniGame) {
 		case 1: result = "Paper, Scissors, Rock"; break;
@@ -171,6 +213,9 @@ public class MiniGameEngine {
 		return result;
 	}
 	
+<<<<<<< HEAD
+	public int selectNewGame(int upperLimit) {
+=======
 	/**
 	 * The selectNewGame calls the getRandInt from the Utilities class, it then returns that integer.
 	 * @param upperLimit
@@ -178,6 +223,7 @@ public class MiniGameEngine {
 	 */
 	
 	private int selectNewGame(int upperLimit) {
+>>>>>>> master
 		int selectedGame = Utilities.getRandInt(upperLimit);
 		return selectedGame;		
 	}
@@ -193,13 +239,41 @@ public class MiniGameEngine {
 		
 	}
 	
+<<<<<<< HEAD
+	public static void setSelectedGame(Games gameID) {
+		switch (gameID) {
+		case RPS: setSelectedGame(1); break;
+		case GTN: setSelectedGame(2); break;
+		case DW: setSelectedGame(3); break;
+		}
+		
+	}
+	
+	public int getSelectedMiniGame() {
+=======
 	/**
 	 * Getter method for selectedMinigame parameter
 	 * @return
 	 */
 	
 	public static int getSelectedMiniGame() {
+>>>>>>> master
 		return selectedMiniGame;
+	}
+
+
+	/**
+	 * @return the playerChoice
+	 */
+	public static int getPlayerChoice() {
+		return playerChoice;
+	}
+
+	/**
+	 * @param playerChoice the playerChoice to set
+	 */
+	public static void setPlayerChoice(int playerChoice) {
+		MiniGameEngine.playerChoice = playerChoice;
 	}
 
 	

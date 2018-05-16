@@ -1,13 +1,18 @@
 package city.buildings;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 //import java.util.Scanner;
 
+import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
+import characters.Types;
 import collectables.Collectable;
 import collectables.CollectableID;
+import collectables.Inventory;
 import collectables.InventoryTools;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
@@ -71,41 +76,46 @@ public class PowerUpDen extends Building {
 						+ "DON'T TRY TO BE CHEECKY ;) ");
 				try {
 					Integer intInput = nextInt();
-					PowerUp powerUp = null; 
-					
-					
-					switch (intInput) {
-					 	case 0:
-					 		powerUp = new Armor(CollectableID.Armor);
-					 		break;
-					 	case 1:
-					 		powerUp = new GameChooser(CollectableID.GameChooser);
-					 		break;
-					 	case 2:
-					 		powerUp = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
-					 		break;
-					 	case 3:
-					 		System.out.println("\n\nSee ya later alligator!!!\n\n");
-					 		inPowerUpDen = false;
-					 		continue;
-					 	default:
-						extracted();
+					PowerUp powerUp = returnCorrectPowerUp(intInput); 
+					if (powerUp == null) {
+						System.out.println("\n\nSee ya later alligator!!!\n\n");
+				 		inPowerUpDen = false;
 					}
 					
-					if (heroesSquad.getBackPack().isInInventory(powerUp) != null) {
-						System.out.println(heroesSquad);
-						int choice = Utilities.getChoice("Choose hero by typing its index value!\n"
-								+ "You will apply the selected healing item to this memeber of your team\n"
-								+ "Type 0 to exit", 0, heroesSquad.getLength());
-						if (choice == 0) {
-							continue;
+					
+//					switch (intInput) {
+//					 	case 0:
+//					 		powerUp = new Armor(CollectableID.Armor);
+//					 		break;
+//					 	case 1:
+//					 		powerUp = new GameChooser(CollectableID.GameChooser);
+//					 		break;
+//					 	case 2:
+//					 		powerUp = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
+//					 		break;
+//					 	case 3:
+//					 		System.out.println("\n\nSee ya later alligator!!!\n\n");
+//					 		inPowerUpDen = false;
+//					 		continue;
+//					 	default:
+//						extracted();
+//					}
+					else {
+						if (heroesSquad.getBackPack().isInInventory(powerUp) != null) {
+							System.out.println(heroesSquad);
+							int choice = Utilities.getChoice("Choose hero by typing its index value!\n"
+									+ "You will apply the selected healing item to this memeber of your team\n"
+									+ "Type 0 to exit", 0, heroesSquad.getLength());
+							if (choice == 0) {
+								continue;
+							} else {
+								Hero hero = heroesSquad.getHero(choice - 1);	 	
+								powerUp.apply(hero);
+								heroesSquad.getBackPack().removeItemFromInventory(powerUp);
+							}
 						} else {
-							Hero hero = heroesSquad.getHero(choice - 1);	 	
-							powerUp.apply(hero);
-							heroesSquad.getBackPack().removeItemFromInventory(powerUp);
+							System.out.println("MATE! I TOLD YA NOT TO BE CHEECKY! YOU AIN'T GOT NONE OF THAT!");
 						}
-					} else {
-						System.out.println("MATE! I TOLD YA NOT TO BE CHEECKY! YOU AIN'T GOT NONE OF THAT!");
 					}
 					 		
 				
@@ -130,6 +140,52 @@ public class PowerUpDen extends Building {
 	 */
 	private void extracted() {
 		throw new InputMismatchException();
+	}
+	
+	
+	public PowerUp returnCorrectPowerUp(int index) {
+		PowerUp powerUp = null;
+		
+		switch (index) {
+	 	case 0:
+	 		powerUp = new Armor(CollectableID.Armor);
+	 		break;
+	 	case 1:
+	 		powerUp = new GameChooser(CollectableID.GameChooser);
+	 		break;
+	 	case 2:
+	 		powerUp = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
+	 		break;
+	 	case 3:
+	 		powerUp = null;
+//	 		System.out.println("\n\nSee ya later alligator!!!\n\n");
+//	 		inPowerUpDen = false;
+//	 		continue;
+	 		break;
+	 	default:
+		extracted();
+		}
+		
+		return powerUp;
+	}
+	
+	public String applyPotionOrRejectIt(HeroesSquad heroesSquad, Hero hero, PowerUp powerUp) {
+		String messageToReturn = new String();
+		if (heroesSquad.getBackPack().isInInventory(powerUp) != null && hero.isAlive()) {
+			System.out.println(heroesSquad);
+			powerUp.apply(hero);
+			heroesSquad.getBackPack().removeItemFromInventory(powerUp);
+			messageToReturn = "Great! You applied one " + powerUp.getCollectableID() + " to " + hero.getCharacterName() + ".";
+			
+		} else {
+			if (heroesSquad.getBackPack().isInInventory(powerUp) == null) {
+				messageToReturn = ("MATE! DON'T BE CHEEKY! YOU DON'T HAVE THIS POWER-UP!!;)");
+			} else {
+				messageToReturn = ("Unfortunately " + hero.getCharacterName() + " is dead, apply a power-up to a hero that is alive!");
+			}
+		}
+		
+		return messageToReturn;
 	}
 
 	/**
@@ -161,6 +217,32 @@ public class PowerUpDen extends Building {
 //				reset();
 			}
 		}
+	}
+	
+	
+	public static void main(String[] args) {
+
+		
+		PowerUpDen powerUpDen = new PowerUpDen("PowerUpDen", TypeBuildings.PowerUpDen);
+		
+		PowerUp increaseMaxHealth = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
+		PowerUp armor = new Armor(CollectableID.Armor);
+		PowerUp gameChooser = new GameChooser(CollectableID.GameChooser);
+		
+		Hero lorenzo1 = new Hero("Lorenzo1", Types.smart, Abilities.betterOdds);
+		Hero jay1 = new Hero("Jay1", Types.talkitive, Abilities.betterOdds);
+		
+		HeroesSquad squad1 = new HeroesSquad();
+		squad1.addHero(lorenzo1);
+		squad1.addHero(jay1);
+		
+		Inventory backpack = squad1.getBackPack();
+		
+		backpack.addItemToInventory(armor);
+		backpack.addItemToInventory(increaseMaxHealth);
+		backpack.addItemToInventory(gameChooser);
+		
+		powerUpDen.interact(squad1);
 	}
 
 }

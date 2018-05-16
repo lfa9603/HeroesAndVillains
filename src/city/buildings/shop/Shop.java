@@ -3,6 +3,7 @@ package city.buildings.shop;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import GUIPOC.ShopWindow;
 import characters.Abilities;
 import characters.Hero;
 //import characters.Abilities;
@@ -23,6 +24,7 @@ import collectables.heroesMap.HeroesMap;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
+import collectables.powerUp.PowerUp;
 
 import static engine.HelperScanner.*;
 
@@ -46,6 +48,7 @@ import static engine.HelperScanner.*;
 public class Shop extends Building{
 
 	private Merchandise merchandise;
+	private NamesForInnkeeper nameOfInnkeeper;
 	
 	/**
 	 * 
@@ -59,6 +62,7 @@ public class Shop extends Building{
 	public Shop(String name, TypeBuildings buildType) {
 		super(name, buildType);
 		merchandise = new Merchandise();
+		nameOfInnkeeper = NamesForInnkeeper.returnRendomNameOutOfThePool();
 	}	
 	
 	
@@ -314,8 +318,147 @@ public class Shop extends Building{
 
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * @param index (Type int)
+	 * @return powerUpToReturn (Type PowerUp)
+	 * 
+	 * This method replicates the part of the interact method where a PowerUp item wants to be bought, 
+	 * this deals with returning the expected object (the index indicated is the index of the object as displayed in {@link ShopWindow})
+	 * 
+	 */
+	private Collectable returningAPowerUp(int index) {
+		PowerUp powerUpToReturn = null;
+		switch (index) {
+			case 0:
+				powerUpToReturn = new Armor(CollectableID.Armor);
+				break;
+			case 1:
+				powerUpToReturn = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
+				break;
+			case 2:
+				powerUpToReturn = new GameChooser(CollectableID.GameChooser);
+				break;
+		}
+		
+		return powerUpToReturn;
+	}
+	
+	
+	/**
+	 * 
+	 * @param index (Type int)
+	 * @return healingItemToReturn (Type PowerUp)
+	 * 
+	 * This method replicates the part of the interact method where a HealingItem item wants to be bought, 
+	 * this deals with returning the expected object (the index indicated is the index of the object as displayed in {@link ShopWindow})
+	 * 
+	 */
+	private Collectable returningAHealingItem(int index) {
+		HealingItem healingItemToReturn = null;
+		switch (index) {
+			case 4:
+				healingItemToReturn = new HealingItem(CollectableID.GoodHealingItem);
+				break;
+			case 5:
+				healingItemToReturn = new HealingItem(CollectableID.BetterHealingItem);
+				break;
+			case 6:
+				healingItemToReturn = new HealingItem(CollectableID.BestHealingItem);
+				break;
+		}
+		
+		return healingItemToReturn;
+	}
+	
+	/**
+	 * 
+	 * @param index (Type int)
+	 * @return heroesMapToReturn (Type PowerUp)
+	 * 
+	 * This method replicates the part of the interact method where a HeroesMap item wants to be bought 
+	 */
+	private Collectable returningTheHeroesMap(int index) {
+		
+		HeroesMap heroesMapToReturn = new HeroesMap(CollectableID.HeroesMap);
+		return heroesMapToReturn;
+	}
 
+	/**
+	 * 
+	 * USED IN GUI IMPLEMENTATION, INDEX COMES FROM GUI COMBOBOX IN {@link ShopWindow}.
+	 * 
+	 * @param index
+	 * @return collectableToReturn (Type Collectable)
+	 * 
+	 * This method calls the 3 helpers above to return the right Collectable object for 
+	 * successOrRejectionPurchasedItem(int index, HeroesSquad heroSquad) method below. 
+	 *  
+	 */
+	private Collectable retrieveRightCollectable(int index) {
+		Collectable collectableToReturn = null;
+		if (index < 3) {
+			collectableToReturn = returningAPowerUp(index);
+		}
+		
+		if (index == 3) {
+			collectableToReturn = returningTheHeroesMap(index);
+		}
+		
+		if (index > 3) {
+			collectableToReturn = returningAHealingItem(index);
+		}
+		
+		return collectableToReturn;
+	}
+	
+	/**
+	 * 
+	 * USED IN GUI IMPLEMENTATION, INDEX COMES FROM GUI COMBOBOX IN {@link ShopWindow}.
+	 * 
+	 * @param index
+	 * @return strToReturn (Type String)
+	 * 
+	 * This method uses the 4 helpers above, it deals with retrieving the right Collectable item and add it 
+	 * to the HeroesSquad object property if everything goes well.
+	 * The returned String shows the transaction status once the user tries to purchase an item.
+	 * 
+	 */
+	public String successOrRejectionPurchasedItem(int index, HeroesSquad heroSquad) {
+		
+		String strToReturn = new String();
+		
+		Collectable collectable = retrieveRightCollectable(index);
+		if (merchandise.getInventory().isInInventory(collectable) != null) {
+			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
+				if (collectable.getCollectableID().equals(CollectableID.HeroesMap)) {
+					if (heroSquad.isHaveMap()) {
+						return "Don't wast your money on another man mate! You already have one!";
+					} else {
+						heroSquad.setHaveMap(true);
+					}
+				} else {
+					heroSquad.getBackPack().addItemToInventory(collectable); 
+				}
+				merchandise.getInventory().removeItemFromInventory(collectable);
+				strToReturn = "Great! You bought a " + collectable.getCollectableID();
+			} else {
+				strToReturn += ("\nSorry not enough money to purchase this item");
+				strToReturn += ("\nYou currently have " + heroSquad.getWallet());
+				strToReturn += ("\nYou need " + collectable.getCost() 
+				+ " to purchase a " + collectable.getCollectableID() + " item");
+			}
+		}
+		else {
+			strToReturn = ("Sorry guys we have no " + collectable.getCollectableID());
+		}
 
+		return strToReturn;		
+	}
+	
+	
 	/**
 	 * 
 	 * Getter method for merchandise property.
@@ -335,6 +478,24 @@ public class Shop extends Building{
 	 */
 	public void setMerchandise(Merchandise merchandise) {
 		this.merchandise = merchandise;
+	}
+
+
+
+
+	/**
+	 * @return the nameOfInnkeeper (Type {@link NamesForInnkeeper})
+	 */
+	public NamesForInnkeeper getNameOfInnkeeper() {
+		return nameOfInnkeeper;
+	}
+
+
+	/**
+	 * @param nameOfInnkeeper (Type {@link NamesForInnkeeper})
+	 */
+	public void setNameOfInnkeeper(NamesForInnkeeper nameOfInnkeeper) {
+		this.nameOfInnkeeper = nameOfInnkeeper;
 	}
 
 	

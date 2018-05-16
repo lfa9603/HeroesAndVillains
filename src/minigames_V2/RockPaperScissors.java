@@ -7,14 +7,21 @@ import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
 
+
+ /**
+ * @author JayHamilton
+ *
+ */
 public class RockPaperScissors extends MiniGame {
 //	private Villain villain;
 //	private HeroesSquad squad;
+	private int villainChoice;
 
 	public RockPaperScissors(Games game, Villain givenVillain, HeroesSquad theSquad, boolean gotAbilities) {
 		super(game, givenVillain, theSquad, gotAbilities);
 //		villain = givenVillain;
 //		squad = theSquad;
+		
 		
 	}
 	
@@ -35,8 +42,9 @@ public class RockPaperScissors extends MiniGame {
 		System.out.println("The rules are: TODO add rules");
 		System.out.println(choices);
 		
-		VisualUtilities.getIcon(Icons.bar);		
-		int villainChoice = getVillain().getVillainsChoice(3);
+		VisualUtilities.getIcon(Icons.bar);
+		getVillain().setVillainsChoice(3);
+		int villainChoice = getVillain().getVillainsChoice();
 		MiniGameUtilities.getHeroAbiltyEffects(hero, getVillain(), getSquad(), villainChoice, 1);
 
 		VisualUtilities.getIcon(Icons.bar);
@@ -79,4 +87,52 @@ public class RockPaperScissors extends MiniGame {
 		}
 
 }
+
+	public String runGuiGame(Hero hero, int playerChoice) {
+		villainChoice = getVillain().getVillainsChoice();
+		String youChoose = "you chose ";
+		System.out.println("in Minigame: PC:" + playerChoice + "VC: " + villainChoice);
+		switch(playerChoice) {
+		
+		case 1: System.out.println(youChoose + gameResourses.Rock); 
+			switch(villainChoice) {
+				case 1: return guibattleDraw(hero); 
+				case 2: return guiherolosses(hero); 
+				case 3: return guiheroWins(hero); 
+			}; 
+			break;
+			
+		case 2: 
+			System.out.println(youChoose + gameResourses.Paper);
+			switch(villainChoice) {
+				case 1: return guiheroWins(hero); 
+				case 2: return guibattleDraw(hero); 
+				case 3: return guiherolosses(hero); 
+			}; 
+			break;
+			
+		case 3: System.out.println(youChoose + gameResourses.Scissors);
+			switch(villainChoice) {
+				case 1: return guiherolosses(hero); 
+				case 2: return guiheroWins(hero); 
+				case 3: return guibattleDraw(hero);
+			};
+			break;	
+		}
+		return youChoose;
+	}
+
+	/**
+	 * @return the villainChoice
+	 */
+	public int getVillainChoice() {
+		return villainChoice;
+	}
+
+	/**
+	 * @param villainChoice the villainChoice to set
+	 */
+	public void setVillainChoice(int villainChoice) {
+		this.villainChoice = villainChoice;
+	}
 }

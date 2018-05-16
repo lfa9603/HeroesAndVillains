@@ -3,6 +3,7 @@ package engine;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import GUIPOC.GameWindowManager;
 import characters.HeroesSquad;
 import characters.TeamBuilder;
 import characters.Villain;
@@ -21,23 +22,27 @@ public class Engine {
 	
 	private  ArrayList<City> world;
 	private static int currentIndex = 0;
-	private City currentCity; 
-	
+	private City currentCity;
+	private static boolean guiActive = false;
 	
 	
 	public Engine() {
 		
 //		currentIndex = 0;
+		int choice = Utilities.getChoice("Choose 1 for CLI and 2 for GUI", 1, 2);
+		if (choice == 1) {
+			builtTeam = new TeamBuilder();
+			squad = builtTeam.getTeam(); //Gets the squad object from team builder
+			
+			WorldBuilder worldBuilder = new WorldBuilder();
+			world = worldBuilder.getWorld();
+			villains = new Villains(world.size());
+			choosePartsUsingIndex(currentIndex);
+		}
 		
-		builtTeam = new TeamBuilder();
-		squad = builtTeam.getTeam(); //Gets the squad object from team builder
-		
-		WorldBuilder worldBuilder = new WorldBuilder();
-		world = worldBuilder.getWorld();
-		
-		villains = new Villains(world.size()); 
-		choosePartsUsingIndex(currentIndex);
-		
+		else {
+			guiActive = true;
+		}	
 	}
 	
 	private void choosePartsUsingIndex(int index) {
@@ -45,7 +50,7 @@ public class Engine {
 		squad.setCurrentCity(currentCity);
 	}
 	
-	public void start() {
+	public void startTui() {
 //		HeroesSquad squad = new TeamBuilder();
 		
 //		WorldBuilder worldBuilder = new WorldBuilder();
@@ -78,6 +83,10 @@ public class Engine {
 			}
 		}
 		
+	}
+	
+	private void startGui() {
+		GameWindowManager manager = new GameWindowManager();
 	}
 	
 	private boolean nextCityExists() {
@@ -122,13 +131,14 @@ public class Engine {
 	}
 
 	public static void main(String[] args) {
-//		VisualUtilities.getIcon(Icons.youWin); Just a test of icons
+
 		Engine engine = new Engine();
-		// for random tests
-		engine.start();
 		
-		
-		
+		if (guiActive) {
+			engine.startGui();
+		}
+		else {
+			engine.startTui();
+		}
 	}
-	
 }

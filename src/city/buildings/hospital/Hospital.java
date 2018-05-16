@@ -138,6 +138,59 @@ public class Hospital extends Building {
 			}	
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * @param index (Type int)
+	 * Helper for the GUI, replicates the behaviour of the switch statement in the interact() method.
+	 * 
+	 * 
+	 */
+	public HealingItem returnCorrectHealingItemGivenIndex(int index) {
+		HealingItem healingItem = null; 
+		switch (index) {
+		 	case 0:
+		 		healingItem = new HealingItem(CollectableID.GoodHealingItem);
+		 		break;
+		 	case 1:
+		 		healingItem = new HealingItem(CollectableID.BetterHealingItem);
+		 		break;
+		 	case 2:
+		 		healingItem = new HealingItem(CollectableID.BestHealingItem);
+		 		break;
+		 	}
+		return healingItem;
+	}
+	
+	public String completeOrRejectHealingItemApplication(HeroesSquad heroesSquad, Hero hero, HealingItem healingItem) {
+		String stringToReturn = new String();
+		
+		if (heroesSquad.getBackPack().isInInventory(healingItem) != null && hero.isAlive() && !healingWard.isInHealingWard(hero)) {
+//			System.out.println(heroesSquad);	 	
+			healingItem.apply(hero);
+			heroesSquad.getBackPack().removeItemFromInventory(healingItem);
+			healingWard.addPatientAndUpdateHealingTime(healingItem, hero);
+			stringToReturn = "Great " + hero.getCharacterName() + " has been added to the healing ward of the hospital!";
+		} else {
+			if (heroesSquad.getBackPack().isInInventory(healingItem) == null) {
+				stringToReturn = ("MATE! I TOLD YA NOT TO BE CHEEKY! YOU AIN'T GOT NONE OF THAT!");
+			}
+			
+			if (!hero.isAlive()){
+				stringToReturn = "Unfortunately " + hero.getCharacterName() + " is dead, you cannot apply a potion on a dead hero.";
+			}
+			
+			if (healingWard.isInHealingWard(hero)){
+				
+				stringToReturn = "Wait until " + hero.getCharacterName() + " is dismissed by the healing ward.";
+			}
+		}
+		
+		return stringToReturn;
+	}
+	
+	
 
 	/**
 	 * Helper method for good coding practice created to throw a new InputMismatchError.
@@ -182,17 +235,31 @@ public class Hospital extends Building {
 	}
 	
 
-
-
-	public static void main(String[] args) {
-		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
-		HeroesSquad heroes = new HeroesSquad();
-		Hero hero = new Hero("Lorenzo", Types.dog, Abilities.badDay);
-		heroes.addHero(hero);
-
-		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
-		hospital.interact(heroes);
+	/**
+	 * @return the healingWard
+	 */
+	public HealingWard getHealingWard() {
+		return healingWard;
 	}
+
+	/**
+	 * @param healingWard the healingWard to set
+	 */
+	public void setHealingWard(HealingWard healingWard) {
+		this.healingWard = healingWard;
+	}
+	
+
+//	public static void main(String[] args) {
+//		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
+//		HeroesSquad heroes = new HeroesSquad();
+//		Hero hero = new Hero("Lorenzo", Types.dog, Abilities.badDay);
+//		heroes.addHero(hero);
+//
+//		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
+//		hospital.interact(heroes);
+//	}
+
 
 //	public static void main(String[] args) {
 //		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);

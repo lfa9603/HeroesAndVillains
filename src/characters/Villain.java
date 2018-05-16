@@ -24,6 +24,10 @@ public class Villain extends Character{
 	private String villainTaunt;
 	private int villainDamage;
 	private boolean damageModified;
+<<<<<<< HEAD
+	private static int villainsChoice;
+=======
+>>>>>>> master
 	
 	
 	/**
@@ -69,8 +73,12 @@ public class Villain extends Character{
 	 * @param upperLimit
 	 * @return
 	 */
-	public int getVillainsChoice(int upperLimit) {
-		return Utilities.getRandInt(upperLimit);
+	public void setVillainsChoice(int upperLimit) {
+		villainsChoice = Utilities.getRandInt(upperLimit); 
+	}
+	
+	public int getVillainsChoice() {
+		return villainsChoice;
 	}
 	
 	/**
@@ -149,8 +157,11 @@ public class Villain extends Character{
 	public void setDamageModified(boolean modifyDamage) {
 		damageModified = modifyDamage;
 	}
+<<<<<<< HEAD
+=======
 	
 	
+>>>>>>> master
 
 
 }

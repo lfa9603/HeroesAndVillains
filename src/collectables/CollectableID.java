@@ -20,7 +20,26 @@ public enum CollectableID {
 	IncreaseMaxLife,	/** ID for IncreaseMaxLife objects, 
 							@see collectables/powerUp/IncreaseMaxLife.java */    
 	
-	HeroesMap			/** ID for HeroesMap objects, 
+	HeroesMap;			/** ID for HeroesMap objects, 
 							@see collectables/powerUp/GameChooser.java */
+	
+	
+	public static boolean isPowerUp(CollectableID id) {
+		
+		if (id.equals(CollectableID.Armor) || id.equals(CollectableID.IncreaseMaxLife) || id.equals(CollectableID.GameChooser)) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+public static boolean isHealingItem(CollectableID id) {
+		
+		if (id.equals(CollectableID.GoodHealingItem) || id.equals(CollectableID.BetterHealingItem) || id.equals(CollectableID.BestHealingItem)) {
+			return true;
+		}
+		
+		return false;
+	}
 	
 }
