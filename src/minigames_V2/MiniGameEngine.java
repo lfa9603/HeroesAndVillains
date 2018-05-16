@@ -12,10 +12,33 @@ import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
 
+
+
+/**
+ * @author JayHamilton
+ * This class controls the running of the minigame sequences, it prompts the user to select a hero to battle the villain, check to
+ * see if the selected hero has any active powerups, or if the heros ability has an effect on the game, then it
+ * constructs a minigame object in the moment that a minigame is required. The engine also checks to see if the villain 
+ * is beaten or if all the heros are dead, after each battle sequence, the loop continues until this occurs.
+ *
+ */
 public class MiniGameEngine {
 	private static int selectedMiniGame;
+<<<<<<< HEAD
 	private static int playerChoice;
 
+=======
+	
+	
+	/**
+	 * The runMiniGameEngine calls the newGame method, it then calls the villainEffects method, then it
+	 * checks the HeroSquad objects status, it then asks the user to select a hero. It checks if the heros abilities or powerups have any effect
+	 * on the current battle. It then constructs a minigame sequence and passes it the hero, villain and squad objects. 
+	 * The loop is run until the villain is beaten or the heros are all dead.
+	 * @param villain
+	 * @param squad
+	 */
+>>>>>>> master
 	public void runMiniGameEngine(Villain villain, HeroesSquad squad) {
 
 		while (squad.isAllDead() == false && villain.isBeaten() == false) {
@@ -68,6 +91,7 @@ public class MiniGameEngine {
 		
 	}
 	
+<<<<<<< HEAD
 	public String runGuiMiniGameEngine(Villain villain, HeroesSquad squad, int selectedHeroIndex) {
 		Hero hero = squad.getHero(selectedHeroIndex);
 		switch (selectedMiniGame) {
@@ -98,6 +122,14 @@ public class MiniGameEngine {
 		return abiltyString;
 		
 	}
+=======
+	/**
+	 * The villainEffects method checks the villains type parameter, then uses this to reference the difficulty level of that villain object
+	 * the getVillainAbilties effects method is then called from the MiniGameUtilities class. 
+	 * @param villain
+	 * @param squad
+	 */
+>>>>>>> master
 	
 	private void villainEffects(Villain villain, HeroesSquad squad) {
 		int randInt = Utilities.getRandInt(100);
@@ -124,6 +156,12 @@ public class MiniGameEngine {
 		
 		
 	}
+	
+	/**
+	 * The selectHero method prompts the user to select a hero to battle the villain, it then returns that hero to the runMiniGameEngine method.
+	 * @param squad
+	 * @return hero
+	 */
 	
 	public Hero selectHero(HeroesSquad squad) {
 		
@@ -154,7 +192,17 @@ public class MiniGameEngine {
 		return null;
 	}
 	
+<<<<<<< HEAD
 	public String getGameString(int selectedMiniGame) {
+=======
+	/**
+	 * The getGame method returns a string representation of the current game.
+	 * @param selectedMiniGame
+	 * @return result
+	 */
+	
+	private String getGame(int selectedMiniGame) {
+>>>>>>> master
 		String result = "";
 		switch (selectedMiniGame) {
 		case 1: result = "Paper, Scissors, Rock"; break;
@@ -165,16 +213,33 @@ public class MiniGameEngine {
 		return result;
 	}
 	
+<<<<<<< HEAD
 	public int selectNewGame(int upperLimit) {
+=======
+	/**
+	 * The selectNewGame calls the getRandInt from the Utilities class, it then returns that integer.
+	 * @param upperLimit
+	 * @return selectedGame
+	 */
+	
+	private int selectNewGame(int upperLimit) {
+>>>>>>> master
 		int selectedGame = Utilities.getRandInt(upperLimit);
 		return selectedGame;		
 	}
+	
+	/**
+	 * Setter method for selectedMiniGame, allows the selected Game parameter to be manually 
+	 * selected rather than selected at random.
+	 * @param newGame
+	 */
 	
 	public static void setSelectedGame(int newGame) {
 		selectedMiniGame = newGame;
 		
 	}
 	
+<<<<<<< HEAD
 	public static void setSelectedGame(Games gameID) {
 		switch (gameID) {
 		case RPS: setSelectedGame(1); break;
@@ -185,6 +250,14 @@ public class MiniGameEngine {
 	}
 	
 	public int getSelectedMiniGame() {
+=======
+	/**
+	 * Getter method for selectedMinigame parameter
+	 * @return
+	 */
+	
+	public static int getSelectedMiniGame() {
+>>>>>>> master
 		return selectedMiniGame;
 	}
 
