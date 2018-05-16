@@ -19,13 +19,11 @@ import collectables.healingItem.HealingItem;
 
 class HealinWardTests {
 
-	private ByteArrayOutputStream outputStream;
-	private ByteArrayInputStream inputStream;
+
 	private HealingWard healingWard;
 	private Hero hero1;
 	private Hero hero2;
 	private Hero hero3;
-	private HealingItem potion;
 
 
 	/**
@@ -33,19 +31,14 @@ class HealinWardTests {
 	 */
 	@BeforeEach
 	void setUp() {
-		outputStream = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(outputStream));
 		//Squad for testing
-		HealingWard healingWard = new HealingWard();
+		healingWard = new HealingWard();
 		hero1 = new Hero("Hero1", Types.dog, Abilities.badDay);
 		hero2 = new Hero("Hero2", Types.sly, Abilities.betterOdds);
-		hero1.setHealth(90);
+		hero1.setHealth(96);
 		hero2.setHealth(90);
 		hero1.setArmor(30);
-		
-		//Added a healing item to squad ones backPack
-		potion = new HealingItem(CollectableID.BestHealingItem);
-		
+				
 		//Adding a second squad with no healing items
 		hero3 = new Hero("Hero3", Types.sly, Abilities.betterOdds);
 		hero3.setHealth(90);
@@ -54,11 +47,7 @@ class HealinWardTests {
 		
 		
 	}
-	
-	private void setInputStream(String input) {
-		inputStream = new ByteArrayInputStream(input.getBytes());
-		System.setIn(inputStream);
-	}
+
 
 	/**
 	 * @throws java.lang.Exception
@@ -76,32 +65,55 @@ class HealinWardTests {
 
 	@Test
 	void testAddPatientAndUpdateHealingTime() {
-		Hero hero1 = new Hero("Ciao", Types.level_2, Abilities.arrogance);
-		Hero hero2 = new Hero("Bye", Types.level_2, Abilities.badDay);
 		
 		HealingItem healingItem = new HealingItem(CollectableID.BestHealingItem);
+
 		healingItem.apply(hero1);
-		healingItem.apply(hero2);
 		healingWard.addPatientAndUpdateHealingTime(healingItem, hero1);
-		healingWard.addPatientAndUpdateHealingTime(healingItem, hero2);
-		
-		int i = 1;
-		while (i > 0) {
-			System.out.println(healingWard.toString());
-			try {
-				Thread.sleep(90);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			i++;
+//		healingWard.addPatientAndUpdateHealingTime(healingItem, hero2);
+//		
+		try {
+			Thread.sleep(4500);
+		} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		boolean expected = hero1.getHealth() == hero1.getMaxHealth();
-		boolean expected2 = hero1.getHealth() == hero1.getMaxHealth();
 		
-		assertTrue(expected);
-		assertTrue(expected2);
+		
+		assertEquals(hero1.getHealth(), 98);
+		assertTrue(healingWard.isInHealingWard(hero1));
+		
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		assertFalse(healingWard.isInHealingWard(hero1));
+			
 	}
 
+	@Test
+	void testToString() {
+		
+		HealingItem healingItem = new HealingItem(CollectableID.BestHealingItem);
+
+		healingItem.apply(hero1);
+		healingWard.addPatientAndUpdateHealingTime(healingItem, hero1);
+		
+		try {
+			Thread.sleep(4500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		String string = new String();
+		string += "\nThe hero " + hero1.getCharacterName() 
+		    	+ " is going to be dismissed in 7 seconds.";
+		string += "\nTheir current health is 98";
+		
+		assertEquals(healingWard.toString(), string);
+		
+	}
 }

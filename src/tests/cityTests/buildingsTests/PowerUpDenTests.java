@@ -18,6 +18,7 @@ import city.buildings.PowerUpDen;
 import city.buildings.TypeBuildings;
 import collectables.CollectableID;
 import collectables.Inventory;
+import collectables.healingItem.HealingItem;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
@@ -150,6 +151,20 @@ class PowerUpDenTests {
 		setInputStream("3\n");
 		HelperScanner.create();
 		powerUpDen.interact(squad1);
+	}
+	
+	@Test
+	void testApplyPotionOrRejectIt() {
+		
+		jay1.setisAlive(false);
+		String string1 = powerUpDen.applyPotionOrRejectIt(squad1, jay1, new Armor(CollectableID.Armor));
+		assertEquals(string1, "Unfortunately " + jay1.getCharacterName() + " is dead, apply a power-up to a hero that is alive!");
+		
+		String string2 = powerUpDen.applyPotionOrRejectIt(squad1, lorenzo1, new Armor(CollectableID.Armor));
+		assertEquals(string2, "Great! You applied one " + CollectableID.Armor + " to " + lorenzo1.getCharacterName() + ".");
+		
+		String string3 = powerUpDen.applyPotionOrRejectIt(squad1, lorenzo1, new Armor(CollectableID.Armor));
+		assertEquals(string3, "MATE! DON'T BE CHEEKY! YOU DON'T HAVE THIS POWER-UP!!;)");
 	}
 
 	

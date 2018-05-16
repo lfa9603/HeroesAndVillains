@@ -103,8 +103,8 @@ public class HealingWard {
 		if (!copyPatientsAndHealingTime.isEmpty()) {
 			Iterator<Map.Entry<Hero, Integer>> entries = copyPatientsAndHealingTime.entrySet().iterator();
 			String string = new String();
-			string += "\n" + VisualUtilities.getIcon(Icons.bar) + "\n";
-			string += "HEALING WARD\n";
+//			string += "\n" + VisualUtilities.getIcon(Icons.bar) + "\n";
+//			string += "HEALING WARD\n";
 			
 			while (entries.hasNext()) {
 			    Map.Entry<Hero, Integer> entry = entries.next();
@@ -117,7 +117,7 @@ public class HealingWard {
 			   
 			}
 			
-			string += "\n" + VisualUtilities.getIcon(Icons.bar) + "\n";
+//			string += "\n" + VisualUtilities.getIcon(Icons.bar) + "\n";
 			return string;
 		} else {
 			return "You currently have no hero in the healing ward!";
@@ -147,32 +147,29 @@ public class HealingWard {
 	}
 	
 	
-	public static void main(String[] args) {
-		Hero hero1 = new Hero("Ciao", Types.level_2, Abilities.arrogance);
-		Hero hero2 = new Hero("Bye", Types.level_2, Abilities.badDay);
-		hero1.setHealth(90);
-		hero2.setHealth(90);
-		HealingWard hw = new HealingWard();
-		HealingItem healingItem = new HealingItem(CollectableID.BestHealingItem);
-		healingItem.apply(hero1);
-		healingItem.apply(hero2);
-		hw.addPatientAndUpdateHealingTime(healingItem, hero1);
-		hw.addPatientAndUpdateHealingTime(healingItem, hero2);
-		int i = 1;
-		while (i > 0) {
-			System.out.println(hw.toString());
-			try {
-				Thread.sleep(90);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			i++;
-		}
-	}
+//	public static void main(String[] args) {
+//		Hero hero1 = new Hero("Ciao", Types.level_2, Abilities.arrogance);
+//		Hero hero2 = new Hero("Bye", Types.level_2, Abilities.badDay);
+//		hero1.setHealth(90);
+//		hero2.setHealth(90);
+//		HealingWard hw = new HealingWard();
+//		HealingItem healingItem = new HealingItem(CollectableID.BestHealingItem);
+//		healingItem.apply(hero1);
+//		healingItem.apply(hero2);
+//		hw.addPatientAndUpdateHealingTime(healingItem, hero1);
+//		hw.addPatientAndUpdateHealingTime(healingItem, hero2);
+//		int i = 1;
+//		while (i > 0) {
+//			System.out.println(hw.toString());
+//			try {
+//				Thread.sleep(90);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			i++;
+//		}
+//	}
 	
-	//TODO latch this class to hospital, 
-//	add a private property called healingWard to Hospital and in the constructor 
-//	instantiate an element of it as soon as an hospital is constructed
 	
 }
