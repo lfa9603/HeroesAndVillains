@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import characters.HeroesSquad;
 import city.buildings.TypeBuildings;
 import city.buildings.shop.Merchandise;
+import city.buildings.shop.NamesForInnkeeper;
 import city.buildings.shop.Shop;
 import collectables.Collectable;
 import collectables.CollectableID;
@@ -243,6 +244,19 @@ class ShopTests {
 		assertEquals(string3, strToReturn);
 	}
 	
-	
+	@Test
+	void testNameOfInnKeeperSettersAndGetters() {
+		NamesForInnkeeper nameForInnkeeper = shop.getNameOfInnkeeper();
+		boolean inThePoolOfChoices = false;
+		for (int i=0; i < NamesForInnkeeper.values().length; i++) {
+			if (nameForInnkeeper.equals(NamesForInnkeeper.values()[i])) {
+				inThePoolOfChoices = true;
+			}	
+		}
+		assertTrue(inThePoolOfChoices);
+		
+		shop.setNameOfInnkeeper(NamesForInnkeeper.Vladimiro);
+		assertEquals(shop.getNameOfInnkeeper(), NamesForInnkeeper.Vladimiro);
+	}
 
 }
