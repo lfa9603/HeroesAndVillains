@@ -74,9 +74,8 @@ class HomeTests {
 		squad.setHaveMap(false);
 		assertEquals(home.showMap(squad), "No map available at this stage");
 		
-		
-		
 	}
+
 	
 	@AfterEach
 	void afterEach() {

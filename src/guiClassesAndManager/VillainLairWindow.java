@@ -1,4 +1,4 @@
-package GUIPOC;
+package guiClassesAndManager;
 
 import java.awt.EventQueue;
 
@@ -44,6 +44,7 @@ public class VillainLairWindow {
 //			}
 //		});
 //	}
+	
 
 	/**
 	 * Create the application.

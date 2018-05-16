@@ -3,7 +3,6 @@ package city.buildings.shop;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import GUIPOC.ShopWindow;
 import characters.Abilities;
 import characters.Hero;
 //import characters.Abilities;
@@ -25,6 +24,7 @@ import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
 import collectables.powerUp.PowerUp;
+import guiClassesAndManager.ShopWindow;
 
 import static engine.HelperScanner.*;
 
@@ -397,7 +397,7 @@ public class Shop extends Building{
 	 * successOrRejectionPurchasedItem(int index, HeroesSquad heroSquad) method below. 
 	 *  
 	 */
-	private Collectable retrieveRightCollectable(int index) {
+	public Collectable retrieveRightCollectable(int index) {
 		Collectable collectableToReturn = null;
 		if (index < 3) {
 			collectableToReturn = returningAPowerUp(index);
@@ -435,7 +435,7 @@ public class Shop extends Building{
 			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
 				if (collectable.getCollectableID().equals(CollectableID.HeroesMap)) {
 					if (heroSquad.isHaveMap()) {
-						return "Don't wast your money on another man mate! You already have one!";
+						return "Don't waste your money on another map mate! You already have one!";
 					} else {
 						heroSquad.setHaveMap(true);
 					}

@@ -1,18 +1,17 @@
-package GUIPOC;
+package guiClassesAndManager;
 
+import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
-public class YouWonWindow {
+public class YouLostWindow {
 
 	private JFrame frame;
 	private GameWindowManager manager;
@@ -39,7 +38,7 @@ public class YouWonWindow {
 	/**
 	 * Create the application.
 	 */
-	public YouWonWindow(GameWindowManager incomingManager) {
+	public YouLostWindow(GameWindowManager incomingManager) {
 		manager = incomingManager;
 		isThreadAlive = true;
 		initialize();
@@ -55,7 +54,7 @@ public class YouWonWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel label = new JLabel("YOU WON!!");
+		JLabel label = new JLabel("YOU LOST!!");
 		label.setForeground(Color.BLACK);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.BOLD, 99));
@@ -72,21 +71,14 @@ public class YouWonWindow {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					label.setForeground(Color.GREEN);
+					label.setForeground(Color.RED);
 					
 					try {
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					label.setForeground(Color.MAGENTA);
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						
-						e.printStackTrace();
-					}
-					label.setForeground(Color.CYAN);
+					label.setForeground(Color.BLACK);
 				}
 				
 			}
@@ -110,7 +102,8 @@ public class YouWonWindow {
 	
 	public static void main(String[] args) {
 		GameWindowManager manager = new GameWindowManager();
-		YouWonWindow w = new YouWonWindow(manager);
+		YouLostWindow w = new YouLostWindow(manager);
 		
 	}
 }
+

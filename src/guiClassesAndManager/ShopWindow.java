@@ -1,4 +1,4 @@
-package GUIPOC;
+package guiClassesAndManager;
 
 import javax.swing.JFrame;
 

@@ -1,17 +1,18 @@
-package GUIPOC;
+package guiClassesAndManager;
 
-import java.awt.Color;
 import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import java.awt.Color;
 
-public class YouLostWindow {
+public class YouWonWindow {
 
 	private JFrame frame;
 	private GameWindowManager manager;
@@ -38,7 +39,7 @@ public class YouLostWindow {
 	/**
 	 * Create the application.
 	 */
-	public YouLostWindow(GameWindowManager incomingManager) {
+	public YouWonWindow(GameWindowManager incomingManager) {
 		manager = incomingManager;
 		isThreadAlive = true;
 		initialize();
@@ -54,7 +55,7 @@ public class YouLostWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel label = new JLabel("YOU LOST!!");
+		JLabel label = new JLabel("YOU WON!!");
 		label.setForeground(Color.BLACK);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.BOLD, 99));
@@ -71,14 +72,21 @@ public class YouLostWindow {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					label.setForeground(Color.RED);
+					label.setForeground(Color.GREEN);
 					
 					try {
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					label.setForeground(Color.BLACK);
+					label.setForeground(Color.MAGENTA);
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						
+						e.printStackTrace();
+					}
+					label.setForeground(Color.CYAN);
 				}
 				
 			}
@@ -102,8 +110,7 @@ public class YouLostWindow {
 	
 	public static void main(String[] args) {
 		GameWindowManager manager = new GameWindowManager();
-		YouLostWindow w = new YouLostWindow(manager);
+		YouWonWindow w = new YouWonWindow(manager);
 		
 	}
 }
-

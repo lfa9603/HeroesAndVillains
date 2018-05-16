@@ -3,13 +3,13 @@ package engine;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import GUIPOC.GameWindowManager;
 import characters.HeroesSquad;
 import characters.TeamBuilder;
 import characters.Villain;
 import characters.Villains;
 import city.City;
 import city.WorldBuilder;
+import guiClassesAndManager.GameWindowManager;
 
 public class Engine {
 
