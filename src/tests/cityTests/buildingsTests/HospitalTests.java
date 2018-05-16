@@ -121,13 +121,15 @@ class HospitalTests {
 				+ "1\n"
 				+ "0\n");
 		HelperScanner.create();
-		// Can't get this to cover ... Still having issues
+		int initialHealth = squad.getHero(0).getHealth();
 		hospital.interact(squad);
+		int i = 0;
+		while (i < 1000) {
+			i++;//Created to waste few moments and check if the health of the hero actually starts increasing.
+		}
 		assertFalse(squad.getBackPack().getInventory().containsKey(potion));
-		boolean expected = squad.getHero(0).getHealth() == squad.getHero(0).getMaxHealth();
-		System.out.println(expected);
+		assertEquals(squad.getHero(0).getHealth(), initialHealth + 1);
 		
-		assertTrue(expected);
 	}
 	
 	@Test
@@ -139,5 +141,6 @@ class HospitalTests {
 		hospital.interact(squad2);
 		assertFalse(squad2.getBackPack().getInventory().containsKey(potion));
 	}
-
+	
+	
 }
