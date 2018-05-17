@@ -27,7 +27,7 @@ public abstract class PowerUp extends Collectable {
 	 */
 	public PowerUp(CollectableID collectableID) {
 		super(collectableID);
-		setCost();
+		setCostPowerUp();
 	}
 	
 
@@ -36,7 +36,7 @@ public abstract class PowerUp extends Collectable {
 	 * It sets the cost property (present in Collectable.java) to the right Money object depending on collectableID property.
 	 * 
 	 */
-	private void setCost() {
+	private void setCostPowerUp() {
 		switch (getCollectableID()) {
 			case Armor:
 				setCost(new Money(30));

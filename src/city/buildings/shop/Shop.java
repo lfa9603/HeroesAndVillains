@@ -24,7 +24,6 @@ import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
 import collectables.powerUp.PowerUp;
-import guiClassesAndManager.ShopWindow;
 
 import static engine.HelperScanner.*;
 
