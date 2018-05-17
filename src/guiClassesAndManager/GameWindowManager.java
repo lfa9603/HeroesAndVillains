@@ -58,7 +58,12 @@ public class GameWindowManager {
 	private int selectedHeroIndex;
 	
 	private boolean hasSquadTalkativeHero;
+	private Money lootAfterVillainDefated;
 
+
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public GameWindowManager() {
 //		this.currentCity = city;
 //		this.squad = squad;
@@ -66,6 +71,7 @@ public class GameWindowManager {
 		world = new ArrayList<City>();
 		hasSquadTalkativeHero = false;
 		currentIndex = 0;
+		lootAfterVillainDefated = new Money(30);
 	}
 	
 	/**
@@ -200,8 +206,15 @@ public class GameWindowManager {
 		if (herosWon) {
 			if (currentIndex < world.size()) {
 				currentCity = world.get(currentIndex);
-				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
-				mainGameWindow.getFrame().setVisible(true);
+				
+//				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+//				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
+//				mainGameWindow.getFrame().setVisible(true);
+				new MainGameWindow(this);
+				
+				squad.getWallet().addMoney(lootAfterVillainDefated);
+				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
+				
 				squad.setHaveMap(false);
 			} else {
 				closeMainGameWindow(mainGameWindow);
@@ -477,6 +490,20 @@ public class GameWindowManager {
 	 */
 	public void setWorldSize(int worldSize) {
 		this.worldSize = worldSize;
+	}
+	
+	/**
+	 * @return the lootAfterVillainDefated
+	 */
+	public Money getLootAfterVillainDefated() {
+		return lootAfterVillainDefated;
+	}
+
+	/**
+	 * @param lootAfterVillainDefated the lootAfterVillainDefated to set
+	 */
+	public void setLootAfterVillainDefated(Money lootAfterVillainDefated) {
+		this.lootAfterVillainDefated = lootAfterVillainDefated;
 	}
 
 	public Types typeConversion (HeroTypes heroType) {
