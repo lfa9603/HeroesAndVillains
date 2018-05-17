@@ -277,17 +277,17 @@ public class GameWindowManager {
 		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
 		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
 		
-		manager.getSquad().addHero(hero5);
-		manager.getSquad().addHero(hero2);
-		manager.getSquad().addHero(hero6); 
-//		hero2.setisAlive(false);
-//		hero3.setisAlive(false);
-//		hero3.setisAlive(false);
-		hero2.setArmor(30);
-		hero5.setIsGameChooser(true);
-		hero2.setIsGameChooser(true);
-		hero6.setIsGameChooser(true);
-		hero6.setIsinDetention(true);
+//		manager.getSquad().addHero(hero5);
+//		manager.getSquad().addHero(hero2);
+//		manager.getSquad().addHero(hero6); 
+////		hero2.setisAlive(false);
+////		hero3.setisAlive(false);
+////		hero3.setisAlive(false);
+//		hero2.setArmor(30);
+//		hero5.setIsGameChooser(true);
+//		hero2.setIsGameChooser(true);
+//		hero6.setIsGameChooser(true);
+//		hero6.setIsinDetention(true);
 //		hero5.setHealth(10);
 //		Villain villain = manager.villains.getCurrentVillain(manager.getCurrentIndex());
 //		villain.setTimesBeaten();
