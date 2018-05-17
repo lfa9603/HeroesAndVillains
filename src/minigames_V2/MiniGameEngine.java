@@ -24,6 +24,7 @@ public class MiniGameEngine {
 	private static int playerChoice;
 	private static int selectedHeroIndex;
 	private static int guessesInGTN;
+	private static Boolean heroWonGTN;
 	
 	/**
 	 * The runMiniGameEngine calls the newGame method, it then calls the villainEffects method, then it
@@ -97,10 +98,10 @@ public class MiniGameEngine {
 			
 			case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, gotAbilities); 
 			GTN.runGuiGame(hero, playerChoice); result = GTN.getBattleResult(); break;
-	//		
-	//		case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, gotAbilities); 
-	//		String result2 = DW.runGuiGame(hero);
-	//		return result2; break;
+			
+			case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, gotAbilities); 
+			DW.runGuiGame(hero, playerChoice); result = DW.getBattleResult(); break;
+			
 			default: System.out.println("Error in runGuiMiniGameEngine");
 		}
 		
@@ -293,6 +294,22 @@ public class MiniGameEngine {
 	 */
 	public static void setGuessesInGTN(int guessesInGTN) {
 		MiniGameEngine.guessesInGTN = guessesInGTN;
+	}
+
+
+	/**
+	 * @return the heroWonGTN
+	 */
+	public static Boolean getHeroWonGTN() {
+		return heroWonGTN;
+	}
+
+
+	/**
+	 * @param heroWonGTN the heroWonGTN to set
+	 */
+	public static void setHeroWonGTN(Boolean heroWonGTN) {
+		MiniGameEngine.heroWonGTN = heroWonGTN;
 	}
 
 	

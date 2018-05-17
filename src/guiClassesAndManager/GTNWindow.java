@@ -55,6 +55,7 @@ public class GTNWindow {
 		this.mainGameWindow = mainGameWindow;
 		initialize();
 		GTNWindow.setVisible(true);
+		manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(10);
 
 	}
 	
@@ -124,14 +125,16 @@ public class GTNWindow {
 		comboBox.setBounds(180, 428, 112, 33);
 		GTNWindow.getContentPane().add(comboBox);
 		
-		manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(10);
+		
 		
 		JButton btnChooseNumber = new JButton("Choose number");
 		btnChooseNumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (timesFought < 2) {
+				if (timesFought < 2 & !battleFought) {
 					timesFought++;
+					manager.getMiniGameEngine().setGuessesInGTN(timesFought);
 					int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
+					System.out.println("VC from GTNwindow " + villainsIntChoice);
 					int playersChoice = comboBox.getSelectedIndex() + 1;
 					manager.getMiniGameEngine().setPlayerChoice(playersChoice);
 					String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);

@@ -185,6 +185,8 @@ public class GuiMiniGameUtilities {
 		String string1 = "";
 		String string2 = "";
 		
+		System.out.println("From abilities: " + villainsChoice);
+		
 		if (selectedGame == 2) {
 			int firstGuess = Utilities.getRandInt(10);
 			int secondGuess = Utilities.getRandInt(10); 

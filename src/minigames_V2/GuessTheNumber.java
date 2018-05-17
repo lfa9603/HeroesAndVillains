@@ -55,11 +55,12 @@ public class GuessTheNumber extends MiniGame{
 	
 	public void runGuiGame(Hero hero, int playersChoice) {
 		int villainChoice = villain.getVillainsChoice();
+		System.out.println("Villains choice: " + villainChoice);
 		String result = "";
 		
-		MiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainChoice, 2);
-		if (MiniGameEngine.getGuessesInGTN() < 2) {
+		if (MiniGameEngine.getGuessesInGTN() == 1) {
 			if (playersChoice == villainChoice) {
+				MiniGameEngine.setHeroWonGTN(true);
 				result = guiheroWins(hero);
 			}
 			
@@ -73,7 +74,14 @@ public class GuessTheNumber extends MiniGame{
 			}
 		}
 		else {
-			result = guiherolosses(hero);
+			if (playersChoice == villainChoice) {
+				MiniGameEngine.setHeroWonGTN(true);
+				result = guiheroWins(hero);
+			}
+			
+			else {
+				result = guiherolosses(hero);
+			}
 		}
 		battleResult = result;
 	}

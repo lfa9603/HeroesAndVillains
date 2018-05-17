@@ -9,6 +9,7 @@ public class DiceWars extends MiniGame{
 	
 	private Villain villain;
 	private HeroesSquad squad;
+	private String battleResult;
 	
 
 	public DiceWars(Games game, Villain givenVillain, HeroesSquad theSquad, boolean gotAbilities) {
@@ -27,7 +28,8 @@ public class DiceWars extends MiniGame{
 		if (rollDice == 1) {
 			int roll = Utilities.getRandInt(6);
 			System.out.println("You roll a " + roll);
-			int villainRoll = villain.getVillainsChoice(6);
+			villain.setVillainsChoice(6);
+			int villainRoll = villain.getVillainsChoice();
 			System.out.println(villain.getCharacterName() + " rolls a " + villainRoll);
 			MiniGameUtilities.getHeroAbiltyEffects(hero, villain, squad, villainRoll, 3);
 			if (roll > villainRoll) {
@@ -43,6 +45,42 @@ public class DiceWars extends MiniGame{
 			}
 		}
 		
+	}
+	
+	public void runGuiGame(Hero hero, int playerchoice) {
+		String result = "";
+		int villainRoll = villain.getVillainsChoice();
+		
+		
+		System.out.println("You roll a " + playerchoice);
+		System.out.println(villain.getCharacterName() + " rolls a " + villainRoll);
+
+		if (playerchoice > villainRoll) {
+			result = guiheroWins(hero);
+		}
+		else {
+			if (playerchoice == villainRoll) {
+				result = guibattleDraw(hero);
+			}
+			else {
+				result = guiherolosses(hero);
+			}
+		}
+		battleResult = result;
+	}
+
+	/**
+	 * @return the battleResult
+	 */
+	public String getBattleResult() {
+		return battleResult;
+	}
+
+	/**
+	 * @param battleResult the battleResult to set
+	 */
+	public void setBattleResult(String battleResult) {
+		this.battleResult = battleResult;
 	}
 	
 	

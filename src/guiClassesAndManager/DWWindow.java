@@ -14,6 +14,7 @@ import javax.swing.border.SoftBevelBorder;
 
 import characters.HeroesSquad;
 import characters.Villain;
+import engine.Utilities;
 import minigames_V2.GuiMiniGameUtilities;
 import minigames_V2.MiniGameEngine;
 
@@ -86,9 +87,9 @@ public class DWWindow {
 		Dialouge.setText("Dialouge");
 		Dialouge.setBounds(180, 49, 467, 145);
 		DWWindow.getContentPane().add(Dialouge);
-		String GTNRules = "You are playing Guess the number\n"
-				+ "You get to guesses to pick the number the villain has chosen."
-				+ "The Villain is ready, choose a number in the combo box and click the 'choose number' button  to make your choice.";
+		String GTNRules = "You are playing Dice Wars\n"
+				+ "You need to roll a higher number than the Villain"
+				+ "The Villain is ready, click the 'roll dice' button  to make your choice.";
 		Dialouge.setText(GTNRules);
 		
 		JTextPane Abilties = new JTextPane();
@@ -107,11 +108,37 @@ public class DWWindow {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
+				if (battleFought) {
+					finishedWindow();
+				}
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		btnContinue.setBounds(285, 460, 243, 62);
 		DWWindow.getContentPane().add(btnContinue);
+		
+		JButton btnRollDice = new JButton("Roll Dice");
+		btnRollDice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (!battleFought) {
+					battleFought = true;
+					String result = "";
+					manager.getMiniGameEngine().setPlayerChoice(Utilities.getRandInt(6));
+					result = ("You rolled a " + manager.getMiniGameEngine().getPlayerChoice() + "\n");
+					manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(6);
+					int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
+					result = result + ("The Villain rolled a " + villainsIntChoice + "\n");
+					result = result + manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);
+					Dialouge.setText(result);
+				}
+				else {
+					Dialouge.setText("Click the continue button.");
+				}
+
+			}
+		});
+		btnRollDice.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		btnRollDice.setBounds(285, 371, 243, 62);
+		DWWindow.getContentPane().add(btnRollDice);
 	}
 }
