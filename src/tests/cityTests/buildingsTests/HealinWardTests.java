@@ -108,6 +108,7 @@ class HealinWardTests {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		String string = new String();
 		string += "\nThe hero " + hero1.getCharacterName() 
 		    	+ " is going to be dismissed in 7 seconds.";
