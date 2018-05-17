@@ -48,15 +48,13 @@ public class GameWindowManager {
 	private ArrayList<City> world;
 	private HeroesSquad squad;
 	private Villains villains;
+	private int worldSize;
 	
 	private City currentCity;
 	private boolean isHospitalWindowOpen;
 	
 	//Minigame stuff
 	private MiniGameEngine miniGameEngine;
-//	private RockPaperScissors rockPaperScissors;
-//	private GuessTheNumber guessTheNumber;
-//	private DiceWars diceWars;
 	private int selectedHeroIndex;
 	
 	private boolean hasSquadTalkativeHero;
@@ -265,47 +263,44 @@ public class GameWindowManager {
 	public void setHospitalWindowOpen(boolean isHospitalWindowOpen) {
 		this.isHospitalWindowOpen = isHospitalWindowOpen;
 	}
-<<<<<<< HEAD
-
-	public static void main(String[] args) {
-
-		GameWindowManager manager = new GameWindowManager();
-		manager.launchSetupTeamAndWorld();
-		
-		// For testing the minigame module
-		Hero hero1 = new Hero("heroOne", Types.talkitive, Abilities.charm);
-		Hero hero2 = new Hero("heroTwo", Types.smart, Abilities.mystery);
-		Hero hero3 = new Hero("heroThree", Types.practical, Abilities.betterOdds);
-		Hero hero4 = new Hero("hero4", Types.strong, Abilities.lessDamage);
-		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
-		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
-		
-//		manager.getSquad().addHero(hero5);
-//		manager.getSquad().addHero(hero2);
-//		manager.getSquad().addHero(hero6); 
-////		hero2.setisAlive(false);
-////		hero3.setisAlive(false);
-////		hero3.setisAlive(false);
-//		hero2.setArmor(30);
-//		hero5.setIsGameChooser(true);
-//		hero2.setIsGameChooser(true);
-//		hero6.setIsGameChooser(true);
-//		hero6.setIsinDetention(true);
-//		hero5.setHealth(10);
-//		Villain villain = manager.villains.getCurrentVillain(manager.getCurrentIndex());
-//		villain.setTimesBeaten();
-//		villain.setTimesBeaten();
-//		Money wallet = testsquad.getWallet();
-
-//		MainGameWindow mainGameScreen = new MainGameWindow(manager);
-//		VillainLairWindow villainLairWindow = new VillainLairWindow(manager, mainGameScreen);
-	}		
-		
-		
-		
-=======
 	
->>>>>>> 6ae97c4d7fc1602ccb232de78ce573c971c0119b
+	
+//<<<<<<< HEAD
+//
+//	public static void main(String[] args) {
+//
+//		GameWindowManager manager = new GameWindowManager();
+//		manager.launchSetupTeamAndWorld();
+//		
+//		// For testing the minigame module
+//		Hero hero1 = new Hero("heroOne", Types.talkitive, Abilities.charm);
+//		Hero hero2 = new Hero("heroTwo", Types.smart, Abilities.mystery);
+//		Hero hero3 = new Hero("heroThree", Types.practical, Abilities.betterOdds);
+//		Hero hero4 = new Hero("hero4", Types.strong, Abilities.lessDamage);
+//		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
+//		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
+//		
+////		manager.getSquad().addHero(hero5);
+////		manager.getSquad().addHero(hero2);
+////		manager.getSquad().addHero(hero6); 
+//////		hero2.setisAlive(false);
+//////		hero3.setisAlive(false);
+//////		hero3.setisAlive(false);
+////		hero2.setArmor(30);
+////		hero5.setIsGameChooser(true);
+////		hero2.setIsGameChooser(true);
+////		hero6.setIsGameChooser(true);
+////		hero6.setIsinDetention(true);
+////		hero5.setHealth(10);
+////		Villain villain = manager.villains.getCurrentVillain(manager.getCurrentIndex());
+////		villain.setTimesBeaten();
+////		villain.setTimesBeaten();
+////		Money wallet = testsquad.getWallet();
+//
+////		MainGameWindow mainGameScreen = new MainGameWindow(manager);
+////		VillainLairWindow villainLairWindow = new VillainLairWindow(manager, mainGameScreen);
+//	}		
+
 		
 	
 	// Merged from Jays Setup Manager
@@ -314,9 +309,6 @@ public class GameWindowManager {
 	public void closeSetupTeamAndWorld(setupTeamAndWorld setupTeamAndWorld) {
 		setupTeamAndWorld.closeWindow();
 		launchsetupAddHeros(this);
-
-		
-		
 	}
 	
 	public void launchsetupAddHeros(GameWindowManager gameWindowManager) {
@@ -335,6 +327,15 @@ public class GameWindowManager {
 		setCurrentCity(world.get(currentIndex));
 		
 		launchMainGameScreen();
+	}
+	
+	public void createWorld() {
+		int numberCities = getWorldSize();
+		world.removeAll(world);
+		for (int i = 0; i < numberCities; i++) {
+			City city = new City();
+			world.add(city);
+		}
 	}
 	
 	private boolean lookForTalkativeHero() {
@@ -462,6 +463,20 @@ public class GameWindowManager {
 	 */
 	public void setSelectedHeroIndex(int selectedHeroIndex) {
 		this.selectedHeroIndex = selectedHeroIndex;
+	}
+
+	/**
+	 * @return the worldSize
+	 */
+	public int getWorldSize() {
+		return worldSize;
+	}
+
+	/**
+	 * @param worldSize the worldSize to set
+	 */
+	public void setWorldSize(int worldSize) {
+		this.worldSize = worldSize;
 	}
 
 	public Types typeConversion (HeroTypes heroType) {
