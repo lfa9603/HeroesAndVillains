@@ -28,7 +28,7 @@ import minigames_V2.GuessTheNumber;
 import minigames_V2.MiniGameEngine;
 import minigames_V2.RockPaperScissors;
 
-public class GameWindowManager {
+public class GameWindowManager implements java.io.Serializable {
 	
 	private final String characterTypes = "1. Talkitive : Has the ability to Charm people \n"
 			+ "    (Gets 25% better prices at shops) \n"
@@ -106,6 +106,7 @@ public class GameWindowManager {
 	 */
 	public void launchMainGameScreen() {
 		MainGameWindow mainGameScreen = new MainGameWindow(this);
+		mainGameScreen.getFrame().setTitle("Level " + (currentIndex + 1));
 	}
 	
 	/**
@@ -206,6 +207,11 @@ public class GameWindowManager {
 		if (herosWon) {
 			if (currentIndex < world.size()) {
 				currentCity = world.get(currentIndex);
+<<<<<<< HEAD
+				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+				mainGameWindow.getFrame().setVisible(true);
+				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
+=======
 				
 //				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 //				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
@@ -215,6 +221,7 @@ public class GameWindowManager {
 				squad.getWallet().addMoney(lootAfterVillainDefated);
 				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
 				
+>>>>>>> 9892c797f995a2551724d3a5878c7550fed482b9
 				squad.setHaveMap(false);
 			} else {
 				closeMainGameWindow(mainGameWindow);
