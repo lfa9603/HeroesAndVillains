@@ -3,5 +3,5 @@
 - Bug in Mystery Abilty ... sometimes it gives an incorrect hint. - Fixed
 - Talking to the shop keeper doesn't seem to do anything
 - Issues with Villain effect string - Fixed 
-- Hero not leaving detention after villain defeated 
+- Hero not leaving detention after villain defeated - Fixed
 - 2 x Damage being dealt when willing against the villain - Fixed
