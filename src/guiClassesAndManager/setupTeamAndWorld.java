@@ -193,15 +193,16 @@ public class setupTeamAndWorld {
 		btnConfirmWorldSize.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				ArrayList<City> world = new ArrayList<City>();
-				ArrayList<City> world = manager.getWorld();
-				int numberCities = slider.getValue();
-				world.removeAll(world);
-				for (int i = 0; i < numberCities; i++) {
-					City city = new City();
-					world.add(city);
-				WorldCreationLabel.setText("A World of " + world.size() + " cities has been created.");
+//				ArrayList<City> world = manager.getWorld();
+//				int numberCities = slider.getValue();
+//				world.removeAll(world);
+//				for (int i = 0; i < numberCities; i++) {
+//					City city = new City();
+//					world.add(city);
+				manager.setWorldSize(slider.getValue());
+				int worldSize = manager.getWorldSize();
+				WorldCreationLabel.setText("A World of " + worldSize + " cities has been created.");
 				setWorldCreated(true);
-				}
 			}
 		});
 		btnConfirmWorldSize.setFont(new Font("Tahoma", Font.PLAIN, 18));

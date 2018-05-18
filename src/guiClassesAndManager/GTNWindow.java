@@ -111,7 +111,9 @@ public class GTNWindow {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
+				if (timesFought >= 2 & battleFought) {
+					finishedWindow();
+				}
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 21));
@@ -130,8 +132,9 @@ public class GTNWindow {
 		JButton btnChooseNumber = new JButton("Choose number");
 		btnChooseNumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (timesFought < 2 & !battleFought) {
+				if (timesFought < 2) {
 					timesFought++;
+					battleFought = true;
 					manager.getMiniGameEngine().setGuessesInGTN(timesFought);
 					int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
 					System.out.println("VC from GTNwindow " + villainsIntChoice);

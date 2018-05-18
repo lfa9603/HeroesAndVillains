@@ -203,6 +203,7 @@ public class SetupAddHeros {
 				}
 				else {
 					characters.InitialAbiltyEffects.applyHeroSquadAbilties(manager.getSquad().getHeroSquad());
+					manager.createWorld();
 					finishedWindow();
 				}
 			}

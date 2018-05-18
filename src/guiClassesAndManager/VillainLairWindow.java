@@ -125,12 +125,13 @@ public class VillainLairWindow {
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setForeground(new Color(139, 0, 0));
 		progressBar.setStringPainted(true);
-		progressBar.setString("100%");
 		progressBar.setValue(3);
 		progressBar.setMaximum(3);
 		progressBar.setToolTipText("the villains health");
 		progressBar.setBounds(112, 421, 292, 22);
 		battleWindow.getContentPane().add(progressBar);
+		int villainHealth = 3 - manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getTimesBeaten();
+		progressBar.setValue(villainHealth);
 		
 		JTextPane dialogueTextPane = new JTextPane();
 		dialogueTextPane.setEditable(false);

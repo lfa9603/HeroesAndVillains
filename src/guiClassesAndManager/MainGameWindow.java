@@ -3,6 +3,8 @@ package guiClassesAndManager;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Point;
 
 import java.awt.event.KeyEvent;
@@ -16,8 +18,11 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 import city.buildings.Building;
+import collectables.Money;
 
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 public class MainGameWindow {
@@ -52,6 +57,15 @@ public class MainGameWindow {
 		infosPopUpMessage = new ArrayList<JLabel>();
 		
 		frame = new JFrame();
+		frame.setTitle("Level " + (manager.getCurrentIndex() + 1));
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				JOptionPane.showMessageDialog(frame, messageForOptionPane(), "Level " +( manager.getCurrentIndex() + 1), JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		
+		
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 800, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -334,4 +348,14 @@ public class MainGameWindow {
 	}
 
 
+	public String messageForOptionPane() {
+		String string = new String("You are now in level " + (manager.getCurrentIndex() + 1) + ".");
+		if (manager.getCurrentIndex() > 0) {
+			
+			string += "Your team has been rewarded " + new Money(manager.getLootAfterVillainDefated().getAmount() * manager.getCurrentIndex()) + " coins for defeating the villain!";
+		}
+		
+		return string;
+	}
+	
 }
