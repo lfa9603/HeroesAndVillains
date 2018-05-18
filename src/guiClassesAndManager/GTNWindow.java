@@ -111,7 +111,9 @@ public class GTNWindow {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
+				if (timesFought >= 2 & battleFought) {
+					finishedWindow();
+				}
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 21));
