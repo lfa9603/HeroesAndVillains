@@ -1,2 +1,2 @@
-- When GTN game is played you can exit the game between the 1st and 2nd guss of the number.
+- When GTN game is played you can exit the game between the 1st and 2nd guss of the number. - Fixed
 - When defeating a Villain the health bar does not go down.
