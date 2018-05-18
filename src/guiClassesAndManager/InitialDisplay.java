@@ -57,12 +57,18 @@ public class InitialDisplay {
 		
 		frame.getContentPane().setLayout(null);
 		
-		JLabel noSavedGameAvailable = new JLabel("Heroes & Villains");
-		noSavedGameAvailable.setFont(new Font("Tahoma", Font.PLAIN, 69));
-		noSavedGameAvailable.setHorizontalAlignment(SwingConstants.CENTER);
-		noSavedGameAvailable.setBounds(21, 21, 639, 80);
-		frame.getContentPane().add(noSavedGameAvailable);
+		JLabel mainTitle = new JLabel("Heroes & Villains");
+		mainTitle.setFont(new Font("Tahoma", Font.PLAIN, 69));
+		mainTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		mainTitle.setBounds(21, 21, 639, 80);
+		frame.getContentPane().add(mainTitle);
 		
+		JLabel lblNoSavedGame = new JLabel("No saved game available");
+		lblNoSavedGame.setForeground(Color.RED);
+		lblNoSavedGame.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNoSavedGame.setBounds(177, 298, 310, 26);
+		lblNoSavedGame.setVisible(false);
+		frame.getContentPane().add(lblNoSavedGame);
 		
 		JButton newGameButton = new JButton("New Game");
 		newGameButton.setToolTipText("Erases the savings created in a current game, choose only if you have finished your paused game");
@@ -88,11 +94,22 @@ public class InitialDisplay {
 			public void actionPerformed(ActionEvent e) {
 				GameWindowManager manager = null;
 				try {
+<<<<<<< HEAD
 					FileInputStream fileIn = new FileInputStream("src/manager.ser");
 					ObjectInputStream in = new ObjectInputStream(fileIn);
 					manager = (GameWindowManager) in.readObject();
 					in.close();
 					fileIn.close();
+=======
+					FileInputStream fileIn = new FileInputStream("src/saved_instances/manager.ser");
+					if (!(fileIn.available() == 0)) {
+						ObjectInputStream in = new ObjectInputStream(fileIn);
+						manager = (GameWindowManager) in.readObject();
+						in.close();
+						fileIn.close();
+					}
+
+>>>>>>> 3d9ae9e1ab40a22d2b6f408fc579c4cf144229a4
 				} catch (IOException i) {
 					i.printStackTrace();
 					return;
@@ -102,7 +119,8 @@ public class InitialDisplay {
 				}
 				
 				if (manager == null) {
-					noSavedGameAvailable.setVisible(true);
+					lblNoSavedGame.setVisible(true);
+					System.out.println("Ciao");
 				} else {
 					new MainGameWindow(manager);
 				}
@@ -121,12 +139,12 @@ public class InitialDisplay {
 		previousScoresLbl.setBounds(21, 332, 189, 26);
 		frame.getContentPane().add(previousScoresLbl);
 		
-		JLabel lblNoSavedGame = new JLabel("No saved game available");
-		lblNoSavedGame.setForeground(Color.RED);
-		lblNoSavedGame.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNoSavedGame.setBounds(177, 298, 310, 26);
-		lblNoSavedGame.setVisible(false);
-		frame.getContentPane().add(lblNoSavedGame);
+//		JLabel lblNoSavedGame = new JLabel("No saved game available");
+//		lblNoSavedGame.setForeground(Color.RED);
+//		lblNoSavedGame.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblNoSavedGame.setBounds(177, 298, 310, 26);
+//		lblNoSavedGame.setVisible(false);
+//		frame.getContentPane().add(lblNoSavedGame);
 		
 	}
 	
