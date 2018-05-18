@@ -10,8 +10,12 @@ import engine.Engine;
  * it requires each object that extends it to implement the method @apply() and gives each one of these objects a cost (type Money) 
  * and a collectableID (type CollectableID). 
  */
-public abstract class Collectable {
+public abstract class Collectable implements java.io.Serializable {
 		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4948691758247117330L;
 	private Money cost;
 	private CollectableID collectableID;
 	

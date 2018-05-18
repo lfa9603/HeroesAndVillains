@@ -10,8 +10,10 @@ import org.hamcrest.core.IsInstanceOf;
 import collectables.healingItem.HealingItem;
 import collectables.powerUp.PowerUp;
 
-public class Inventory {
+public class Inventory implements java.io.Serializable {
 
+	
+	private static final long serialVersionUID = 345758306441672294L;
 	private HashMap<Collectable, Integer> inventory;
 	
 	

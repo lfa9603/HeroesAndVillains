@@ -593,7 +593,7 @@ public class GameWindowManager implements java.io.Serializable {
 		
 		
 		try {
-			FileOutputStream fileOut = new FileOutputStream("manager.ser");
+			FileOutputStream fileOut = new FileOutputStream("src/saved_instances/manager.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(manager);
 			out.close();

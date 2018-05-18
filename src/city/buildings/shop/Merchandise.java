@@ -20,8 +20,10 @@ import collectables.powerUp.IncreaseMaxLife;
  * that extend @Collectable at the moment of a Merchandise() object instantiation.
  * 
  */
-public class Merchandise {
+public class Merchandise implements java.io.Serializable{
 
+	
+	private static final long serialVersionUID = -4553963530567099387L;
 	private Inventory inventory;
 	
 	/**

@@ -14,9 +14,10 @@ import characters.HeroesSquad;
  *and a buildingType (TypeBuilidngs an enumerator created to give each building an ID). 
  *It also has to implement a method called interact() which performs different tasks depending on the building type.
  */
-public abstract class Building {
+public abstract class Building implements java.io.Serializable{
 
-	
+	private static final long serialVersionUID = 763083094778373713L;
+
 	private String buildingName;
 	
 	private Point buildingCoordinates;

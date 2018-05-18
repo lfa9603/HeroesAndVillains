@@ -7,7 +7,10 @@ package characters;
  *this class is parent to both the villain and hero classes. This class implements an abstract toString()
  *method.
  */
-public abstract class Character {
+public abstract class Character implements java.io.Serializable {
+	
+	
+	private static final long serialVersionUID = 9098228716645620486L;
 	
 	private String characterName;
 	private Types characterType;
