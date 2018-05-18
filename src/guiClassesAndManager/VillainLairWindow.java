@@ -100,13 +100,6 @@ public class VillainLairWindow {
 		Titlelbl.setBounds(10, 11, 855, 45);
 		battleWindow.getContentPane().add(Titlelbl);
 		
-		JTextPane HeroSquadtextPane = new JTextPane();
-		HeroSquadtextPane.setEditable(false);
-		HeroSquadtextPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		HeroSquadtextPane.setBounds(471, 229, 394, 181);
-		battleWindow.getContentPane().add(HeroSquadtextPane);
-		HeroSquadtextPane.setText(manager.getSquad().toString());
-		
 		JTextPane VillaintextPane = new JTextPane();
 		VillaintextPane.setEditable(false);
 		VillaintextPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -121,6 +114,14 @@ public class VillainLairWindow {
 		VillainHealthLbl.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		VillainHealthLbl.setBounds(10, 421, 92, 22);
 		battleWindow.getContentPane().add(VillainHealthLbl);
+		
+		
+		JTextPane HeroSquadtextPane = new JTextPane();
+		HeroSquadtextPane.setEditable(false);
+		HeroSquadtextPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		HeroSquadtextPane.setBounds(471, 229, 394, 181);
+		battleWindow.getContentPane().add(HeroSquadtextPane);
+		HeroSquadtextPane.setText(manager.getSquad().toString());
 		
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setForeground(new Color(139, 0, 0));

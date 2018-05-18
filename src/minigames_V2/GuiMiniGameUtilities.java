@@ -103,7 +103,7 @@ public class GuiMiniGameUtilities {
 			if (hero.isAlive()) {
 				hero.setIsinDetention(true);
 				run = false;
-				string = (hero.getCharacterName() + "you peice of s***! your going to DENTENTION!\n" +
+				string = (hero.getCharacterName() + " you peice of s***! your going to DENTENTION!\n" +
 				villain.toString());
 			}
 		}

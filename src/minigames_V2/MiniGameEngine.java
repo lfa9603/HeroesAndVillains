@@ -104,6 +104,16 @@ public class MiniGameEngine {
 			
 			default: System.out.println("Error in runGuiMiniGameEngine");
 		}
+		if (villain.isBeaten() == true) {
+			System.out.println("removed heros from detention");
+			MiniGame.setAbilitiesAvaliable(true);
+			for (Hero selectedhero: squad.getHeroSquad()) {
+				if (selectedhero.isinDetention) {
+					selectedhero.setIsinDetention(false);
+				}
+			}
+			
+		}
 		
 		
 		return result;
