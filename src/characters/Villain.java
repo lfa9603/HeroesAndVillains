@@ -24,7 +24,7 @@ public class Villain extends Character{
 	private String villainTaunt;
 	private int villainDamage;
 	private boolean damageModified;
-	private static int villainsChoice;
+	private int villainsChoice;
 
 	
 	

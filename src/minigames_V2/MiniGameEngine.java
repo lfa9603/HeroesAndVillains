@@ -24,7 +24,7 @@ public class MiniGameEngine {
 	private static int playerChoice;
 	private static int selectedHeroIndex;
 	private static int guessesInGTN;
-	private static Boolean heroWonGTN;
+	private static Boolean heroWonGTN = false;
 	
 	/**
 	 * The runMiniGameEngine calls the newGame method, it then calls the villainEffects method, then it
@@ -97,7 +97,7 @@ public class MiniGameEngine {
 			RPS.runGuiGame(hero, playerChoice); result = RPS.getBattleResult(); break;
 			
 			case 2: GuessTheNumber GTN = new GuessTheNumber(Games.RPS, villain, squad, gotAbilities); 
-			GTN.runGuiGame(hero, playerChoice); result = GTN.getBattleResult(); break;
+			result = GTN.runGuiGame(hero, playerChoice); break;
 			
 			case 3: DiceWars DW = new DiceWars(Games.RPS, villain, squad, gotAbilities); 
 			DW.runGuiGame(hero, playerChoice); result = DW.getBattleResult(); break;

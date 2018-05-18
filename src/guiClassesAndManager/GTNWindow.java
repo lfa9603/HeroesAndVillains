@@ -55,7 +55,6 @@ public class GTNWindow {
 		this.mainGameWindow = mainGameWindow;
 		initialize();
 		GTNWindow.setVisible(true);
-		manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).setVillainsChoice(10);
 
 	}
 	
@@ -103,6 +102,8 @@ public class GTNWindow {
 		GTNWindow.getContentPane().add(Abilties);
 		HeroesSquad squad = manager.getSquad();
 		Villain villain = manager.getVillains().getCurrentVillain(manager.getCurrentIndex());
+		villain.setVillainsChoice(10);
+		System.out.println("VC Correct: " + villain.getVillainsChoice());
 		int selectedHeroIndex = manager.getMiniGameEngine().getSelectedHeroIndex();
 		String abiltyString = manager.getMiniGameEngine().getHeroEffectsFromUtils(villain, squad, selectedHeroIndex);
 		System.out.println(abiltyString);
@@ -111,7 +112,8 @@ public class GTNWindow {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (timesFought >= 2 & battleFought) {
+				if (timesFought >= 2 | battleFought) {
+					manager.getMiniGameEngine().setHeroWonGTN(false);
 					finishedWindow();
 				}
 			}
@@ -132,12 +134,11 @@ public class GTNWindow {
 		JButton btnChooseNumber = new JButton("Choose number");
 		btnChooseNumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (timesFought < 2) {
+				if (timesFought < 2 & !manager.getMiniGameEngine().getHeroWonGTN()) {
 					timesFought++;
 					battleFought = true;
 					manager.getMiniGameEngine().setGuessesInGTN(timesFought);
-					int villainsIntChoice = manager.getVillains().getCurrentVillain(manager.getCurrentIndex()).getVillainsChoice();
-					System.out.println("VC from GTNwindow " + villainsIntChoice);
+					System.out.println("VC from GTNwindow " + villain.getVillainsChoice());
 					int playersChoice = comboBox.getSelectedIndex() + 1;
 					manager.getMiniGameEngine().setPlayerChoice(playersChoice);
 					String result = manager.getMiniGameEngine().runGuiMiniGameEngine(villain, squad, selectedHeroIndex);

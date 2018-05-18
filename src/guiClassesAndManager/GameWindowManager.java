@@ -207,11 +207,11 @@ public class GameWindowManager implements java.io.Serializable {
 		if (herosWon) {
 			if (currentIndex < world.size()) {
 				currentCity = world.get(currentIndex);
-<<<<<<< HEAD
+
 				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 				mainGameWindow.getFrame().setVisible(true);
 				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
-=======
+
 				
 //				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 //				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
@@ -221,7 +221,6 @@ public class GameWindowManager implements java.io.Serializable {
 				squad.getWallet().addMoney(lootAfterVillainDefated);
 				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
 				
->>>>>>> 9892c797f995a2551724d3a5878c7550fed482b9
 				squad.setHaveMap(false);
 			} else {
 				closeMainGameWindow(mainGameWindow);
@@ -551,23 +550,23 @@ public class GameWindowManager implements java.io.Serializable {
 		
 		// For testing the minigame module
 //		Hero hero1 = new Hero("heroOne", Types.talkitive, Abilities.charm);
-//		Hero hero2 = new Hero("heroTwo", Types.smart, Abilities.mystery);
+		Hero hero2 = new Hero("heroTwo", Types.smart, Abilities.mystery);
 //		Hero hero3 = new Hero("heroThree", Types.practical, Abilities.betterOdds);
 //		Hero hero4 = new Hero("hero4", Types.strong, Abilities.lessDamage);
-//		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
-//		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
+		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
+		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
 //		
-//		manager.getSquad().addHero(hero5);
-//		manager.getSquad().addHero(hero2);
-//		manager.getSquad().addHero(hero6); 
+		manager.getSquad().addHero(hero5);
+		manager.getSquad().addHero(hero2);
+		manager.getSquad().addHero(hero6); 
 ////		hero2.setisAlive(false);
 ////		hero3.setisAlive(false);
 ////		hero3.setisAlive(false);
 //		hero2.setArmor(30);
 //		hero5.setIsGameChooser(true);
-//		hero2.setIsGameChooser(true);
+		hero2.setIsGameChooser(true);
 //		hero6.setIsGameChooser(true);
-//		hero6.setIsinDetention(true);
+		hero6.setIsinDetention(true);
 //		hero5.setHealth(10);
 //		Villain villain = manager.villains.getCurrentVillain(manager.getCurrentIndex());
 //		villain.setTimesBeaten();

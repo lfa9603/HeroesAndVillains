@@ -9,7 +9,6 @@ public class GuessTheNumber extends MiniGame{
 	
 	private Villain villain;
 	private HeroesSquad squad;
-	private String battleResult;
 
 	public GuessTheNumber(Games game, Villain givenVillain, HeroesSquad theSquad, boolean gotAbilities) {
 		super(game, givenVillain, theSquad, gotAbilities);
@@ -53,7 +52,7 @@ public class GuessTheNumber extends MiniGame{
 		
 	}
 	
-	public void runGuiGame(Hero hero, int playersChoice) {
+	public String runGuiGame(Hero hero, int playersChoice) {
 		int villainChoice = villain.getVillainsChoice();
 		System.out.println("Villains choice: " + villainChoice);
 		String result = "";
@@ -62,6 +61,7 @@ public class GuessTheNumber extends MiniGame{
 			if (playersChoice == villainChoice) {
 				MiniGameEngine.setHeroWonGTN(true);
 				result = guiheroWins(hero);
+				return result;
 			}
 			
 			else {
@@ -83,22 +83,6 @@ public class GuessTheNumber extends MiniGame{
 				result = guiherolosses(hero);
 			}
 		}
-		battleResult = result;
+		return result;
 	}
-
-	/**
-	 * @return the battleResults
-	 */
-	public String getBattleResult() {
-		return battleResult;
-	}
-
-	/**
-	 * @param battleResults the battleResults to set
-	 */
-	public void setBattleResult(String battleResults) {
-		this.battleResult = battleResults;
-	}
-
-
 }
