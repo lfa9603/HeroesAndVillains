@@ -1,13 +1,20 @@
 package guiClassesAndManager;
+import java.io.*;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+//import serial.Employee;
+//import serial.GameWindowManager;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -38,13 +45,24 @@ public class InitialDisplay {
 	 */
 	public InitialDisplay() {
 		frame = new JFrame();
+		initialize();
+		frame.setVisible(true);
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame.setBounds(100, 100, 707, 651);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Heroes & Villains");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 69));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(21, 21, 639, 80);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel noSavedGameAvailable = new JLabel("Heroes & Villains");
+		noSavedGameAvailable.setFont(new Font("Tahoma", Font.PLAIN, 69));
+		noSavedGameAvailable.setHorizontalAlignment(SwingConstants.CENTER);
+		noSavedGameAvailable.setBounds(21, 21, 639, 80);
+		frame.getContentPane().add(noSavedGameAvailable);
 		
 		
 		JButton newGameButton = new JButton("New Game");
@@ -52,9 +70,46 @@ public class InitialDisplay {
 		newGameButton.setBounds(177, 150, 310, 63);
 		frame.getContentPane().add(newGameButton);
 		
+		newGameButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameWindowManager manager = new GameWindowManager();
+				manager.launchSetupTeamAndWorld();
+				frame.dispose();
+			}
+		});
+		
 		JButton resumeGameButton = new JButton("Resume Game");
 		resumeGameButton.setBounds(177, 234, 310, 63);
 		frame.getContentPane().add(resumeGameButton);
+		resumeGameButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameWindowManager manager = null;
+				try {
+					FileInputStream fileIn = new FileInputStream("manager.ser");
+					ObjectInputStream in = new ObjectInputStream(fileIn);
+					manager = (GameWindowManager) in.readObject();
+					in.close();
+					fileIn.close();
+				} catch (IOException i) {
+					i.printStackTrace();
+					return;
+				} catch (ClassNotFoundException c) {
+					System.out.println("GameWindowManager class not found");
+					c.printStackTrace();
+				}
+				
+				if (manager == null) {
+					noSavedGameAvailable.setVisible(true);
+				} else {
+					new MainGameWindow(manager);
+				}
+				
+			}
+		});
 		
 		textField = new JTextField();
 		textField.setEditable(false);
@@ -66,17 +121,17 @@ public class InitialDisplay {
 		JLabel previousScoresLbl = new JLabel("Previous scores");
 		previousScoresLbl.setBounds(21, 332, 189, 26);
 		frame.getContentPane().add(previousScoresLbl);
-		initialize();
-		frame.setVisible(true);
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		JLabel lblNoSavedGame = new JLabel("No saved game available");
+		lblNoSavedGame.setForeground(Color.RED);
+		lblNoSavedGame.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNoSavedGame.setBounds(177, 298, 310, 26);
+		lblNoSavedGame.setVisible(false);
+		frame.getContentPane().add(lblNoSavedGame);
+		
+	}
+	
+	public static void main(String[] args) {
+		new InitialDisplay();
 	}
 }

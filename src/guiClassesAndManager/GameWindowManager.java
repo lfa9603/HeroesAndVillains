@@ -28,7 +28,7 @@ import minigames_V2.GuessTheNumber;
 import minigames_V2.MiniGameEngine;
 import minigames_V2.RockPaperScissors;
 
-public class GameWindowManager {
+public class GameWindowManager implements java.io.Serializable {
 	
 	private final String characterTypes = "1. Talkitive : Has the ability to Charm people \n"
 			+ "    (Gets 25% better prices at shops) \n"
