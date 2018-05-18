@@ -1,6 +1,9 @@
 package guiClassesAndManager;
 
 import java.awt.Point;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import characters.Abilities;
@@ -57,7 +60,7 @@ public class GameWindowManager implements java.io.Serializable {
 	private MiniGameEngine miniGameEngine;
 	private int selectedHeroIndex;
 	
-	private boolean hasSquadTalkativeHero;
+//	private boolean hasSquadTalkativeHero;
 	private Money lootAfterVillainDefated;
 
 
@@ -69,7 +72,7 @@ public class GameWindowManager implements java.io.Serializable {
 //		this.squad = squad;
 		squad = new HeroesSquad();
 		world = new ArrayList<City>();
-		hasSquadTalkativeHero = false;
+//		hasSquadTalkativeHero = false;
 		currentIndex = 0;
 		lootAfterVillainDefated = new Money(30);
 	}
@@ -222,6 +225,8 @@ public class GameWindowManager implements java.io.Serializable {
 				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
 				
 				squad.setHaveMap(false);
+				
+//				serialiseManagerStatus();
 			} else {
 				closeMainGameWindow(mainGameWindow);
 				new YouWonWindow(this);
@@ -576,6 +581,21 @@ public class GameWindowManager implements java.io.Serializable {
 //		MainGameWindow mainGameScreen = new MainGameWindow(manager);
 //		VillainLairWindow villainLairWindow = new VillainLairWindow(manager, mainGameScreen);
 	}	
+	
+//	private void serialiseManagerStatus() {
+//		
+//		try {
+//			FileOutputStream fileOut = new FileOutputStream("manager.ser");
+//			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//			out.writeObject(e);
+//			out.close();
+//			fileOut.close();
+//			System.out.printf("Serialized data is saved in /employee.ser");
+//		} catch (IOException i) {
+//			i.printStackTrace();
+//		}
+//		
+//	}
 
 	
 }

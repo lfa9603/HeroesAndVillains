@@ -1,5 +1,4 @@
 package guiClassesAndManager;
-import java.io.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -89,7 +88,7 @@ public class InitialDisplay {
 			public void actionPerformed(ActionEvent e) {
 				GameWindowManager manager = null;
 				try {
-					FileInputStream fileIn = new FileInputStream("manager.ser");
+					FileInputStream fileIn = new FileInputStream("src/manager.ser");
 					ObjectInputStream in = new ObjectInputStream(fileIn);
 					manager = (GameWindowManager) in.readObject();
 					in.close();
