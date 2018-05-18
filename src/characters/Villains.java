@@ -10,7 +10,11 @@ import java.util.ArrayList;
  * of the world chosen by the user the villains that are surplus to requirement are removed.
  *
  */
-public class Villains {
+public class Villains implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7681678177938582870L;
 	private ArrayList<Villain> villains;
 	private Villain schoolBully1;
 	private Villain schoolPricipal2;

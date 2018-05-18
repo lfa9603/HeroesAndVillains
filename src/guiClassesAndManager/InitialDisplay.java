@@ -94,13 +94,6 @@ public class InitialDisplay {
 			public void actionPerformed(ActionEvent e) {
 				GameWindowManager manager = null;
 				try {
-<<<<<<< HEAD
-					FileInputStream fileIn = new FileInputStream("src/manager.ser");
-					ObjectInputStream in = new ObjectInputStream(fileIn);
-					manager = (GameWindowManager) in.readObject();
-					in.close();
-					fileIn.close();
-=======
 					FileInputStream fileIn = new FileInputStream("src/saved_instances/manager.ser");
 					if (!(fileIn.available() == 0)) {
 						ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -109,7 +102,6 @@ public class InitialDisplay {
 						fileIn.close();
 					}
 
->>>>>>> 3d9ae9e1ab40a22d2b6f408fc579c4cf144229a4
 				} catch (IOException i) {
 					i.printStackTrace();
 					return;

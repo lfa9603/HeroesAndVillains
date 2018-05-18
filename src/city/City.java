@@ -11,8 +11,13 @@ import city.buildings.homeBase.Home;
 import city.buildings.hospital.Hospital;
 import city.buildings.shop.Shop;
 
-public class City {
+public class City implements java.io.Serializable {
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3072413044372633635L;
 	/**
 	 * Every City object needs a Home, Hospital, PowerUpDen, Shop and VillainsLair object as properties.
 	 */

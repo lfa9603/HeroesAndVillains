@@ -10,7 +10,12 @@ package collectables;
  * 
  */
 //(TODO:check with jay where the money gets taken away from one Villain.)
-public class Money {
+public class Money implements java.io.Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2968833793257796392L;
 	
 	private int amount;
 	

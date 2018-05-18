@@ -16,7 +16,12 @@ import collectables.heroesMap.HeroesMap;
  * in the game. The HeroSquad object also holds the Inventory, Wallet and current position.  
  */
 
-public class HeroesSquad {
+public class HeroesSquad implements java.io.Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8518192647760853112L;
 	
 	private static ArrayList<Hero> heroSquad;
 	private String teamName;

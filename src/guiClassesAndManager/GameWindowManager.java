@@ -11,7 +11,6 @@ import characters.Hero;
 import characters.HeroTypes;
 import characters.HeroesSquad;
 import characters.Types;
-import characters.Villain;
 import characters.Villains;
 import city.City;
 import city.buildings.Building;
@@ -25,14 +24,14 @@ import city.buildings.homeBase.Home;
 import city.buildings.hospital.Hospital;
 import city.buildings.shop.Shop;
 import collectables.Money;
-import minigames_V2.DiceWars;
-import minigames_V2.Games;
-import minigames_V2.GuessTheNumber;
 import minigames_V2.MiniGameEngine;
-import minigames_V2.RockPaperScissors;
+
+
 
 public class GameWindowManager implements java.io.Serializable {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	private final String characterTypes = "1. Talkitive : Has the ability to Charm people \n"
 			+ "    (Gets 25% better prices at shops) \n"
 			+ "2. Smart : Mystery Ability, which could help or hinder \n"
@@ -226,7 +225,7 @@ public class GameWindowManager implements java.io.Serializable {
 				
 				squad.setHaveMap(false);
 				
-//				serialiseManagerStatus();
+				serialiseManagerStatus();
 			} else {
 				closeMainGameWindow(mainGameWindow);
 				new YouWonWindow(this);
@@ -582,20 +581,29 @@ public class GameWindowManager implements java.io.Serializable {
 //		VillainLairWindow villainLairWindow = new VillainLairWindow(manager, mainGameScreen);
 	}	
 	
-//	private void serialiseManagerStatus() {
-//		
-//		try {
-//			FileOutputStream fileOut = new FileOutputStream("manager.ser");
-//			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-//			out.writeObject(e);
-//			out.close();
-//			fileOut.close();
-//			System.out.printf("Serialized data is saved in /employee.ser");
-//		} catch (IOException i) {
-//			i.printStackTrace();
-//		}
-//		
-//	}
+	private void serialiseManagerStatus() {
+		
+		GameWindowManager manager = new GameWindowManager();
+		manager.setWorld(getWorld());
+		manager.setSquad(getSquad());
+		manager.setVillains(getVillains());
+		manager.setWorldSize(getWorldSize());
+		manager.setCurrentCity(getCurrentCity());
+		manager.setLootAfterVillainDefated(getLootAfterVillainDefated());
+		
+		
+		try {
+			FileOutputStream fileOut = new FileOutputStream("manager.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(manager);
+			out.close();
+			fileOut.close();
+			System.out.printf("Serialized data is saved in /employee.ser");
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+		
+	}
 
 	
 }
