@@ -1,7 +1,7 @@
 - When GTN game is played you can exit the game between the 1st and 2nd guss of the number. - Fixed
 - When defeating a Villain the health bar does not go down. - Fixed
 - Bug in Mystery Abilty ... sometimes it gives an incorrect hint. - Fixed
-- Talking to the shop keeper doesn't seem to do anything
+- Talking to the shop keeper doesn't seem to do anything. -Fixed
 - Issues with Villain effect string - Fixed 
 - Hero not leaving detention after villain defeated - Fixed
 - 2 x Damage being dealt when willing against the villain - Fixed

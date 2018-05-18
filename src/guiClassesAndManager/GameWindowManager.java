@@ -247,21 +247,21 @@ public class GameWindowManager implements java.io.Serializable {
 		
 		switch (building.getBuildingType()) {
 			case Home:
-				HomeWindow homeWindow = new HomeWindow(this, (Home) building, mainWindow);
+				new HomeWindow(this, (Home) building, mainWindow);
 				break;
 			case PowerUpDen:
-				PowerUpDenWindow powerUpDenWindow = new PowerUpDenWindow(this, (PowerUpDen) building, mainWindow);
+				new PowerUpDenWindow(this, (PowerUpDen) building, mainWindow);
 				break;
 			case Hospital:
 				isHospitalWindowOpen = true;
-				HospitalWindow hospitalWindow = new HospitalWindow(this, (Hospital) building, mainWindow);
+				new HospitalWindow(this, (Hospital) building, mainWindow);
 				break;
 			case Shop:
-				ShopWindow shopWindow = new ShopWindow(this, (Shop) building, mainWindow);
+				new ShopWindow(this, (Shop) building, mainWindow);
 				break;
 			case VillainsLair:
 				miniGameEngine = new MiniGameEngine();
-				VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainWindow);
+				new VillainLairWindow(this, mainWindow);
 				break;
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
@@ -331,7 +331,7 @@ public class GameWindowManager implements java.io.Serializable {
 	}
 	
 	public void launchsetupAddHeros(GameWindowManager gameWindowManager) {
-		SetupAddHeros setupWindow = new SetupAddHeros(this);
+		new SetupAddHeros(this);
 	}
 	
 	public void closeSetupAddHeros(SetupAddHeros setupWindow) {
@@ -357,15 +357,15 @@ public class GameWindowManager implements java.io.Serializable {
 		}
 	}
 	
-	private boolean lookForTalkativeHero() {
-		for (Hero hero : squad.getHeroSquad()) {
-			if (hero.getCharacterType().equals(Types.talkitive)) {
-				return true;
-			}
-		}
-		
-		return false;
-	}
+//	private boolean lookForTalkativeHero() {
+//		for (Hero hero : squad.getHeroSquad()) {
+//			if (hero.getCharacterType().equals(Types.talkitive)) {
+//				return true;
+//			}
+//		}
+//		
+//		return false;
+//	}
 	
 	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow) {
 		villainLairWindow.closeWindow();

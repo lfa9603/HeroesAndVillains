@@ -92,19 +92,50 @@ public class ShopWindow {
 		welcomeShopTxtArea.setBounds(21, 21, 691, 43);
 		frame.getContentPane().add(welcomeShopTxtArea);
 		
+		//Done
+		JPanel justBrowsingPanel = new JPanel();
+		justBrowsingPanel.setVisible(false);
+		justBrowsingPanel.setBounds(21, 321, 341, 347);
+		frame.getContentPane().add(justBrowsingPanel);
+		justBrowsingPanel.setLayout(null);
+		
+		//Done
+		JPanel talkToInnkeeperPanel = new JPanel();
+		talkToInnkeeperPanel.setVisible(false);
+		talkToInnkeeperPanel.setBounds(436, 321, 341, 347);
+		frame.getContentPane().add(talkToInnkeeperPanel);
+		talkToInnkeeperPanel.setLayout(null);
+		
 		JToggleButton justBrowsingTgBtn = new JToggleButton("Just Browsing");
 		justBrowsingTgBtn.setBounds(66, 265, 207, 35);
+		justBrowsingTgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (!justBrowsingPanel.isVisible()) {
+					justBrowsingPanel.setVisible(true);
+				} else {
+					justBrowsingPanel.setVisible(false);
+				}
+			}
+		});
 		frame.getContentPane().add(justBrowsingTgBtn);
 		
 		JToggleButton talkToInnkeeperTgBtn = new JToggleButton("Talk to " + shopBuilding.getNameOfInnkeeper());
 		talkToInnkeeperTgBtn.setBounds(505, 265, 207, 35);
+		talkToInnkeeperTgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (!talkToInnkeeperPanel.isVisible()) {
+					talkToInnkeeperPanel.setVisible(true);
+				} else {
+					talkToInnkeeperPanel.setVisible(false);
+				}
+			}
+		});
 		frame.getContentPane().add(talkToInnkeeperTgBtn);
 		
-		//Done
-		JPanel justBrowsingPanel = new JPanel();
-		justBrowsingPanel.setBounds(21, 321, 341, 347);
-		frame.getContentPane().add(justBrowsingPanel);
-		justBrowsingPanel.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -120,11 +151,6 @@ public class ShopWindow {
 		shopGoodsTxtArea.setBackground(SystemColor.menu);
 		shopGoodsTxtArea.setText(returnItemsInMerchandise());
 		
-		//Done
-		JPanel talkToInnkeeperPanel = new JPanel();
-		talkToInnkeeperPanel.setBounds(436, 321, 341, 347);
-		frame.getContentPane().add(talkToInnkeeperPanel);
-		talkToInnkeeperPanel.setLayout(null);
 		
 		//Done
 		JComboBox<CollectableID> allItemsComboBox = new JComboBox<CollectableID>();
