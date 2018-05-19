@@ -98,8 +98,11 @@ public class InitialDisplay {
 					if (!(fileIn.available() == 0)) {
 						ObjectInputStream in = new ObjectInputStream(fileIn);
 						manager = (GameWindowManager) in.readObject();
+//						System.out.println(manager.getSquad());
+//						System.out.println("Ciao");
 						in.close();
 						fileIn.close();
+						
 					}
 
 				} catch (IOException i) {
@@ -109,15 +112,15 @@ public class InitialDisplay {
 					System.out.println("GameWindowManager class not found");
 					c.printStackTrace();
 				}
-				
 				if (manager == null) {
 					lblNoSavedGame.setVisible(true);
 					System.out.println("Ciao");
 				} else {
 					frame.dispose();
-					manager.launchMainGameScreen();
+					new MainGameWindow(manager);
+//					System.out.println(manager.getSquad());
+					//Already crashes here, manager is still null no matter what I think
 				}
-				
 			}
 		});
 		

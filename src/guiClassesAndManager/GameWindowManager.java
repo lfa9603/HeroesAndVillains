@@ -252,21 +252,21 @@ public class GameWindowManager implements java.io.Serializable {
 		
 		switch (building.getBuildingType()) {
 			case Home:
-				new HomeWindow(this, (Home) building, mainWindow);
+				HomeWindow hw = new HomeWindow(this, (Home) building, mainWindow);
 				break;
 			case PowerUpDen:
-				new PowerUpDenWindow(this, (PowerUpDen) building, mainWindow);
+				PowerUpDenWindow powerUpDenWindow = new PowerUpDenWindow(this, (PowerUpDen) building, mainWindow);
 				break;
 			case Hospital:
 				isHospitalWindowOpen = true;
-				new HospitalWindow(this, (Hospital) building, mainWindow);
+				HospitalWindow hospitalWindow = new HospitalWindow(this, (Hospital) building, mainWindow);
 				break;
 			case Shop:
-				new ShopWindow(this, (Shop) building, mainWindow);
+				ShopWindow shopWindow = new ShopWindow(this, (Shop) building, mainWindow);
 				break;
 			case VillainsLair:
 				miniGameEngine = new MiniGameEngine();
-				new VillainLairWindow(this, mainWindow);
+				VillainLairWindow villLairWindow = new VillainLairWindow(this, mainWindow);
 				break;
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
@@ -584,25 +584,28 @@ public class GameWindowManager implements java.io.Serializable {
 	
 	private void serialiseManagerStatus() {
 		
-//		GameWindowManager manager = new GameWindowManager();
-//		manager.setWorld(getWorld());
-//		manager.setSquad(getSquad());
-//		manager.setVillains(getVillains());
-//		manager.setWorldSize(getWorldSize());
-//		manager.setCurrentCity(getCurrentCity());
-//		manager.setLootAfterVillainDefated(getLootAfterVillainDefated());
-		
+		GameWindowManager manager = new GameWindowManager();
+		manager.setWorld(this.getWorld());
+		manager.setSquad(this.getSquad());
+		manager.setVillains(this.getVillains());
+		manager.setWorldSize(this.getWorldSize());
+		manager.setCurrentCity(this.getCurrentCity());
+		manager.setLootAfterVillainDefated(this.getLootAfterVillainDefated());
+		manager.setMiniGameEngine(this.getMiniGameEngine());
+		manager.setCurrentIndex(this.getCurrentIndex());
 		
 		try {
 			FileOutputStream fileOut = new FileOutputStream("src/saved_instances/manager.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(GameWindowManager.this);
+			out.writeObject(manager);
 			out.close();
 			fileOut.close();
-			System.out.printf("Serialized data is saved in /employee.ser");
+			System.out.printf("Serialized data is saved in src/saved_instances/manager.ser");
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
+		System.out.println(manager.getSquad());
+		System.out.println(manager.getWorld());
 		
 	}
 
