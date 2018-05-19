@@ -83,13 +83,31 @@ public abstract class Building implements java.io.Serializable{
 	 * Overridden toString() method, it returns the property buildingName 
 	 * and the position of the building on the level map. 
 	 */
+	@Override
 	public String toString() {
 		String string = new String();
 		string += "This is the " + buildingName;
-		string += "\nIts  coordinates are: " + buildingCoordinates + "\n";
+		string += "\nIts  coordinates are: " + chooseRightGeoCoordinate(buildingCoordinates) + "\n\n";
 		return string;
 	}
 	
 	public abstract void interact(HeroesSquad heroesSquad);
 
+	private String chooseRightGeoCoordinate(Point buildingCoordinates) {
+		String coordinate = new String();
+		if (buildingCoordinates.equals(new Point(0, 0)))
+			coordinate = "Origin";
+		if (buildingCoordinates.equals(new Point(4, 0)))
+			coordinate = "East";
+		if (buildingCoordinates.equals(new Point(-4, 0)))
+			coordinate = "West";
+		if (buildingCoordinates.equals(new Point(0, 4)))
+			coordinate = "North";
+		if (buildingCoordinates.equals(new Point(0, -4)))
+			coordinate = "South";
+		
+		return coordinate;
+			
+	}
+	
 }

@@ -117,6 +117,7 @@ public class City implements java.io.Serializable {
 	 * Overridden toString() method.
 	 * @return mapOfCity a String object that prints each Building object String() showing each individual building name and set of coordinates. 
 	 */
+	@Override
 	public String toString() {
 		String mapOfCity = new String();
 		for (Building building : cityBuildings) {

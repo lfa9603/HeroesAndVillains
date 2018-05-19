@@ -362,8 +362,7 @@ public class HeroesSquad implements java.io.Serializable{
 	/**
 	 * A method the provides the String representation of the HeroSquad object.
 	 */
-
-	//TODO: update Hero toString() and then make this method better, not tested yet
+	@Override
 	public String toString() {
 		String squad = new String("Heros in " + teamName + ": \n"
 				+ "Wallet: " + getWallet() + " coins\n"

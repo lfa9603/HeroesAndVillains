@@ -48,6 +48,7 @@ public class Money implements java.io.Serializable {
 	 * (eg. amount = 6, to String() returns "6").
 	 * 
 	 */
+	@Override
 	public String toString() {
 		String string = new String();
 		string += amount;

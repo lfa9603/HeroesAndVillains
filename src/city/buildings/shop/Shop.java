@@ -302,6 +302,7 @@ public class Shop extends Building{
 	private void confirmPurchase(HeroesSquad heroSquad, Collectable collectable) {
 		if (merchandise.getInventory().isInInventory(collectable) != null) {
 			if ((heroSquad.getWallet()).minus(collectable.getCost())) {
+
 				heroSquad.getBackPack().addItemToInventory(collectable); 
 				merchandise.getInventory().removeItemFromInventory(collectable);
 				System.out.println("Great! You bought a " + collectable.getCollectableID());
@@ -436,7 +437,10 @@ public class Shop extends Building{
 					if (heroSquad.isHaveMap()) {
 						return "Don't waste your money on another map mate! You already have one!";
 					} else {
+						HeroesMap map = new HeroesMap(CollectableID.HeroesMap);
 						heroSquad.setHaveMap(true);
+						map.apply(heroSquad);
+						
 					}
 				} else {
 					heroSquad.getBackPack().addItemToInventory(collectable); 

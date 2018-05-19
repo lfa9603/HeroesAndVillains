@@ -82,6 +82,7 @@ public class Villain extends Character{
 	/**
 	 * The class Villain has to implement as it extends Character
 	 */
+	@Override
 	public String toString() {
 		String string = new String(getCharacterName() + " says " + getVillainTaunt());
 		return string;

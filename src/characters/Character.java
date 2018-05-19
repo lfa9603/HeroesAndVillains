@@ -3,9 +3,9 @@ package characters;
 /**
  * 
  * @author LorenzoFasano and JayHamilton
- *Character abstract class implements classes that take Character elements as objects,
- *this class is parent to both the villain and hero classes. This class implements an abstract toString()
- *method.
+ * Character abstract class implements classes that take Character elements as objects,
+ * this class is parent to both the villain and hero classes. This class implements an abstract toString()
+ * method.
  */
 public abstract class Character implements java.io.Serializable {
 	

@@ -297,6 +297,7 @@ public class ShopWindow {
 	private String returnItemsInMerchandise() {
 		String merchandiseContent = new String(shopBuilding.getMerchandise().getInventory().showPowerUpsInInventory());
 		merchandiseContent += shopBuilding.getMerchandise().getInventory().showHealingItemsInInventory();
+		merchandiseContent += shopBuilding.getMerchandise().getInventory().showMapItemInInventory();
 		return merchandiseContent;
 	}
 	

@@ -92,6 +92,7 @@ public class Hero extends Character {
 	/**
 	 * Method that Character forces this class to implement.
 	 */
+	@Override
 	public String toString() {
 		String string = new String(
 				"Hero named: " + getCharacterName() +

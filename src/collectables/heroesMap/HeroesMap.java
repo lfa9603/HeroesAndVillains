@@ -82,6 +82,7 @@ public class HeroesMap extends Collectable {
 	 * It returns a String object including the description of HeroesMap.java objects and their cost.
 	 * 
 	 */
+	@Override
 	public String toString() {
 		return "This is a map of the current city you are in, "
 				+ "you can buy it at the shop and use it ONLY inside your HomeBase" 

@@ -91,12 +91,12 @@ public class Inventory implements java.io.Serializable {
 		while (iterator.hasNext()) {
 			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
 			if (CollectableID.isPowerUp(collectable.getKey().getCollectableID())) {
-				powerUpsAndQuantities += collectable.getKey() + "\nQUANTITY: " + collectable.getValue().toString() + "\n";
+				powerUpsAndQuantities += collectable.getKey() + "\nQUANTITY: " + collectable.getValue().toString() + "\n\n";
 			}
 		}
 		
 		if (powerUpsAndQuantities.length() == 0) {
-			powerUpsAndQuantities = "Looks like you have no power-ups";
+			powerUpsAndQuantities = "Looks like you have no power-ups\n";
 		}
 		
 		return powerUpsAndQuantities;
@@ -110,18 +110,35 @@ public class Inventory implements java.io.Serializable {
 		while (iterator.hasNext()) {
 			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
 			if (CollectableID.isHealingItem(collectable.getKey().getCollectableID())) {
-				healingItemsAndQuantities += collectable.getKey() + "\nQUANTITY: " + collectable.getValue().toString() + "\n";
+				healingItemsAndQuantities += collectable.getKey() + "\nQUANTITY: " + collectable.getValue().toString() + "\n\n";
 			}
 		}
 		
 		if (healingItemsAndQuantities.length() == 0) {
-			healingItemsAndQuantities = "Looks like you have no healing item";
+			healingItemsAndQuantities = "Looks like you have no healing item\n";
 		}
 		
 		return healingItemsAndQuantities;
     }
     
+	public String showMapItemInInventory() {
+		String mapItemToString = new String();
 	
+		Iterator<Entry<Collectable, Integer>> iterator = inventory.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
+			if (collectable.getKey().getCollectableID().equals(CollectableID.HeroesMap)) {
+				mapItemToString += collectable.getKey() + "\nQUANTITY: this item is always available for you guys!\n\n";
+			}
+		}
+		
+		if (mapItemToString.length() == 0) {
+			mapItemToString = "Looks like you have no map item";
+		}
+		
+		return mapItemToString;
+	}
+    
     /**
      * Overridden to string method.
      * It returns a String object containing each element present in the inventory \\

@@ -100,6 +100,7 @@ public class HealingWard implements java.io.Serializable{
 	 * Overridden toString() method.
 	 * @return The Hero objects names in patientsAndHealingTime and the corresponding Integer value converted to seconds.
 	 */
+	@Override
 	public String toString() {
 		HashMap<Hero, Integer> copyPatientsAndHealingTime = (HashMap<Hero, Integer>) patientsAndHealingTime.clone();
 		if (!copyPatientsAndHealingTime.isEmpty()) {

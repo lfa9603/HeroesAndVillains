@@ -207,6 +207,7 @@ public class GameWindowManager implements java.io.Serializable {
 		if (herosWon) {
 			if (currentIndex < world.size()) {
 				currentCity = world.get(currentIndex);
+				squad.setCurrentCity(currentCity);
 
 ////				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 //				mainGameWindow.getFrame().dispose();
@@ -347,6 +348,7 @@ public class GameWindowManager implements java.io.Serializable {
 		setupWindow.closeWindow();
 		villains = new Villains(world.size());
 		setCurrentCity(world.get(currentIndex));
+		squad.setCurrentCity(currentCity);
 		
 		launchMainGameScreen();
 	}
