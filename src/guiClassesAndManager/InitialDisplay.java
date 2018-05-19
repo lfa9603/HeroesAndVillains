@@ -118,7 +118,7 @@ public class InitialDisplay {
 				} else {
 					frame.dispose();
 					new MainGameWindow(manager);
-//					System.out.println(manager.getSquad());
+//					System.out.println(manager.getSquad())hjlk;
 					//Already crashes here, manager is still null no matter what I think
 				}
 			}

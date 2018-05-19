@@ -63,9 +63,7 @@ public class GameWindowManager implements java.io.Serializable {
 	private Money lootAfterVillainDefated;
 
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
+
 	public GameWindowManager() {
 //		this.currentCity = city;
 //		this.squad = squad;
@@ -210,14 +208,14 @@ public class GameWindowManager implements java.io.Serializable {
 			if (currentIndex < world.size()) {
 				currentCity = world.get(currentIndex);
 
-				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
-				mainGameWindow.getFrame().setVisible(true);
-				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
+////				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+//				mainGameWindow.getFrame().dispose();
+				
 
 				
-//				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
-//				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
-//				mainGameWindow.getFrame().setVisible(true);
+				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
+				mainGameWindow.getFrame().setVisible(true);
 				
 				squad.getWallet().addMoney(lootAfterVillainDefated);
 				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
@@ -226,7 +224,7 @@ public class GameWindowManager implements java.io.Serializable {
 				
 				serialiseManagerStatus();
 				
-				MainGameWindow gameWindow = new MainGameWindow(this);
+//				launchMainGameScreen();
 			} else {
 				closeMainGameWindow(mainGameWindow);
 				new YouWonWindow(this);
@@ -584,28 +582,27 @@ public class GameWindowManager implements java.io.Serializable {
 	
 	private void serialiseManagerStatus() {
 		
-		GameWindowManager manager = new GameWindowManager();
-		manager.setWorld(this.getWorld());
-		manager.setSquad(this.getSquad());
-		manager.setVillains(this.getVillains());
-		manager.setWorldSize(this.getWorldSize());
-		manager.setCurrentCity(this.getCurrentCity());
-		manager.setLootAfterVillainDefated(this.getLootAfterVillainDefated());
-		manager.setMiniGameEngine(this.getMiniGameEngine());
-		manager.setCurrentIndex(this.getCurrentIndex());
+//		GameWindowManager manager = new GameWindowManager();
+//		manager.setWorld(this.getWorld());
+//		manager.setSquad(this.getSquad());
+//		manager.setVillains(this.getVillains());
+//		manager.setWorldSize(this.getWorldSize());
+//		manager.setCurrentCity(this.getCurrentCity());
+//		manager.setLootAfterVillainDefated(this.getLootAfterVillainDefated());
+//		manager.setMiniGameEngine(this.getMiniGameEngine());
+//		manager.setCurrentIndex(this.getCurrentIndex());
 		
 		try {
 			FileOutputStream fileOut = new FileOutputStream("src/saved_instances/manager.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(manager);
+			out.writeObject(this);
 			out.close();
 			fileOut.close();
 			System.out.printf("Serialized data is saved in src/saved_instances/manager.ser");
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
-		System.out.println(manager.getSquad());
-		System.out.println(manager.getWorld());
+
 		
 	}
 
