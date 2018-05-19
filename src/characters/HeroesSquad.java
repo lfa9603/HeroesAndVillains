@@ -23,7 +23,7 @@ public class HeroesSquad implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = -8518192647760853112L;
 	
-	private static ArrayList<Hero> heroSquad;
+	private ArrayList<Hero> heroSquad;
 	private String teamName;
 	private boolean allDead; 
 	
