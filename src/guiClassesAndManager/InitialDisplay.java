@@ -114,7 +114,8 @@ public class InitialDisplay {
 					lblNoSavedGame.setVisible(true);
 					System.out.println("Ciao");
 				} else {
-					new MainGameWindow(manager);
+					frame.dispose();
+					manager.launchMainGameScreen();
 				}
 				
 			}

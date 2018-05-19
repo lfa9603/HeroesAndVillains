@@ -8,6 +8,7 @@ import characters.Villain;
 import engine.Icons;
 import engine.Utilities;
 import engine.VisualUtilities;
+import guiClassesAndManager.MainGameWindow;
 
 
 
@@ -19,7 +20,11 @@ import engine.VisualUtilities;
  * is beaten or if all the heros are dead, after each battle sequence, the loop continues until this occurs.
  *
  */
-public class MiniGameEngine {
+public class MiniGameEngine implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8541911594061434851L;
 	private static int selectedMiniGame;
 	private static int playerChoice;
 	private static int selectedHeroIndex;

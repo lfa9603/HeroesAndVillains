@@ -218,7 +218,6 @@ public class GameWindowManager implements java.io.Serializable {
 //				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 //				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
 //				mainGameWindow.getFrame().setVisible(true);
-				new MainGameWindow(this);
 				
 				squad.getWallet().addMoney(lootAfterVillainDefated);
 				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
@@ -226,6 +225,8 @@ public class GameWindowManager implements java.io.Serializable {
 				squad.setHaveMap(false);
 				
 				serialiseManagerStatus();
+				
+				MainGameWindow gameWindow = new MainGameWindow(this);
 			} else {
 				closeMainGameWindow(mainGameWindow);
 				new YouWonWindow(this);
@@ -583,19 +584,19 @@ public class GameWindowManager implements java.io.Serializable {
 	
 	private void serialiseManagerStatus() {
 		
-		GameWindowManager manager = new GameWindowManager();
-		manager.setWorld(getWorld());
-		manager.setSquad(getSquad());
-		manager.setVillains(getVillains());
-		manager.setWorldSize(getWorldSize());
-		manager.setCurrentCity(getCurrentCity());
-		manager.setLootAfterVillainDefated(getLootAfterVillainDefated());
+//		GameWindowManager manager = new GameWindowManager();
+//		manager.setWorld(getWorld());
+//		manager.setSquad(getSquad());
+//		manager.setVillains(getVillains());
+//		manager.setWorldSize(getWorldSize());
+//		manager.setCurrentCity(getCurrentCity());
+//		manager.setLootAfterVillainDefated(getLootAfterVillainDefated());
 		
 		
 		try {
 			FileOutputStream fileOut = new FileOutputStream("src/saved_instances/manager.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(manager);
+			out.writeObject(GameWindowManager.this);
 			out.close();
 			fileOut.close();
 			System.out.printf("Serialized data is saved in /employee.ser");
