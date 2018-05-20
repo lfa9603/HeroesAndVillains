@@ -3,6 +3,7 @@ package tests.GuiTests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.nio.file.attribute.AclEntry.Builder;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -20,6 +21,7 @@ import city.buildings.homeBase.Home;
 import guiClassesAndManager.GameWindowManager;
 import guiClassesAndManager.HomeWindow;
 import guiClassesAndManager.MainGameWindow;
+import guiClassesAndManager.SetupAddHeros;
 import guiClassesAndManager.SetupTeamAndWorld;
 import guiClassesAndManager.VillainLairWindow;
 
@@ -83,9 +85,7 @@ class GameWindowManagerTests {
 
 	@Test
 	void testCloseMainGameWindow() {
-		SetupTeamAndWorld setupTeamAndWorld = new SetupTeamAndWorld(manager);
-		manager.closeSetupTeamAndWorld(setupTeamAndWorld);
-//		assertTrue(setupTeamAndWorld == null);
+
 	}
 
 	@Test
@@ -119,7 +119,27 @@ class GameWindowManagerTests {
 
 	@Test
 	void testOpenBuildingWindow() {
-		fail("Not yet implemented");
+		Hero hero1 = new Hero("heroOne", Types.talkitive, Abilities.charm);
+		Hero hero2 = new Hero("heroTwo", Types.smart, Abilities.mystery);
+		Hero hero3 = new Hero("heroThree", Types.practical, Abilities.betterOdds);
+		Hero hero4 = new Hero("hero4", Types.strong, Abilities.lessDamage);
+		Hero hero5 = new Hero("hero5",Types.sly, Abilities.winDraws);
+		Hero hero6 = new Hero("hero3",Types.dog, Abilities.goodBoy);
+		
+		manager.getSquad().addHero(hero5);
+		manager.getSquad().addHero(hero2);
+		manager.getSquad().addHero(hero6);
+		City city = new City();
+		ArrayList<Building> buildings = city.getCityBuildings();
+		Building building0 = buildings.get(0);
+		Building building1 = buildings.get(1);
+		Building building2 = buildings.get(2);
+		Building building3 = buildings.get(3);
+		manager.openBuildingWindow(building0, mainGameWindow);
+		manager.openBuildingWindow(building1, mainGameWindow);
+		manager.openBuildingWindow(building2, mainGameWindow);
+		manager.openBuildingWindow(building3, mainGameWindow);
+		
 	}
 
 	@Test
@@ -134,27 +154,33 @@ class GameWindowManagerTests {
 
 	@Test
 	void testCloseSetupTeamAndWorld() {
-		fail("Not yet implemented");
+		SetupTeamAndWorld setupTeamAndWorld = new SetupTeamAndWorld(manager);
+		manager.closeSetupTeamAndWorld(setupTeamAndWorld);
+//		assertTrue(setupTeamAndWorld == null);
 	}
 
 	@Test
 	void testLaunchsetupAddHeros() {
-		fail("Not yet implemented");
+		manager.launchsetupAddHeros(manager);
 	}
 
 	@Test
 	void testCloseSetupAddHeros() {
-		fail("Not yet implemented");
+		SetupAddHeros setupAddHeros = new SetupAddHeros(manager);
+		manager.closeSetupAddHeros(setupAddHeros);
 	}
 
 	@Test
 	void testFinalcloseSetupAddHeros() {
-		fail("Not yet implemented");
+		SetupAddHeros setupAddHeros = new SetupAddHeros(manager);
+		manager.closeSetupAddHeros(setupAddHeros);
 	}
 
 	@Test
 	void testCreateWorld() {
-		fail("Not yet implemented");
+		manager.setWorldSize(4);;
+		manager.createWorld();
+		assertTrue(manager.getWorld().size() == 4);
 	}
 
 	@Test
