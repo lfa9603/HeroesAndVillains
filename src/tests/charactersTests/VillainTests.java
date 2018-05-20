@@ -74,10 +74,14 @@ class VillainTests {
 
 	@Test
 	void testGetVillainsChoice() {
-		int actual1 = villain.getVillainsChoice(1);
-		int actual10 = villain.getVillainsChoice(10);
-		int actual100 = villain.getVillainsChoice(100);
-		int actual1000 = villain.getVillainsChoice(1000);
+		villain.setVillainsChoice(1);
+		int actual1 = villain.getVillainsChoice();
+		villain.setVillainsChoice(10);
+		int actual10 = villain.getVillainsChoice();
+		villain.setVillainsChoice(100);
+		int actual100 = villain.getVillainsChoice();
+		villain.setVillainsChoice(1000);
+		int actual1000 = villain.getVillainsChoice();
 		
 		assertTrue(actual1 <= 1);
 		assertTrue(actual10 <= 10);
