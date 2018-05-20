@@ -89,6 +89,7 @@ class MiniGameEngineTest {
 	@Test
 	void testRunMiniGameEngine() {
 		setInputStream("1\n"
+				+ "1\n"
 				+ "y\n"
 				+ "1\n"
 				+ "1\n"
