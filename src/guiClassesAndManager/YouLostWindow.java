@@ -86,8 +86,16 @@ public class YouLostWindow {
 		thread.start();
 		
 		JButton btnNewButton = new JButton("Exit Game");
-		btnNewButton.setBounds(274, 343, 273, 84);
+		btnNewButton.setBounds(274, 295, 273, 84);
 		frame.getContentPane().add(btnNewButton);
+		
+		
+		JLabel gameResultSavedLbl = new JLabel("Game result saved successfully!");
+		gameResultSavedLbl.setForeground(Color.GREEN);
+		gameResultSavedLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		gameResultSavedLbl.setBounds(262, 400, 296, 26);
+		gameResultSavedLbl.setVisible(false);
+		frame.getContentPane().add(gameResultSavedLbl);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			
@@ -95,6 +103,22 @@ public class YouLostWindow {
 			public void actionPerformed(ActionEvent e) {
 				isThreadAlive = false;
 				frame.dispose();
+				
+			}
+		});
+		
+		
+		JButton btnSaveGame = new JButton("Save Game");
+		btnSaveGame.setBounds(274, 452, 273, 84);
+		frame.getContentPane().add(btnSaveGame);
+		
+		btnSaveGame.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (manager.saveScore()) {
+					gameResultSavedLbl.setVisible(true);
+				}
 				
 			}
 		});
