@@ -679,6 +679,7 @@
     <end type="TARGET" refId="43"/>  
   </generalization>  
   <association id="122">    
+    <bendpoint x="2247" y="390"/>    
     <end type="SOURCE" refId="36" navigable="false">      
       <attribute id="123" name="currentCity"/>      
       <multiplicity id="124" minimum="0" maximum="1"/>    
@@ -704,6 +705,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="131">    
+    <bendpoint x="2223" y="298"/>    
     <end type="SOURCE" refId="36" navigable="false">      
       <attribute id="132" name="world"/>      
       <multiplicity id="133" minimum="0" maximum="2147483647"/>    
@@ -813,6 +815,7 @@
     <end type="TARGET" refId="26"/>  
   </generalization>  
   <association id="168">    
+    <bendpoint x="2583" y="946"/>    
     <end type="SOURCE" refId="12" navigable="false">      
       <attribute id="169" name="villansLair"/>      
       <multiplicity id="170" minimum="0" maximum="1"/>    
