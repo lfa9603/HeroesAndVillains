@@ -122,7 +122,7 @@ public class GameWindowManager implements java.io.Serializable {
 	 * 
 	 */
 	public void launchSetupTeamAndWorld() {
-		setupTeamAndWorld setupWindow = new setupTeamAndWorld(this);
+		SetupTeamAndWorld setupWindow = new SetupTeamAndWorld(this);
 	}
 	
 	/**
@@ -372,7 +372,7 @@ public class GameWindowManager implements java.io.Serializable {
 	// Merged from Jays Setup Manager
 	
 	
-	public void closeSetupTeamAndWorld(setupTeamAndWorld setupTeamAndWorld) {
+	public void closeSetupTeamAndWorld(SetupTeamAndWorld setupTeamAndWorld) {
 		setupTeamAndWorld.closeWindow();
 		launchsetupAddHeros(this);
 	}

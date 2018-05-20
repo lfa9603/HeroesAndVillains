@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
-public class setupTeamAndWorld {
+public class SetupTeamAndWorld {
 
 	private JFrame teamAndWorldSetup;
 	private static GameWindowManager manager;
@@ -45,7 +45,7 @@ public class setupTeamAndWorld {
 	/**
 	 * Create the application.
 	 */
-	public setupTeamAndWorld(GameWindowManager gameWindowManager) {
+	public SetupTeamAndWorld(GameWindowManager gameWindowManager) {
 		manager = gameWindowManager;
 		initialize();
 //		teamAndWorldSetupDialog.setModal(true);

@@ -2,6 +2,8 @@ package tests.GuiTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.nio.file.attribute.AclEntry.Builder;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,17 +12,26 @@ import org.junit.jupiter.api.Test;
 
 import characters.Abilities;
 import characters.Hero;
+import characters.HeroesSquad;
 import characters.Types;
 import city.City;
+import city.buildings.Building;
+import city.buildings.homeBase.Home;
 import guiClassesAndManager.GameWindowManager;
+import guiClassesAndManager.HomeWindow;
+import guiClassesAndManager.MainGameWindow;
+import guiClassesAndManager.SetupTeamAndWorld;
+import guiClassesAndManager.VillainLairWindow;
 
 class GameWindowManagerTests {
 	private GameWindowManager manager;
+	private MainGameWindow mainGameWindow;
 
 
 	@BeforeEach
 	void setUp() {
 		this.manager = new GameWindowManager();
+		this.mainGameWindow = new MainGameWindow(manager);
 	}
 
 	@AfterEach
@@ -48,18 +59,8 @@ class GameWindowManagerTests {
 	}
 
 	@Test
-	void testGetSquad() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetSquad() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	void testLaunchMainGameScreen() {
-		fail("Not yet implemented");
+		manager.launchMainGameScreen();
 	}
 
 	@Test
@@ -74,20 +75,24 @@ class GameWindowManagerTests {
 		
 		manager.getSquad().addHero(hero5);
 		manager.getSquad().addHero(hero2);
-		manager.getSquad().addHero(hero6); 
-
+		manager.getSquad().addHero(hero6);
+		
+		manager.launchSetupTeamAndWorld();
 
 	}
 
 	@Test
 	void testCloseMainGameWindow() {
-		fail("Not yet implemented");
+		SetupTeamAndWorld setupTeamAndWorld = new SetupTeamAndWorld(manager);
+		manager.closeSetupTeamAndWorld(setupTeamAndWorld);
+//		assertTrue(setupTeamAndWorld == null);
 	}
 
 	@Test
 	void testCloseHomeBaseWindow() {
 		fail("Not yet implemented");
 	}
+	
 
 	@Test
 	void testClosePowerUpDenWindow() {
@@ -106,7 +111,10 @@ class GameWindowManagerTests {
 
 	@Test
 	void testFinalCloseVillainLairWindow() {
-		fail("Not yet implemented");
+		VillainLairWindow villainsLairWindow = new VillainLairWindow(manager, mainGameWindow);
+		manager.finalCloseVillainLairWindow(villainsLairWindow, mainGameWindow, true);
+		VillainLairWindow villainsLairWindow1 = new VillainLairWindow(manager, mainGameWindow);
+		manager.finalCloseVillainLairWindow(villainsLairWindow1, mainGameWindow, false);
 	}
 
 	@Test
