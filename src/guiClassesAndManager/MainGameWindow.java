@@ -23,6 +23,7 @@ import collectables.Money;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 
 
 public class MainGameWindow {
@@ -71,14 +72,17 @@ public class MainGameWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		movingLabel = new JLabel("0");
+		movingLabel = new JLabel("");
+		movingLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		movingLabel.setIcon(new ImageIcon(MainGameWindow.class.getResource("/resources/images/Japan_small_icon.png")));
 		movingLabel.setForeground(Color.BLACK);
 		movingLabel.setBackground(Color.BLACK);
-		movingLabel.setBounds(336, 300, 11, 26);
+		movingLabel.setBounds(246, 222, 55, 55);
 		frame.getContentPane().add(movingLabel);
 		
 		//GUI for HomeBase object
 		JLabel homeLabel = new JLabel("Home Base");
+		homeLabel.setBackground(Color.GRAY);
 		homeLabel.setBounds(319, 327, 75, 75);
 		entrances.add(homeLabel);
 		frame.getContentPane().add(homeLabel);
@@ -88,8 +92,9 @@ public class MainGameWindow {
 		infos.add(homeInfoLabel);
 		frame.getContentPane().add(homeInfoLabel);
 		
-		JLabel amHomeInfoLabel = new JLabel("Space For Home Infos");
-		amHomeInfoLabel.setBounds(81, 399, 383, 75);
+		JLabel amHomeInfoLabel = new JLabel("");
+		amHomeInfoLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		amHomeInfoLabel.setBounds(81, 399, 191, 75);
 		infosPopUpMessage.add(amHomeInfoLabel);
 		frame.getContentPane().add(amHomeInfoLabel);
 		
@@ -127,7 +132,7 @@ public class MainGameWindow {
 		infos.add(westInfoLabel);
 		frame.getContentPane().add(westInfoLabel);
 		
-		JLabel amOnTheWestInfoLabel = new JLabel("Space for Western Builidng Info");
+		JLabel amOnTheWestInfoLabel = new JLabel("");
 		amOnTheWestInfoLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		amOnTheWestInfoLabel.setBounds(21, 133, 264, 58);
 		infosPopUpMessage.add(amOnTheWestInfoLabel);
@@ -149,7 +154,7 @@ public class MainGameWindow {
 		infos.add(southInfoLabel);
 		frame.getContentPane().add(southInfoLabel);
 		
-		JLabel amOnSouthInfoLabel = new JLabel("Space For South Builidng Info");
+		JLabel amOnSouthInfoLabel = new JLabel("");
 		amOnSouthInfoLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		amOnSouthInfoLabel.setBounds(12, 654, 229, 58);
 		infosPopUpMessage.add(amOnSouthInfoLabel);
@@ -171,7 +176,7 @@ public class MainGameWindow {
 		infos.add(eastInfoLabel);
 		frame.getContentPane().add(eastInfoLabel);
 		
-		JLabel amOnEastInfoLabel = new JLabel("Space for Eastern Builidng Window");
+		JLabel amOnEastInfoLabel = new JLabel("");
 		amOnEastInfoLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		amOnEastInfoLabel.setBounds(524, 372, 229, 58);
 		infosPopUpMessage.add(amOnEastInfoLabel);
@@ -236,7 +241,7 @@ public class MainGameWindow {
 				newPosition = new Point(movingLabel.getX() - 10, movingLabel.getY());
 				break;
 		}
-			
+		System.out.println(newPosition);
 		if (newPosition.x <= 776 && newPosition.x >= 6 && newPosition.y <= 720 && newPosition.y >= 0) {
 			movingLabel.setLocation(newPosition);
 		}
@@ -294,7 +299,7 @@ public class MainGameWindow {
 	
 	
 	private void chooseNextWindowToOpen(Building building) {
-		frame.setVisible(false);//I am really not sure this is the way to go, but closing completely the window would 
+//		frame.setVisible(false);//I am really not sure this is the way to go, but closing completely the window would 
 		//mean loosing the Heroes current position, so we will figure it out later
 		manager.openBuildingWindow(building, this);
 	}
@@ -357,5 +362,6 @@ public class MainGameWindow {
 		
 		return string;
 	}
+	
 	
 }

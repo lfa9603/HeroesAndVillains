@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import characters.Abilities;
 import characters.Hero;
 import characters.HeroTypes;
@@ -252,23 +254,39 @@ public class GameWindowManager implements java.io.Serializable {
 		switch (building.getBuildingType()) {
 			case Home:
 				HomeWindow hw = new HomeWindow(this, (Home) building, mainWindow);
+				mainWindow.getFrame().setVisible(false);
 				break;
 			case PowerUpDen:
 				PowerUpDenWindow powerUpDenWindow = new PowerUpDenWindow(this, (PowerUpDen) building, mainWindow);
+				mainWindow.getFrame().setVisible(false);
 				break;
 			case Hospital:
 				isHospitalWindowOpen = true;
 				HospitalWindow hospitalWindow = new HospitalWindow(this, (Hospital) building, mainWindow);
+				mainWindow.getFrame().setVisible(false);
 				break;
 			case Shop:
 				ShopWindow shopWindow = new ShopWindow(this, (Shop) building, mainWindow);
+				mainWindow.getFrame().setVisible(false);
 				break;
 			case VillainsLair:
-				miniGameEngine = new MiniGameEngine();
-				VillainLairWindow villLairWindow = new VillainLairWindow(this, mainWindow);
+				dealingWithVillainLairChoice(mainWindow);
+//				miniGameEngine = new MiniGameEngine();
+//				VillainLairWindow villLairWindow = new VillainLairWindow(this, mainWindow);
 				break;
 			default:
 				break;//For now, want to give it a go with HomeBase and see what happens. Fingers crossed...
+		}
+	}
+	
+	private void dealingWithVillainLairChoice(MainGameWindow mainWindow) {
+		int a = JOptionPane.showConfirmDialog(mainWindow.getFrame(),"Do you really want to enter the Villain Lair? You surely aren't good enough for this!", "Villain Lair", JOptionPane.YES_NO_OPTION);
+		if (a == 0) {
+			miniGameEngine = new MiniGameEngine();
+			VillainLairWindow villLairWindow = new VillainLairWindow(this, mainWindow);
+			mainWindow.getFrame().setVisible(false);
+		} else {
+			mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
 		}
 	}
 	
