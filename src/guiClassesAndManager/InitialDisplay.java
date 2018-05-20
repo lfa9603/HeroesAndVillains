@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -145,6 +146,7 @@ public class InitialDisplay implements java.io.Serializable {
 		
 		JLabel previousScoresLbl = new JLabel("Previous scores");
 		previousScoresLbl.setBounds(21, 332, 189, 26);
+		previousScoresLbl.setText(giveScoresToScoreBoard());
 		frame.getContentPane().add(previousScoresLbl);
 		
 //		JLabel lblNoSavedGame = new JLabel("No saved game available");
@@ -154,7 +156,41 @@ public class InitialDisplay implements java.io.Serializable {
 //		lblNoSavedGame.setVisible(false);
 //		frame.getContentPane().add(lblNoSavedGame);
 		
+		
+		
 	}
+//	Setup to retrieve the scores board 
+	private String giveScoresToScoreBoard() {
+		String string = new String();
+		java.util.List<java.util.Map.Entry<String,Integer>> pairList = null;
+		try {
+			FileInputStream fileIn = new FileInputStream("src/saved_instances/scores_board.ser");
+			if (!(fileIn.available() == 0)) {
+				ObjectInputStream in = new ObjectInputStream(fileIn);
+				pairList = (java.util.ArrayList<java.util.Map.Entry<String,Integer>>) in.readObject();
+//				System.out.println(manager.getSquad());
+//				System.out.println("Ciao");
+				in.close();
+			}
+			fileIn.close();
+
+		} catch (IOException i) {
+			i.printStackTrace();
+			
+		} catch (ClassNotFoundException c) {
+			System.out.println("GameWindowManager class not found");
+			c.printStackTrace();
+		}
+		if (pairList != null) {
+			for (Entry<String,Integer> pair : pairList) {
+				string += pair.getKey() + "    " + pair.getValue();
+			}
+		}
+		
+		return string;
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		new InitialDisplay();
