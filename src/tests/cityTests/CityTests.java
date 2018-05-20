@@ -70,7 +70,7 @@ public class CityTests {
 		assertNotNull(home.getBuildingCoordinates(), home.getBuildingCoordinates().toString());
 		
 		String homeString = "This is the " + home.getBuildingName();
-		homeString += "\nIts  coordinates are: " + home.getBuildingCoordinates() + "\n";
+		homeString += "\nIts  coordinates are: " + home.chooseRightGeoCoordinate(home.getBuildingCoordinates()) + "\n\n";
 		assertEquals(home.toString(), homeString);
 		
 		
@@ -79,7 +79,7 @@ public class CityTests {
 		assertNotNull(buildingOne.getBuildingCoordinates(), buildingOne.getBuildingCoordinates().toString());
 		
 		String buildingOneString = "This is the " + buildingOne.getBuildingName();
-		buildingOneString += "\nIts  coordinates are: " + buildingOne.getBuildingCoordinates() + "\n";
+		buildingOneString += "\nIts  coordinates are: " + buildingOne.chooseRightGeoCoordinate(buildingOne.getBuildingCoordinates()) + "\n\n";
 		assertEquals(buildingOne.toString(), buildingOneString);
 
 		
@@ -88,26 +88,26 @@ public class CityTests {
 		assertNotNull(buildingTwo.getBuildingCoordinates(), buildingTwo.getBuildingCoordinates().toString());
 		
 		String buildingTwoString = "This is the " + buildingTwo.getBuildingName();
-		buildingTwoString += "\nIts  coordinates are: " + buildingTwo.getBuildingCoordinates() + "\n";
+		buildingTwoString += "\nIts  coordinates are: " + buildingTwo.chooseRightGeoCoordinate(buildingTwo.getBuildingCoordinates()) + "\n\n";
 		assertEquals(buildingTwo.toString(), buildingTwoString);
 
 		
 		Building buildingThree = city.returnBuildingAtSpecificCoordinates(new Point(-4, 0));
-		assertNotNull(buildingThree.getBuildingName(), buildingThree.getBuildingName());
+		assertNotNull(buildingThree.getBuildingName(), buildingThree.chooseRightGeoCoordinate(buildingThree.getBuildingCoordinates()) + "\n\n");
 		assertNotNull(buildingThree.getBuildingCoordinates(), buildingThree.getBuildingCoordinates().toString());
 		
 		String buildingThreeString = "This is the " + buildingThree.getBuildingName();
-		buildingThreeString += "\nIts  coordinates are: " + buildingThree.getBuildingCoordinates() + "\n";
+		buildingThreeString += "\nIts  coordinates are: " + buildingThree.chooseRightGeoCoordinate(buildingThree.getBuildingCoordinates()) + "\n\n";
 		
 		assertEquals(buildingThree.toString(), buildingThreeString);
 		
 		
 		Building buildingFour = city.returnBuildingAtSpecificCoordinates(new Point(0, -4));
-		assertNotNull(buildingFour.getBuildingName(), buildingFour.getBuildingName());
+		assertNotNull(buildingFour.getBuildingName(), buildingFour.chooseRightGeoCoordinate(buildingFour.getBuildingCoordinates()) + "\n\n");
 		assertNotNull(buildingFour.getBuildingCoordinates(), buildingFour.getBuildingCoordinates().toString());
 		
 		String buildingFourString = "This is the " + buildingFour.getBuildingName();
-		buildingFourString += "\nIts  coordinates are: " + buildingFour.getBuildingCoordinates() + "\n";
+		buildingFourString += "\nIts  coordinates are: " + buildingFour.chooseRightGeoCoordinate(buildingFour.getBuildingCoordinates()) + "\n\n";
 		assertEquals(buildingFour.toString(), buildingFourString);
 		
 	}

@@ -93,7 +93,7 @@ public abstract class Building implements java.io.Serializable{
 	
 	public abstract void interact(HeroesSquad heroesSquad);
 
-	private String chooseRightGeoCoordinate(Point buildingCoordinates) {
+	public String chooseRightGeoCoordinate(Point buildingCoordinates) {
 		String coordinate = new String();
 		if (buildingCoordinates.equals(new Point(0, 0)))
 			coordinate = "Origin";

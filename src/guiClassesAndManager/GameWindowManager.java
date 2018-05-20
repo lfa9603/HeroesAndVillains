@@ -1,9 +1,14 @@
 package guiClassesAndManager;
 
 import java.awt.Point;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -141,7 +146,7 @@ public class GameWindowManager implements java.io.Serializable {
 	public void closeHomeBaseWindow(HomeWindow homeWindow, MainGameWindow mainWindow) {
 		homeWindow.closeWindow();
 		//Hardcoded!! Watch out when measurements change
-		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+		mainWindow.moveSquadAwayFromBuilding(new Point(326, 264));
 //		mainWindow.getFrame().setVisible(true);
 		mainWindow.getFrame().setVisible(true);
 	}
@@ -151,7 +156,7 @@ public class GameWindowManager implements java.io.Serializable {
 		//Hardcoded!! Watch out when measurements change
 		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
 		// but it looks hard to do at the moment, leave it as a refinement.
-		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+		mainWindow.moveSquadAwayFromBuilding(new Point(326, 264));
 //		mainWindow.getFrame().setVisible(true);
 		mainWindow.getFrame().setVisible(true);
 	}
@@ -173,7 +178,7 @@ public class GameWindowManager implements java.io.Serializable {
 		//Hardcoded!! Watch out when measurements change
 		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
 		// but it looks hard to do at the moment, leave it as a refinement.
-		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+		mainWindow.moveSquadAwayFromBuilding(new Point(326, 264));
 //		mainWindow.getFrame().setVisible(true);
 		mainWindow.getFrame().setVisible(true);
 	}
@@ -196,7 +201,7 @@ public class GameWindowManager implements java.io.Serializable {
 		//Hardcoded!! Watch out when measurements change
 		// NOTE: this sends back to in front of the HomeBase, for now this will do, maybe try to improve, 
 		// but it looks hard to do at the moment, leave it as a refinement.
-		mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+		mainWindow.moveSquadAwayFromBuilding(new Point(326, 264));
 //		mainWindow.getFrame().setVisible(true);
 		mainWindow.getFrame().setVisible(true);
 	}
@@ -216,29 +221,49 @@ public class GameWindowManager implements java.io.Serializable {
 				
 
 				
-				mainGameWindow.moveSquadAwayFromBuilding(new Point(336, 300));
-				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
-				mainGameWindow.getFrame().setVisible(true);
+//				mainGameWindow.moveSquadAwayFromBuilding(new Point(326, 264));
+//				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
+//				mainGameWindow.getFrame().setVisible(true);
 				
 				squad.getWallet().addMoney(lootAfterVillainDefated);
 				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
 				
 				squad.setHaveMap(false);
+				launchMainGameScreen();
+				
 				
 				serialiseManagerStatus();
 				
-//				launchMainGameScreen();
 			} else {
 				closeMainGameWindow(mainGameWindow);
 				new YouWonWindow(this);
 				System.out.println("YOU WON!");
+				cleanManagerSerFil();
 			}
 		} else {
 			closeMainGameWindow(mainGameWindow);
 			new YouLostWindow(this);
 			System.out.println("YOU LOST");
+			cleanManagerSerFil();
 		}
 	}
+	
+	
+	public void cleanManagerSerFil() {
+		
+		File file = new File("src/saved_instances/manager.ser");
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(file);
+			writer.close();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+	}
+	
+	
 	/**
 	 * 
 	 * @param building (Type {@link Building})
@@ -286,7 +311,7 @@ public class GameWindowManager implements java.io.Serializable {
 			VillainLairWindow villLairWindow = new VillainLairWindow(this, mainWindow);
 			mainWindow.getFrame().setVisible(false);
 		} else {
-			mainWindow.moveSquadAwayFromBuilding(new Point(336, 300));
+			mainWindow.moveSquadAwayFromBuilding(new Point(326, 264));
 		}
 	}
 	

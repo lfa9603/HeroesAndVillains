@@ -121,7 +121,7 @@ public class City implements java.io.Serializable {
 	public String toString() {
 		String mapOfCity = new String();
 		for (Building building : cityBuildings) {
-			mapOfCity += building.toString();
+			mapOfCity += building;
 		}
 		return mapOfCity;
 	}

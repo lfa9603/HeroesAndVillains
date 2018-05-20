@@ -2,9 +2,14 @@ package guiClassesAndManager;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,8 +23,12 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
 
-public class InitialDisplay {
+public class InitialDisplay implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1338608437428960096L;
 	private JFrame frame;
 	private JTextField textField;
 
@@ -79,8 +88,12 @@ public class InitialDisplay {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				GameWindowManager manager = new GameWindowManager();
 				manager.launchSetupTeamAndWorld();
+				
+				manager.cleanManagerSerFil();
+				
 				frame.dispose();
 			}
 		});
@@ -101,9 +114,8 @@ public class InitialDisplay {
 //						System.out.println(manager.getSquad());
 //						System.out.println("Ciao");
 						in.close();
-						fileIn.close();
-						
 					}
+					fileIn.close();
 
 				} catch (IOException i) {
 					i.printStackTrace();

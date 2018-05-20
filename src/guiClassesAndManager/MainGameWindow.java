@@ -74,10 +74,10 @@ public class MainGameWindow {
 		
 		movingLabel = new JLabel("");
 		movingLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		movingLabel.setIcon(new ImageIcon(MainGameWindow.class.getResource("/resources/images/Japan_small_icon.png")));
+		movingLabel.setIcon(new ImageIcon(MainGameWindow.class.getResource("/resources/images/HS_Stickman_2.png")));
 		movingLabel.setForeground(Color.BLACK);
 		movingLabel.setBackground(Color.BLACK);
-		movingLabel.setBounds(246, 222, 55, 55);
+		movingLabel.setBounds(306, 259, 43, 58);
 		frame.getContentPane().add(movingLabel);
 		
 		//GUI for HomeBase object
@@ -242,7 +242,7 @@ public class MainGameWindow {
 				break;
 		}
 		System.out.println(newPosition);
-		if (newPosition.x <= 776 && newPosition.x >= 6 && newPosition.y <= 720 && newPosition.y >= 0) {
+		if (newPosition.x <= 726 && newPosition.x >= 6 && newPosition.y <= 664 && newPosition.y >= 9) {
 			movingLabel.setLocation(newPosition);
 		}
 	}
