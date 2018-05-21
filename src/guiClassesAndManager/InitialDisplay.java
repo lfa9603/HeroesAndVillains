@@ -10,12 +10,17 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+
+import engine.Tuple;
 
 //import serial.Employee;
 //import serial.GameWindowManager;
@@ -31,7 +36,7 @@ public class InitialDisplay implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = -1338608437428960096L;
 	private JFrame frame;
-	private JTextField textField;
+	private JTextArea scoresTextArea;
 
 //	/**
 //	 * Launch the application.
@@ -137,16 +142,16 @@ public class InitialDisplay implements java.io.Serializable {
 			}
 		});
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBackground(Color.LIGHT_GRAY);
-		textField.setBounds(21, 366, 639, 175);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		scoresTextArea = new JTextArea();
+		scoresTextArea.setEditable(false);
+		scoresTextArea.setBackground(Color.LIGHT_GRAY);
+		scoresTextArea.setBounds(21, 366, 639, 175);
+		scoresTextArea.setColumns(10);
+		scoresTextArea.setText(giveScoresToScoreBoard());
+		frame.getContentPane().add(scoresTextArea);
 		
 		JLabel previousScoresLbl = new JLabel("Previous scores");
 		previousScoresLbl.setBounds(21, 332, 189, 26);
-		previousScoresLbl.setText(giveScoresToScoreBoard());
 		frame.getContentPane().add(previousScoresLbl);
 		
 //		JLabel lblNoSavedGame = new JLabel("No saved game available");
@@ -162,12 +167,12 @@ public class InitialDisplay implements java.io.Serializable {
 //	Setup to retrieve the scores board 
 	private String giveScoresToScoreBoard() {
 		String string = new String();
-		java.util.List<java.util.Map.Entry<String,Integer>> pairList = null;
+		ArrayList<Tuple<String, Integer, String>> tripletList = null;
 		try {
 			FileInputStream fileIn = new FileInputStream("src/saved_instances/scores_board.ser");
 			if (!(fileIn.available() == 0)) {
 				ObjectInputStream in = new ObjectInputStream(fileIn);
-				pairList = (java.util.ArrayList<java.util.Map.Entry<String,Integer>>) in.readObject();
+				tripletList = (ArrayList<Tuple<String, Integer, String>>) in.readObject();
 //				System.out.println(manager.getSquad());
 //				System.out.println("Ciao");
 				in.close();
@@ -181,10 +186,12 @@ public class InitialDisplay implements java.io.Serializable {
 			System.out.println("GameWindowManager class not found");
 			c.printStackTrace();
 		}
-		if (pairList != null) {
-			for (Entry<String,Integer> pair : pairList) {
-				string += pair.getKey() + "    " + pair.getValue();
+		if (tripletList != null) {
+			for (Tuple<String, Integer, String> triplet : tripletList) {
+				string += triplet.getK() + "    " + triplet.getV() + "    " + triplet.getT() + "\n";
 			}
+		} else {
+			string = "Looks like you have no older scores";
 		}
 		
 		return string;

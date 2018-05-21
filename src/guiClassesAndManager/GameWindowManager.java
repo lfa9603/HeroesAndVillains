@@ -10,6 +10,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.JOptionPane;
 
@@ -31,6 +34,7 @@ import city.buildings.homeBase.Home;
 import city.buildings.hospital.Hospital;
 import city.buildings.shop.Shop;
 import collectables.Money;
+import engine.Tuple;
 import minigames_V2.MiniGameEngine;
 
 
@@ -654,7 +658,49 @@ public class GameWindowManager implements java.io.Serializable {
 	public boolean saveScore() {
 		
 //		This method is called inside the You Won and You Lost windows need to Deserialise what exists in scores_board, then reserialise it with the addition of 1 item
+		ArrayList<Tuple<String, Integer, String>> pairList = null;
+		try {
+			FileInputStream fileIn = new FileInputStream("src/saved_instances/scores_board.ser");
+			if (!(fileIn.available() == 0)) {
+				ObjectInputStream in = new ObjectInputStream(fileIn);
+				pairList =  (ArrayList<Tuple<String, Integer, String>>) in.readObject();
+				in.close();
+			}
+			fileIn.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+			return false;
+		} catch (ClassNotFoundException c) {
+			System.out.println("Employee class not found");
+			c.printStackTrace();
+			return false;
+		}
 		
+		if (pairList == null) {
+			pairList = new ArrayList<Tuple<String, Integer, String>>();
+		}
+		
+		String teamName = squad.getTeamName();
+		Integer score = squad.getWallet().getAmount() * 40;
+		score -= squad.getLength() * 100;
+		score += worldSize * 200;
+		Date date = new Date();
+		Tuple<String, Integer, String> newScore = new Tuple<String, Integer, String>(teamName, score, date.toString());
+		
+		pairList.add(0, newScore);
+		
+		try {
+			FileOutputStream fileOut = new FileOutputStream("src/saved_instances/scores_board.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(pairList);
+			out.close();
+			fileOut.close();
+			System.out.printf("Serialized data is saved in /src/saved_instances/scores_board.ser");
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+		
+		return true;
 	}
 
 	

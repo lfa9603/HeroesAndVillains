@@ -11,6 +11,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import characters.Abilities;
+import characters.Hero;
+import characters.HeroesSquad;
+import characters.Types;
+import collectables.Money;
+
 public class YouLostWindow {
 
 	private JFrame frame;
@@ -126,6 +132,12 @@ public class YouLostWindow {
 	
 	public static void main(String[] args) {
 		GameWindowManager manager = new GameWindowManager();
+		manager.setWorldSize(5);
+		HeroesSquad squad = new HeroesSquad();
+		squad.addHero(new Hero("Lorenzo",Types.level_2, Abilities.arrogance));
+		manager.setSquad(squad);
+		manager.getSquad().setWallet(new Money(2000));
+		manager.getSquad().setTeamName("Ciao");
 		YouLostWindow w = new YouLostWindow(manager);
 		
 	}
