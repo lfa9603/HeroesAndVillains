@@ -38,6 +38,7 @@ class GameWindowManagerTests {
 
 	@AfterEach
 	void tearDown() {
+		manager.closeMainGameWindow(mainGameWindow);
 		manager = null;
 	}
 
@@ -113,8 +114,10 @@ class GameWindowManagerTests {
 	void testFinalCloseVillainLairWindow() {
 		VillainLairWindow villainsLairWindow = new VillainLairWindow(manager, mainGameWindow);
 		manager.finalCloseVillainLairWindow(villainsLairWindow, mainGameWindow, true);
+		manager.closeMainGameWindow(mainGameWindow);
 		VillainLairWindow villainsLairWindow1 = new VillainLairWindow(manager, mainGameWindow);
 		manager.finalCloseVillainLairWindow(villainsLairWindow1, mainGameWindow, false);
+		manager.closeMainGameWindow(mainGameWindow);
 	}
 
 	@Test
@@ -139,6 +142,7 @@ class GameWindowManagerTests {
 		manager.openBuildingWindow(building1, mainGameWindow);
 		manager.openBuildingWindow(building2, mainGameWindow);
 		manager.openBuildingWindow(building3, mainGameWindow);
+		manager.closeMainGameWindow(mainGameWindow);
 		
 	}
 
@@ -157,6 +161,7 @@ class GameWindowManagerTests {
 		SetupTeamAndWorld setupTeamAndWorld = new SetupTeamAndWorld(manager);
 		manager.closeSetupTeamAndWorld(setupTeamAndWorld);
 //		assertTrue(setupTeamAndWorld == null);
+		manager.closeMainGameWindow(mainGameWindow);
 	}
 
 	@Test
