@@ -30,9 +30,9 @@ public class Villains implements java.io.Serializable{
 		schoolBully1 = new Villain("Tony the Primary School bully", Types.level_1, Abilities.stealLunchMoney, "Haha Loser, your money is Mine!", 10); //Primary School
 		schoolPricipal2 = new Villain("Gertrude the HighSchool Principal", Types.level_2, Abilities.detention, "Your such a waste of potential, I guess i'll see you next year", 15); //High School
 		inLaws3 = new Villain("Richard your Partners Father", Types.level_3, Abilities.judge, "Your not good enough for my child! get out of my lair!!", 25); //Dating \ School
-		Partner4 = new Villain("Alex your Partner", Types.level_4, Abilities.badDay, "You dont appreciate me enough!", 25); //married
-		docter5 = new Villain("Page your docter", Types.level_5, Abilities.sickness, "I'm so sorry...", 25); //midLife
-		Boss6 = new Villain("Sam your Manager", Types.Boss, Abilities.arrogance, "Hahah I'm ALWAYs right!", 25); //Work life
+		Partner4 = new Villain("Alex your Partner", Types.level_4, Abilities.badDay, "You dont appreciate me enough!", 35); //married
+		docter5 = new Villain("Page your docter", Types.level_5, Abilities.sickness, "I'm so sorry...", 45); //midLife
+		Boss6 = new Villain("Sam your Manager", Types.Boss, Abilities.arrogance, "Hahah I'm ALWAYs right!", 55); //Work life
 		
 		addVillain(schoolBully1);
 		addVillain(schoolPricipal2);

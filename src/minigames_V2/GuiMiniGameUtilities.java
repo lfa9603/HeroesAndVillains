@@ -66,8 +66,8 @@ public class GuiMiniGameUtilities {
 				run = false;
 				String villainTaunt = (villain.toString());
 				squad.heroTakesDamage(hero, 50);
-				string = (villainTaunt + hero.getCharacterName() + " has been diagnosed with cancer.\n"
-						+ "Cancer is expensive and life threatning.\n"
+				string = (villainTaunt + hero.getCharacterName() + " has been diagnosed with the black plague.\n"
+						+ "the black plague is expensive and life threatning.\n"
 						+ "You are charged " + cost + " coins and "
 						+ hero.getCharacterName() + " loses 50HP");
 				

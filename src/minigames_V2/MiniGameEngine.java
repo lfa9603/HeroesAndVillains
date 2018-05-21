@@ -151,7 +151,7 @@ public class MiniGameEngine implements java.io.Serializable {
 		//Sets how often the villains ability will be activated, this will help adjust the games difficulty.
 		switch (level) {
 		case level_1: difficulty = 30; break;
-		case level_2: difficulty = 10; break;
+		case level_2: difficulty = 30; break;
 		case level_3: difficulty = 30; break;
 		case level_4: difficulty = 40; break;
 		case level_5: difficulty = 50; break;

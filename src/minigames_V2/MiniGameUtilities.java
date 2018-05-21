@@ -92,7 +92,7 @@ public class MiniGameUtilities {
 				wallet.minus(wallet);				
 				run = false;
 				System.out.println(villain.toString());
-				System.out.println(hero.getCharacterName() + " has been diagnosed with cancer.\n"
+				System.out.println(hero.getCharacterName() + " has been diagnosed with the black plague.\n"
 						+ "Being sick is expensive and life threatning.\n"
 						+ "You are charged " + cost + " coins and "
 						+ hero.getCharacterName() + " loses 50HP");
@@ -102,7 +102,7 @@ public class MiniGameUtilities {
 		
 	}
 	/**
-	 * The badDay method implements the following effects in the mingame sequence:
+	 * The badDay method implements the following effects in the minigame sequence:
 	 * - removes the ability to use Hero's abilities for a round.
 	 * @param villain
 	 */
