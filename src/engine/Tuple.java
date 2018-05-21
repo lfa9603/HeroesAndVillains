@@ -14,6 +14,7 @@ public class Tuple<K, V, T> implements java.io.Serializable {
 	public Tuple(K k, V v, T t) {
 		this.k = k;
 		this.v = v;
+		this.t= t;
 	}
 	
 	/**

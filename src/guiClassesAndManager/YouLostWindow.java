@@ -24,6 +24,7 @@ public class YouLostWindow {
 	
 	private Thread thread;
 	private boolean isThreadAlive;
+	private int timesClickedSaveButton;
 
 //	/**
 //	 * Launch the application.
@@ -47,6 +48,7 @@ public class YouLostWindow {
 	public YouLostWindow(GameWindowManager incomingManager) {
 		manager = incomingManager;
 		isThreadAlive = true;
+		timesClickedSaveButton = 0;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -73,14 +75,14 @@ public class YouLostWindow {
 				while (isThreadAlive) {
 					
 					try {
-						Thread.sleep(100);
+						Thread.sleep(400);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 					label.setForeground(Color.RED);
 					
 					try {
-						Thread.sleep(100);
+						Thread.sleep(400);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -122,8 +124,15 @@ public class YouLostWindow {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (manager.saveScore()) {
+				if (timesClickedSaveButton < 1) {
+					if (manager.saveScore()) {
+						gameResultSavedLbl.setVisible(true);
+						timesClickedSaveButton += 1;
+					}
+				} else {
 					gameResultSavedLbl.setVisible(true);
+					gameResultSavedLbl.setText("You already saved");
+					gameResultSavedLbl.setForeground(Color.RED);
 				}
 				
 			}

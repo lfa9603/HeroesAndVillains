@@ -58,6 +58,7 @@ public class MainGameWindow {
 		infosPopUpMessage = new ArrayList<JLabel>();
 		
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(173, 216, 230));
 		frame.setTitle("Level " + (manager.getCurrentIndex() + 1));
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
@@ -82,13 +83,18 @@ public class MainGameWindow {
 		
 		//GUI for HomeBase object
 		JLabel homeLabel = new JLabel("Home Base");
-		homeLabel.setBackground(Color.GRAY);
-		homeLabel.setBounds(319, 327, 75, 75);
+		homeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		homeLabel.setOpaque(true);
+		homeLabel.setBackground(new Color(0, 128, 0));
+		homeLabel.setBounds(319, 327, 109, 75);
 		entrances.add(homeLabel);
 		frame.getContentPane().add(homeLabel);
 		
 		JLabel homeInfoLabel = new JLabel("info");
-		homeInfoLabel.setBounds(226, 325, 75, 75);
+		homeInfoLabel.setOpaque(true);
+		homeInfoLabel.setBackground(new Color(144, 238, 144));
+		homeInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		homeInfoLabel.setBounds(244, 327, 75, 75);
 		infos.add(homeInfoLabel);
 		frame.getContentPane().add(homeInfoLabel);
 		
@@ -100,19 +106,22 @@ public class MainGameWindow {
 		
 		//////////////GUI objects in the Northern Part of the map
 		JLabel northLabel = new JLabel("Entrance");
+		northLabel.setOpaque(true);
 		northLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		northLabel.setBackground(Color.WHITE);
+		northLabel.setBackground(new Color(255, 99, 71));
 		northLabel.setBounds(247, 0, 130, 75);
 		entrances.add(northLabel);
 		frame.getContentPane().add(northLabel);
 		
 		JLabel northInfoLabel = new JLabel("Info");
+		northInfoLabel.setBackground(new Color(255, 127, 80));
+		northInfoLabel.setOpaque(true);
 		northInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		northInfoLabel.setBounds(382, 0, 38, 75);
+		northInfoLabel.setBounds(377, 0, 60, 75);
 		infos.add(northInfoLabel);
 		frame.getContentPane().add(northInfoLabel);
 		
-		JLabel amOnTheNorthInfoLabel = new JLabel("Space for Northern Builidng Info");
+		JLabel amOnTheNorthInfoLabel = new JLabel("");
 		amOnTheNorthInfoLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		amOnTheNorthInfoLabel.setBounds(441, 17, 247, 58);
 		infosPopUpMessage.add(amOnTheNorthInfoLabel);
@@ -120,15 +129,18 @@ public class MainGameWindow {
 
 		//////////////GUI objects in the Western Part of the map
 		JLabel westLabel = new JLabel("Entrance");
+		westLabel.setOpaque(true);
 		westLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		westLabel.setBackground(Color.WHITE);
+		westLabel.setBackground(new Color(100, 149, 237));
 		westLabel.setBounds(0, 248, 75, 130);
 		entrances.add(westLabel);
 		frame.getContentPane().add(westLabel);
 		
 		JLabel westInfoLabel = new JLabel("Info");
+		westInfoLabel.setBackground(new Color(30, 144, 255));
+		westInfoLabel.setOpaque(true);
 		westInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		westInfoLabel.setBounds(0, 209, 75, 38);
+		westInfoLabel.setBounds(0, 202, 75, 51);
 		infos.add(westInfoLabel);
 		frame.getContentPane().add(westInfoLabel);
 		
@@ -142,15 +154,18 @@ public class MainGameWindow {
 		//////////////GUI objects in the Southern Part of the map
 
 		JLabel southLabel = new JLabel("Entrance");
+		southLabel.setOpaque(true);
 		southLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		southLabel.setBackground(Color.WHITE);
-		southLabel.setBounds(306, 654, 130, 75);
+		southLabel.setBackground(new Color(0, 102, 102));
+		southLabel.setBounds(301, 686, 136, 75);
 		entrances.add(southLabel);
 		frame.getContentPane().add(southLabel);
 		
 		JLabel southInfoLabel = new JLabel("Info");
+		southInfoLabel.setOpaque(true);
+		southInfoLabel.setBackground(new Color(0, 204, 153));
 		southInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		southInfoLabel.setBounds(247, 654, 38, 75);
+		southInfoLabel.setBounds(244, 686, 60, 75);
 		infos.add(southInfoLabel);
 		frame.getContentPane().add(southInfoLabel);
 		
@@ -164,15 +179,18 @@ public class MainGameWindow {
 		
 		//////////////GUI objects in the Eastern Part of the map
 		JLabel eastLabel = new JLabel("Entrance");
+		eastLabel.setOpaque(true);
 		eastLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		eastLabel.setBackground(Color.WHITE);
-		eastLabel.setBounds(699, 196, 75, 103);
+		eastLabel.setBackground(new Color(255, 215, 0));
+		eastLabel.setBounds(709, 202, 75, 115);
 		entrances.add(eastLabel);
 		frame.getContentPane().add(eastLabel);
 		
 		JLabel eastInfoLabel = new JLabel("Info");
+		eastInfoLabel.setOpaque(true);
+		eastInfoLabel.setBackground(new Color(238, 232, 170));
 		eastInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		eastInfoLabel.setBounds(699, 300, 75, 38);
+		eastInfoLabel.setBounds(709, 317, 75, 61);
 		infos.add(eastInfoLabel);
 		frame.getContentPane().add(eastInfoLabel);
 		

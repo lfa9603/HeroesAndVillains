@@ -11,8 +11,8 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.time.*;
+
 
 import javax.swing.JOptionPane;
 
@@ -228,8 +228,8 @@ public class GameWindowManager implements java.io.Serializable {
 //				mainGameWindow.moveSquadAwayFromBuilding(new Point(326, 264));
 //				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
 //				mainGameWindow.getFrame().setVisible(true);
-				
-				squad.getWallet().addMoney(lootAfterVillainDefated);
+//				TODO: Gotta fix something around here, think now works
+//				squad.getWallet().addMoney(lootAfterVillainDefated);
 				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
 				
 				squad.setHaveMap(false);
@@ -656,6 +656,11 @@ public class GameWindowManager implements java.io.Serializable {
 	}
 	
 	public boolean saveScore() {
+<<<<<<< HEAD
+=======
+
+		
+>>>>>>> c3a407df7a92685c9a7122f7f86a95d599906275
 //		This method is called inside the You Won and You Lost windows need to Deserialise what exists in scores_board, then reserialise it with the addition of 1 item
 		ArrayList<Tuple<String, Integer, String>> pairList = null;
 		try {
@@ -683,8 +688,11 @@ public class GameWindowManager implements java.io.Serializable {
 		Integer score = squad.getWallet().getAmount() * 40;
 		score -= squad.getLength() * 100;
 		score += worldSize * 200;
-		Date date = new Date();
-		Tuple<String, Integer, String> newScore = new Tuple<String, Integer, String>(teamName, score, date.toString());
+		Date dateItem = new Date();
+		String date = dateItem.toString();
+		System.out.println(date);
+		
+		Tuple<String, Integer, String> newScore = new Tuple<String, Integer, String>(teamName, score, date);
 		
 		pairList.add(0, newScore);
 		
