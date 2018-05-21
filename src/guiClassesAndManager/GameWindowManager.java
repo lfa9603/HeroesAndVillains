@@ -656,8 +656,11 @@ public class GameWindowManager implements java.io.Serializable {
 	}
 	
 	public boolean saveScore() {
+<<<<<<< HEAD
+=======
 
 		
+>>>>>>> c3a407df7a92685c9a7122f7f86a95d599906275
 //		This method is called inside the You Won and You Lost windows need to Deserialise what exists in scores_board, then reserialise it with the addition of 1 item
 		ArrayList<Tuple<String, Integer, String>> pairList = null;
 		try {
