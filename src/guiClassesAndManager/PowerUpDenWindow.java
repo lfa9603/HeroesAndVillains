@@ -171,8 +171,10 @@ public class PowerUpDenWindow {
 			public void actionPerformed(ActionEvent e) {
 				// A bit of a nasty one-liner, selects the String at right index in heroesComboBox, splits the string in two parts (name and dead/alive) 
 				// and then selects only the name part
-				String nameHeroSelected = heroesComboBox.getItemAt(heroesComboBox.getSelectedIndex()).split(" ")[0];
-				Hero heroToApplyPotionTo = manager.getSquad().getHeroByName(nameHeroSelected);
+//				String nameHeroSelected = heroesComboBox.getItemAt(heroesComboBox.getSelectedIndex()).split(" ")[0];
+//				Hero heroToApplyPotionTo = manager.getSquad().getHeroByName(nameHeroSelected);
+				Hero heroToApplyPotionTo = manager.getSquad().getHero(heroesComboBox.getSelectedIndex());
+
 				
 				PowerUp powerUp = powerUpDenBuilding.returnCorrectPowerUp(powerUpComboBox.getSelectedIndex());
 //				PowerUp powerUpToApply = null;

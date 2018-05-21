@@ -196,8 +196,9 @@ public class HospitalWindow {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				String nameHeroSelected = selectHeroComboBox.getItemAt(selectHeroComboBox.getSelectedIndex()).split(" ")[0];
-				Hero heroToApplyPotionTo = manager.getSquad().getHeroByName(nameHeroSelected);
+//				String nameHeroSelected = selectHeroComboBox.getItemAt(selectHeroComboBox.getSelectedIndex()).split(" ")[0];
+//				Hero heroToApplyPotionTo = manager.getSquad().getHeroByName(nameHeroSelected);
+				Hero heroToApplyPotionTo = manager.getSquad().getHero(selectHeroComboBox.getSelectedIndex());
 				
 				HealingItem healingItem = hospitalBuilding.returnCorrectHealingItemGivenIndex(selectHealingItemComboBox.getSelectedIndex());
 				
