@@ -354,7 +354,7 @@ public class MainGameWindow {
 
 
 	public String messageForOptionPane() {
-		String string = new String("You are now in level " + (manager.getCurrentIndex() + 1) + ".");
+		String string = new String("You are now in level " + (manager.getCurrentIndex() + 1) + ". ");
 		if (manager.getCurrentIndex() > 0) {
 			
 			string += "Your team has been rewarded " + new Money(manager.getLootAfterVillainDefated().getAmount() * manager.getCurrentIndex()) + " coins for defeating the villain!";

@@ -6,3 +6,6 @@
 - Hero not leaving detention after villain defeated - Fixed
 - 2 x Damage being dealt when willing against the villain - Fixed
 - I can select no hero and still battle. - Fixed (It uses the previously selected hero)
+- Can't apply a healing potion
+- Can't any apply power-ups, Armor causes a null-pointer exception
+- 
