@@ -84,6 +84,7 @@ public class GTNWindow {
 
 	
 		JTextPane Dialouge = new JTextPane();
+		Dialouge.setEditable(false);
 		Dialouge.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		Dialouge.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Dialouge.setText("Dialouge");
@@ -95,6 +96,7 @@ public class GTNWindow {
 		Dialouge.setText(GTNRules);
 		
 		JTextPane Abilties = new JTextPane();
+		Abilties.setEditable(false);
 		Abilties.setText("Abilties");
 		Abilties.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Abilties.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -112,7 +114,7 @@ public class GTNWindow {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (timesFought >= 2 | battleFought) {
+				if (timesFought >= 2 | manager.getMiniGameEngine().getHeroWonGTN()) {
 					manager.getMiniGameEngine().setHeroWonGTN(false);
 					finishedWindow();
 				}

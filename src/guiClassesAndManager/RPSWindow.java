@@ -80,6 +80,7 @@ public class RPSWindow {
 
 	
 		JTextPane Dialouge = new JTextPane();
+		Dialouge.setEditable(false);
 		Dialouge.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		Dialouge.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Dialouge.setText("Dialouge");
@@ -90,6 +91,7 @@ public class RPSWindow {
 		Dialouge.setText(RPSRules);
 		
 		JTextPane Abilties = new JTextPane();
+		Abilties.setEditable(false);
 		Abilties.setText("Abilties");
 		Abilties.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Abilties.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));

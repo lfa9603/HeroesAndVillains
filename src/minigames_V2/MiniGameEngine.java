@@ -160,7 +160,7 @@ public class MiniGameEngine implements java.io.Serializable {
 		}
 		
 		if (randInt > difficulty) {
-			villainEffect = (villain.getCharacterName() + " Chose not to use there abilty.");
+			villainEffect = (villain.getCharacterName() + " Chose not to use their abilty.");
 		}
 		else {
 			villainEffect = GuiMiniGameUtilities.getVillainAbiltyEffects(villain, squad);
