@@ -112,7 +112,7 @@ public class GTNWindow {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (timesFought >= 2 | battleFought) {
+				if (timesFought >= 2 | manager.getMiniGameEngine().getHeroWonGTN()) {
 					manager.getMiniGameEngine().setHeroWonGTN(false);
 					finishedWindow();
 				}
