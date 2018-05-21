@@ -28,6 +28,7 @@ import engine.Tuple;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
+import javax.swing.JScrollPane;
 
 public class InitialDisplay implements java.io.Serializable {
 
@@ -142,16 +143,19 @@ public class InitialDisplay implements java.io.Serializable {
 			}
 		});
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(177, 366, 310, 203);
+		frame.getContentPane().add(scrollPane);
+		
 		scoresTextArea = new JTextArea();
+		scrollPane.setViewportView(scoresTextArea);
 		scoresTextArea.setEditable(false);
 		scoresTextArea.setBackground(Color.LIGHT_GRAY);
-		scoresTextArea.setBounds(21, 366, 639, 175);
 		scoresTextArea.setColumns(10);
 		scoresTextArea.setText(giveScoresToScoreBoard());
-		frame.getContentPane().add(scoresTextArea);
 		
 		JLabel previousScoresLbl = new JLabel("Previous scores");
-		previousScoresLbl.setBounds(21, 332, 189, 26);
+		previousScoresLbl.setBounds(177, 335, 189, 26);
 		frame.getContentPane().add(previousScoresLbl);
 		
 //		JLabel lblNoSavedGame = new JLabel("No saved game available");
@@ -188,7 +192,7 @@ public class InitialDisplay implements java.io.Serializable {
 		}
 		if (tripletList != null) {
 			for (Tuple<String, Integer, String> triplet : tripletList) {
-				string += triplet.getK() + "    " + triplet.getV() + "    " + triplet.getT() + "\n";
+				string += "  " +triplet.getK() + "    " + triplet.getV() + "    " + triplet.getT() + "\n";
 			}
 		} else {
 			string = "Looks like you have no older scores";

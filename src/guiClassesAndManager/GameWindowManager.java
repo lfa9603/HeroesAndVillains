@@ -11,8 +11,8 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.time.*;
+
 
 import javax.swing.JOptionPane;
 
@@ -656,7 +656,7 @@ public class GameWindowManager implements java.io.Serializable {
 	}
 	
 	public boolean saveScore() {
-		return false;
+
 		
 //		This method is called inside the You Won and You Lost windows need to Deserialise what exists in scores_board, then reserialise it with the addition of 1 item
 		ArrayList<Tuple<String, Integer, String>> pairList = null;
@@ -685,8 +685,11 @@ public class GameWindowManager implements java.io.Serializable {
 		Integer score = squad.getWallet().getAmount() * 40;
 		score -= squad.getLength() * 100;
 		score += worldSize * 200;
-		Date date = new Date();
-		Tuple<String, Integer, String> newScore = new Tuple<String, Integer, String>(teamName, score, date.toString());
+		Date dateItem = new Date();
+		String date = dateItem.toString();
+		System.out.println(date);
+		
+		Tuple<String, Integer, String> newScore = new Tuple<String, Integer, String>(teamName, score, date);
 		
 		pairList.add(0, newScore);
 		
