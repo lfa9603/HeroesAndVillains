@@ -228,8 +228,8 @@ public class GameWindowManager implements java.io.Serializable {
 //				mainGameWindow.moveSquadAwayFromBuilding(new Point(326, 264));
 //				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
 //				mainGameWindow.getFrame().setVisible(true);
-				
-				squad.getWallet().addMoney(lootAfterVillainDefated);
+//				TODO: Gotta fix something around here, think now works
+//				squad.getWallet().addMoney(lootAfterVillainDefated);
 				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
 				
 				squad.setHaveMap(false);

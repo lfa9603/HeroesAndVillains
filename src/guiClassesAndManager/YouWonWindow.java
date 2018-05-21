@@ -5,6 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import characters.Abilities;
+import characters.Hero;
+import characters.HeroesSquad;
+import characters.Types;
+import collectables.Money;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +26,7 @@ public class YouWonWindow {
 	
 	private Thread thread;
 	private boolean isThreadAlive;
+	private int timesClickedSaveButton;
 
 //	/**
 //	 * Launch the application.
@@ -42,6 +50,7 @@ public class YouWonWindow {
 	public YouWonWindow(GameWindowManager incomingManager) {
 		manager = incomingManager;
 		isThreadAlive = true;
+		timesClickedSaveButton = 0;
 		initialize();
 		frame.setVisible(true);
 	}
@@ -68,20 +77,20 @@ public class YouWonWindow {
 				while (isThreadAlive) {
 					
 					try {
-						Thread.sleep(100);
+						Thread.sleep(400);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 					label.setForeground(Color.GREEN);
 					
 					try {
-						Thread.sleep(100);
+						Thread.sleep(400);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 					label.setForeground(Color.MAGENTA);
 					try {
-						Thread.sleep(100);
+						Thread.sleep(400);
 					} catch (InterruptedException e) {
 						
 						e.printStackTrace();
@@ -125,8 +134,15 @@ public class YouWonWindow {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (manager.saveScore()) {
+				if (timesClickedSaveButton < 1) {
+					if (manager.saveScore()) {
+						saveResultLabel.setVisible(true);
+						timesClickedSaveButton += 1;
+					}
+				} else {
 					saveResultLabel.setVisible(true);
+					saveResultLabel.setText("You already saved");
+					saveResultLabel.setForeground(Color.RED);
 				}
 				
 			}
@@ -135,6 +151,12 @@ public class YouWonWindow {
 	
 	public static void main(String[] args) {
 		GameWindowManager manager = new GameWindowManager();
+		manager.setWorldSize(5);
+		HeroesSquad squad = new HeroesSquad();
+		squad.addHero(new Hero("Lorenzo",Types.level_2, Abilities.arrogance));
+		manager.setSquad(squad);
+		manager.getSquad().setWallet(new Money(2000));
+		manager.getSquad().setTeamName("Ciao");
 		YouWonWindow w = new YouWonWindow(manager);
 		
 	}
