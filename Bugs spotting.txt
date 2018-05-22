@@ -6,13 +6,12 @@
 - Hero not leaving detention after villain defeated - Fixed
 - 2 x Damage being dealt when willing against the villain - Fixed
 - I can select no hero and still battle. - Fixed (It uses the previously selected hero)
-- Can't apply a healing potion
-- Can't any apply power-ups, Armor causes a null-pointer exception
-- HeroSquad gets 50 coins instead of 30
+- Can't apply a healing potion - Fixed
+- Can't any apply power-ups, Armor causes a null-pointer exception - Fixed
+- HeroSquad gets 50 coins instead of 30 - Fixed
 - Big and Strong appearing instead of the better odds ability
-- Applying power-ups items may have an index error
+- Applying power-ups items may have an index error - Fixed
 - Dice Wars error player rolled a six and the villain rolled a 5 but the villain won?
 - BetterOdd ability creates an error in RPS battle sequence
-- Index error in healing ward? - need to confirm
-- Boss damage needs to be increased
-- Change name of Cancer abilty
+- Index error in healing ward? - need to confirm - Fixed
+- Boss damage needs to be increased - Fixed
