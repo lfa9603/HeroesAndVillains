@@ -114,7 +114,7 @@ public class InitialDisplay implements java.io.Serializable {
 			public void actionPerformed(ActionEvent e) {
 				GameWindowManager manager = null;
 				try {
-					FileInputStream fileIn = new FileInputStream("src/saved_instances/manager.ser");
+					FileInputStream fileIn = new FileInputStream("GameSaves/manager.ser");
 					if (!(fileIn.available() == 0)) {
 						ObjectInputStream in = new ObjectInputStream(fileIn);
 						manager = (GameWindowManager) in.readObject();
@@ -173,7 +173,8 @@ public class InitialDisplay implements java.io.Serializable {
 		String string = new String();
 		ArrayList<Tuple<String, Integer, String>> tripletList = null;
 		try {
-			FileInputStream fileIn = new FileInputStream("src/saved_instances/scores_board.ser");
+//			FileInputStream fileIn = new FileInputStream("src/saved_instances/scores_board.ser");
+			FileInputStream fileIn = new FileInputStream("GameSaves/scores_board.ser");
 			if (!(fileIn.available() == 0)) {
 				ObjectInputStream in = new ObjectInputStream(fileIn);
 				tripletList = (ArrayList<Tuple<String, Integer, String>>) in.readObject();

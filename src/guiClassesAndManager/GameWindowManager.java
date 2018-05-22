@@ -641,13 +641,15 @@ public class GameWindowManager implements java.io.Serializable {
 //		manager.setMiniGameEngine(this.getMiniGameEngine());
 //		manager.setCurrentIndex(this.getCurrentIndex());
 		
+//		File file = new File("GameSaves");
+		
 		try {
-			FileOutputStream fileOut = new FileOutputStream("src/saved_instances/manager.ser");
+			FileOutputStream fileOut = new FileOutputStream("GameSaves/manager.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(this);
 			out.close();
 			fileOut.close();
-			System.out.printf("Serialized data is saved in src/saved_instances/manager.ser");
+			System.out.printf("Serialized data is saved in GameSaves/manager.ser");
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
@@ -659,7 +661,7 @@ public class GameWindowManager implements java.io.Serializable {
 //		This method is called inside the You Won and You Lost windows need to Deserialise what exists in scores_board, then reserialise it with the addition of 1 item
 		ArrayList<Tuple<String, Integer, String>> pairList = null;
 		try {
-			FileInputStream fileIn = new FileInputStream("src/saved_instances/scores_board.ser");
+			FileInputStream fileIn = new FileInputStream("GameSaves/scores_board.ser");
 			if (!(fileIn.available() == 0)) {
 				ObjectInputStream in = new ObjectInputStream(fileIn);
 				pairList =  (ArrayList<Tuple<String, Integer, String>>) in.readObject();
@@ -692,12 +694,12 @@ public class GameWindowManager implements java.io.Serializable {
 		pairList.add(0, newScore);
 		
 		try {
-			FileOutputStream fileOut = new FileOutputStream("src/saved_instances/scores_board.ser");
+			FileOutputStream fileOut = new FileOutputStream("GameSaves/scores_board.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(pairList);
 			out.close();
 			fileOut.close();
-			System.out.printf("Serialized data is saved in /src/saved_instances/scores_board.ser");
+			System.out.printf("Serialized data is saved in GameSaves/scores_board.ser");
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
