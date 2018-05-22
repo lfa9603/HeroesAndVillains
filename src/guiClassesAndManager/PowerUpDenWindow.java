@@ -124,8 +124,8 @@ public class PowerUpDenWindow {
 		//COMPLETE
 		JComboBox<String> powerUpComboBox = new JComboBox<String>();
 		powerUpComboBox.addItem("Armor");
-		powerUpComboBox.addItem("Increase Max HP potion");
 		powerUpComboBox.addItem("Game Chooser");
+		powerUpComboBox.addItem("Increase Max HP potion");
 		powerUpComboBox.setSelectedIndex(0);
 		powerUpComboBox.setMaximumRowCount(3);
 		powerUpComboBox.setBounds(241, 144, 180, 32);

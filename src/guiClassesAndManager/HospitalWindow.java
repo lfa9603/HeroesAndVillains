@@ -165,9 +165,9 @@ public class HospitalWindow {
 		
 		//Done
 		JComboBox<String> selectHealingItemComboBox = new JComboBox<String>();
-		selectHealingItemComboBox.addItem("Potion");
-		selectHealingItemComboBox.addItem("SuperPotion");
-		selectHealingItemComboBox.addItem("HyperPotion");
+		selectHealingItemComboBox.addItem("GoodHealingItem");
+		selectHealingItemComboBox.addItem("BetterHealingItem");
+		selectHealingItemComboBox.addItem("BestHealingItem");
 		selectHealingItemComboBox.setSelectedIndex(0);
 		selectHealingItemComboBox.setMaximumRowCount(3);
 		selectHealingItemComboBox.setBounds(200, 358, 180, 32);
