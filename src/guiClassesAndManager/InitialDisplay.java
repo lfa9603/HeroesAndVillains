@@ -206,6 +206,8 @@ public class InitialDisplay implements java.io.Serializable {
 	
 	
 	public static void main(String[] args) {
+		File file = new File("GameSaves");
+		System.out.println(file.mkdirs());
 		new InitialDisplay();
 	}
 }
