@@ -60,6 +60,7 @@ public class InitialDisplay implements java.io.Serializable {
 	 */
 	public InitialDisplay() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		initialize();
 		frame.setVisible(true);
 	}
