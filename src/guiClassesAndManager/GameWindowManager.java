@@ -52,7 +52,7 @@ public class GameWindowManager implements java.io.Serializable {
 			+ "Sly : Wins all match draws unless the Villain \n"
 			+ "    has this abilty \n"
 			+ "Dog : Is a good boy (Grants all team member\n"
-			+ "    extra 25HP Max Health)";
+			+ "    extra 25HP Max Health (No need to buy IncreaseMaxHealth items!)";
 //	private HeroesSquad squad = new HeroesSquad();
 //	private ArrayList<City> world = new ArrayList<City>();
 	

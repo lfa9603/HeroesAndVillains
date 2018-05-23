@@ -41,9 +41,9 @@ public class HeroesSquad implements java.io.Serializable{
 	public HeroesSquad() {
 		haveMap = false;
 		backPack = new Inventory();
-//		wallet = new Money(30);
+		wallet = new Money(30);
 //		TODO:reset the value to 30
-		wallet = new Money(1000);
+//		wallet = new Money(1000);
 		heroSquad = new ArrayList<Hero>();
 	}
 	

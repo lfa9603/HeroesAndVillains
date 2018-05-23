@@ -207,7 +207,19 @@ public class InitialDisplay implements java.io.Serializable {
 	
 	public static void main(String[] args) {
 		File file = new File("GameSaves");
+		
 		System.out.println(file.mkdirs());
+		
+		File savingsFile = new File("GameSaves/manager.ser");
+		File scoresFile = new File("GameSaves/scores_board.ser");
+		
+		try {
+			savingsFile.createNewFile();
+			scoresFile.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		new InitialDisplay();
 	}
 }

@@ -24,6 +24,7 @@ import collectables.heroesMap.HeroesMap;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
 import collectables.powerUp.IncreaseMaxLife;
+import engine.Engine;
 import engine.HelperScanner;
 
 class ShopTests {
@@ -221,6 +222,7 @@ class ShopTests {
 	
 	@Test
 	void testSuccessOrRejectionPurchasedItem() {
+		
 		
 		String string1 = shop.successOrRejectionPurchasedItem(3, squad);
 		assertEquals("Great! You bought a " + CollectableID.HeroesMap, string1);
