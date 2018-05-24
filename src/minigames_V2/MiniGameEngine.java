@@ -27,7 +27,7 @@ public class MiniGameEngine implements java.io.Serializable {
 	private static final long serialVersionUID = 8541911594061434851L;
 	private static int selectedMiniGame;
 	private static int playerChoice;
-	private static int selectedHeroIndex;
+	private static int selectedHeroIndex = -1;
 	private static int guessesInGTN;
 	private static Boolean heroWonGTN = false;
 	

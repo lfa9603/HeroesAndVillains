@@ -87,12 +87,9 @@ public class VillainLairWindow {
 	 */
 	private void initialize() {
 		battleWindow = new JFrame();
-<<<<<<< HEAD
-		battleWindow.setBounds(100, 100, 900, 840);
-=======
+
 		battleWindow.setTitle("Villain Lair");
-		battleWindow.setBounds(100, 100, 903, 778);
->>>>>>> 28acaea48390bbc59b20cd853f1dad213d7397ab
+		battleWindow.setBounds(100, 100, 900, 840);
 		battleWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		battleWindow.getContentPane().setLayout(null);
 
@@ -155,6 +152,12 @@ public class VillainLairWindow {
 		SelectedHero.setHorizontalAlignment(SwingConstants.CENTER);
 		SelectedHero.setBounds(312, 514, 270, 26);
 		battleWindow.getContentPane().add(SelectedHero);
+		if (manager.getMiniGameEngine().getSelectedHeroIndex() == -1) {
+			SelectedHero.setText("You have no Hero Selected");
+		}
+		else {
+			SelectedHero.setText(manager.getSquad().getHero(manager.getSelectedHeroIndex()).getCharacterName() + " selected");;
+		}
 		
 		//Game Chooser 
 		

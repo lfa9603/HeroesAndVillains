@@ -179,7 +179,7 @@ public class SetupAddHeros {
 				
 				Hero hero = new Hero(heroName, heroType, heroAbility);  
 				HeroesSquad squad = manager.getSquad();
-				if (heroName.length() > 0) {
+				if (heroName.length() > 0 & heroName.length() < 20) {
 					if (squad.getLength() < 3) {
 						squad.addHero(hero);
 					}
@@ -189,7 +189,7 @@ public class SetupAddHeros {
 					}
 				}
 				else {
-					ErrorLabel.setText("Your Hero must have a name and no Heroes can have the same name.");
+					ErrorLabel.setText("Your Hero must have a name (1-20 Character limit) and no Heroes can have the same name.");
 				}
 
 				
