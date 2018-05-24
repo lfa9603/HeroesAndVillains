@@ -24,5 +24,5 @@ closed, the game will recreate the folders once you start the game again but the
 
 ---------TESTING THE GAME---------
 Please run our tests from the provided folder containing the program classes.
-Please be patient with our tests as they complete withing 4 minutes, we have been 
+Please be patient with our tests as they complete within 4 minutes, we have been 
 thoroughly testing methods that delay secondary threads for this reason we have to wait a slightly long time for them to complete.
