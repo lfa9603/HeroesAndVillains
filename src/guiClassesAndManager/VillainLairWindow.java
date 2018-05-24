@@ -87,6 +87,7 @@ public class VillainLairWindow {
 	 */
 	private void initialize() {
 		battleWindow = new JFrame();
+		battleWindow.setTitle("Villain Lair");
 		battleWindow.setBounds(100, 100, 903, 778);
 		battleWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		battleWindow.getContentPane().setLayout(null);

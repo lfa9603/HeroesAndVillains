@@ -32,7 +32,7 @@ import java.awt.Font;
  */
 public class HospitalWindow {
 
-	private JFrame frame;
+	private JFrame frmHospital;
 	
 	private GameWindowManager manager;
 	private Hospital hospitalBuilding;
@@ -63,7 +63,7 @@ public class HospitalWindow {
 		
 		initialize();
 		
-		frame.setVisible(true);
+		frmHospital.setVisible(true);
 	}
 	
 
@@ -71,12 +71,13 @@ public class HospitalWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 18));
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 826, 680);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmHospital = new JFrame();
+		frmHospital.setTitle("Hospital");
+		frmHospital.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 18));
+		frmHospital.setResizable(false);
+		frmHospital.setBounds(100, 100, 900, 840);
+		frmHospital.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmHospital.getContentPane().setLayout(null);
 		
 		JTextArea healingWardTxtArea = new JTextArea();
 		healingWardTxtArea.setWrapStyleWord(true);
@@ -89,7 +90,7 @@ public class HospitalWindow {
 		//
 		healingWardTxtArea.setText(hospitalBuilding.getHealingWard().toString());
 		
-		frame.getContentPane().add(healingWardTxtArea);
+		frmHospital.getContentPane().add(healingWardTxtArea);
 		
 		//Done
 		JTextArea welcomeToHospitalTxtArea = new JTextArea();
@@ -99,7 +100,7 @@ public class HospitalWindow {
 		welcomeToHospitalTxtArea.setEditable(false);
 		welcomeToHospitalTxtArea.setBackground(SystemColor.menu);
 		welcomeToHospitalTxtArea.setBounds(10, 11, 714, 35);
-		frame.getContentPane().add(welcomeToHospitalTxtArea);
+		frmHospital.getContentPane().add(welcomeToHospitalTxtArea);
 		
 		
 		JTextArea squadHealingItemsTxtArea = new JTextArea();
@@ -113,21 +114,21 @@ public class HospitalWindow {
 		//
 		squadHealingItemsTxtArea.setText(manager.getSquad().getBackPack().showHealingItemsInInventory());
 		
-		frame.getContentPane().add(squadHealingItemsTxtArea);
+		frmHospital.getContentPane().add(squadHealingItemsTxtArea);
 		
 		//Done
 		JLabel hospitalhealingWardLbl = new JLabel("Hospital Healing ward");
 		hospitalhealingWardLbl.setBounds(20, 45, 212, 26);
-		frame.getContentPane().add(hospitalhealingWardLbl);
+		frmHospital.getContentPane().add(hospitalhealingWardLbl);
 		
 		//Done
 		JLabel squadHealingItemsLbl = new JLabel("Squad Healing items");
 		squadHealingItemsLbl.setBounds(386, 45, 279, 25);
-		frame.getContentPane().add(squadHealingItemsLbl);
+		frmHospital.getContentPane().add(squadHealingItemsLbl);
 		
 		//Done
 		JButton backToMapBtn = new JButton("Back to the Map! ");
-		backToMapBtn.setBounds(109, 509, 504, 35);
+		backToMapBtn.setBounds(161, 704, 504, 35);
 		backToMapBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -138,16 +139,16 @@ public class HospitalWindow {
 			}
 		});
 		
-		frame.getContentPane().add(backToMapBtn);
+		frmHospital.getContentPane().add(backToMapBtn);
 		//Done
 		JLabel selectHeroLabel = new JLabel("Select a hero");
-		selectHeroLabel.setBounds(10, 315, 180, 26);
-		frame.getContentPane().add(selectHeroLabel);
+		selectHeroLabel.setBounds(67, 362, 180, 26);
+		frmHospital.getContentPane().add(selectHeroLabel);
 		
 		//Done
 		JComboBox<String> selectHeroComboBox = new JComboBox<String>();
 		selectHeroComboBox.setMaximumRowCount(3);
-		selectHeroComboBox.setBounds(10, 358, 180, 32);
+		selectHeroComboBox.setBounds(67, 409, 180, 32);
 		
 		for (Hero hero : manager.getSquad().getHeroSquad()) {
 			String isAlive = new String();
@@ -161,7 +162,7 @@ public class HospitalWindow {
 		}
 		
 		selectHeroComboBox.setSelectedIndex(0);
-		frame.getContentPane().add(selectHeroComboBox);
+		frmHospital.getContentPane().add(selectHeroComboBox);
 		
 		//Done
 		JComboBox<String> selectHealingItemComboBox = new JComboBox<String>();
@@ -170,13 +171,13 @@ public class HospitalWindow {
 		selectHealingItemComboBox.addItem("BestHealingItem");
 		selectHealingItemComboBox.setSelectedIndex(0);
 		selectHealingItemComboBox.setMaximumRowCount(3);
-		selectHealingItemComboBox.setBounds(200, 358, 180, 32);
-		frame.getContentPane().add(selectHealingItemComboBox);
+		selectHealingItemComboBox.setBounds(285, 409, 180, 32);
+		frmHospital.getContentPane().add(selectHealingItemComboBox);
 		
 		//Done
 		JLabel selectHealingItemLbl = new JLabel("Select healing item");
-		selectHealingItemLbl.setBounds(200, 315, 180, 33);
-		frame.getContentPane().add(selectHealingItemLbl);
+		selectHealingItemLbl.setBounds(285, 355, 180, 33);
+		frmHospital.getContentPane().add(selectHealingItemLbl);
 		
 		//Done
 		JTextArea showSuccessOrFailureApplyingHealItemTxtArea = new JTextArea();
@@ -185,11 +186,11 @@ public class HospitalWindow {
 		showSuccessOrFailureApplyingHealItemTxtArea.setLineWrap(true);
 		showSuccessOrFailureApplyingHealItemTxtArea.setEditable(false);
 		showSuccessOrFailureApplyingHealItemTxtArea.setBackground(SystemColor.menu);
-		showSuccessOrFailureApplyingHealItemTxtArea.setBounds(386, 393, 338, 105);
-		frame.getContentPane().add(showSuccessOrFailureApplyingHealItemTxtArea);
+		showSuccessOrFailureApplyingHealItemTxtArea.setBounds(521, 463, 338, 105);
+		frmHospital.getContentPane().add(showSuccessOrFailureApplyingHealItemTxtArea);
 		
 		JButton applyHealingItemToHeroBtn = new JButton("Apply healing item!");
-		applyHealingItemToHeroBtn.setBounds(425, 358, 238, 33);
+		applyHealingItemToHeroBtn.setBounds(621, 409, 238, 33);
 		
 		applyHealingItemToHeroBtn.addActionListener(new ActionListener() {
 			
@@ -219,7 +220,7 @@ public class HospitalWindow {
 				
 			}
 		});
-		frame.getContentPane().add(applyHealingItemToHeroBtn);
+		frmHospital.getContentPane().add(applyHealingItemToHeroBtn);
 		
 //		JButton healingWardRefreshButton = new JButton("Refresh");
 //		healingWardRefreshButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -252,7 +253,7 @@ public class HospitalWindow {
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmHospital.dispose();
 	}
 	
 //	public static void main(String[] args) {

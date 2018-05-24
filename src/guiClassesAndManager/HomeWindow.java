@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 /**
  * 
@@ -20,7 +21,7 @@ import javax.swing.SwingConstants;
  */
 public class HomeWindow {
 
-	private JFrame frame;
+	private JFrame frmHomeBase;
 	private GameWindowManager manager;
 	private MainGameWindow mainWindow;
 	private Home home;
@@ -34,32 +35,33 @@ public class HomeWindow {
 		mainWindow = incomingMainWindow;
 		home = homeBuilding;
 		initialize();
-		frame.setVisible(true);
+		frmHomeBase.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 927, 832);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmHomeBase = new JFrame();
+		frmHomeBase.setTitle("Home Base");
+		frmHomeBase.setResizable(false);
+		frmHomeBase.setBounds(100, 100, 900, 840);
+		frmHomeBase.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmHomeBase.getContentPane().setLayout(null);
 		
 		JButton backToMainWindowButton = new JButton("Back to the map!");
 		backToMainWindowButton.setBounds(271, 631, 337, 54);
-		frame.getContentPane().add(backToMainWindowButton);
+		frmHomeBase.getContentPane().add(backToMainWindowButton);
 		
 		JButton btnCheckHeroesStatus = new JButton("Check Heroes Status");
 		btnCheckHeroesStatus.setToolTipText("Click to see your team members status");
 		btnCheckHeroesStatus.setBounds(43, 266, 286, 32);
-		frame.getContentPane().add(btnCheckHeroesStatus);
+		frmHomeBase.getContentPane().add(btnCheckHeroesStatus);
 		
 		JButton btnCheckMap = new JButton("Check Map");
 		btnCheckMap.setToolTipText("Check where the building you are after is");
 		btnCheckMap.setBounds(530, 266, 286, 32);
-		frame.getContentPane().add(btnCheckMap);
+		frmHomeBase.getContentPane().add(btnCheckMap);
 		
 		JTextArea displayStolenOrGiftedItemsTxtArea = new JTextArea();
 		displayStolenOrGiftedItemsTxtArea.setEditable(false);
@@ -67,26 +69,27 @@ public class HomeWindow {
 		displayStolenOrGiftedItemsTxtArea.setLineWrap(true);
 		displayStolenOrGiftedItemsTxtArea.setWrapStyleWord(true);
 		displayStolenOrGiftedItemsTxtArea.setBounds(261, 61, 347, 179);
-		frame.getContentPane().add(displayStolenOrGiftedItemsTxtArea);
+		frmHomeBase.getContentPane().add(displayStolenOrGiftedItemsTxtArea);
 		
 		JTextArea heroesStatusTxtArea = new JTextArea();
 		heroesStatusTxtArea.setWrapStyleWord(true);
 		heroesStatusTxtArea.setLineWrap(true);
 		heroesStatusTxtArea.setBackground(UIManager.getColor("Button.background"));
 		heroesStatusTxtArea.setBounds(43, 344, 286, 265);
-		frame.getContentPane().add(heroesStatusTxtArea);
+		frmHomeBase.getContentPane().add(heroesStatusTxtArea);
 		
 		JTextArea showMapTxtArea = new JTextArea();
 		showMapTxtArea.setWrapStyleWord(true);
 		showMapTxtArea.setLineWrap(true);
 		showMapTxtArea.setBackground(UIManager.getColor("Button.background"));
 		showMapTxtArea.setBounds(530, 344, 286, 265);
-		frame.getContentPane().add(showMapTxtArea);
+		frmHomeBase.getContentPane().add(showMapTxtArea);
 		
 		JLabel welcomeToBaseLabel = new JLabel("Welcome to your HomeBase");
+		welcomeToBaseLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		welcomeToBaseLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		welcomeToBaseLabel.setBounds(43, 12, 773, 25);
-		frame.getContentPane().add(welcomeToBaseLabel);
+		frmHomeBase.getContentPane().add(welcomeToBaseLabel);
 		
 		displayStolenOrGiftedItemsTxtArea.setText(home.checkingSomeoneRobbedOrDonated(manager.getSquad()));
 		
@@ -121,7 +124,7 @@ public class HomeWindow {
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmHomeBase.dispose();
 		
 	}
 }

@@ -28,11 +28,12 @@ import java.awt.SystemColor;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 
 public class PowerUpDenWindow {
 
-	private JFrame frame;
+	private JFrame frmPowerUpDen;
 	
 	private GameWindowManager manager;
 	private MainGameWindow mainWindow;
@@ -64,22 +65,23 @@ public class PowerUpDenWindow {
 		
 		initialize();
 		
-		frame.setVisible(true);
+		frmPowerUpDen.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setForeground(Color.WHITE);
-		frame.setBounds(100, 100, 787, 579);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmPowerUpDen = new JFrame();
+		frmPowerUpDen.setTitle("Power Up Den");
+		frmPowerUpDen.getContentPane().setForeground(Color.WHITE);
+		frmPowerUpDen.setBounds(100, 100, 900, 840);
+		frmPowerUpDen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPowerUpDen.getContentPane().setLayout(null);
 		
 		JButton backToMapBtn = new JButton("Back to the Map! ");
-		backToMapBtn.setBounds(129, 452, 504, 35);
-		frame.getContentPane().add(backToMapBtn);
+		backToMapBtn.setBounds(171, 677, 504, 35);
+		frmPowerUpDen.getContentPane().add(backToMapBtn);
 		
 		backToMapBtn.addActionListener(new ActionListener() {
 			@Override
@@ -89,13 +91,14 @@ public class PowerUpDenWindow {
 		});
 		
 		JTextArea txtrWelcomeToThe = new JTextArea();
+		txtrWelcomeToThe.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtrWelcomeToThe.setEditable(false);
 		txtrWelcomeToThe.setText("Welcome to the Power-Up den! Select a hero and a potion to apply on him!");
 		txtrWelcomeToThe.setWrapStyleWord(true);
 		txtrWelcomeToThe.setLineWrap(true);
 		txtrWelcomeToThe.setBackground(SystemColor.menu);
-		txtrWelcomeToThe.setBounds(91, 21, 584, 35);
-		frame.getContentPane().add(txtrWelcomeToThe);
+		txtrWelcomeToThe.setBounds(21, 41, 584, 35);
+		frmPowerUpDen.getContentPane().add(txtrWelcomeToThe);
 		
 		
 //		String[] heroesNames = new String[manager.getSquad().getHeroSquad().size()];
@@ -118,8 +121,8 @@ public class PowerUpDenWindow {
 		}
 		heroesComboBox.setSelectedIndex(0);
 		heroesComboBox.setMaximumRowCount(3);
-		heroesComboBox.setBounds(32, 144, 180, 32);
-		frame.getContentPane().add(heroesComboBox);
+		heroesComboBox.setBounds(32, 215, 180, 32);
+		frmPowerUpDen.getContentPane().add(heroesComboBox);
 		
 		//COMPLETE
 		JComboBox<String> powerUpComboBox = new JComboBox<String>();
@@ -128,33 +131,34 @@ public class PowerUpDenWindow {
 		powerUpComboBox.addItem("Increase Max HP potion");
 		powerUpComboBox.setSelectedIndex(0);
 		powerUpComboBox.setMaximumRowCount(3);
-		powerUpComboBox.setBounds(241, 144, 180, 32);
-		frame.getContentPane().add(powerUpComboBox);
+		powerUpComboBox.setBounds(257, 215, 180, 32);
+		frmPowerUpDen.getContentPane().add(powerUpComboBox);
 		
 		//COMPLETE
 		JLabel selectAHeroLabel = new JLabel("Select a hero");
-		selectAHeroLabel.setBounds(32, 106, 180, 23);
-		frame.getContentPane().add(selectAHeroLabel);
+		selectAHeroLabel.setBounds(32, 171, 180, 23);
+		frmPowerUpDen.getContentPane().add(selectAHeroLabel);
 		
 		//COMPLETE
 		JLabel lblSelectAPowerup = new JLabel("Select a power-up");
-		lblSelectAPowerup.setBounds(241, 106, 180, 23);
-		frame.getContentPane().add(lblSelectAPowerup);
+		lblSelectAPowerup.setBounds(257, 171, 180, 23);
+		frmPowerUpDen.getContentPane().add(lblSelectAPowerup);
 		
 		//COMPLETE
 		JTextArea heroesSquadPowerUpsTxtArea = new JTextArea();
+		heroesSquadPowerUpsTxtArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		heroesSquadPowerUpsTxtArea.setWrapStyleWord(true);
 		heroesSquadPowerUpsTxtArea.setText((String) null);
 		heroesSquadPowerUpsTxtArea.setLineWrap(true);
 		heroesSquadPowerUpsTxtArea.setEditable(false);
 		heroesSquadPowerUpsTxtArea.setBackground(SystemColor.menu);
-		heroesSquadPowerUpsTxtArea.setBounds(468, 67, 282, 346);
+		heroesSquadPowerUpsTxtArea.setBounds(533, 223, 282, 346);
 		heroesSquadPowerUpsTxtArea.setText(manager.getSquad().getBackPack().showPowerUpsInInventory());
-		frame.getContentPane().add(heroesSquadPowerUpsTxtArea);
+		frmPowerUpDen.getContentPane().add(heroesSquadPowerUpsTxtArea);
 		
 		JButton applyPowerUpToHeroBtn = new JButton("Apply power-up to the hero");
-		applyPowerUpToHeroBtn.setBounds(32, 214, 389, 23);
-		frame.getContentPane().add(applyPowerUpToHeroBtn);
+		applyPowerUpToHeroBtn.setBounds(49, 352, 389, 23);
+		frmPowerUpDen.getContentPane().add(applyPowerUpToHeroBtn);
 		
 		JTextArea showingPotionApplicationResultTxtArea = new JTextArea();
 		showingPotionApplicationResultTxtArea.setWrapStyleWord(true);
@@ -163,7 +167,7 @@ public class PowerUpDenWindow {
 		showingPotionApplicationResultTxtArea.setEditable(false);
 		showingPotionApplicationResultTxtArea.setBackground(SystemColor.menu);
 		showingPotionApplicationResultTxtArea.setBounds(32, 278, 389, 117);
-		frame.getContentPane().add(showingPotionApplicationResultTxtArea);
+		frmPowerUpDen.getContentPane().add(showingPotionApplicationResultTxtArea);
 		
 		applyPowerUpToHeroBtn.addActionListener(new ActionListener() {
 			
@@ -216,7 +220,7 @@ public class PowerUpDenWindow {
 	}
 
 	public void closeWindow() {
-		frame.dispose();
+		frmPowerUpDen.dispose();
 	}
 	
 //	public static void main(String[] args) {
