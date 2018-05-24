@@ -30,11 +30,16 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JScrollPane;
 
+/**
+ * 
+ * Initial game window, gives the chance to the player to see the prious scores and to start a new game or resume the active one.
+ * Also contains the main method called by the executable.
+ * 
+ */
 public class InitialDisplay implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
+	
+	
 	private static final long serialVersionUID = -1338608437428960096L;
 	private JFrame frame;
 	private JTextArea scoresTextArea;

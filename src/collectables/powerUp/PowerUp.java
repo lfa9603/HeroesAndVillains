@@ -6,12 +6,12 @@ import collectables.CollectableID;
 import collectables.Money;
 /**
  * 
- * @author LorenzoFasano
- * PowerUpis an abstract class which extends Collectable.java abstract class but instead of implementing the required apply(Hero hero) 
+ * PowerUp is an abstract class which extends Collectable.java abstract class but instead of implementing the required apply(Hero hero) 
  * method it delegates this responsibility to the classes that will extend PowerUp.
  * 
  * This class also sets the cost property in Collectable depending on the collectableID passed 
  * to it which can be for PowerUp objects: Armor, GameChooser or IncreaseMaxLife.
+ * 
  */
 public abstract class PowerUp extends Collectable {
 

@@ -2,14 +2,13 @@ package collectables;
 
 /**
  * 
- * @author LorenzoFasano
  * This class wants to be created to enforce a coin-like behaviour to the int data-type.
  * It implements methods to add or remove money from a HeroesSquad object, such that the 
  * property amount will never go negative.
  * Used in Shop, HeroesSquad and VillainLair. 
  * 
  */
-//(TODO:check with jay where the money gets taken away from one Villain.)
+
 public class Money implements java.io.Serializable {
 	
 	/**

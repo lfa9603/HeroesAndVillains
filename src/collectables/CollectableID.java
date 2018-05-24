@@ -24,6 +24,11 @@ public enum CollectableID {
 							@see collectables/powerUp/GameChooser.java */
 	
 	
+	/**
+	 * 
+	 * @param id
+	 * @return a boolean value: true if the CollectaID is a HealingItem one or false if it is a powerUp or map one.
+	 */
 	public static boolean isPowerUp(CollectableID id) {
 		
 		if (id.equals(CollectableID.Armor) || id.equals(CollectableID.IncreaseMaxLife) || id.equals(CollectableID.GameChooser)) {
@@ -33,7 +38,12 @@ public enum CollectableID {
 		return false;
 	}
 	
-public static boolean isHealingItem(CollectableID id) {
+	/**
+	 * 
+	 * @param id
+	 * @return a boolean value: true if the CollectaID is a PowerUp one or false if it is a HealingItem or map one.
+	 */
+	public static boolean isHealingItem(CollectableID id) {
 		
 		if (id.equals(CollectableID.GoodHealingItem) || id.equals(CollectableID.BetterHealingItem) || id.equals(CollectableID.BestHealingItem)) {
 			return true;

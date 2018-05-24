@@ -11,16 +11,12 @@ import collectables.heroesMap.HeroesMap;
 
 /**
  * 
- * @author LorenzoFasano and JayHamilton
  * A Collection of Hero objects stored in an ArrayList. This class holds the main functionality for the Team of Hero objects
  * in the game. The HeroSquad object also holds the Inventory, Wallet and current position.  
  */
 
 public class HeroesSquad implements java.io.Serializable{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -8518192647760853112L;
 	
 	private ArrayList<Hero> heroSquad;

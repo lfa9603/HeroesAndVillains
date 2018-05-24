@@ -4,7 +4,6 @@ import characters.Hero;
 import collectables.CollectableID;
 /**
  * 
- * @author LorenzoFasano
  * This class extends PowerUp and implements the required method apply(Hero hero).
  *
  */

@@ -20,6 +20,12 @@ import minigames_V2.MiniGameEngine;
 
 import javax.swing.border.BevelBorder;
 
+/**
+ * The Dice War minigame window.
+ * Called from inside VillainLairWindow.
+ * Gives the chance to the hero to roll a die and it shows who won.
+ * 
+ */
 public class DWWindow {
 
 	private JFrame DWWindow;
@@ -27,26 +33,9 @@ public class DWWindow {
 	private MainGameWindow mainGameWindow;
 	private boolean battleFought = false;
 
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					RPSWindow window = new RPSWindow();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
 	/**
 	 * Create the application.
-	 */
-	
+	 */	
 	public DWWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
 //		this.selectedHeroIndex = selectedHeroIndex;
 		manager = gameWindowManager;

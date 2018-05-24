@@ -14,28 +14,16 @@ import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
 
+/**
+ * 
+ *
+ */
 public class HomeWindow {
 
 	private JFrame frame;
 	private GameWindowManager manager;
 	private MainGameWindow mainWindow;
 	private Home home;
-	
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					HomeWindow window = new HomeWindow();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the application.
@@ -54,6 +42,7 @@ public class HomeWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 927, 832);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -63,10 +52,12 @@ public class HomeWindow {
 		frame.getContentPane().add(backToMainWindowButton);
 		
 		JButton btnCheckHeroesStatus = new JButton("Check Heroes Status");
+		btnCheckHeroesStatus.setToolTipText("Click to see your team members status");
 		btnCheckHeroesStatus.setBounds(43, 266, 286, 32);
 		frame.getContentPane().add(btnCheckHeroesStatus);
 		
 		JButton btnCheckMap = new JButton("Check Map");
+		btnCheckMap.setToolTipText("Check where the building you are after is");
 		btnCheckMap.setBounds(530, 266, 286, 32);
 		frame.getContentPane().add(btnCheckMap);
 		

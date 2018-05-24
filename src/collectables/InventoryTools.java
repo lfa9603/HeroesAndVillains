@@ -14,7 +14,6 @@ import collectables.powerUp.IncreaseMaxLife;
 
 /**
  * 
- * @author Lorenzo
  * This class is created to provide Inventory class methods with helper methods.
  * This class contains only static methods, the most of them deal with handling ArrayList objects 
  * and/or comparing items in HashMap and ArrayList objects or they deal with printing to 

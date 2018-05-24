@@ -21,7 +21,6 @@ import static engine.HelperScanner.*;
 
 /**
  * 
- * @author LorenzoFasano
  *PowerUpDen class extends Building, its TypeBuildings type is PowerUpDen and its builidngCoordinates 
  *are always a random value among (4, 0),(-4, 0)(0, 4) or (0, -4) (this last step happens in WorldBuilder class).
  *The method interact is implemented such that it allows the user to use the PowerUp items bought in the Shop.

@@ -5,7 +5,6 @@ import engine.Utilities;
 
 /**
  * 
- * @author LorenzoFasano and JayHamilton
  * The Villain class extends the Character class, it provides specific functionality for the Villain object and has 
  * five unique parameters isBeaten, timesBeaten, villainTaunt and villainDamage.
  * isBeaten is a boolean which is set to true when the villain has been beaten 3 times.

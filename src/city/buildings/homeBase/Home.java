@@ -29,11 +29,10 @@ import static engine.HelperScanner.*;
 
 /**
  * 
- * @author LorenzoFasano
- *Home class extends Building, its TypeBuildings type is PowerUpDen and its builidngCoordinates 
- *are always a random value among (4, 0),(-4, 0)(0, 4) or (0, -4) (this last step happens in WorldBuilder class).
- *The method interact is implemented such that it allows the user to use the PowerUp items bought in the Shop.
- *If the team does not own a selected item, it will tell the player that the item is not available to be used.
+ * Home class extends Building, its TypeBuildings type is PowerUpDen and its builidngCoordinates 
+ * are always a random value among (4, 0),(-4, 0)(0, 4) or (0, -4) (this last step happens in WorldBuilder class).
+ * The method interact is implemented such that it allows the user to use the PowerUp items bought in the Shop.
+ * If the team does not own a selected item, it will tell the player that the item is not available to be used.
  */
 
 public class Home extends Building {
@@ -94,7 +93,12 @@ public class Home extends Building {
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @param heroesSquad
+	 * @return a String object indicating if the team has been robbed or gifted anything.
+	 * 
+	 */
 	public String checkingSomeoneRobbedOrDonated(HeroesSquad heroesSquad) {
 		
 		Collectable itemStolen = RandomEventsInHomeBase.haveWeBeenRobbed(heroesSquad);

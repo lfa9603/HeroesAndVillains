@@ -1,6 +1,5 @@
 package city.buildings.shop;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public enum NamesForInnkeeper {

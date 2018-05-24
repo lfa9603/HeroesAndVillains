@@ -13,7 +13,6 @@ import engine.Utilities;
 
 /**
  * 
- * @author LorenzoFasano
  * This class works as a HomeBase.java class static helper.
  * It deals with the random events that can happen inside the interact() method in HomeBase.java.
  * Based on the choice of a randomCollectable item among all the possible ones and a random 

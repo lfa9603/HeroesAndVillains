@@ -11,9 +11,7 @@ import java.util.ArrayList;
  *
  */
 public class Villains implements java.io.Serializable{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -7681678177938582870L;
 	private ArrayList<Villain> villains;
 	private Villain schoolBully1;

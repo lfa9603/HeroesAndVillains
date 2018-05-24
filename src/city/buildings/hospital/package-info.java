@@ -1,5 +1,6 @@
 /**
- * @author Lorenzo
+ * @author Lorenzo Fasano
+ * 
  * This package contains HealingWard.java and Hospital.java.
  * Hospital.java is one of the 5 classes that extend Building an therefore it implements an interact() method 
  * ( @see Building.java in city/builidngs/Building.java and @see Hospital.java in city/buildings/hospital/Hospital.java).

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author JayHamilton
  * An enum for all the Character types.
  *
  */

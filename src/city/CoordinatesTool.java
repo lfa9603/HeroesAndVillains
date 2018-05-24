@@ -8,7 +8,6 @@ import java.util.Random;
 
 /**
  * 
- * @author LorenzoFasano
  *This class has been created to deal with each building coordinates assignment, 
  *it is called every time a new city is built.
  *It offers the tools to place each building on a Cartesian plane (a square portion of the map with vertices at (4, 4), (-4,4), (-4,-4), (4, -4)).

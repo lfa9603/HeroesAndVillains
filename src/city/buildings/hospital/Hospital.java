@@ -20,12 +20,10 @@ import static engine.HelperScanner.*;
 
 /**
  * 
- * @author LorenzoFasano
  * This class extends Building and, therefore it has to implement interact(HeroesSquad heroSquad).
  * This class allows the HeroesSquad object to use the HealingItem objects they accumulated in the backpack property. 
  * It also allows the HeroesSquad to see the quantities of the HealingItems in the backpack and all the Hero objects that are under 
  * recover after having applied a HealingItem using a HealingWard object ( @see HealingWard.java at city/buildings/hospital/HealingWard.java ).
- * 
  * 
  */
 public class Hospital extends Building {
@@ -144,7 +142,6 @@ public class Hospital extends Building {
 	 * 
 	 * @param index (Type int)
 	 * Helper for the GUI, replicates the behaviour of the switch statement in the interact() method.
-	 * 
 	 * 
 	 */
 	public HealingItem returnCorrectHealingItemGivenIndex(int index) {

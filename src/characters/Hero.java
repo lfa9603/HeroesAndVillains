@@ -65,7 +65,6 @@ public class Hero extends Character {
 	 * @param other of Class Hero
 	 * @return boolean
 	 */
-	
 	public boolean equals(Hero other) {
 		if (this.getCharacterName().equals(other.getCharacterName())) {
 			return true;

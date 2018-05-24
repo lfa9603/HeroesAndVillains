@@ -10,6 +10,7 @@ import org.hamcrest.core.IsInstanceOf;
 import collectables.healingItem.HealingItem;
 import collectables.powerUp.PowerUp;
 
+
 public class Inventory implements java.io.Serializable {
 
 	

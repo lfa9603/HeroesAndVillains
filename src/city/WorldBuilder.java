@@ -8,7 +8,6 @@ import static engine.HelperScanner.*;
 
 /**
  * 
- * @author LorenzoFasano
  * This class deals with the user input and it allows the player to choose 
  * the number of levels they want to explore (between 3 and 6 inclusive).
  * 
