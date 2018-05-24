@@ -1,18 +1,14 @@
 package city.buildings;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 //import java.util.Scanner;
 
-import characters.Abilities;
 import characters.Hero;
 import characters.HeroesSquad;
-import characters.Types;
 import collectables.Collectable;
 import collectables.CollectableID;
-import collectables.Inventory;
 import collectables.InventoryTools;
 import collectables.powerUp.Armor;
 import collectables.powerUp.GameChooser;
@@ -220,29 +216,6 @@ public class PowerUpDen extends Building {
 	}
 	
 	
-//	public static void main(String[] args) {
-//
-//		
-//		PowerUpDen powerUpDen = new PowerUpDen("PowerUpDen", TypeBuildings.PowerUpDen);
-//		
-//		PowerUp increaseMaxHealth = new IncreaseMaxLife(CollectableID.IncreaseMaxLife);
-//		PowerUp armor = new Armor(CollectableID.Armor);
-//		PowerUp gameChooser = new GameChooser(CollectableID.GameChooser);
-//		
-//		Hero lorenzo1 = new Hero("Lorenzo1", Types.smart, Abilities.betterOdds);
-//		Hero jay1 = new Hero("Jay1", Types.talkitive, Abilities.betterOdds);
-//		
-//		HeroesSquad squad1 = new HeroesSquad();
-//		squad1.addHero(lorenzo1);
-//		squad1.addHero(jay1);
-//		
-//		Inventory backpack = squad1.getBackPack();
-//		
-//		backpack.addItemToInventory(armor);
-//		backpack.addItemToInventory(increaseMaxHealth);
-//		backpack.addItemToInventory(gameChooser);
-//		
-//		powerUpDen.interact(squad1);
-//	}
+
 
 }

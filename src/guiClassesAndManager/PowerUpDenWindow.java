@@ -219,22 +219,22 @@ public class PowerUpDenWindow {
 		frame.dispose();
 	}
 	
-	public static void main(String[] args) {
-		City city = new City();
-		HeroesSquad squad = new HeroesSquad();
-		squad.setHaveMap(true);
-		squad.setCurrentCity(city);
-		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
-		Hero lorenzo1 = new Hero("Lorenzo1", Types.dog, Abilities.betterOdds);
-		lorenzo.setisAlive(false);
-		squad.addHero(lorenzo);
-		squad.addHero(lorenzo1);
-		squad.getBackPack().addItemToInventory(new Armor(CollectableID.Armor));
-		squad.getBackPack().addItemToInventory(new GameChooser(CollectableID.GameChooser));
-		
-		GameWindowManager manager = new GameWindowManager();
-		PowerUpDen pb = new PowerUpDen("Ciao", TypeBuildings.PowerUpDen); 
-		MainGameWindow mw = new MainGameWindow(manager);
-		PowerUpDenWindow win = new PowerUpDenWindow(manager, pb, mw);
-	}
+//	public static void main(String[] args) {
+//		City city = new City();
+//		HeroesSquad squad = new HeroesSquad();
+//		squad.setHaveMap(true);
+//		squad.setCurrentCity(city);
+//		Hero lorenzo = new Hero("Lorenzo", Types.dog, Abilities.betterOdds);
+//		Hero lorenzo1 = new Hero("Lorenzo1", Types.dog, Abilities.betterOdds);
+//		lorenzo.setisAlive(false);
+//		squad.addHero(lorenzo);
+//		squad.addHero(lorenzo1);
+//		squad.getBackPack().addItemToInventory(new Armor(CollectableID.Armor));
+//		squad.getBackPack().addItemToInventory(new GameChooser(CollectableID.GameChooser));
+//		
+//		GameWindowManager manager = new GameWindowManager();
+//		PowerUpDen pb = new PowerUpDen("Ciao", TypeBuildings.PowerUpDen); 
+//		MainGameWindow mw = new MainGameWindow(manager);
+//		PowerUpDenWindow win = new PowerUpDenWindow(manager, pb, mw);
+//	}
 }

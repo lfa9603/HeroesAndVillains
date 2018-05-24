@@ -159,31 +159,6 @@ public class Home extends Building {
 	}
 
 
-	
-//	public static void main(String[] args) {
-//		
-//		
-//		City city = new City();
-//		Home home = (Home) city.returnBuildingAtSpecificCoordinates(new Point(0, 0));
-//		
-//		Hero lorenzo = new Hero("Lorenzo", Types.smart, Abilities.betterOdds);
-//		Hero jay = new Hero("Jay", Types.talkitive, Abilities.betterOdds);
-//		
-//		HeroesSquad squad = new HeroesSquad();
-//		squad.addHero(lorenzo);
-//		
-//		squad.setWallet(new Money(1000));
-//		
-//		squad.setCurrentCity(city);
-//		squad.setHaveMap(true);
-//		HeroesSquad heros = new HeroesSquad();
-//		heros.addHero(new Hero("Lorenzo",Types.dog, Abilities.arrogance));
-//		heros.setCurrentCity(new City());
-//		heros.setHaveMap(true);
-//		
-//		home.interact(heros);
-//	
-//	}
 
 
 }

@@ -255,23 +255,23 @@ public class HospitalWindow {
 		frame.dispose();
 	}
 	
-	public static void main(String[] args) {
-		City city = new City();
-		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
-		HeroesSquad heroes = new HeroesSquad();
-		Hero hero1 = new Hero("Hero1test", Types.dog, Abilities.badDay);
-		Hero hero2 = new Hero("Hero2test", Types.dog, Abilities.badDay);
-		hero1.setHealth(50);
-		hero2.setHealth(30);
-		heroes.addHero(hero1);
-		heroes.addHero(hero2);
-		
-		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
-		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
-		
-		GameWindowManager gm = new GameWindowManager();
-		gm.setHospitalWindowOpen(true);
-		MainGameWindow mw = new MainGameWindow(gm);
-		HospitalWindow hw = new HospitalWindow(gm, hospital, mw);
-	}
+//	public static void main(String[] args) {
+//		City city = new City();
+//		Hospital hospital = new Hospital("Ciao", TypeBuildings.Hospital);
+//		HeroesSquad heroes = new HeroesSquad();
+//		Hero hero1 = new Hero("Hero1test", Types.dog, Abilities.badDay);
+//		Hero hero2 = new Hero("Hero2test", Types.dog, Abilities.badDay);
+//		hero1.setHealth(50);
+//		hero2.setHealth(30);
+//		heroes.addHero(hero1);
+//		heroes.addHero(hero2);
+//		
+//		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
+//		heroes.getBackPack().addItemToInventory(new HealingItem(CollectableID.BestHealingItem));
+//		
+//		GameWindowManager gm = new GameWindowManager();
+//		gm.setHospitalWindowOpen(true);
+//		MainGameWindow mw = new MainGameWindow(gm);
+//		HospitalWindow hw = new HospitalWindow(gm, hospital, mw);
+//	}
 }
