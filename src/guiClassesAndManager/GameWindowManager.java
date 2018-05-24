@@ -411,7 +411,7 @@ public class GameWindowManager implements java.io.Serializable {
 		setCurrentCity(world.get(currentIndex));
 		squad.setCurrentCity(currentCity);
 		//Test code
-		squad.getHero(0).setIsGameChooser(true);
+//		squad.getHero(0).setIsGameChooser(true);
 		
 		
 		launchMainGameScreen();
