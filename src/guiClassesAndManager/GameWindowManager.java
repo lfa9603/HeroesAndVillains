@@ -39,7 +39,13 @@ import engine.Tuple;
 import minigames_V2.MiniGameEngine;
 
 
-
+/**
+ * 
+ * @author Lorenzo
+ * Deals with the game's GUI and events logic, makes sure windows are opened in the right sequence, properties are invcemented
+ * during the game and that manager and scores are serialised properly.
+ *  
+ */
 public class GameWindowManager implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -213,7 +219,17 @@ public class GameWindowManager implements java.io.Serializable {
 		mainWindow.getFrame().setVisible(true);
 	}
 	
-	
+	/**
+	 * 
+	 * @param villainLairWindow
+	 * @param mainGameWindow
+	 * @param herosWon
+	 * 
+	 * Closes the current VillainLairWindow and makes sure all the 
+	 * manager properties are up to date to transit to the next level.
+	 * Here the game status is automatically saved.
+	 * 
+	 */
 	public void finalCloseVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow, boolean herosWon) {
 		currentIndex += 1;
 		villainLairWindow.closeWindow();
@@ -231,7 +247,6 @@ public class GameWindowManager implements java.io.Serializable {
 //				mainGameWindow.moveSquadAwayFromBuilding(new Point(326, 264));
 //				mainGameWindow.getFrame().setTitle("Level " + (currentIndex + 1));
 //				mainGameWindow.getFrame().setVisible(true);
-//				TODO: Gotta fix something around here, think now works
 //				squad.getWallet().addMoney(lootAfterVillainDefated);
 				squad.getWallet().addMoney(new Money(lootAfterVillainDefated.getAmount() * currentIndex));
 				
@@ -311,6 +326,14 @@ public class GameWindowManager implements java.io.Serializable {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param mainWindow
+	 * When the squad is the proximity of the VillainLair a JOption pane is opened to give the squad the 
+	 * opportunity not to enter the building, if so the squad is set back close to HomeBase, 
+	 * if they accept to enter the VillainLair window starts.
+	 * 
+	 */
 	private void dealingWithVillainLairChoice(MainGameWindow mainWindow) {
 		int a = JOptionPane.showConfirmDialog(mainWindow.getFrame(),"Do you really want to enter the Villain Lair? You surely aren't good enough for this!", "Villain Lair", JOptionPane.YES_NO_OPTION);
 		if (a == 0) {
@@ -378,22 +401,44 @@ public class GameWindowManager implements java.io.Serializable {
 	
 	// Merged from Jays Setup Manager
 	
-	
+	/**
+	 * 
+	 * @param setupTeamAndWorld
+	 * Closes the SetUpTeamAndWorld window and automatically open a SetupAddHeroes window.
+	 */
 	public void closeSetupTeamAndWorld(SetupTeamAndWorld setupTeamAndWorld) {
 		setupTeamAndWorld.closeWindow();
 		launchsetupAddHeros(this);
 	}
-	
+	/**
+	 * 
+	 * @param gameWindowManager
+	 * Launches a SetupAddHeroes window
+	 * 
+	 */
 	public void launchsetupAddHeros(GameWindowManager gameWindowManager) {
 		new SetupAddHeros(this);
 	}
 	
+	/**
+	 * 
+	 * @param setupWindow
+	 * Closes the SetupAddHeroesWindow and 
+	 * 
+	 */
 	public void closeSetupAddHeros(SetupAddHeros setupWindow) {
 		setupWindow.closeWindow();
 		launchSetupTeamAndWorld();
 		
 	}
 	
+	/**
+	 * 
+	 * @param setupWindow
+	 * Closes the SetupAddHeroes window, instantiates villains, 
+	 * currentCity and squad's currentCity properties, launches the MainGameWindow.
+	 * 
+	 */
 	public void finalcloseSetupAddHeros(SetupAddHeros setupWindow) {
 		setupWindow.closeWindow();
 		villains = new Villains(world.size());
@@ -403,6 +448,9 @@ public class GameWindowManager implements java.io.Serializable {
 		launchMainGameScreen();
 	}
 	
+	/*
+	 * Creates a new world (ArrayList<City>) depending on how many cities the player wants to visit.
+	 */
 	public void createWorld() {
 		int numberCities = getWorldSize();
 		world.removeAll(world);
@@ -422,6 +470,10 @@ public class GameWindowManager implements java.io.Serializable {
 //		return false;
 //	}
 	
+	/*
+	 * Part of the Minigames logic, closes 
+	 * the current VillainKLair window to give one of the three minigames window visibility.
+	 */
 	public void closeVillainLairWindow(VillainLairWindow villainLairWindow, MainGameWindow mainGameWindow) {
 		villainLairWindow.closeWindow();
 		int selectedMiniGame = miniGameEngine.getSelectedMiniGame();
@@ -434,33 +486,52 @@ public class GameWindowManager implements java.io.Serializable {
 		}
 		
 	}
-		
+	
+	/*
+	 * Launches a RPSWindow
+	 */
 	public void launchRpsWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
 		RPSWindow rpsWindow = new RPSWindow(this, mainGameWindow);
 	}
 	
+	/*
+	 * Closes a RPSWindow, relaunches the VillainLairWindow
+	 */
 	public void closeRpsWindow(RPSWindow rpswindow, MainGameWindow mainGameWindow) {
 		rpswindow.closeWindow();
 		VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainGameWindow);
 	}
 	
+	/*
+	 * Launches a GTNWindow
+	 */
 	public void launchGtnWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
 		GTNWindow gtnWindow = new GTNWindow(this, mainGameWindow);
 	}
 	
+	/*
+	 * Closes a GTNWindow, relaunches the VillainLairWindow
+	 */
 	public void closeGtnWindow(GTNWindow gtnWindow, MainGameWindow mainGameWindow) {
 		gtnWindow.closeWindow();
 		VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainGameWindow);
 	}
 	
+	/*
+	 * Launches a DWWindow
+	 */
 	public void launchDWWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
 		DWWindow dwWindow = new DWWindow(this, mainGameWindow);
 	}
 	
+	/*
+	 * Closes a DWWindow, relaunches the VillainLairWindow
+	 */
 	public void closeDWWindow(DWWindow dwWindow, MainGameWindow mainGameWindow) {
 		dwWindow.closeWindow();
 		VillainLairWindow villainsLairWindow = new VillainLairWindow(this, mainGameWindow);
 	}
+	
 	
 	/**
 	 * @return the characterTypes
@@ -581,6 +652,13 @@ public class GameWindowManager implements java.io.Serializable {
 		this.lootAfterVillainDefated = lootAfterVillainDefated;
 	}
 
+	/**
+	 * 
+	 * @param heroType
+	 * 
+	 * Type conversion needed in the SetupAddHeroes window combobox element.
+	 * 
+	 */
 	public Types typeConversion (HeroTypes heroType) {
 		switch (heroType) {
 		case Talkitive: return Types.talkitive;
@@ -595,6 +673,13 @@ public class GameWindowManager implements java.io.Serializable {
 		
 	}
 	
+	/**
+	 * 
+	 * @param heroType
+	 * 
+	 * Ability conversion needed in the SetupAddHeroes window combobox element.
+	 * 
+	 */
 	public Abilities getHeroAbility (Types heroType) {
 		switch (heroType) {
 		case talkitive: return Abilities.charm;
@@ -646,19 +731,10 @@ public class GameWindowManager implements java.io.Serializable {
 ////		VillainLairWindow villainLairWindow = new VillainLairWindow(manager, mainGameScreen);
 //	}	
 	
+	/**
+	 * Serialization of the manager property itself (this) in GameSaves/manager.ser
+	 */
 	private void serialiseManagerStatus() {
-		
-//		GameWindowManager manager = new GameWindowManager();
-//		manager.setWorld(this.getWorld());
-//		manager.setSquad(this.getSquad());
-//		manager.setVillains(this.getVillains());
-//		manager.setWorldSize(this.getWorldSize());
-//		manager.setCurrentCity(this.getCurrentCity());
-//		manager.setLootAfterVillainDefated(this.getLootAfterVillainDefated());
-//		manager.setMiniGameEngine(this.getMiniGameEngine());
-//		manager.setCurrentIndex(this.getCurrentIndex());
-		
-//		File file = new File("GameSaves");
 		
 		try {
 			FileOutputStream fileOut = new FileOutputStream("GameSaves/manager.ser");
@@ -670,10 +746,11 @@ public class GameWindowManager implements java.io.Serializable {
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
-
-		
 	}
 	
+	/*
+	 * Method called by ending windows, needed to serialize the player score at the end of the game.
+	 */
 	public boolean saveScore() {
 //		This method is called inside the You Won and You Lost windows need to Deserialise what exists in scores_board, then reserialise it with the addition of 1 item
 		ArrayList<Tuple<String, Integer, String>> pairList = null;
