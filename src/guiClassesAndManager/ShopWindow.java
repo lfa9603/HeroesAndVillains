@@ -32,7 +32,7 @@ import javax.swing.border.BevelBorder;
 
 public class ShopWindow {
 
-	private JFrame frame;
+	private JFrame frmShop;
 	
 	private GameWindowManager manager;
 	private MainGameWindow mainWindow;
@@ -69,7 +69,7 @@ public class ShopWindow {
 		mainWindow = mainWind;
 		
 		initialize();
-		frame.setVisible(true);
+		frmShop.setVisible(true);
 		
 	}
 
@@ -77,10 +77,11 @@ public class ShopWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 839, 839);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmShop = new JFrame();
+		frmShop.setTitle("Shop");
+		frmShop.setBounds(100, 100, 900, 840);
+		frmShop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmShop.getContentPane().setLayout(null);
 		
 		//Done
 		JTextArea welcomeShopTxtArea = new JTextArea();
@@ -90,20 +91,20 @@ public class ShopWindow {
 		welcomeShopTxtArea.setEditable(false);
 		welcomeShopTxtArea.setBackground(SystemColor.menu);
 		welcomeShopTxtArea.setBounds(21, 21, 691, 43);
-		frame.getContentPane().add(welcomeShopTxtArea);
+		frmShop.getContentPane().add(welcomeShopTxtArea);
 		
 		//Done
 		JPanel justBrowsingPanel = new JPanel();
 		justBrowsingPanel.setVisible(false);
 		justBrowsingPanel.setBounds(21, 321, 341, 347);
-		frame.getContentPane().add(justBrowsingPanel);
+		frmShop.getContentPane().add(justBrowsingPanel);
 		justBrowsingPanel.setLayout(null);
 		
 		//Done
 		JPanel talkToInnkeeperPanel = new JPanel();
 		talkToInnkeeperPanel.setVisible(false);
 		talkToInnkeeperPanel.setBounds(436, 321, 341, 347);
-		frame.getContentPane().add(talkToInnkeeperPanel);
+		frmShop.getContentPane().add(talkToInnkeeperPanel);
 		talkToInnkeeperPanel.setLayout(null);
 		
 		JToggleButton justBrowsingTgBtn = new JToggleButton("Just Browsing");
@@ -119,7 +120,7 @@ public class ShopWindow {
 				}
 			}
 		});
-		frame.getContentPane().add(justBrowsingTgBtn);
+		frmShop.getContentPane().add(justBrowsingTgBtn);
 		
 		JToggleButton talkToInnkeeperTgBtn = new JToggleButton("Talk to " + shopBuilding.getNameOfInnkeeper());
 		talkToInnkeeperTgBtn.setBounds(505, 265, 207, 35);
@@ -134,7 +135,7 @@ public class ShopWindow {
 				}
 			}
 		});
-		frame.getContentPane().add(talkToInnkeeperTgBtn);
+		frmShop.getContentPane().add(talkToInnkeeperTgBtn);
 		
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -214,12 +215,12 @@ public class ShopWindow {
 				manager.closeShopWindow(ShopWindow.this, mainWindow);
 			}
 		});
-		frame.getContentPane().add(backToMapBtn);
+		frmShop.getContentPane().add(backToMapBtn);
 		
 		//Done
 		JPanel heroesInfosPanel = new JPanel();
-		heroesInfosPanel.setBounds(21, 56, 771, 188);
-		frame.getContentPane().add(heroesInfosPanel);
+		heroesInfosPanel.setBounds(21, 56, 832, 188);
+		frmShop.getContentPane().add(heroesInfosPanel);
 		heroesInfosPanel.setLayout(null);
 		
 //		String backPackContent = new String(manager.getSquad().getBackPack().showPowerUpsInInventory());
@@ -253,7 +254,7 @@ public class ShopWindow {
 		
 		//Done
 		JLabel cityMapLbl = new JLabel("City map available: " + doesTheSquadHaveTheMap());
-		cityMapLbl.setBounds(537, 88, 234, 26);
+		cityMapLbl.setBounds(537, 88, 274, 26);
 		heroesInfosPanel.add(cityMapLbl);
 		
 		JButton buyItemBtn = new JButton("Buy Item");
@@ -302,7 +303,7 @@ public class ShopWindow {
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmShop.dispose();
 	}
 	
 	public static void main(String[] args) {

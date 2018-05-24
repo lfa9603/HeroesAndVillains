@@ -6,11 +6,19 @@ give a name and a directory to the .jar file you are creating,
 for any other field present in the JAR Export wizard use the default option and then click Next.
 In JAR Packaging Option leave as default options and click Next.
 In Jar Manifest Specification the only command to change from default option is the application entry point which must be InitialDisplay class and then click finish. 
+ 
+This will start the game and allow you to play.
 
 ---------RUNNING THE GAME---------
-To run the game simply start the .jar executable file, after the game is opened the first time you will 
-notice the GameSaves folder gets created and it contains two files needed to save the scores and the manager status.
-Please do not delete the folder while the game is playing but feek free to delete this folder whenever the game is 
+
+<--Windows-->
+To run the game simply start the .jar executable file.
+<--Linux-->
+To run the game open a terminal window, cd into the folder where the game .jar file is and type the following command:
+ java -jar <name_of_the_game>.jar
+
+NOTE: After the game is opened the first time you will notice the GameSaves folder gets created and it contains two files needed to save the scores and the manager status.
+Please do not delete the folder while the game is playing but feel free to delete this folder whenever the game is 
 closed, the game will recreate the folders once you start the game again but the savings will be lost.
 
 
