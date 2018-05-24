@@ -50,16 +50,16 @@ public class GameWindowManager implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private long startGameTime;
 
-	private final String characterTypes = "Talkitive : Has the ability to Charm people \n"
-			+ "    (Gets 25% better prices at shops) \n"
-			+ "Smart : Mystery Ability, which could help or hinder \n"
-			+ "    your team (Minigame dependant) \n"
+	private final String characterTypes = "Talkitive : Has the ability to Charm people (Gets 25% better\n"
+			+ "     prices at shops) \n"
+			+ "Smart : Mystery Ability, which could help or hinder your\n"
+			+ "     team (Minigame dependant) \n"
 			+ "Practical : Gets better odds at rock, paper Scissors \n"
 			+ "Strong : Takes 30% less damage \n"
-			+ "Sly : Wins all match draws unless the Villain \n"
-			+ "    has this abilty \n"
-			+ "Dog : Is a good boy (Grants all team member\n"
-			+ "    extra 25HP Max Health (No need to buy IncreaseMaxHealth items!)";
+			+ "Sly : Wins all match draws unless the Villain has this\n"
+			+ "    abilty \n"
+			+ "Dog : Is a good boy (Grants all team member extra 25HP\n"
+			+ "    Max Health (No need to buy IncreaseMaxHealth items!)";
 //	private HeroesSquad squad = new HeroesSquad();
 //	private ArrayList<City> world = new ArrayList<City>();
 	

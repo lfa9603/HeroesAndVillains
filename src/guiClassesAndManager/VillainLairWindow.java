@@ -87,7 +87,7 @@ public class VillainLairWindow {
 	 */
 	private void initialize() {
 		battleWindow = new JFrame();
-		battleWindow.setBounds(100, 100, 903, 778);
+		battleWindow.setBounds(100, 100, 900, 840);
 		battleWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		battleWindow.getContentPane().setLayout(null);
 
@@ -148,19 +148,19 @@ public class VillainLairWindow {
 		
 		JLabel SelectedHero = new JLabel("Selected Hero");
 		SelectedHero.setHorizontalAlignment(SwingConstants.CENTER);
-		SelectedHero.setBounds(311, 500, 270, 26);
+		SelectedHero.setBounds(312, 514, 270, 26);
 		battleWindow.getContentPane().add(SelectedHero);
 		
 		//Game Chooser 
 		
 		JComboBox<Games> comboBox = new JComboBox<Games>();
 		comboBox.setModel(new DefaultComboBoxModel<Games>(Games.values()));
-		comboBox.setBounds(199, 547, 83, 32);
+		comboBox.setBounds(200, 561, 83, 32);
 		battleWindow.getContentPane().add(comboBox);
 		
 		JLabel lblUseChooseGame = new JLabel("Use Choose game abilty?");
 		lblUseChooseGame.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUseChooseGame.setBounds(300, 550, 270, 26);
+		lblUseChooseGame.setBounds(301, 564, 270, 26);
 		battleWindow.getContentPane().add(lblUseChooseGame);
 		
 		JButton btnChangeGame = new JButton("Change Game");
@@ -173,7 +173,7 @@ public class VillainLairWindow {
 				dialogueTextPane.setText("The Minigame will be: " + gameString);
 			}
 		});
-		btnChangeGame.setBounds(598, 546, 194, 35);
+		btnChangeGame.setBounds(599, 560, 194, 35);
 		battleWindow.getContentPane().add(btnChangeGame);
 		comboBox.setVisible(false);
 		lblUseChooseGame.setVisible(false);
@@ -189,7 +189,7 @@ public class VillainLairWindow {
 				finishedWindow();
 			}
 		});
-		btnBattle.setBounds(259, 638, 371, 56);
+		btnBattle.setBounds(260, 652, 371, 56);
 		battleWindow.getContentPane().add(btnBattle);
 		
 		// to Confirm level transition and test other game logic
@@ -227,7 +227,7 @@ public class VillainLairWindow {
 				}
 			}
 		});
-		endbutton.setBounds(259, 653, 371, 56);
+		endbutton.setBounds(260, 667, 371, 56);
 		battleWindow.getContentPane().add(endbutton);
 		endbutton.setVisible(false);
 		

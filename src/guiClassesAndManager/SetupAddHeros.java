@@ -74,69 +74,71 @@ public class SetupAddHeros {
 		frmTeamBuilder = new JFrame();
 		frmTeamBuilder.getContentPane().setName("heros name");
 		frmTeamBuilder.setTitle("Team builder");
-		frmTeamBuilder.setBounds(100, 100, 769, 610);
+		frmTeamBuilder.setBounds(100, 100, 900, 649);
 		frmTeamBuilder.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTeamBuilder.getContentPane().setLayout(null);
 		
 		JLabel lblCurrentTeam = new JLabel("Current Team:");
 		lblCurrentTeam.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblCurrentTeam.setBounds(374, 79, 338, 20);
+		lblCurrentTeam.setBounds(476, 105, 377, 20);
 		frmTeamBuilder.getContentPane().add(lblCurrentTeam);
 		
 		JLabel lblPleaseSelectUp = new JLabel("Please select up to 3 heros to add to your team:");
 		lblPleaseSelectUp.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPleaseSelectUp.setBounds(10, 348, 338, 20);
+		lblPleaseSelectUp.setBounds(83, 401, 338, 20);
 		frmTeamBuilder.getContentPane().add(lblPleaseSelectUp);
 		
 		JLabel ErrorLabel = new JLabel("");
 		ErrorLabel.setForeground(new Color(128, 0, 0));
 		ErrorLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		ErrorLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		ErrorLabel.setBounds(371, 348, 323, 20);
+		ErrorLabel.setBounds(21, 355, 832, 20);
 		frmTeamBuilder.getContentPane().add(ErrorLabel);
 		
 		JTextPane txtpnTeamOptions = new JTextPane();
 		txtpnTeamOptions.setEditable(false);
 		txtpnTeamOptions.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtpnTeamOptions.setText(manager.getCharacterTypes());
-		txtpnTeamOptions.setBounds(10, 146, 338, 191);
+		txtpnTeamOptions.setBounds(21, 144, 382, 191);
 		frmTeamBuilder.getContentPane().add(txtpnTeamOptions);
 		
 		JTextPane txtpnEmpty = new JTextPane();
 		txtpnEmpty.setToolTipText("Your Current Team");
 		txtpnEmpty.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtpnEmpty.setText("Empty...");
-		txtpnEmpty.setBounds(371, 146, 323, 158);
+		txtpnEmpty.setBounds(476, 146, 377, 158);
 		frmTeamBuilder.getContentPane().add(txtpnEmpty);
 		txtpnEmpty.setText(manager.getSquad().toString());
 		
 		JLabel lblAvaliableHeroTypes = new JLabel("Avaliable Hero types below:");
 		lblAvaliableHeroTypes.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblAvaliableHeroTypes.setBounds(10, 79, 338, 20);
+		lblAvaliableHeroTypes.setBounds(21, 103, 382, 20);
 		frmTeamBuilder.getContentPane().add(lblAvaliableHeroTypes);
 		
 		JComboBox<HeroTypes> comboBox = new JComboBox<HeroTypes>();
 		comboBox.setToolTipText("select the type of hero");
 		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		comboBox.setModel(new DefaultComboBoxModel<HeroTypes>(HeroTypes.values()));
-		comboBox.setBounds(10, 373, 95, 29);
+		comboBox.setBounds(83, 426, 95, 29);
 		frmTeamBuilder.getContentPane().add(comboBox);
 		
 		txtHerosName = new JTextField();
 		txtHerosName.setName("");
 		txtHerosName.setToolTipText("Please enter a name for your Hero");
 		txtHerosName.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtHerosName.setBounds(114, 373, 263, 29);
+		txtHerosName.setBounds(187, 426, 263, 29);
 		frmTeamBuilder.getContentPane().add(txtHerosName);
 		txtHerosName.setColumns(10);
 		
 		JComboBox<String> comboBox_1 = new JComboBox<String>();
+		comboBox_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		comboBox_1.setToolTipText("select index of hero you want to remove");
 		comboBox_1.setModel(new DefaultComboBoxModel<String>(new String[] {"1", "2", "3"}));
-		comboBox_1.setBounds(371, 315, 59, 20);
+		comboBox_1.setBounds(476, 312, 59, 20);
 		frmTeamBuilder.getContentPane().add(comboBox_1);
 		
 		JButton btnRemoveHero = new JButton("Remove Hero");
+		btnRemoveHero.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnRemoveHero.setToolTipText("press to remove hero");
 		btnRemoveHero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -151,10 +153,11 @@ public class SetupAddHeros {
 				
 			}
 		});
-		btnRemoveHero.setBounds(442, 314, 127, 23);
+		btnRemoveHero.setBounds(547, 311, 147, 23);
 		frmTeamBuilder.getContentPane().add(btnRemoveHero);
 		
 		JButton btnReset = new JButton("Reset Team");
+		btnReset.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				manager.getSquad().squadReset();
@@ -162,7 +165,7 @@ public class SetupAddHeros {
 			}
 		});
 		btnReset.setToolTipText("Press to reset your team");
-		btnReset.setBounds(579, 314, 115, 23);
+		btnReset.setBounds(702, 311, 138, 23);
 		frmTeamBuilder.getContentPane().add(btnReset);
 
 		
@@ -176,13 +179,19 @@ public class SetupAddHeros {
 				
 				Hero hero = new Hero(heroName, heroType, heroAbility);  
 				HeroesSquad squad = manager.getSquad();
-				if (squad.getLength() < 3) {
-					squad.addHero(hero);
+				if (heroName.length() > 0) {
+					if (squad.getLength() < 3) {
+						squad.addHero(hero);
+					}
+					
+					else {
+						ErrorLabel.setText("Maximum number of team members reached");
+					}
 				}
-				
 				else {
-					ErrorLabel.setText("Maximum number of team members reached");
+					ErrorLabel.setText("Your Hero must have a name and no Heroes can have the same name.");
 				}
+
 				
 				txtpnEmpty.setText(squad.toString());
 				System.out.println(squad.toString());
@@ -191,8 +200,8 @@ public class SetupAddHeros {
 		btnAddToTeam.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnAddToTeam.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAddToTeam.setToolTipText("Click to add to your team");
-		btnAddToTeam.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAddToTeam.setBounds(464, 373, 175, 29);
+		btnAddToTeam.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnAddToTeam.setBounds(537, 426, 175, 29);
 		frmTeamBuilder.getContentPane().add(btnAddToTeam);
 		
 		JButton ContinueToGame = new JButton("Continue to Game");
@@ -210,7 +219,7 @@ public class SetupAddHeros {
 		});
 		ContinueToGame.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		ContinueToGame.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		ContinueToGame.setBounds(370, 446, 187, 50);
+		ContinueToGame.setBounds(430, 489, 187, 50);
 		frmTeamBuilder.getContentPane().add(ContinueToGame);
 		
 		JButton btnBack = new JButton("Back");
@@ -221,14 +230,14 @@ public class SetupAddHeros {
 			}
 		});
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnBack.setBounds(157, 446, 187, 50);
+		btnBack.setBounds(217, 489, 187, 50);
 		frmTeamBuilder.getContentPane().add(btnBack);
 		
-		JLabel label = new JLabel("Setup");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Tahoma", Font.BOLD, 28));
-		label.setBounds(67, 11, 572, 49);
-		frmTeamBuilder.getContentPane().add(label);
+		JLabel lblSetupYourTeam = new JLabel("Setup your Team");
+		lblSetupYourTeam.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSetupYourTeam.setFont(new Font("Tahoma", Font.BOLD, 28));
+		lblSetupYourTeam.setBounds(10, 11, 843, 49);
+		frmTeamBuilder.getContentPane().add(lblSetupYourTeam);
 		
 
 		
