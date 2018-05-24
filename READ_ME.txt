@@ -1,3 +1,12 @@
+---------BUILD SOURCE---------
+Please open Eclipse on the given project, in Eclipse top menu click File -> Export.
+Under the Export wizard select Java -> JAR File and then click Next.
+Now select HeroesAndVillains folder and make sure that only the src folder is selected and then 
+give a name and a directory to the .jar file you are creating,
+for any other field present in the JAR Export wizard use the default option and then click Next.
+In JAR Packaging Option leave as default options and click Next.
+In Jar Manifest Specification the only command to change from default option is the application entry point which must be InitialDisplay class and then click finish. 
+
 ---------RUNNING THE GAME---------
 To run the game simply start the .jar executable file, after the game is opened the first time you will 
 notice the GameSaves folder gets created and it contains two files needed to save the scores and the manager status.
