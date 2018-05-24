@@ -20,7 +20,7 @@ public class GuiMiniGameUtilities {
 			switch (abilty) {
 			case charm: abilitiesString = noEffect(); break;
 			case mystery: abilitiesString = mysteryAbilty(villain, villainsChoice, selectedGame, squad); break;
-			case betterOdds: abilitiesString = betterOddsAbilty(villainsChoice, selectedGame);
+			case betterOdds: abilitiesString = betterOddsAbilty(villainsChoice, selectedGame); break;
 			case lessDamage: abilitiesString = lessDamageAbilty(villain); break;
 			case winDraws: abilitiesString = winDrawsAbilty(); break;
 			default: abilitiesString = noEffect(); break;
@@ -124,6 +124,7 @@ public class GuiMiniGameUtilities {
 	}
 
 	public static String betterOddsAbilty(int villainsChoice, int selectedGame) {
+		String string = "";
 		if (selectedGame == 1) {
 			
 			int randInt = Utilities.getRandInt(3);
@@ -134,19 +135,17 @@ public class GuiMiniGameUtilities {
 			if (randInt != villainsChoice) {
 				int balencer = Utilities.getRandInt(10);
 				if (balencer <= 1) {
-					String string = ("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(villainsChoice));
-					return string;
+					string = ("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(villainsChoice));
 				}
 				else {
-					String string = ("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(randInt));
-					return string;
+					string = ("Your Hero's practical intuition tells you that, the villain has probably not chosen " + getRPS(randInt));
 				}	
 			}
 		}
 		else {
-			noEffect();
+			string = noEffect();
 		}
-		return null;
+		return string;
 		
 	}
 	

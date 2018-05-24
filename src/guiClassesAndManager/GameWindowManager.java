@@ -273,7 +273,7 @@ public class GameWindowManager implements java.io.Serializable {
 	
 	public void cleanManagerSerFil() {
 		
-		File file = new File("src/saved_instances/manager.ser");
+		File file = new File("GameSaves/manager.ser");
 		PrintWriter writer;
 		try {
 			writer = new PrintWriter(file);
@@ -444,6 +444,9 @@ public class GameWindowManager implements java.io.Serializable {
 		villains = new Villains(world.size());
 		setCurrentCity(world.get(currentIndex));
 		squad.setCurrentCity(currentCity);
+		//Test code
+		squad.getHero(0).setIsGameChooser(true);
+		
 		
 		launchMainGameScreen();
 	}
