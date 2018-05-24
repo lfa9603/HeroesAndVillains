@@ -7,7 +7,6 @@ import collectables.Money;
 
 /**
  * 
- * @author LorenzoFasano
  * HealingItem.java extends Collectable.java.
  * HealingItem objects when instantiated are assigned property recoverableHp (type int) 
  * and a cost (from Collectable.java) depending on the collectableID property (type CollectableID).

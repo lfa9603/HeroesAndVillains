@@ -16,10 +16,10 @@ import engine.VisualUtilities;
 
 /**
  * 
- *@author Lorenzo
  * HealingWard is treated as a sector of the Hospital, this class helps show the status of each Hero object after applying a HealingItem. 
  * This is achieved starting a timer that keeps track of the Hero health and of the remaining time before the HealingItem effect has completed on the Hero.
  * In order to keep the process smooth, the use of a very basic multi-threading programming implementation was chosen.  
+ * 
  */
 public class HealingWard implements java.io.Serializable{
 

@@ -2,7 +2,6 @@ package characters;
 
 /**
  * 
- * @author JayHamilton
  * An enum for Villain types.
  *
  */

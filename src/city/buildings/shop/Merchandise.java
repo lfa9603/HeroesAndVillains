@@ -14,7 +14,6 @@ import collectables.powerUp.IncreaseMaxLife;
 
 /**
  * 
- * @author Lorenzo
  * 
  * This class contains an Inventory object, this object is automatically filled with a random quantity of objects 
  * that extend @Collectable at the moment of a Merchandise() object instantiation.
@@ -128,9 +127,6 @@ public class Merchandise implements java.io.Serializable{
 		this.inventory = inventory;
 	}
 	
-//	public static void main(String[] args) {
-//		Merchandise merchandise = new Merchandise();
-//		System.out.println(merchandise.getInventory());
-//	}
+
 
 }

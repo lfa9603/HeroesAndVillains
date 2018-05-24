@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 /**
  * @author LorenzoFasano
  * This package contains the abstract class Building which requires the implementation of the interact() method for each class that extends the class.

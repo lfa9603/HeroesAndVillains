@@ -30,7 +30,6 @@ import static engine.HelperScanner.*;
 
 /**
  * 
- * @author LorenzoFasano
  * This class extends Building.java and, therefore it has to implement interact(HeroesSquad heroSquad).
  * 
  * This class allows the HeroesSquad object to purchase any Collectable object needed. If the HeroesSquad object does 

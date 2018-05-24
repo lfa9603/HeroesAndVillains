@@ -2,7 +2,8 @@
  * 
  */
 /**
- * @author LorenzoFasano
+ * @author Jay Hamilton
+ * 
  *This package is needed to create the classes for 'human' components and to describe 
  *the way they can get together.
  */

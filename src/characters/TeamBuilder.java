@@ -7,7 +7,7 @@ import engine.VisualUtilities;
 import static engine.HelperScanner.*;
 
 /**
- * @author JayHamilton
+ * 
  * This Class guides the User through the creation of a HeroSquad. It starts by creating the HeroSquad object, then it queries the 
  * user about the name and type of hero the user wants to add to the HeroSquad. Once the user decides the Hero object 
  * is created and added to the HeroSquad. Once the user confirms they are happy with their HeroSquad, the intialAbilitiesEffects class 
@@ -49,10 +49,6 @@ public class TeamBuilder {
 	
 	public void createTeam() {
 		boolean run = true;
-		
-		/* Asks if the user wants to create a new team, takes Y/N or y/n as a input. 
-		 * TODO the User can quit at any time with an input Q or q.
-		 */
 		
 //		Scanner input = HelperScanner.getScanner();
 		

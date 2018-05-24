@@ -9,7 +9,6 @@ import collectables.Money;
 
 /**
  * 
- * @author LorenzoFasano
  *This class extends Collectable.java.
  *Differently from the other classes that extend Collectable.java, the apply(Hero hero) 
  *is left empty here and a apply(HeroesSquad heroSquad) is implemented, as the effect of 

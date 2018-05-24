@@ -1,6 +1,6 @@
 /**
  * 
- * @author LorenzoFasano
+ * @author Lorenzo Fasano
  * 
  * This package contains Merchandise.java and Shop.java.
  * Shop.java is one of the 5 classes that extend Building an therefore it implements an interact() method 

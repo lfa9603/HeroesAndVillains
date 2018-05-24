@@ -126,18 +126,4 @@ public class City implements java.io.Serializable {
 		return mapOfCity;
 	}
 	
-	
-//TODO: discuss whether or not we need the setter for cityBuildings
-//	/**
-//	 * @param cityBuildings the cityBuildings to set
-//	 */
-//	public void setCityBuildings(ArrayList<Building> cityBuildings) {
-//		this.cityBuildings = cityBuildings;
-//	}
-
-	
-	
-	
-	
-	
 }

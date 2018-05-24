@@ -21,6 +21,12 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+/**
+ * The Guess the number minigame window. Gives the hero to select a number, if not correct it gives 
+ * a hint (higher or lower), if the hero's choice is wrong again it show the hero lost.
+ * In the other case it shows the hero wins.
+ *
+ */
 public class GTNWindow {
 
 	private JFrame GTNWindow;
@@ -29,26 +35,11 @@ public class GTNWindow {
 	private boolean battleFought = false;
 	private int timesFought = 0;
 
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					RPSWindow window = new RPSWindow();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+
 
 	/**
 	 * Create the application.
 	 */
-	
 	public GTNWindow(GameWindowManager gameWindowManager, MainGameWindow mainGameWindow) {
 //		this.selectedHeroIndex = selectedHeroIndex;
 		manager = gameWindowManager;
@@ -58,10 +49,16 @@ public class GTNWindow {
 
 	}
 	
+	/**
+	 * Disposes the current GTNWindow.
+	 */
 	public void closeWindow() {
 		GTNWindow.dispose();
 	}
 	
+	/**
+	 * Calls the manager to close the current GTNWindow and perform any other needed action.
+	 */
 	public void finishedWindow() {
 		manager.closeGtnWindow(this, mainGameWindow);
 	}

@@ -7,9 +7,8 @@ import engine.Engine;
 import minigames_V2.MiniGameEngine;
 /**
  * 
- * @author LorenzoFasano
- *VillainsLair class extends Building, its TypeBuildings type is VillainsLair and its builidngCoordinates 
- *are always a random value among (4, 0),(-4, 0)(0, 4) or (0, -4) (this last step happens in WorldBuilder class).
+ * VillainsLair class extends Building, its TypeBuildings type is VillainsLair and its builidngCoordinates 
+ * are always a random value among (4, 0),(-4, 0)(0, 4) or (0, -4) (this last step happens in WorldBuilder class).
  */
 public class VillainsLair extends Building {
 
