@@ -15,6 +15,7 @@ import collectables.Money;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.JButton;
 import java.awt.Color;
@@ -68,7 +69,7 @@ public class YouWonWindow {
 		label.setForeground(Color.BLACK);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.BOLD, 99));
-		label.setBounds(21, 72, 814, 249);
+		label.setBounds(21, 72, 814, 165);
 		frame.getContentPane().add(label);
 		thread = new Thread(new Runnable() {
 			
@@ -129,6 +130,18 @@ public class YouWonWindow {
 		JButton saveGameBtn = new JButton("Save Game");
 		saveGameBtn.setBounds(274, 461, 273, 84);
 		frame.getContentPane().add(saveGameBtn);
+
+		long endTime = System.currentTimeMillis();
+		long timeTakenMinutes = (((endTime - manager.getStartGameTime())/1000)/60);
+		long timeTakenSeconds = ((endTime - manager.getStartGameTime()/1000)%60);
+		String timeTakenString = String.format("%02d:%02d", timeTakenMinutes, timeTakenSeconds);
+		
+		JLabel label_1 = new JLabel("Game Time: " + timeTakenString);
+		label_1.setToolTipText("This is how long it toook you to complete the game.");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setFont(new Font("Dialog", Font.PLAIN, 18));
+		label_1.setBounds(233, 248, 363, 48);
+		frame.getContentPane().add(label_1);
 		
 		saveGameBtn.addActionListener(new ActionListener() {
 			

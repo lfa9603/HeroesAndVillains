@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.time.*;
 
@@ -42,6 +43,7 @@ import minigames_V2.MiniGameEngine;
 public class GameWindowManager implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private long startGameTime;
 
 	private final String characterTypes = "Talkitive : Has the ability to Charm people \n"
 			+ "    (Gets 25% better prices at shops) \n"
@@ -126,6 +128,7 @@ public class GameWindowManager implements java.io.Serializable {
 	 * 
 	 */
 	public void launchSetupTeamAndWorld() {
+		setStartGameTime(System.currentTimeMillis());
 		SetupTeamAndWorld setupWindow = new SetupTeamAndWorld(this);
 	}
 	
@@ -550,6 +553,20 @@ public class GameWindowManager implements java.io.Serializable {
 		this.worldSize = worldSize;
 	}
 	
+	/**
+	 * @return the startGameTime
+	 */
+	public long getStartGameTime() {
+		return startGameTime;
+	}
+
+	/**
+	 * @param startGameTime the startGameTime to set
+	 */
+	public void setStartGameTime(long startGameTime) {
+		this.startGameTime = startGameTime;
+	}
+
 	/**
 	 * @return the lootAfterVillainDefated
 	 */

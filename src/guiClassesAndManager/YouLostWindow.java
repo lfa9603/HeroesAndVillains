@@ -58,6 +58,7 @@ public class YouLostWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 14));
 		frame.setBounds(100, 100, 882, 651);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -66,7 +67,7 @@ public class YouLostWindow {
 		label.setForeground(Color.BLACK);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.BOLD, 99));
-		label.setBounds(21, 72, 814, 249);
+		label.setBounds(21, 35, 814, 215);
 		frame.getContentPane().add(label);
 		thread = new Thread(new Runnable() {
 			
@@ -119,6 +120,19 @@ public class YouLostWindow {
 		JButton btnSaveGame = new JButton("Save Game");
 		btnSaveGame.setBounds(274, 452, 273, 84);
 		frame.getContentPane().add(btnSaveGame);
+		
+		long endTime = System.currentTimeMillis();
+		long timeTakenMinutes = (((endTime - manager.getStartGameTime())/1000)/60);
+		long timeTakenSeconds = ((endTime - manager.getStartGameTime()/1000)%60);
+		String timeTakenString = String.format("%02d:%02d", timeTakenMinutes, timeTakenSeconds);
+		
+		
+		JLabel lblGameTimeMins = new JLabel("Game Time: " + timeTakenString);
+		lblGameTimeMins.setFont(new Font("Dialog", Font.PLAIN, 18));
+		lblGameTimeMins.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGameTimeMins.setToolTipText("This is how long it toook you to complete the game.");
+		lblGameTimeMins.setBounds(228, 236, 363, 48);
+		frame.getContentPane().add(lblGameTimeMins);
 		
 		btnSaveGame.addActionListener(new ActionListener() {
 			
