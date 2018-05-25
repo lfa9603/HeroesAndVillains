@@ -78,7 +78,7 @@ public class HomeWindow {
 		frmHomeBase.getContentPane().add(scrollPane);
 		
 		JTextArea heroesStatusTxtArea = new JTextArea();
-		heroesStatusTxtArea.setForeground(Color.WHITE);
+		heroesStatusTxtArea.setForeground(Color.BLACK);
 		heroesStatusTxtArea.setEditable(false);
 		scrollPane.setViewportView(heroesStatusTxtArea);
 		heroesStatusTxtArea.setWrapStyleWord(true);

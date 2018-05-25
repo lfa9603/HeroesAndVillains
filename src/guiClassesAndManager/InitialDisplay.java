@@ -150,7 +150,7 @@ public class InitialDisplay implements java.io.Serializable {
 		});
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(177, 366, 310, 203);
+		scrollPane.setBounds(165, 366, 337, 203);
 		frame.getContentPane().add(scrollPane);
 		
 		scoresTextArea = new JTextArea();
