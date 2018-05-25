@@ -70,7 +70,7 @@ public class HomeWindow {
 		displayStolenOrGiftedItemsTxtArea.setBackground(UIManager.getColor("Label.background"));
 		displayStolenOrGiftedItemsTxtArea.setLineWrap(true);
 		displayStolenOrGiftedItemsTxtArea.setWrapStyleWord(true);
-		displayStolenOrGiftedItemsTxtArea.setBounds(261, 61, 347, 179);
+		displayStolenOrGiftedItemsTxtArea.setBounds(330, 66, 347, 179);
 		frmHomeBase.getContentPane().add(displayStolenOrGiftedItemsTxtArea);
 		
 		JScrollPane scrollPane = new JScrollPane();
