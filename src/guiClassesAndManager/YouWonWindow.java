@@ -134,7 +134,7 @@ public class YouWonWindow {
 		long endTime = System.currentTimeMillis();
 		long timeTakenMinutes = (((endTime - manager.getStartGameTime())/1000)/60);
 		long timeTakenSeconds = ((endTime - manager.getStartGameTime()/1000)%60);
-		String timeTakenString = String.format("%02d:%02d", timeTakenMinutes, timeTakenSeconds);
+		String timeTakenString = String.format("%02d:%02d Min:Sec", timeTakenMinutes, timeTakenSeconds);
 		
 		JLabel label_1 = new JLabel("Game Time: " + timeTakenString);
 		label_1.setToolTipText("This is how long it toook you to complete the game.");

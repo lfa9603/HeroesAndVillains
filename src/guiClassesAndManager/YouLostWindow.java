@@ -124,7 +124,7 @@ public class YouLostWindow {
 		long endTime = System.currentTimeMillis();
 		long timeTakenMinutes = (((endTime - manager.getStartGameTime())/1000)/60);
 		long timeTakenSeconds = ((endTime - manager.getStartGameTime()/1000)%60);
-		String timeTakenString = String.format("%02d:%02d", timeTakenMinutes, timeTakenSeconds);
+		String timeTakenString = String.format("%02d:%02d Min:Sec", timeTakenMinutes, timeTakenSeconds);
 		
 		
 		JLabel lblGameTimeMins = new JLabel("Game Time: " + timeTakenString);
