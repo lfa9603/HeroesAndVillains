@@ -157,7 +157,7 @@ public class PowerUpDenWindow {
 		frmPowerUpDen.getContentPane().add(heroesSquadPowerUpsTxtArea);
 		
 		JButton applyPowerUpToHeroBtn = new JButton("Apply power-up to the hero");
-		applyPowerUpToHeroBtn.setBounds(49, 352, 389, 23);
+		applyPowerUpToHeroBtn.setBounds(32, 426, 389, 23);
 		frmPowerUpDen.getContentPane().add(applyPowerUpToHeroBtn);
 		
 		JTextArea showingPotionApplicationResultTxtArea = new JTextArea();
