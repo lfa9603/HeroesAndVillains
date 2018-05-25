@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
-import java.awt.Font;
 
 /**
  * 
@@ -86,7 +85,6 @@ public class HomeWindow {
 		frmHomeBase.getContentPane().add(showMapTxtArea);
 		
 		JLabel welcomeToBaseLabel = new JLabel("Welcome to your HomeBase");
-		welcomeToBaseLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		welcomeToBaseLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		welcomeToBaseLabel.setBounds(43, 12, 773, 25);
 		frmHomeBase.getContentPane().add(welcomeToBaseLabel);

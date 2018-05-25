@@ -154,12 +154,9 @@ public class Home extends Building {
 	 * @return a string containing each character status and abilities.
 	 */
 	public String showHeroesStatus(HeroesSquad heroSquad) {
-		String heroesDescription = new String();
-		for (Character character : heroSquad.getHeroSquad()) {
-			heroesDescription += character.toString() + "\n";
-		}
-		System.out.println(heroesDescription);
+		String heroesDescription = heroSquad.toString();
 		return heroesDescription;
+		
 	}
 
 
