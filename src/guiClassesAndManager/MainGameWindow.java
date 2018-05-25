@@ -100,7 +100,7 @@ public class MainGameWindow {
 		
 		JLabel amHomeInfoLabel = new JLabel("");
 		amHomeInfoLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		amHomeInfoLabel.setBounds(81, 399, 191, 75);
+		amHomeInfoLabel.setBounds(81, 399, 268, 75);
 		infosPopUpMessage.add(amHomeInfoLabel);
 		frame.getContentPane().add(amHomeInfoLabel);
 		
@@ -157,7 +157,7 @@ public class MainGameWindow {
 		southLabel.setOpaque(true);
 		southLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		southLabel.setBackground(new Color(0, 102, 102));
-		southLabel.setBounds(301, 686, 136, 75);
+		southLabel.setBounds(301, 699, 136, 75);
 		entrances.add(southLabel);
 		frame.getContentPane().add(southLabel);
 		
@@ -165,7 +165,7 @@ public class MainGameWindow {
 		southInfoLabel.setOpaque(true);
 		southInfoLabel.setBackground(new Color(0, 204, 153));
 		southInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		southInfoLabel.setBounds(244, 686, 60, 75);
+		southInfoLabel.setBounds(244, 699, 60, 75);
 		infos.add(southInfoLabel);
 		frame.getContentPane().add(southInfoLabel);
 		
@@ -182,7 +182,7 @@ public class MainGameWindow {
 		eastLabel.setOpaque(true);
 		eastLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		eastLabel.setBackground(new Color(255, 215, 0));
-		eastLabel.setBounds(709, 202, 75, 115);
+		eastLabel.setBounds(723, 202, 75, 115);
 		entrances.add(eastLabel);
 		frame.getContentPane().add(eastLabel);
 		
@@ -190,7 +190,7 @@ public class MainGameWindow {
 		eastInfoLabel.setOpaque(true);
 		eastInfoLabel.setBackground(new Color(238, 232, 170));
 		eastInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		eastInfoLabel.setBounds(709, 317, 75, 61);
+		eastInfoLabel.setBounds(723, 316, 75, 61);
 		infos.add(eastInfoLabel);
 		frame.getContentPane().add(eastInfoLabel);
 		

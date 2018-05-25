@@ -129,7 +129,7 @@ public class Inventory implements java.io.Serializable {
 		while (iterator.hasNext()) {
 			Map.Entry<Collectable, Integer> collectable = (Entry<Collectable, Integer>) iterator.next();
 			if (collectable.getKey().getCollectableID().equals(CollectableID.HeroesMap)) {
-				mapItemToString += collectable.getKey() + "\nQUANTITY: this item is always available for you guys!\n\n";
+				mapItemToString += collectable.getKey() + "\nQUANTITY: " + collectable.getValue();
 			}
 		}
 		
