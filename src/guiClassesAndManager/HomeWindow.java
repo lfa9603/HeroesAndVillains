@@ -13,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
+import java.awt.Color;
+import javax.swing.border.EmptyBorder;
 
 /**
  * 
@@ -70,12 +73,17 @@ public class HomeWindow {
 		displayStolenOrGiftedItemsTxtArea.setBounds(261, 61, 347, 179);
 		frmHomeBase.getContentPane().add(displayStolenOrGiftedItemsTxtArea);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(43, 344, 409, 265);
+		frmHomeBase.getContentPane().add(scrollPane);
+		
 		JTextArea heroesStatusTxtArea = new JTextArea();
+		heroesStatusTxtArea.setForeground(Color.WHITE);
+		heroesStatusTxtArea.setEditable(false);
+		scrollPane.setViewportView(heroesStatusTxtArea);
 		heroesStatusTxtArea.setWrapStyleWord(true);
 		heroesStatusTxtArea.setLineWrap(true);
 		heroesStatusTxtArea.setBackground(UIManager.getColor("Button.background"));
-		heroesStatusTxtArea.setBounds(43, 344, 286, 265);
-		frmHomeBase.getContentPane().add(heroesStatusTxtArea);
 		
 		JTextArea showMapTxtArea = new JTextArea();
 		showMapTxtArea.setWrapStyleWord(true);
