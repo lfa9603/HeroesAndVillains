@@ -95,6 +95,9 @@ public class VillainLairWindow {
 
 		HeroesSquad squad = manager.getSquad();
 		Villain villain = manager.getVillains().getCurrentVillain(manager.getCurrentIndex());
+		int selectedMiniGame = manager.getMiniGameEngine().selectNewGame(3);
+		manager.getMiniGameEngine().setSelectedGame(selectedMiniGame);
+		
 		
 		JLabel Titlelbl = new JLabel("Pre Battle Screen");
 		Titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -142,8 +145,6 @@ public class VillainLairWindow {
 		dialogueTextPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		dialogueTextPane.setBounds(199, 67, 474, 151);
 		battleWindow.getContentPane().add(dialogueTextPane);
-		int selectedMiniGame = manager.getMiniGameEngine().selectNewGame(3);
-		manager.getMiniGameEngine().setSelectedGame(selectedMiniGame);
 		String gameString = manager.getMiniGameEngine().getGameString(selectedMiniGame);
 		dialogueTextPane.setText("The Minigame will be: " + gameString);
 

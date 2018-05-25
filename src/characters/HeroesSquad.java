@@ -366,7 +366,7 @@ public class HeroesSquad implements java.io.Serializable{
 				+ "Index : Name : Health : Type : Abilty : Status \n"
 				+ "\n");
 		for (Hero hero: heroSquad) {
-			squad += (heroSquad.indexOf(hero)+1) + ") " + hero.getCharacterName() + " : " + hero.getHealth() + "HP : " + hero.getCharacterType() + " : " 
+			squad += (heroSquad.indexOf(hero)+1) + ") " + hero.getCharacterName() + " : " + hero.getHealth() + "\\" + hero.getMaxHealth() + "HP : " + hero.getCharacterType() + " : " 
 			+ hero.getCharacterAbility() + " : " + heroStatus(hero) + "\n";
 		}
 		return squad;
